@@ -1,0 +1,68 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the hidden 'navflyout-2' is not visible
+Then the hidden 'navflyout-3' is not visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on "Customer Service" in menu and Click on "Service Assistant"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the element 'category-30'
+Then the element enumberSearchField is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Return to flyout and click on "User manuals" and "Cleaning and Care"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element category-31
+Then the element enumberSearchField is visible
+
+
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the element subcategory-310
+Then the link contains <contactteaser3>
+
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Contact"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element category-32
+!-- -- Do Teaser Controls
+Then the link contains <contactteaser4>
+
+
+!-- -------------------------------------------------------------------
+Scenario:   Return to flyout and click on "Spare parts"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element category-34
+Then the element by div and id and tabtree-1 is shown
+Then the element by div and id and tabtree-2 is shown
+Then the element by div and id and tabtree-3 is shown
+Then the element by div and id and tabtree-4 is shown
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Book a repair visit online"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element category-33
+Then the link contains <contactteaser5>
+
+!-- --- TTP-14888 Testcase Flyout for Siemens was successful ---
+

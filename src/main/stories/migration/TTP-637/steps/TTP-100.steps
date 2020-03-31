@@ -1,0 +1,147 @@
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+When I click the navigation element logInOutHeaderButton
+Then I wait for element with css [testing_id="logInButton"] to be visible
+Then I wait for element with css a[tabindex="2"] to be clickable
+Then the page 'loginpage' is opened
+
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on YAHOO Social Media icon
+!-- --------------------------------------------------------------------
+!-- When I click the button 'janrain-yahoo'
+When I click on element by xpath //a[@tabindex='2']
+Then the login-username is visible at the pop up box
+When I fill in login-username with testina_tester@yahoo.com
+Then the form field login-username is filled correct with the parameter 'testina_tester@yahoo.com'
+When I click the login-signin as an ID
+Then the login-passwd is visible at the pop up box
+Then the login-signin is visible at the pop up box
+When I fill in login-passwd with 123456aA
+Then the form field login-passwd is filled correct with the parameter '123456aA'
+When I click the login-signin as an ID
+
+Then I must wait '5' seconds
+Then switch back the window to parent window static
+Then the page 'myaccountpage' is opened
+
+When I click on child element span with parent a and href and #tab4
+Then the element personaldataform is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Delete the created account
+!-- --------------------------------------------------------------------
+When I click the element 'deleteAccountLink'
+Then I must wait '1' second
+
+When I confirm the pop up box
+Then I must wait '2' seconds
+
+When I confirm the pop up box
+Then I must wait '5' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Yahoo Social Media icon from the Social Sign In selection.
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+When I click the navigation element logInOutHeaderButton
+Then I wait for element with css [testing_id="logInButton"] to be visible
+Then the page 'loginpage' is opened
+When I click the 'janrain-yahoo' as an ID
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click Submit "Send" button without filling in address-data
+!-- --------------------------------------------------------------------
+When I click the element 'continueButton'
+Then the element 'form-accountCreationData-user-defaultPaymentAddress-titleSubmitNote' is visible
+Then the element 'form-accountCreationData-user-defaultPaymentAddress-firstnameSubmitNote' is visible
+Then the element 'form-accountCreationData-user-defaultPaymentAddress-streetNameSubmitNote' is visible
+Then the element 'form-accountCreationData-user-defaultPaymentAddress-postalcodeSubmitNote' is visible
+Then the element 'form-accountCreationData-user-defaultPaymentAddress-lastNameSubmitNote' is visible
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill out all form fields which information are provided at data section
+!-- --------------------------------------------------------------------
+
+When I select the accountCreationData.user.defaultPaymentAddress.title with the option <title> version
+Then I must wait '1' second
+When I enter <firstname> into 'accountCreationData.user.defaultPaymentAddress.firstname'
+Then the form field 'accountCreationData.user.defaultPaymentAddress.firstname' is filled correct with the parameter <firstname>
+
+When I enter <lastname> into 'accountCreationData.user.defaultPaymentAddress.lastName'
+Then the form field 'accountCreationData.user.defaultPaymentAddress.lastName' is filled correct with the parameter <lastname>
+
+When I enter Gollierplatz into 'accountCreationData.user.defaultPaymentAddress.streetName'
+Then the form field 'accountCreationData.user.defaultPaymentAddress.streetName' is filled correct with the parameter Gollierplatz
+
+When I enter 5 into 'accountCreationData.user.defaultPaymentAddress.streetnumber'
+Then the form field 'accountCreationData.user.defaultPaymentAddress.streetnumber' is filled correct with the parameter 5
+
+When I enter 80339 into 'accountCreationData.user.defaultPaymentAddress.postalcode'
+Then the form field 'accountCreationData.user.defaultPaymentAddress.postalcode' is filled correct with the parameter 80339
+
+When I enter Munchen into 'accountCreationData.user.defaultPaymentAddress.town'
+Then the form field 'accountCreationData.user.defaultPaymentAddress.town' is filled correct with the parameter Munchen
+
+When I enter <telephone> into 'accountCreationData.user.defaultPaymentAddress.phone1'
+Then the form field 'accountCreationData.user.defaultPaymentAddress.phone1' is filled correct with the parameter <telephone>
+
+!-- Not mandatory and named as same first "town" field, ignore this step..
+!-- When I enter <city> into 'accountCreationData.user.defaultPaymentAddress.town'
+!-- Then the form field 'accountCreationData.user.defaultPaymentAddress.town' is filled correct with the parameter <city>
+
+!-- --------------------------------------------------------------------
+Scenario: Click Submit "Send" button
+!-- --------------------------------------------------------------------
+When I click the element 'continueButton'
+Then I must wait '2' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Confirm the registration (Registration Page 3)
+!-- --------------------------------------------------------------------
+When I open the 'activationUrl' from the current page
+Then I must wait '2' seconds
+
+Then the page 'accountregistration6' is opened
+Then I must wait '5' seconds
+!-- --------------------------------------------------------------------
+Scenario: log in
+!-- --------------------------------------------------------------------
+When I click the button 'logInOutHeaderButton'
+
+Then the element 'janrainAuthReturnExperience' is visible
+Then the element 'janrainSwitchAccountLink' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Yahoo Social Media icon
+!-- --------------------------------------------------------------------
+!--  When I click the button 'janrain-yahoo'
+When I click the 'janrain-yahoo' as an ID
+
+Then I must wait '3' second
+Then the page 'myaccountpage' is opened
+
+When I click on child element span with parent a and href and #tab4
+Then the url of current page contains 'store/myaccount/overview'
+
+!-- --- Testcase TTP-100 User Registration:SocialMedia-Registration was successful ---
+

@@ -1,0 +1,76 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchField
+Then the form field searchField is filled correct with the parameter 0
+When I click the button [testing_id="searchBoxBtn"] if avaliable
+Then I wait for element with css a[testing_id="searchResultTab-Shop"] to be visible
+Then the page searchresultspage is opened
+When I click on first element via a and testing_id and searchResultTab-Shop
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Click on a Product and Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via img and src and 155x206
+Then the page productpage is opened
+Then I must wait '3' seconds
+When I click on first element via button and data-eventtracking and addToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button 'goToBasket'
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the dialogue step 'WELCOME' is 'active'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into 'password'
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the button 'continuebuttontop'
+
+!-- --------------------------------------------------------------------
+Scenario: Open  Invoice Page 
+!-- --------------------------------------------------------------------
+When I click the navigation element continuebuttontop
+Then the page 'summarypage' is shown
+When I click on first element via label and for and payment-invoice_siemens_ch
+When I click the navigation element continuebuttontop
+Then the element agreeValidationError is visible
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the navigation element continuebuttontop
+Then the page 'invoicepaymentpage' is shown
+When I click the navigation element continuebuttontop
+Then the page 'confirmationpage' is shown
+
+
+!-- --- Testcase TTP-320: Automatic: Payment: Invoice was successful ---
+
+
+
+

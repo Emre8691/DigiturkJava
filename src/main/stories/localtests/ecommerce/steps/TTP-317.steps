@@ -1,0 +1,95 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchfield
+When I click the element [testing_id="primarySearchButton"] if avaliable
+Then the element by table and class and overview-product-filter is shown
+When I click on first element via a and href and pageNo=2
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket- without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the element 'firstStep' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Choose anonymous checkout
+!-- --------------------------------------------------------------------
+When I decide to 'checkoutanonymus'
+Then the decided 'checkoutanonymus' is selected
+When I click the button 'continuebutton'
+Then the page 'deliverypage' is shown
+
+When I select the paymentAddress.title with the option 0001 version
+!-- When I select the paymentAddress.title with option '0001'
+
+When I enter 'BSH' into paymentAddress.firstname
+When I enter 'Testuser' into paymentAddress.lastName
+When I enter 'Teststr.' into paymentAddress.streetName
+When I enter '25' into paymentAddress.streetnumber
+When I enter '10117' into paymentAddress.postalcode
+When I enter 'Berlin' into paymentAddress.town
+When I enter <orderuserttp> into paymentAddress.email
+When I enter <orderuserttp> into paymentAddress.emailReenterred
+When I enter '49345678' into paymentAddress.phone1
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Worldpay / Visa Card Page 
+!-- --------------------------------------------------------------------
+When I click the button 'continuebutton'
+Then the page 'summarypage' is shown
+
+
+When I click on first element via input and id and paymentMode1
+When I decide to 'agreeContract'
+When I click the button continuebutton
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Visa Card
+!-- -----------------------------------------------------------------
+Then the url of current page contains 'PaymentMethod=VISA'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I clear the cardHolderName field
+When I enter 'AUTHORISED' into cardHolderName
+When I enter <securitycode> into CVC
+When I click the element Send
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+Then the page 'confirmationpage' is opened
+
+!-- --- Testcase TTP-317:Automatic: Checkout with Worldpay - Bosch DE public - anonymous
+
+

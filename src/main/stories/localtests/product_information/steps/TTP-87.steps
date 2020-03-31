@@ -1,0 +1,77 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Products" tab via main navigation
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'category-20' is visible
+Then the element 'subcategory-203' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Microwaves subcategory
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-203'
+Then the 'intro' div class exists on page
+Then the 'items-group highlight' div class exists on page
+Then the 'panel-group' div class exists on page
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on a more specific product subcategory line Built-in Microwaves
+!-- --------------------------------------------------------------------
+When I click the link contains 'c3_lightbox'
+When I click the link contains '/'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Select a product filter from the left sidebar with a click on 1st category
+!-- --------------------------------------------------------------------
+When I click the element 'firstCategory_filter'
+Then the element 'firstCategory_filterselected' is visible
+
+!-- -------------------------------------------------------
+Scenario: Remove the selected category filter with a click on the selected category button
+!-- -------------------------------------------------------
+When I click the element 'firstCategory_filterselected'
+Then the element 'firstCategory_filter' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Select two product filters from the left sidebar with clicking on first and second category
+!-- --------------------------------------------------------------------
+When I click the element 'firstCategory_filter'
+When I click the element 'secondCategory_filter'
+Then the element 'firstCategory_filterselected' is visible
+Then the element 'secondCategory_filterselected' is visible
+
+!-- -------------------------------------------------------
+Scenario: Hide category filter by clicking the "-" icon just above the first category filter
+!-- -------------------------------------------------------
+When I click the element 'firstFilterHeader'
+Then the element 'firstFilterHeaderCollapsed' is visible
+
+!-- -------------------------------------------------------
+Scenario: Click on the remove filter button at the bottom of the filter section
+!-- -------------------------------------------------------
+When I click the element 'resetProductFilters_Button'
+Then the element 'firstCategory_filterselected' not exists on page
+Then the element 'secondCategory_filterselected' not exists on page
+
+
+
+!-- --- Testcase TTP-87 Product Pages:Product Filter(Products) was successful ---

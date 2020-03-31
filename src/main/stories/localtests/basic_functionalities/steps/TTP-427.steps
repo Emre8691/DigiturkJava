@@ -1,0 +1,44 @@
+!-- -------------------------------------------------------------------
+Scenario: Open Siemens Home Page via the list provided at data section.
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open the spare part search page and check if its shown
+!-- --------------------------------------------------------------------
+When I open the page for following address <sparepartsearch>
+Then I must wait '2' seconds
+Then the page 'sparepartsearch' is opened
+Then the url of current page contains <sparepartsearch>
+
+!-- ---------------------------------------------------------------------
+Scenario: Enter invalid enumber
+!-- --------------------------------------------------------------------
+When I enter <invalidenumber> into 'enumberSearchField'
+When I click the element 'enumberSearchBtn'
+Then the element 'customENumberValidation' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Enter valid enumber
+!-- --------------------------------------------------------------------
+When I enter <enumber> into 'enumberSearchField'
+When I click the element 'enumberSearchBtn'
+
+!-- -------------------------------------------------------------------
+Scenario: Result page is shown
+!-- ------------------------------------------------------------------
+Then the page 'sparepartdetailpage' is shown
+
+!-- -----------------------------------------------------------------
+Scenario: Check visible elements
+!-- ------------------------------------------------------------------
+Then the element 'goToBasket' is visible
+Then the element 'productTitle-displayCode' is visible
+
+
+
+!-- --- Testcase TTP-427 Spare Part Search (NEFF) was successful ---
+
+ 

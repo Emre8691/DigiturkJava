@@ -1,0 +1,120 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens Start-Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------
+Scenario: Click on the Shop Link at main navigation
+!-- -------------------------------------------------------
+When I click the button 'nav-3'
+Then the expected 'subcategory-333' is shown
+When I click the element 'subcategory-333'
+Then the url of current page contains 'garantieverlaengerung'
+
+!-- ---------------------------------------------------
+Scenario: Enter valid E-Number and click continue button
+!-- --------------------------------------------------
+When I click on first element via div and id and option2
+Then the element by input and id and form-ref-900-3-2 is shown
+When I enter <cewproduct> into vib
+Then the form field vib is filled correct with the parameter <cewproduct>
+!-- When I enter <cewproduct> into 'form-ref-900-3-2'
+!-- When I click on first element via input and id and form-ref-900-3-2
+When I click the 3 nd/th element via button  and type and submit
+!-- When I press ENTER at the focused pop up box
+Then the url of current page contains 'liste?productCode='
+
+!-- -----------------------------------------------------
+Scenario: Click add to basket for CEW Product
+!-- -------------------------------------------------------
+When I click the link contains '/garantieverlaengerung/daten?cewProductCode=00999903&productCode=SX878D04PE'
+Then the url of current page contains 'productCode=SX878D04PE'
+
+
+!-- ----------------------------------------------------
+Scenario: try to submit from without filling and field
+!-- ----------------------------------------------------
+When I click the 2 nd/th element via button and type and submit
+Then the expected 'er-form-applianceInfo-fddate' is shown
+Then the expected 'er-form-applianceInfo-serialNumber' is shown
+!-- Then the expected 'er-form-applianceInfo-enumber' is shown
+
+
+!-- ----------------------------------------------------
+Scenario: Enter invalid Purchase Date (older than 2 years)
+!-- ----------------------------------------------------
+When I enter <cewenumber> into 'applianceInfo.productCode'
+Then the form field applianceInfo.productCode is filled correct with the parameter <cewenumber>
+When I enter <cewfd> into 'applianceInfo.fddate'
+Then the form field applianceInfo.fddate is filled correct with the parameter <cewfd>
+When I enter <cewserialnumber> into 'applianceInfo.serialNumber'
+Then the form field applianceInfo.serialNumber is filled correct with the parameter <cewserialnumber>
+
+!-- for close the popup
+When I click the button #close_pop-up if avaliable
+When I click on first element via button and class and ws-popover-opener
+When I click on first element via button and data-action and setYearList
+When I click on first element via button and value and 2010
+When I click on first element via button and value and 2010-01
+When I click on first element via button and data-id and day-1
+Then I must wait '1' second
+!-- When I enter 31.01.2001 into 'form-applianceInfo-purchaseDate'
+When I click on first element via input and id and applianceInfo-enumber
+When I press ENTER at the focused pop up box
+Then the expected 'er-form-applianceInfo-purchaseDate' is shown
+
+
+!-- ----------------------------------------------------
+Scenario: Enter invalid FD Date
+!-- ----------------------------------------------------
+When I click on first element via button and class and ws-popover-opener
+When I click on first element via button and class and ws-empty
+Then I must wait '1' second
+When I click on first element via button and class and ws-popover-opener
+When I click on first element via button and data-action and setYearList
+When I click on first element via button and value and 2015
+When I click on first element via button and value and 2015-01
+When I click on first element via button and value and 2015-01-01
+When I click on first element via button and data-id and day-1
+Then I must wait '1' second
+When I clear the 'applianceInfo.fddate' field
+Then the form field 'applianceInfo.fddate' is filled correct with the parameter ''
+When I enter 123456 into 'applianceInfo.fddate'
+Then the form field 'applianceInfo.fddate' is filled correct with the parameter 123456
+When I click on first element via input and id and form-applianceInfo-enumber
+When I press ENTER at the focused pop up box
+Then I must wait '1' second
+Then the expected 'er-form-applianceInfo-fddate' is shown
+
+!-- ----------------------------------------------------
+Scenario: Enter Purchase Date < 2 years and > FD Date
+!-- ----------------------------------------------------
+When I click on first element via button and class and ws-popover-opener
+When I click on first element via button and class and ws-empty
+Then I must wait '1' second
+When I click on first element via button and class and ws-popover-opener
+When I click on first element via button and data-action and setYearList
+When I click on first element via button and value and 2015
+When I click on first element via button and value and 2015-01
+When I click on first element via button and value and 2015-01-01
+When I click on first element via button and data-id and day-1
+Then I must wait '1' second
+!--  When I switch to iframe
+When I click on first element via button  and id and close_pop-up
+When I clear the 'applianceInfo.fddate' field
+Then the form field 'applianceInfo.fddate' is filled correct with the parameter ''
+When I enter 0112 into 'applianceInfo.fddate'
+Then the form field 'applianceInfo.fddate' is filled correct with the parameter 0112
+When I click on first element via input and id and form-applianceInfo-enumber
+When I press ENTER at the focused pop up box
+Then I must wait '1' second
+Then the expected 'er-form-applianceInfo-fddate' is shown
+
+
+!-- --- TTP-408 CEW: Appliance Data validations was successful ---
+

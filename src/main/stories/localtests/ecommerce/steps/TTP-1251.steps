@@ -1,0 +1,57 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens UK shop web page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Open the page for one small MAT  
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-3
+Then the element navflyout-3 is visible
+When I click the navigation element subcategory-300
+!-- Then the page productlist is opened
+!-- Then the url of current page contains 'shop-productlist'  //Change from UK to DE 
+Then the element by div and class and filter-module is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Buy Button to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via button and data-eventtracking and addToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Shop link from main Navigation
+!-- --------------------------------------------------------------------
+When I click the navigation element goToBasket
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Increase the quantity of products to 2
+!-- --------------------------------------------------------------------
+When I click on first element via span and class and step-up step-control
+Then the quantity is one more then before
+
+
+!-- --------------------------------------------------------------------
+Scenario: Increase the quantity of products to 3
+!-- --------------------------------------------------------------------
+When I click on first element via span and class and step-up step-control
+Then the quantity is one more then before
+
+
+!-- --------------------------------------------------------------------
+Scenario: Decrease the quantity of products to 2
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and step-down
+Then the quantity is one less as before
+
+
+!-- --- Testcase TTP-1251 Automatic: Basket: Display of static/dynamic delivery cost message according to threshold was successful ---
+
+

@@ -1,0 +1,81 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I click the element 'username'
+When I enter <staffuserv2> into username
+Then the form field username is filled correct with the parameter <staffuserv2>
+When I click the element 'password'
+When I enter <passwordv2> into password
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the element 'logInButton'
+
+!-- --------------------------------------------------------------------
+Scenario: CLOSE POPUP - will be removed (no need anymore)
+!-- -------------------------------------------------------------------
+!-- When I switch to iframe [src*="live/i"] location
+!-- When I click on first element via input and name and radio-Kunt_u_ons_verte
+!-- When I click on first element via button and id and button
+!-- When I click the element a[id="close"] if avaliable
+!-- When I switch back to switchBackToDefaultContent
+!-- -------------------------------------------------------------------
+
+!-- --------------------------------------------------------------------
+Scenario: Open flyout
+!-- -------------------------------------------------------------------
+When I click the navigation element nav-2
+!-- When I click on second element via a and href and #nav-2
+Then the element by a and testing_id and category-20 is shown
+
+
+!-- -----------------------------------------------------------------
+Scenario: Open a category
+!-- -------------------------------------------------------------------
+When I click on first element via a and testing_id and category-20
+Then the url of current page contains 'nl/productlistnl/cooking'
+
+!-- --------------------------------------------------------------------
+Scenario: Open flyout
+!-- -------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element by a and testing_id and category-20 is shown
+
+!-- Then the element 'category-10' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Open a subcategory
+!-- -------------------------------------------------------------------
+When I click on first element via a and testing_id and 'subcategory-200'
+Then the url of current page contains 'productlistnl/cooking/ovens-and-cookers'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open flyout and close it again
+!-- -------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element by a and testing_id and category-20 is shown
+
+When I click the button 'flyoutclosebtn'
+
+!-- --------------------------------------------------------------------
+Scenario: Open flyout and go to the shop
+!-- -------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element by a and testing_id and category-20 is shown
+
+When I click the link contains ''
+Then the url of current page contains 'shop'
+
+
+!-- --- TTP-339 Staffsales Basic Functionalities - Category Flyout was successful ---

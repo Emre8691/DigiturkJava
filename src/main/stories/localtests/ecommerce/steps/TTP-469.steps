@@ -1,0 +1,155 @@
+!-- --------------------------------------------------------------------
+Scenario: Open NEFF Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 00145452 into searchField
+When I click the navigation element searchBoxBtn
+Then the page 'shopdetailpage' is opened
+!-- Then the expected 'addItemToBasket-00145452' is shown
+Then I wait for element with css [testing_id=addItemToBasket-00145452] to be visible
+!-- --------------------------------------------------------------------
+!-- 2. way for selecting item
+!-- When I search 0 at searchField and click searchBoxBtn
+!-- When I click on first element via a and href and produkt
+!-- Then the page productpage is opened
+
+!-- --------------------------------------------------------------------
+!-- Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+!-- When I click on first element via div and testing_id and addItemToBasket-
+!-- When I click on first element via button and data-eventtracking and addToBasket
+!-- Then the shopcart-overview div class exists on page
+!-- 2. way for selecting item finish
+!-- --------------------------------------------------------------------
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click the button 'addItemToBasket-00145452' without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the dialogue step 'WELCOME' is 'active'
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+When I enter <passwordv2> into 'password'
+When I click the button 'continuebuttonbottom'
+Then the page 'deliverypage' is shown
+Then the dialogue step 'DELIVERY' is 'active'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Checkout Summary Page Sections
+!-- --------------------------------------------------------------------
+When I click the button continuebuttonbottom
+Then the page 'summarypage' is shown
+
+
+Then the dialogue step 'SUMMARY' is 'active'
+Then the dialogue step 'DELIVERY' is 'clickable'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the 'order-list' div class exists on page
+Then the element 'voucherinput' is visible
+
+Then the expected 'backbuttonbottom' is shown
+!-- When I choose the 'visa' 'payment'
+!-- When I choose the 'mastercard' 'payment'
+!-- When I choose the 'payment-invoice_siemens_ch' 'payment'
+When I click on first element via label and for and payment-visa
+When I click on first element via input and testing_id and payment-mastercard
+When I click on first element via label and for and payment-invoice_neff_de
+When I click the button 'continuebuttontop'
+Then the expected 'agreeValidationError' is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check If Visa Payment Option is opening the worldPay page
+!-- --------------------------------------------------------------------
+When I click on first element via label and for and payment-visa
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+
+Then the url of current page contains 'worldpay'
+When I click the link contains 'worldpay/cancel'
+Then the page 'summarypage' is shown
+
+
+Then the dialogue step 'SUMMARY' is 'active'
+Then the dialogue step 'DELIVERY' is 'clickable'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the 'order-list' div class exists on page
+Then the element 'voucherinput' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Check If MasterCard Payment Option is opening the worldPay page
+!-- --------------------------------------------------------------------
+When I click on first element via input and testing_id and payment-mastercard
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+
+Then the url of current page contains 'worldpay'
+When I click the link contains '/worldpay/cancel/'
+Then the page 'summarypage' is shown
+
+
+Then the dialogue step 'SUMMARY' is 'active'
+Then the dialogue step 'DELIVERY' is 'clickable'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the 'order-list' div class exists on page
+Then the element 'voucherinput' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check VoucherCode Validations
+!-- --------------------------------------------------------------------
+When I enter <invalidvoucher> into voucherinput
+When I click the button applyvoucher
+Then the expected 'vouchererror-cannnotbeapplied' is shown
+
+When I enter <wrongvoucher> into voucherinput
+When I click the button applyvoucher
+Then the expected 'vouchererror-cannnotbeapplied' is shown
+
+
+!-- TODO: find valid voucher and use it here, change code accordingly
+When I enter <validvoucher> into voucherinput
+When I click the button applyvoucher
+Then the expected 'vouchererror-cannnotbeapplied' is shown
+!-- Then the element 'removeVoucher' is visible
+When I enter '' into voucherinput
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+Then the url of current page contains 'worldpay'
+When I click the link contains '/worldpay/cancel/'
+Then the page 'summarypage' is shown
+
+!-- --- Testcase TTP-469 Chekout Summary (NEFF) was successful ---
+

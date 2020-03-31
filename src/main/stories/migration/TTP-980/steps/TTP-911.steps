@@ -1,0 +1,144 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Customer Service" tab via main navigation with
+!-- --------------------------------------------------------------------
+!-- When I click the element 'nav-4'
+When I click on first element via a and href and #nav-4
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on "Book Engineer Online" in the flyout
+!-- --------------------------------------------------------------------
+!-- When I click the element 'subcategory-420'
+When I click on first element via a and href and /fr/nos-services/reserver-un-technicien-en-ligne
+Then the url of current page contains /reserver-un-technicien-en-ligne
+
+!-- -----------------------------------------------
+Scenario: Open "Service Catalogs"
+!-- ---------------------------------------
+
+When I click on first element via div and aria-controls and bshaccordioncomponentcontainerid-1510121-2329561-a02-be
+!-- Then the toggle-box-inner div class exists on page
+Then the element by a and href and /fr/support/dob/category/cooking/ovens is shown
+
+
+
+
+!-- -------------------------------------------
+Scenario: Choose the "Oven" Category
+!-- --------------------------------------------
+When I click on first element via a and href and /fr/support/dob/category/cooking/ovens
+Then the page categorydetail is opened
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click the "leak" button
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and #accordion-6
+Then the unit-items div class exists on page
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click the "leak" again
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and 1191&problemgroupid=163&
+Then the service-solutions div class exists on page
+
+
+!-- -------------------------------------------
+Scenario: Click on the 'next' button
+!-- -------------------------------------------
+When I click on second element via button and type and submit
+Then the page 'appliancepage' is opened
+Then the url of current page contains /dob/appliance
+
+Scenario: Fill the technician's pass Data Form
+!-- -------------------------------------------
+Scenario: Enter the E-number and F-number
+!-- -------------------------------------------
+When I enter 0HB43S240E/01 into form-ref-300-dob2-1-2
+Then the form field form-ref-300-dob2-1-2 is filled correct with the parameter 0HB43S240E/01
+
+When I enter 9411 into form-ref-300-dob2-1-3
+Then the form field form-ref-300-dob2-1-3 is filled correct with the parameter 9411
+
+When I enter '00001' into form-ref-300-dob2-1-4
+Then the form field form-ref-300-dob2-1-4 is filled correct with the parameter 00001
+When I click on first element via button and type and button
+When I click on first element via button and data-id and day-2
+ 
+
+When I enter 'Test' into form-ref-300-dob2-11-3
+When I click the 2 nd/th element via button and type and submit
+!-- -------------------------------------------
+Scenario: Fill the Customer Data Form
+!-- -------------------------------------------
+When I select the dobAddressData.addressData.title with the option <title> version
+Then the page dobaddress is shown
+
+When I enter aaa into 'dobAddressData.addressData.lastName'
+Then the form field 'dobAddressData.addressData.lastName' is filled correct with the parameter aaa
+
+When I enter a into 'dobAddressData.addressData.firstname'
+Then the form field 'dobAddressData.addressData.firstname' is filled correct with the parameter a
+
+When I enter 1000 into 'dobAddressData.addressData.postalcode'
+Then the form field 'dobAddressData.addressData.postalcode' is filled correct with the parameter 1000
+
+When I enter Bruxelles into 'dobAddressData.addressData.town'
+Then the form field 'dobAddressData.addressData.town' is filled correct with the parameter Bruxelles
+
+When I enter Avenue Casalta into 'dobAddressData.addressData.streetName'
+Then the form field 'dobAddressData.addressData.streetName' is filled correct with the parameter Avenue Casalta
+
+When I enter 7 into 'dobAddressData.addressData.streetnumber'
+Then the form field 'dobAddressData.addressData.streetnumber' is filled correct with the parameter 7
+
+
+When I enter 9876543210 into 'dobAddressData.addressData.phone1'
+Then the form field 'dobAddressData.addressData.phone1' is filled correct with the parameter 9876543210
+
+When I enter <orderuserttp> into 'dobAddressData.addressData.email'
+Then the form field 'dobAddressData.addressData.email' is filled correct with the parameter <orderuserttp>
+When I enter <orderuserttp> into 'dobAddressData.addressData.emailReenterred'
+Then the form field 'dobAddressData.addressData.emailReenterred' is filled correct with the parameter <orderuserttp>
+
+When I click on second element via button and type and submit
+Then the page dobaddress is opened
+When I click on second element via button and type and submit
+
+
+Then the page dobaddress is opened
+
+
+!-- -------------------------------------------
+Scenario: Click on the 'next' button
+!-- -------------------------------------------
+When I click on second element via button and type and submit
+When I click on first element via button and data-id and day-21
+When I click on second element via button and type and submit
+!-- -------------------------------------------
+Scenario: Summary
+!-- -------------------------------------------
+!-- When I click on first element via input and id and form-ref-300-dob5-2-1 
+When I click the xpath element //*[@id="summaryData"]/div[3]/div/fieldset/div[1]/div[1]/div/div/div/label
+
+!-- -------------------------------------------
+Scenario: Click on the 'next' button
+!-- -------------------------------------------
+!-- When I clear the form-ref-300-dob2-1-3 field
+When I click on second element via button and type and submit
+!-- Then the page dobaddress is opened
+Then I must wait 5 seconds
+
+!-- --- Testcase TTP-911 Newsletter for Siemens finished successful ---
+

@@ -1,0 +1,85 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open Siemens Home Page via the list provided at data section.
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-2' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'category-20' 
+Then the link contains /products/cooking/ovens
+Then the link contains /products/cooking/steam-ovens
+Then the link contains /products/cooking/hobs
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-2' is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-200'
+Then the hidden flyoutclosebtn is not visible
+Then the element by xpath //div[@class="content-tabs"] is shown
+Then the element by xpath //div[@class="invader"] is shown
+Then the link contains /productlist/cooking/ovens/built-in-ovens
+Then the link contains /productlist/cooking/microwaves/built-in-ovens-with-microwave
+Then the element by xpath //div[@class="items-group"] is shown
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-3' is visible
+Then the element by xpath //div[@class="more"] is shown
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-310'
+Then the hidden flyoutclosebtn is not visible
+Then the page shoplist is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-3' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products Link in the flyout
+!-- --------------------------------------------------------------------
+!-- Shop Spare Part Search leads to Error Page
+!-- https://issuetracking.bsh-sdd.com/browse/BSHROLLOUT-10655
+When I click the element 'category-37'
+Then the element 'enumberSearchField' is visible
+Then the element 'enumberSearchBtn' is visible
+Then the element 'typePlateFinder' is visible
+
+
+!-- --- Testcase TTP-568 : Automatic:Basic Functionalities:Category Flyout (Siemens) was successful ---
+

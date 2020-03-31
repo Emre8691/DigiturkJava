@@ -1,0 +1,19 @@
+{
+  "totalTestCount": 25,
+  "modelList": [
+    {
+      "totalTestCount": 25,
+      "testExecutionKey": "TTP-651",
+      "storyPath": "rollout/siemens2013/basics/dk/BAS1staff.story, rollout/siemens2013/basics/dk/BAS2staff.story, rollout/siemens2013/basics/dk/BAS3staff.story, rollout/siemens2013/basics/dk/BAS5staff.story, rollout/siemens2013/basics/dk/MYB1staff.story, rollout/siemens2013/basics/dk/MYB2staff.story, rollout/siemens2013/basics/dk/PDP3staff.story, rollout/siemens2013/checkout/dk/CHE1staff.story, rollout/siemens2013/checkout/dk/CHE2staff.story, rollout/siemens2013/checkout/dk/CHE6staff.story, rollout/siemens2013/products/dk/PDP1staff.story, rollout/siemens2013/products/dk/SPS1staff.story, rollout/siemens2013/products/dk/SPS2staff.story, rollout/siemens2013/products/dk/STF1staff.story, rollout/siemens2013/products/dk/STF2staff.story, rollout/siemens2013/products/dk/STF3staff.story, rollout/siemens2013/products/dk/STF4staff.story, rollout/siemens2013/userdata/dk/ACC1staff.story, rollout/siemens2013/userdata/dk/ACC3staff.story, rollout/siemens2013/userdata/dk/ACC4staff.story, rollout/siemens2013/userdata/dk/ACC6staff.story, rollout/siemens2013/userdata/dk/ACC7staff.story, rollout/siemens2013/userdata/dk/REG1staff.story, rollout/siemens2013/userdata/dk/REG2staff.story, rollout/siemens2013/userdata/dk/REG3staff.story",
+      "seleniumUrl": "http://52.17.174.14:4444/wd/hub",
+      "additionalParameters": {
+        "jbehave.thread.count": "25",
+        "selenium.webdriver.type": "remote",
+        "spring.profiles.active": "webtest"
+      },
+      "system": "futureint",
+      "server": "noserver",
+      "testedSystem": "webtest"
+    }
+  ]
+}

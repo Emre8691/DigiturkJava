@@ -1,0 +1,92 @@
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+When I click the button 'logInOutHeaderButton'
+Then the page 'loginpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <orderuserpwd> into 'password'
+Then the form field password is filled correct with the parameter <orderuserpwd>
+When I click the button 'logInButton'
+Then I must wait '1' second
+Then the page 'myaccountpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Open My products Tab
+!-- --------------------------------------------------------------------
+!-- When I click on element by xpath //li[@id='myProducts']
+!-- When I click myaccount and tab5 is available
+When I click on child element span with parent a and href and #tab5
+Then I must wait '3' seconds
+When I click the button img[class="closeImg"] if avaliable
+Then I must wait '1' second
+When I confirm the pop up box
+Then I wait for element with css a[href*="clickMyProductsTab"] to be clickable
+When I click on first element via a and href and clickMyProductsTab
+Then I must wait '1' second
+Then the 'registrationDataForm' form is available
+
+
+!-- --------------------------------------------------------------------
+Scenario: Product Registration Validation
+!-- --------------------------------------------------------------------
+When I click the link contains 'compRegisteredItems.validateItem'
+Then I must wait '2' seconds
+Then the element by xpath //p[@id='bshProductRegistrationData.errors'] is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Product Registration Data
+!-- --------------------------------------------------------------------
+When I enter <enumber1> into 'eNumber'
+Then the form field eNumber is filled correct with the parameter <enumber1>
+When I enter <fddate> into 'fdDate'
+Then the form field fdDate is filled correct with the parameter <fddate>
+When I click the link contains 'compRegisteredItems.validateItem'
+Then I must wait '2' seconds
+Then the element by xpath //p[@id='bshProductRegistrationData.errors'] is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Product Registration Data
+!-- --------------------------------------------------------------------
+When I enter <enumber1> into 'eNumber'
+Then the form field eNumber is filled correct with the parameter <enumber1>
+When I enter <fddate> into 'fdDate'
+Then the form field fdDate is filled correct with the parameter <fddate>
+When I enter <serialnumber> into 'serialNumber'
+Then the form field serialNumber is filled correct with the parameter <serialnumber>
+When I enter <purchasedate1> into 'purchaseDate'
+Then the form field purchaseDate is filled correct with the parameter <purchasedate1>
+When I click the link contains 'compRegisteredItems.validateItem'
+
+!-- Then I wait for element with css .productRegImage to be visible
+Then I wait for element with css a[href*="compRegisteredItems.registerItem"] to be clickable
+When I click the link contains 'compRegisteredItems.registerItem'
+!-- When I click the element a[href*="compRegisteredItems.registerItem"] without wait
+
+
+Then I wait for element with css div#registeredProductDetails to be visible
+Then the element by xpath //div[@id='registeredProductDetails'] is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Delete registered product
+!-- --------------------------------------------------------------------
+Then I wait for element with css .closeImg to be clickable
+When I click on first element via img and class and closeImg
+Then I must wait '1' second
+When I confirm the pop up box
+Then the element by xpath //div[@id='registerlinkComponent'] is shown
+
+
+!-- --- Testcase TTP-218 - Automatic: MyAccount: Product Registration (Bosch) was successful ---
+

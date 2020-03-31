@@ -1,0 +1,53 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- When I click the button 'logInOutHeaderButton'
+Then the page 'loginpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with invalid credentials
+!-- --------------------------------------------------------------------
+When I enter <incorrectuser> into 'username'
+When I enter <incorrectpassword> into 'password'
+When I click the button 'logInButton'
+
+Then the page 'loginpage' is opened
+Then the component named by 'erroruserdoesnotexist' exists on page
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with invalid password
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <loginuser3> into 'username'
+When I clear the 'password' field
+When I enter <incorrectpassword> into 'password'
+
+When I click the button 'logInButton'
+Then the page 'loginpage' is opened
+Then the component named by 'erroruserdoesnotexist' exists on page
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with valid user and valid password
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <loginuser3> into 'username'
+When I clear the 'password' field
+When I enter <password> into 'password'
+
+When I click the button 'logInButton'
+Then the page 'myaccountpage' is opened
+
+
+
+!-- --- Testcase TTP-303 Automatic:Login Functionality (Bosch) was successful ---
+

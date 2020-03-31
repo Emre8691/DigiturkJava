@@ -1,0 +1,45 @@
+!-- -----------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens FR FUT-INT mainpage)
+!-- -----------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on "Produits" 
+!-- ---------------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- -------------------------------------------------------------------------
+Scenario: Click on "Lave-linge" under "Soin du linge"
+!-- -------------------------------------------------------------------------
+When I click the navigation element subcategory-210
+Then the url of current page contains 'produits/laver-et-secher/lave-linge'
+
+!-- -------------------------------------------------------------------------
+Scenario: Click on "Vers la liste de tous les appareils" link
+!-- -------------------------------------------------------------------------
+When I click the 4 nd/th element via a and href and /fr/liste-des-produits/soin-du-linge/lave-linge
+Then the element tabtree-12 is visible
+
+!-- ---------------------------------------------------------
+Scenario: Check for the EcoFee tag on the list page
+!-- ---------------------------------------------------------
+Then I wait for element with css i[class*="info"] to be visible
+
+!-- ---------------------------------------------------------
+Scenario: Click on "i" to see the pop-up
+!-- ---------------------------------------------------------
+When I click on first element via a and href and #ecofee
+
+!-- ---------------------------------------------------------
+Scenario: Check pop-up information tooltip
+!-- ---------------------------------------------------------
+Then the element by div and class and tooltip-wrapper-inner is shown
+
+
+!-- --- TTP-11852 - PI - Marketing List Page - EcoFee tab was successful ---

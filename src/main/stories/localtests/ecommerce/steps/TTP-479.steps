@@ -1,0 +1,113 @@
+!-- --------------------------------------------------------------------
+Scenario: Open NEFF Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 00145452 into searchField
+Then the form field searchField is filled correct with the parameter 00145452
+When I click the button searchBoxBtn
+Then I wait for element with css button[data-eventtracking*="00145452"] to be visible
+Then the page 'shopdetailpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via div and testing_id and addItemToBasket-00145452 without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+Then the element 'checkouttop' is visible
+Then the element 'checkoutbottom' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the element 'WELCOME' is visible
+Then the element username is visible
+Then the element password is visible
+Then the element by xpath //input[@testing_id="checkoutexistinguser"] is shown
+Then the element by xpath //input[@testing_id="checkoutregistration"] is shown
+Then the element by xpath //input[@testing_id="checkoutanonymus"] is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Dialog Steps Checkout
+!-- --------------------------------------------------------------------
+Then the dialogue step 'WELCOME' is 'active'
+Then the dialogue step 'DELIVERY' is 'inactive'
+Then the dialogue step 'SUMMARY' is 'inactive'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the dialogue step 'CONFIRMATION' is 'inactive'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test  
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into 'password'
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the button 'continuebuttonbottom'
+Then the page 'deliverypage' is shown
+Then the dialogue step 'DELIVERY' is 'active'
+
+!-- --------------------------------------------------------------------
+Scenario: Check Checkout Summary Page Sections
+!-- --------------------------------------------------------------------
+When I click the button continuebuttonbottom
+Then the page 'summarypage' is shown
+Then the element 'voucherinput' is visible
+Then the element 'backbuttonbottom' is visible
+Then the element 'applyvoucher' is visible
+Then the dialogue step 'SUMMARY' is 'active'
+
+!-- --------------------------------------------------------------------
+Scenario: Check If Visa Payment Option is opening the worldPay page then switch to Mastercard
+!-- --------------------------------------------------------------------
+When I click on first element via input and testing_id and payment-visa
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+Then I must wait 2 seconds
+Then the url of current page contains 'worldpay'
+When I click the link contains '/worldpay/cancel/'
+
+Then I must wait '1' second
+When I click on first element via input and testing_id and payment-mastercard
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+When I enter <cardnumbermaster2> into the 'cardnumber' field of the 'worldpay' form
+When I enter <month> into the 'expirymonth' field of the 'worldpay' form
+When I enter <year> into the 'expiryyear' field of the 'worldpay' form
+When I enter 'AUTHORIZED' into the 'cardholdername' field of the 'worldpay' form
+When I enter <securitycode> into the 'securitycode' field of the 'worldpay' form
+When I click on the 'submitbutton' of 'worldpay'
+
+When I click the element input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+
+
+!-- --- Testcase TTP-479 Checkout Change Payment (NEFF) was successful ---
+

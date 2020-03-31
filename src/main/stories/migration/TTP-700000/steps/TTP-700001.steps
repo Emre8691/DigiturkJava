@@ -1,0 +1,13 @@
+!-- --------------------------------------------------------------------
+Scenario: Open ServicePortal Page
+When I open external webpage without validate http://fe0vm2626.bsh.corp.bshg.com:8080/VIBRelationDEV
+Then I must wait '2' seconds
+When I enter 'userTest' into username
+Then the form field username is filled correct with the parameter 'userTest'
+When I enter 'userTest' into password
+Then the form field password is filled correct with the parameter 'userTest'
+When I click on first element via input and value and Sign In
+Then I must wait 2 seconds
+
+
+!-- --- TTP-700001 Testcase: Montaj Kurulum Talebi finished successful ---

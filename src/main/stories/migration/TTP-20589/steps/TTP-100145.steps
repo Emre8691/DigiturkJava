@@ -1,0 +1,148 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then I must wait '3' seconds
+!-- Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Click "Register" 
+!-- --------------------------------------------------------------------
+!-- When I click on first element via span and class and <mybosch>
+When I click on first element via a and href and /us/store/myaccount/registration
+!-- Then the page 'myaccount' is opened
+
+!-- --------------------------------------------------------------------
+!-- Then the page 'accountcustomerregistrationpage' is opened
+
+!-- --------------------------------------------------------------------
+
+!-- --------------------------------------------------------------------
+Scenario: Registration Page 1 User Data
+!-- --------------------------------------------------------------------
+
+When I enter <orderuserttp24> into user.defaultPaymentAddress.email
+Then the form field user.defaultPaymentAddress.email is filled correct with the parameter <orderuserttp24>
+
+When I enter <orderuserttp24> into user.defaultPaymentAddress.emailReenterred
+Then the form field user.defaultPaymentAddress.emailReenterred is filled correct with the parameter <orderuserttp24>
+
+
+When I click on first element via span and class and select2-selection__arrow
+Then I must wait 1 seconds
+When I click the element li[id*="701"] if avaliable
+
+
+When I enter Burak into accountCreationData.user.defaultPaymentAddress.firstname
+Then the form field accountCreationData.user.defaultPaymentAddress.firstname is filled correct with the parameter Burak
+
+When I enter Türkpencesi into accountCreationData.user.defaultPaymentAddress.lastName
+Then the form field accountCreationData.user.defaultPaymentAddress.lastName is filled correct with the parameter Türkpencesi
+
+When I enter <password22> into unencodedPassword
+Then the form field unencodedPassword is filled correct with the parameter <password22>
+
+When I enter <password22> into confirmedPassword
+Then the form field confirmedPassword is filled correct with the parameter <password22>
+
+
+
+
+When I enter <street> into user.defaultPaymentAddress.streetName
+Then the form field user.defaultPaymentAddress.streetName is filled correct with the parameter <street>
+
+
+When I click on first element via span and id and select2-formfield-staffsales-region-container
+Then I must wait 1 seconds
+When I click the element li[id*="US/NJ_US"] if avaliable
+
+
+When I enter '10002' into user.defaultPaymentAddress.postalcode
+Then the form field user.defaultPaymentAddress.postalcode is filled correct with the parameter '10002'
+
+When I enter <city> into user.defaultPaymentAddress.town
+Then the form field user.defaultPaymentAddress.town is filled correct with the parameter <city>
+
+When I click on first element via span and id and select2-formfield-staffsales-country-container
+Then I must wait 1 seconds
+When I click the element li[id*="US"] if avaliable
+
+
+When I enter <telephone> into user.defaultPaymentAddress.phone1
+Then the form field user.defaultPaymentAddress.phone1 is filled correct with the parameter <telephone>
+
+!-- When I enter <telephone> into accountCreationData.user.defaultPaymentAddress.cellPhone
+!-- Then the form field accountCreationData.user.defaultPaymentAddress.cellPhone is filled correct with the parameter '4686579660'
+
+!-- When I click the element accountCreationData.user.optinData.optinGroupsboschhome.optinKeys2.accepted
+When I click the element accountCreationData.user.optinData.optinGroupsdefaultoptingroup.optinKeys0.accepted
+
+!-- When I click on first element via button and class and a-button a-button-primary form-button
+When I click the element accountCreationData.user.optinData.optinGroupsdefaultoptingroup.optinKeys1.accepted
+!-- When I click the element agreeContract2
+!-- When I click the xpath element //*[@id="customerRegistrationForm"]/div[2]/div[3]/div/div[3]/label
+!-- When I slide to end of the captcha 
+
+!-- When I click on first element via button and class and a-button.a-button-primary.form-button
+
+Then I must wait 3 seconds
+When I click on first element via button and type and submit
+Then I must wait '2' seconds
+
+!-- When I click on first element via button and class and a-button a-button-primary form-button
+
+!-- Then the page 'accountcustomerconfirmationpage' is opened
+Scenario: Activing of your Account
+Then I must wait '15' seconds
+When I open external webpage https://harakirimail.com/
+Then I must wait 5 seconds
+When I enter <orderuserttp24> into inbox-name
+Then I must wait 5 seconds
+When I click on first element via button and id and getinbox
+Then I must wait '10' seconds
+
+!-- When I confirm the pop up box
+!-- Then the element via div and id and msgpane is visible
+!-- When I click the xpath element //*[@id="row_1520853656-2000249505071-24255_sesesiemensfutureintt"]/div/div[3]
+When I click the xpath element //*[@id="mail_list_body"]/tr[1]/td[2]/a
+!-- When I click the xpath element //*[@id="text_html_52723193"]/table/tbody/tr/td/table/tbody/tr[1]/td/table[2]/tbody/tr/td[2]/table[2]/tbody/tr[6]/td/p/img[1]
+Then I must wait '3' seconds
+!-- When I switch to iframe iframe[id="msg_body"] location
+When I click the link contains '/us/store'
+!-- When I click the xpath element //*[@id="email_body_html"]/table/tbody/tr[3]/td[2]/table[2]/tbody/tr/td/table/tbody/tr[2]/td/p/a[1]
+!-- When I click the link contains 'clickrouter'
+Then I must wait '5' seconds
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+
+When I enter '24255_ssesesiemensfutreintt4@harakirimail.com' into username
+When I enter d![tTZJ?/u5vU) into password
+When I click the button logInButton
+
+!-- Then the page 'homepage' is opened
+Then I must wait '2' seconds
+When I click the button 'metaNavigation'
+Then the element by aside and testing_id and metaNavigationFlyout is shown
+When I click the navigation element 'myprofile'
+Then I must wait '3' seconds
+Then the page 'accountprofilepage' is opened
+
+Then I must wait '2' seconds
+When I click the xpath element //*[@id="content"]/div/div/div/div[4]/a/i
+When I click on first element via button and type and submit
+
+!-- --- TTP-24255 Testcase Checkout Register a new user was successful --- 
+
+!-- --------------------------------------------------------------------
+!-- --- TTP-24255 Testcase Checkout Register a new user was successful --- 

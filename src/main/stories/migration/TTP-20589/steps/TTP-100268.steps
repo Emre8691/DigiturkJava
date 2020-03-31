@@ -1,0 +1,268 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+
+Then I must wait '2' seconds
+!-- Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <orderuserttp24> into 'signin_email'
+Then the form field signin_email is filled correct with the parameter <orderuserttp24>
+When I clear the 'password' field
+When I enter <password22> into 'signin_password'
+Then the form field signin_password is filled correct with the parameter <password22>
+
+When I click the xpath element //*[@id="bshLoginData"]/div[1]/div/button
+Then I must wait 2 seconds
+Then the login was successful
+
+
+Scenario: Open the Profile Pages (click on myprofile)
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and #mybrand
+When I click on first element via a and testing_id and myprofile
+!-- Then the element changePersonalData is visible
+Then the element by div and class and content-inner is shown
+!-- Then the page 'accountprofilepage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data 
+!-- --------------------------------------------------------------------
+When I click the element changePersonalData
+
+
+!-- Then the expected 'personalData' is shown
+
+When I clear the 'defaultPaymentAddress.firstname' field
+Then the form field 'defaultPaymentAddress.firstname' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.lastName' field
+Then the form field 'defaultPaymentAddress.lastName' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.streetName' field
+Then the form field 'defaultPaymentAddress.streetName' is filled correct with the parameter ''
+
+!-- When I clear the 'defaultPaymentAddress.streetName2' field
+!-- Then the form field 'defaultPaymentAddress.streetName2' is filled correct with the parameter ''
+
+!-- When I clear the 'defaultPaymentAddress.streetnumber' field
+!-- Then the form field 'defaultPaymentAddress.streetnumber' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.town' field
+Then the form field 'defaultPaymentAddress.town' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.postalcode' field
+Then the form field 'defaultPaymentAddress.postalcode' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.phone1' field
+Then the form field 'defaultPaymentAddress.phone1' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.cellPhone' field
+Then the form field 'defaultPaymentAddress.cellPhone' is filled correct with the parameter ''
+
+!-- --------------------------------------------------------------------
+Scenario: Fill First name and Last name fields
+!-- --------------------------------------------------------------------
+When I enter Marcus into 'defaultPaymentAddress.firstname'
+Then the form field 'defaultPaymentAddress.firstname' is filled correct with the parameter Marcus
+When I enter Berk into 'defaultPaymentAddress.lastName'
+Then the form field 'defaultPaymentAddress.lastName' is filled correct with the parameter Berk
+
+!-- --------------------------------------------------------------------
+Scenario: Check same validation with send button
+!-- --------------------------------------------------------------------
+When I click on first element via button and class and a-button a-button-primary form-button
+Then the element by div and class and a-errormessage error-required is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Fill Street,House Number and City fields
+!-- --------------------------------------------------------------------
+
+When I enter <street> into 'defaultPaymentAddress.streetName'
+Then the form field 'defaultPaymentAddress.streetName' is filled correct with the parameter <street>
+
+When I enter 1111 into 'defaultPaymentAddress.postalcode'
+Then the form field 'defaultPaymentAddress.postalcode' is filled correct with the parameter 1111
+
+!-- When I enter 23 into 'defaultPaymentAddress.streetnumber'
+!-- Then the form field 'defaultPaymentAddress.streetnumber' is filled correct with the parameter 23
+
+When I enter <city> into 'defaultPaymentAddress.town'
+Then the form field 'defaultPaymentAddress.town' is filled correct with the parameter <city>
+
+
+Scenario: Fill Wrong Zip code and Send form (works only form mandatory Zipcode/postalCode fileds)
+!-- --------------------------------------------------------------------
+When I clear the 'defaultPaymentAddress.postalcode' field
+Then the form field 'defaultPaymentAddress.postalcode' is filled correct with the parameter ''
+
+When I enter <zipcode> into 'defaultPaymentAddress.postalcode'
+Then the form field 'defaultPaymentAddress.postalcode' is filled correct with the parameter <zipcode>
+
+
+When I enter +4332081523 into defaultPaymentAddress.phone1
+Then the form field defaultPaymentAddress.phone1 is filled correct with the parameter +4332081523
+
+When I enter +4332081523 into defaultPaymentAddress.cellPhone
+Then the form field defaultPaymentAddress.cellPhone is filled correct with the parameter +4332081523
+Then I must wait '2' seconds
+
+
+!-- When I click the 2 nd/th element via button and type and submit
+When I click the xpath element //*[@id="personalData"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+!-- Then the page 'accountprofilepage' is opened
+!-- --------------------------------------------------------------------
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit contact data
+!-- --------------------------------------------------------------------
+
+When I click the xpath element //*[@id="content"]/div[2]/div/div/div[2]/div/a/span
+!-- Then the page 'accountcontactpermissionpage' is opened
+
+When I click on first element via a and testing_id and contactEdit
+Then the page 'accountcontactpermissionpage' is opened
+!-- When I decide to 'optinData.optinGroupsboschhome.optinKeys0.accepted'
+
+When I decide to optinData.optinGroupsdefaultoptingroup.optinKeys0.accepted
+!-- When I click the xpath element //*[@id="personalData"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+When I click the xpath element //*[@id="contactPermissionForm"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+Then the page 'accountprofilepage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Add NEW delivery address
+!-- --------------------------------------------------------------------
+When I click the element addDeliveryAddress
+!-- Then the page 'accountdeliveryaddresspage' is opened
+When I click on first element via span and id and select2-formfield-genericform-title-container
+When I click the element li[id*="0002"] if avaliable
+
+!-- Then the page accountdeliveryaddresspage is shown
+
+When I enter Sebastian into 'firstname'
+Then the form field 'firstname' is filled correct with the parameter Sebastian
+
+When I enter Rusch into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter Rusch
+
+!-- --------------------------------------------------------------------
+Scenario: Check validation and Fill the remaining form fields 
+!-- --------------------------------------------------------------------
+!-- testing_id need for SAVE submit button
+When I click on first element via button and class and a-button a-button-primary form-button
+Then the element by div and class and a-errormessage error-required is shown
+
+When I enter <street> into 'streetName'
+Then the form field 'streetName' is filled correct with the parameter <street2>
+
+!-- When I enter 13 into 'streetnumber'
+!-- Then the form field 'streetnumber' is filled correct with the parameter 13
+
+When I enter <zipcode> into 'postalcode'
+Then the form field 'postalcode' is filled correct with the parameter <zipcode>
+Then I must wait '1' seconds
+
+When I enter <city> into 'town'
+Then the form field 'town' is filled correct with the parameter <city2>
+
+!-- When I enter +437081523 into phone1
+!-- Then the form field phone1 is filled correct with the parameter +437081523
+
+!-- When I enter +33834567891 into cellPhone
+!-- Then the form field cellPhone is filled correct with the parameter +33834567891
+
+When I click on first element via button and class and a-button a-button-primary form-button
+Then I must wait '2' seconds
+!-- Then the page 'accountprofilepage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Edit NEW delivery address
+!-- --------------------------------------------------------------------
+
+!-- When I click the xpath element //*[@id="content"]/div/div/div/div[3]/div[1]/a/i
+
+When I click the button 'changePersonalDeliveryAddress-0'
+
+Then I must wait 1 seconds
+When I clear the 'firstname' field
+Then the form field 'firstname' is filled correct with the parameter ''
+When I clear the 'lastName' field
+Then the form field 'lastName' is filled correct with the parameter ''
+When I clear the 'streetName' field
+Then the form field 'streetName' is filled correct with the parameter ''
+!-- When I clear the 'streetnumber' field
+!-- Then the form field 'streetnumber' is filled correct with the parameter ''
+When I clear the 'town' field
+Then the form field 'town' is filled correct with the parameter ''
+When I clear the 'postalcode' field
+Then the form field 'postalcode' is filled correct with the parameter ''
+!-- When I clear the 'phone1' field
+!-- Then the form field 'phone1' is filled correct with the parameter ''
+!-- When I clear the 'cellPhone' field
+!-- Then the form field 'cellPhone' is filled correct with the parameter ''
+
+!-- testing_id need for SAVE submit button
+!-- When I click on first element via button and class and a-button a-button-primary form-button
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+!-- Then the element by div and class and a-errormessage error-required is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit NEW delivery address
+!-- --------------------------------------------------------------------
+When I enter Alper into 'firstname'
+Then the form field 'firstname' is filled correct with the parameter Alper
+When I enter Turk into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter Turk
+When I enter <zipcode> into 'postalcode'
+Then the form field 'postalcode' is filled correct with the parameter <zipcode>
+When I enter <street> into 'streetName'
+Then the form field 'streetName' is filled correct with the parameter <street>
+
+!-- When I enter 5 into 'streetnumber'
+!-- Then the form field 'streetnumber' is filled correct with the parameter 5
+When I enter <city> into 'town'
+Then the form field 'town' is filled correct with the parameter <city>
+
+When I click the xpath element //*[@id="deliveryAddress"]/div[2]/div/div/div[1]/button
+Then I must wait '1' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Delete new delivery address
+!-- --------------------------------------------------------------------
+Then the page 'accountprofilepage' is opened
+
+When I click the xpath element //*[@id="content"]/div[2]/div/div/div[3]/div[2]/div[1]/div/a[2]
+Then I must wait '2' seconds
+
+When I click the xpath element //*[@id="content"]/div[2]/div/div/div[3]/div[2]/div[1]/div/div/div[2]/div/div[2]/form/div[2]/div[2]/button
+Then I must wait '3' seconds
+!-- Then the page 'accountprofilepage' is opened
+
+
+!-- --- TTP-100268 Edit my pesronal data was successful ---
+

@@ -1,0 +1,115 @@
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - Register a dummy(random)user.
+!-- --------------------------------------------------------------------
+When I set /extapp/consumer/register/v1 as rest request url for request registerrequest
+When I set method to POST for request registerrequest
+When I set JSON as body content type for request registerrequest
+When I set JSON as response content type for request registerrequest
+When I set hc_ctx into header appContext for request registerrequest
+When I set HCA into header appId for request registerrequest
+When I set application/json into header accept for request registerrequest
+!-- When I set application/json into header Content-Type for request registerrequest
+!-- When I set en-gb into header Accept-Language for request registerrequest
+
+!-- user data  
+When I generate random value with name emailAdress and type EMAIL for request registerrequest
+When I set #registerrequest.savedvariables.emailAdress into body parameter user.emailAddress for request registerrequest
+When I set test1234 into body parameter user.password for request registerrequest
+When I set testname into body parameter user.firstName for request registerrequest
+When I set testlastname into body parameter user.lastName for request registerrequest
+!-- Address data
+When I set Kingsway into body parameter user.address.streetname for request registerrequest
+When I set 9 into body parameter user.address.streetnumber for request registerrequest
+When I set WC2B6XF into body parameter user.address.postcode for request registerrequest
+When I set London into body parameter user.address.town for request registerrequest
+When I set GB into body parameter user.address.country for request registerrequest
+When I set email into body parameter user.selectedOptins[0] for request registerrequest
+When I set telephone into body parameter user.selectedOptins[1] for request registerrequest
+
+!-- invoke
+When I execute request registerrequest
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - Registered dummy(random)user Validation
+!-- --------------------------------------------------------------------
+Then for request registerrequest the status code is 200
+Then for request registerrequest property requestSuccessful type is Boolean
+Then for request registerrequest response property requestSuccessful equals true
+Then for request registerrequest response property user.emailAddress equals #registerrequest.request.body.user.emailAddress
+
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - User Status Check
+!-- -------------------------------------------------------------------
+When I set /extapp/consumer/status/v1/#registerrequest.request.body.user.emailAddress as rest request url for request statusrequest
+When I set method to GET for request statusrequest
+When I set JSON as response content type for request statusrequest
+When I set hc_ctx into header appContext for request statusrequest
+When I set HCA into header appId for request statusrequest
+!-- invoke
+When I execute request statusrequest
+
+!-- -------------------------------------------------------------------
+Scenario: User Registration Status Check - VALIDATION - Get and check User Status if it is Active or Not 
+!-- -------------------------------------------------------------------
+Then for request statusrequest the status code is 200
+Then for request statusrequest property requestSuccessful type is Boolean
+Then for request statusrequest response property requestSuccessful equals true
+Then for request statusrequest response property responseCode equals USER_NOT_ACTIVE
+Then for request statusrequest response property status equals PENDING
+
+
+!-- -------------------------------------------------------------------
+ Scenario: Re-send activation mail for not activated user 
+!-- -------------------------------------------------------------------
+When I set /extapp/consumer/resendactivation/v1/#registerrequest.response.body.user.emailAddress as rest request url for request resendactivationrequest
+When I set method to GET for request resendactivationrequest
+When I set JSON as body content type for request resendactivationrequest
+When I set JSON as response content type for request resendactivationrequest
+When I set hc_ctx into header appContext for request resendactivationrequest
+When I set HCA into header appId for request resendactivationrequest
+
+
+!-- invoke
+When I execute request resendactivationrequest
+
+!-- -------------------------------------------------------------------
+ Scenario: Home Connect - VALIDATION - Re-send activation mail for not activated user 
+!-- -------------------------------------------------------------------
+Then for request resendactivationrequest the status code is 200
+Then for request resendactivationrequest property requestSuccessful type is Boolean
+Then for request resendactivationrequest response property requestSuccessful equals true
+Then for request resendactivationrequest response property responseCode equals OK
+Then for request resendactivationrequest response property status equals ACTIVATION_MAIL_SEND
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: Activate User
+!-- -------------------------------------------------------------------
+!-- User Activation is not developed yet we have to activate account manualy, so after this step can not autometed.
+
+!-- -------------------------------------------------------------------
+Scenario: DELETE USER
+!-- -------------------------------------------------------------------
+When I set /extapp/consumer/userdata/v1/#registerrequest.request.body.user.emailAddress as rest request url for request deleteuserrequest
+When I set method to DELETE for request deleteuserrequest
+When I set JSON as response content type for request deleteuserrequest
+When I set hc_ctx into header appContext for request deleteuserrequest
+When I set HCA into header appId for request deleteuserrequest
+!-- When I set en-gb into header Accept-Language for request registerrequest
+
+!-- invoke
+!-- When I execute request deleteuserrequest
+
+!-- -------------------------------------------------------------------
+Scenario: User Registration Status Check - VALIDATION - Get and check User Status if it is Active or Not 
+!-- -------------------------------------------------------------------
+!-- Then for request deleteuserrequest the status code is 200
+!-- Then for request deleteuserrequest property requestSuccessful type is Boolean
+!-- Then for request deleteuserrequest response property requestSuccessful equals true
+!-- Then for request deleteuserrequest response property responseCode equals OK
+
+
+!-- #-------------- Homeconnect - TTP-2332 Successfull ------------- --#
+

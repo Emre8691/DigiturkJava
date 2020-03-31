@@ -1,0 +1,64 @@
+!-- --------------------------------------------------------------------
+Scenario: Check the quantity of products in the shopping cart at Homepage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the basket count is 'empty'
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchField
+Then the form field searchField is filled correct with the parameter 0
+When I click the element searchBoxBtn
+Then I wait for element with css a[testing_id="searchResultTab-Shop"] to be visible
+When I click the navigation element searchResultTab-Shop
+Then the page 'searchresultspage' is opened
+Then the element by button and name and buy-product is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Product 
+!-- --------------------------------------------------------------------
+When I click on first element via img and src and 155x206
+Then the page 'productpage' is opened
+Then the availability is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Buy Button to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via span and class and step-up
+When I click on first element via button and data-bazaarvoicetracking and AddToShoppingBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "+" icon 2 times to increase the quantity and add products to Basket
+!-- --------------------------------------------------------------------
+When I click on first element via span and class and step-up
+When I click on first element via span and class and step-up
+When I click on first element via button and data-bazaarvoicetracking and AddToShoppingBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Shop link from main Navigation
+!-- --------------------------------------------------------------------
+When I click the element nav-3
+Then the element 'navflyout-3' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on other accessories in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-300'
+!-- Then the page productlist is opened
+Then the element by div and class and filter-module is shown
+When I click on first element via button and data-eventtracking and addToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --- Testcase TTP-224 Automatic:MyBasket:AddtoBasket was successful ---
+

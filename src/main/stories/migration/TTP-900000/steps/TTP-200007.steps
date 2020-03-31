@@ -1,0 +1,66 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Cosmos Page - Siteyi Acma 
+When I open external webpage https://www.test.bsh-service.com/cosmosckytest/cosmos/general/startpage.aspx
+Then I must wait '1' seconds
+When I enter 'isb-admcosmostest' into Logon1$txtUserCode
+When I enter 'AAaa1234+' into Logon1_txtPassword
+When I click on first element via input and name and Logon1$btnLogin
+Then I must wait '1' seconds
+!-- Then the element by div and class and row-fluid is shown
+Then the element by a and class and orange is shown
+
+!-- --------------------------------------------------------------------
+
+
+!-- Then the element by a and class and orange is shown
+
+Scenario: Click Customer Search Advanced- Ayrıntılı Tüketici arama
+When I click on first element via i and id and icn_1007
+When I click on first element via span and class and widget-label
+Then I must wait '2' seconds
+
+Scenario: Customer Identification- Tüketici Ekranı
+When I switch to the pop up window where ifrmCustomer exists
+When I switch to iframe with id ifrmCustomer
+
+Scenario: Search with Consumerid - Tüketici Numarasıyla Arama
+When I enter '22577025' into txtCustomerId
+When I click on first element via input and name and btnSearch
+Then I must wait 1 seconds
+!-- When I click the xpath element //*[@id="grdlnk"]
+!-- Then I must wait 3 seconds
+
+Scenario: Search with Phonenumber - Telefon Numarasıyla Arama
+When I click on first element via input and name and btnClear
+Then the element by input and name and txtSortColumn is shown
+When I enter '5423114006' into txtPhone
+When I click on first element via input and name and btnSearch
+Then I must wait 1 seconds
+
+Scenario: Search with another Phonenumber - Başka Numarayla Arama (Ev/iş Numarası)
+When I click on first element via input and name and btnClear
+Then the element by input and name and txtSortColumn is shown
+When I enter '2222222222' into txtPhone
+When I click on first element via input and name and btnSearch
+Then I must wait 1 seconds
+
+Scenario: Appliance -- Search with Model Number & Quickfinder - Ürün -- Ürün Kodu ile Quickfinder ı bulma 
+When I click on first element via input and name and btnClear
+Then the element by input and name and txtSortColumn is shown
+When I switch to the pop up window where divAppliance exists
+When I click the xpath element //*[contains(text(),'Ürün')]
+Then I must wait 1 seconds
+When I switch to the pop up window where ifrmAppliance exists
+When I switch to iframe with id ifrmAppliance
+When I click on first element via input and name and tbtnApplianceCode
+Scenario: Search Product - Ürün -- Ürünü Bulma
+When I switch to the pop up window where ApplianceGroup exists
+When I click the xpath element //*[@id="ApplianceGroup"]
+When I click the xpath element //option[@value='1']
+When I click on first element via input and name and btnFilter
+!-- When I click the xpath element //*[@id="dgrdSearchResult"]/tbody/tr[2]/td[5]/a
+
+Then I must wait 3 seconds
+
+!-- --- TTP-200007 Testcase Quickfinder finished successful ---
+

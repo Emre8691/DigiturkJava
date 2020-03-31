@@ -1,0 +1,63 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the button 'myaccountbutton'
+Then the page 'loginpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with valid user and valid password
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I clear the 'password' field
+When I enter <orderuserpwd> into 'password'
+Then the form field password is filled correct with the parameter <orderuserpwd>
+
+When I click the button 'logInButton'
+!-- Then the page 'myaccount' is opened
+Then the url of current page contains 'myaccount'
+
+!-- --------------------------------------------------------------------
+Scenario: Open the MyBenefits
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and myadvantages without wait
+Then I wait for element with css [href="/store/myaccount/10-jahres-garantie"] to be visible
+Then the url of current page contains 'myaccount/meine-vorteile'
+
+
+
+!-- ----------------------------------------------------------------
+Scenario: Click Warranty extension
+!-- -------------------------------------------------------------------
+When I click the link contains '/store/myaccount/10-jahres-garantie'
+
+!-- TODO: Then the page 'warrantyextension' is opened
+Then the url of current page contains '/myaccount/10-jahres-garantie'
+
+!-- --------------------------------------------------------------------
+Scenario: Open the MyBenefits
+!-- --------------------------------------------------------------------
+When I click the navigation element metaNavigation
+Then I wait for element with css .tooltip-wrapper-6 to be visible
+When I click the navigation element 'myadvantages'
+!-- TODO: Then the page 'myadvantages' is opened
+Then the url of current page contains 'myaccount/meine-vorteile'
+
+
+!-- ----------------------------------------------------------------
+Scenario: Click Customer Service
+!-- -------------------------------------------------------------------
+When I click the link contains '/service'
+Then the page 'customerservice' is opened
+
+!-- --- Testcase TTP-438 - My Benefits (NEFF) was successful ---
+

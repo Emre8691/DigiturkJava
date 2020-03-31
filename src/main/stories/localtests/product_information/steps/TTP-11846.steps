@@ -1,0 +1,35 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens UK FUT-INT mainpage)
+!-- -------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ----------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation
+!-- ----------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'nav-2' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on "Full-size dishwashers"
+!-- -------------------------------------------------------------------
+When I click the navigation element subcategory-220
+!-- Then I wait for element with css .teaser.type-5 to be visible
+Then the url of current page contains '/uk/products/dishwashing/full-size-dishwashers'
+!-- --------------------------------------------------------------------
+Scenario: Click on "To the list of all appliances"
+!-- --------------------------------------------------------------------
+When I click the 4 nd/th element via a and href and /uk/productlist/dishwashing/full-size-dishwashers
+Then the element tabtree-9 is visible
+Then the element by div and class and items-area-inner is shown
+
+!-- When I select the sort-filter with the option Product name (Z-A) version
+When I select the sort-filter with the option Product name (Z-A) version
+Then the element by xpath //*[@id="sort-filter"]/option[3] is shown
+Then I must wait '3' seconds
+!-- ----- Unfinished Task ----- A bug was reported for sorting out based on product name "A-Z" & "Z-A" ----------
+

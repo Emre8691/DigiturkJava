@@ -1,0 +1,77 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I click the element 'username'
+When I enter <usermail3> into username
+Then the form field username is filled correct with the parameter <usermail3>
+When I click the element 'password'
+When I enter <userpw> into password
+Then the form field password is filled correct with the parameter <userpw>
+When I click the element 'logInButton'
+
+Then the url of current page contains 'shop'
+
+!-- --------------------------------------------------------------
+Scenario: Validation check
+!-- -------------------------------------------------------------
+When I click the button 'enumberSearchBtn'
+Then the element 'valueMissingENumberValidation' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter valid but incomplete enumber and check spare part finder detail page with expected results
+!-- --------------------------------------------------------------------
+When I enter 'KS' into 'enumberSearchField'
+Then the form field enumberSearchField is filled correct with the parameter 'KS'
+When I click the element 'enumberSearchBtn'
+Then the page 'sparepartfinderresultpage' is shown
+
+
+!-- --------------------------------------------------------------------------
+Scenario: Go back to Sparepart Search
+!-- --------------------------------------------------------------------------
+When I click the link isEqual to /fr/shop/pieces-de-rechange
+Then the element enumberSearchField is visible
+Then the url of current page contains 'shop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Wait for autosuggestion
+!-- ------------------------------------------------------------------
+When I enter 'KS' into 'enumberSearchField'
+Then the form field enumberSearchField is filled correct with the parameter 'KS'
+Then the element by div and class and datalist-box is shown
+When I clear the enumberSearchField field
+Then the form field enumberSearchField is filled correct with the parameter ''
+
+
+!-- ------------------------------------------------------------------
+Scenario: Reduce auotsuggestiond results
+!-- ------------------------------------------------------------------
+When I enter 'KS36' into 'enumberSearchField'
+Then the form field enumberSearchField is filled correct with the parameter 'KS36'
+Then I wait for element with css li[id="wsoption-44"] to be visible
+Then the element by div and class and datalist-box is shown
+
+!-- -----------------------------------------------------------------
+Scenario: Choose one autosuggestion result
+!-- ----------------------------------------------------------------
+When I click the element li[id="wsoption-44"] if avaliable
+Then the form field 'enumberSearchField' is filled correct with the parameter 'KS36C00/01'
+When I click the element 'enumberSearchBtn'
+Then the page 'sparepartfinderresultpage' is shown
+
+
+!-- --- TTP-354 Staffsales Spare Parts Search - E-number was successful ---
+

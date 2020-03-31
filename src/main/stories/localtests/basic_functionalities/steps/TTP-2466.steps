@@ -1,0 +1,37 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page / Check Analytics Request Status
+!-- --------------------------------------------------------------------
+When I start network monitoring
+When I open the page for following address <starturl>
+When I click on first element via a and title and 'Siemens'
+Then I must wait '5' seconds
+Then I check for network with url starting with 'http://assets.adobedtm.com/' is success
+Then I check for network with url starting with 'http://bshg.122.2o7.net/b/ss/bshgsiemens' is success
+Then I stop network monitoring
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Cookie and Script are avilable
+!-- --------------------------------------------------------------------
+
+Then the element by div and id and cookie-law-wrapper is shown
+
+Then check //assets.adobedtm.com/ exists on current page
+Then check /satelliteLib- exists on current page
+Then check /scripts/satellite- exists on current page
+
+!-- --------------------------------------------------------------------
+Scenario: Check Page Load after click on Cookie    
+!-- --------------------------------------------------------------------
+When I enter '123445667' into searchbar-2
+When I start network monitoring
+Then I must wait '5' seconds
+When I click the button cookie_subscription_decline
+Then I must wait '3' seconds
+Then check the searchbar-2 is empty
+Then I check for network with url starting with 'http://assets.adobedtm.com/' have not been made
+Then I check for network with url starting with 'http://bshg.122.2o7.net/b/ss/bshgsiemens' have not been made
+
+
+!-- --- TTP-2279 [Prod]-[Tracking]-[N3-SI] Check whether Adobe Analytics tracking data is sent was successful ---
+

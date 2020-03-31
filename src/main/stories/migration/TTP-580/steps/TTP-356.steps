@@ -1,0 +1,94 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into primarySearch
+Then the form field primarySearch is filled correct with the parameter 0
+When I click the element primarySearchButton
+Then the element by a and testing_id and addItemToBasket is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket- without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket for start purchasing work flow
+!-- --------------------------------------------------------------------
+
+Then the page basketpage is opened
+When I click the button checkoutbottom
+
+!-- --------------------------------------------------------------------
+Scenario: purchasing Pipeline starts
+!-- --------------------------------------------------------------------
+Then the page welcomepage is opened
+When I enter <orderuserttp> into 'username'
+When I enter <passwordv2> into 'password'
+When I click the button 'continuebutton'
+Then the page 'deliverypage' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Open Garanti Card Page 
+!-- --------------------------------------------------------------------
+When I click the button 'continuebutton'
+Then I must wait '1' second
+
+When I click on first element via input and testing_id and payment-Garanti
+When I click on first element via input and id and installments2
+Then the order-overview div class exists on page
+
+When I click on first element via input and id and installments1
+Then the order-overview div class exists on page
+Then I must wait '1' second
+When I click on first element via input and id and agree1
+When I click on first element via input and id and agree2
+When I click the button continuebutton
+
+!-- --------------------------------------------------------------------
+Scenario: Test scrolldown
+!-- --------------------------------------------------------------------
+When I press SPACE at the focused pop up box
+When I scrolldown the bottom of iframe
+Then switch back the window to parent window static
+When I click on first element via a and id and agreeCancelButton
+
+!-- --------------------------------------------------------------------
+Scenario: Open Garanti Card Page 
+!-- --------------------------------------------------------------------
+When I click the button 'continuebutton'
+When I click on first element via input and id and paymentMode1
+Then I must wait '1' second
+
+When I click on first element via input and id and installments2
+Then the order-overview div class exists on page
+Then I must wait '1' second
+When I click on first element via input and id and agree1
+When I click on first element via input and id and agree2
+When I click the button continuebutton
+
+
+!--  TTP-356: Automatic: Payment : Installments : Price Calculation on Summary Page
+
+

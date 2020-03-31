@@ -1,0 +1,64 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens DE FUT-INT mainpage)
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation (Click on "Producte")
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Waschmaschinen"
+!-- --------------------------------------------------------------------
+When I click the navigation element subcategory-210
+!-- 1.Check, check from URL
+Then the url of current page contains 'waschmaschinen'
+!-- 2.Check, check from image
+Then the element by img and title and Freistehende is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Zur Liste aller Gerate"
+!-- --------------------------------------------------------------------
+When I click the 4 nd/th element via a and href and /produktliste/waschen-und-trocknen/waschmaschinen
+Then the element by div and class and overview is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Select the product i.e.WM6YH890
+!-- --------------------------------------------------------------------
+When I click on first element via img and alt and WM6YH840
+Then the element by div and id and tabtree-1 is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Check and click Ubersicht Tab
+!-- --------------------------------------------------------------------
+Then the element by a and data-href and section-overview is shown
+When I click on first element via a and data-href and section-overview
+
+!-- --------------------------------------------------------------------
+Scenario: Check "Technische Informationen zu dem Produkt" text should be there
+!-- --------------------------------------------------------------------
+!-- 1.check, box visibility
+Then the element by div and class and content-box is shown
+!-- 2.check, TEXT visibility
+Then check Technische exists on current page
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Weitere Produktdetails" under Ubersicht tab.
+!-- --------------------------------------------------------------------
+When I click the 2 nd/th element via a and href and #section-technicalspecs
+Then the element tabtree-4 is visible
+
+
+
+!-- --- TTP-11773 - PI - Marketing Product Detail Page - Overview and Technical details tab was successful ---
+
+

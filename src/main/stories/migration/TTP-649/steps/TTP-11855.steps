@@ -1,0 +1,38 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens DE FUT-INT mainpage)
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ----------------------------------------------------------
+Scenario: Click on the "Produkte" tab in main navigation
+!-- ----------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- --------------------------------------------------
+Scenario: Click on "Waschmaschinen"
+!-----------------------------------------------------
+When I click the navigation element subcategory-210
+!-- check from URL
+Then the url of current page contains 'waschmaschinen'
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Zur Liste aller Gerate"
+!-- --------------------------------------------------------------------
+When I click the 4 nd/th element via a and href and /produktliste/waschen-und-trocknen/waschmaschinen
+Then the element by div and class and overview is shown
+
+!-- ---------------------------------------------------------------------------------------------------------------------------
+Scenario: Check Clickability of "extraklasse" Sales Program is in list page as a png format; checked the first one as sample
+!-- ---------------------------------------------------------------------------------------------------------------------------
+!-- When I click on first element via img and src and http://www.siemens-home.de.fi.muc.bsh.arithnea.org/store/medias/sys_master/root/h7c/h5c/9049151897630/140805-haendlerflag-extraklasse.png
+!-- Then the element by div and class and tooltip-wrapper-inner is shown
+
+When I click on first element via a and href and /de/siemens-entdecken/besonderes-und-ausgezeichnetes/extraklasse
+Then the element by div and class and zoom-image-wrapper is shown
+

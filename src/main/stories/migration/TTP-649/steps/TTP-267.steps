@@ -1,0 +1,44 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Choose the category "Water Heater" ("Wasserkocher")
+!-- -----------------------------------------------------------------
+When I click the navigation element subcategory-252
+Then the page productlist is opened
+
+
+!-- ----------------------------------------------------------------
+Scenario: Power Review Icons are displayed on Product Overview Page
+!-- ---------------------------------------------------------------
+!-- TODO: Then the element 'XXX' is visible
+
+
+!-- ---------------------------------------------------------------
+Scenario: Open Product detail Page
+!-- ---------------------------------------------------------------
+!-- TODO:When I click the link contains '/produktliste/fruehstueck/wasserkocher/TW86105P'
+!-- TODO:Then the page 'productdetail' is opened
+
+
+!-- ----------------------------------------------------------------
+Scenario: Power Review Icons are displayed on Product Detail Page
+!-- ---------------------------------------------------------------
+!-- TODO: Then the element 'XXX' is visible
+
+
+!-- --- TTP-267 - Product Detail Page: Power Reviews was successful ---

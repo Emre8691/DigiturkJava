@@ -1,0 +1,79 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the hidden 'navflyout-2' is not visible
+Then the hidden 'navflyout-3' is not visible
+Then the hidden 'navflyout-4' is not visible
+
+
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Services
+!-- --------------------------------------------------------------------
+When I click the element <customerserviceid>
+Then the element enumberSearchField is visible
+Then the element username is visible
+Then the element password is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Return to flyout and click on "User manuals"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the element <usermanualcategoryid>
+Then the element enumberSearchField is visible
+Then the element typePlateFinder is visible
+Then the element enumberSearchBtn is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on a "sparepart"-link in the flyout. (Not available for every country)
+Meta: @exclude_notready
+!-- --------------------------------------------------------------------
+!-- There is no Spare Part in IT
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the element <sparepartid>
+Then the element enumberSearchField is visible
+Then the element matNumberField is visible
+Then the element enumberSearchBtn is visible
+Then the element matNumberSearchBtn is visible
+Then the element typePlateFinder is visible
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Customer service" ("All about service")
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Care and cleaning"
+!-- --------------------------------------------------------------------
+When I click the navigation element <cleanandcareid>
+!-- -- Do Teaser Controls
+Then the link contains <cleanandcareteaser1>
+Then the link contains <cleanandcareteaser2>
+
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Contact"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element <contactid>
+!-- -- Do Teaser Controls
+Then the link contains <contactteaser3>
+Then the link contains <contactteaser4>
+
+
+!-- --- TTP-14875 Testcase Flyout for Siemens was successful ---
+

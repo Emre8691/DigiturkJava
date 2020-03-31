@@ -1,0 +1,99 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------
+Scenario: Click on the Shop Link at main navigation
+!-- -------------------------------------------------------
+When I click the navigation element nav-2
+Then the element by a and testing_id and flyoutclosebtn is shown
+Then the element by a and testing_id and category-20 is shown
+Then the element by a and testing_id and subcategory-203 is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Click on the Cooking and Baking category in the flyout
+!-- -------------------------------------------------------
+When I click the element 'category-21'
+Then the element by div and class and expand-btn is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Browse through Product Category Pages
+!-- -------------------------------------------------------
+When I click the navigation element nav-2
+Then the element by a and testing_id and flyoutclosebtn is shown
+When I click the element 'subcategory-203'
+Then the 'items-group highlight' div class exists on page
+!-- Then the page productlist is opened
+
+When I click on first element via img and src and 196x90
+Then I wait for element with css [aria-controls="panel-models"] to be visible
+Then the page productlist is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Check features at product list page
+!-- -------------------------------------------------------
+Then the 'panel-group' div class exists on page
+Then the 'panel-wrapper' div class exists on page
+Then the 'overview-head' div class exists on page
+Then the element by xpath '//dl[@class='model-count']' is shown
+
+Then the 'overview' div class exists on page
+Then the 'sidebar' div class exists on page
+Then the 'filter-module' div class exists on page
+Then the 'filter-groups' div class exists on page
+
+Then the element by div and id and tabtree-1 is shown
+Then the element by div and id and tabtree-2 is shown
+Then the element by div and id and tabtree-3 is shown
+Then the element by div and id and tabtree-4 is shown
+
+Then I wait for element with css div.items-area to be visible
+Then the 'items-area-inner product-list' div class exists on page
+
+Then the 'teaser product' div class exists on page
+Then the 'product-desc' div class exists on page
+Then the 'header-group' div class exists on page
+!-- Then the 'product-specs' div class exists on page
+Then I wait for element with css div.product-desc to be visible
+Then the 'footer-group' div class exists on page
+Then I wait for element with css div.product-additive to be visible
+!-- Then the 'product-additive' div class exists on page
+Then the 'product-init' div class exists on page
+Then the 'product-actions' div class exists on page
+
+
+!-- -------------------------------------------------------
+Scenario: Select First Product Filter Category on the left sidebar with a click on 1st filter on it
+!-- -------------------------------------------------------
+When I click on first element via div and class and filter-header
+Then the page productlist is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Remove First Product previous filter click 
+!-- -------------------------------------------------------
+When I click on first element via div and class and reset-btn
+Then the page productlist is opened
+When I click on first element via div and class and filter-header
+Then the page productlist is opened
+!-- -------------------------------------------------------
+Scenario: Select First Product Filter Category on the left sidebar with a click on 1st filter on it
+!-- Select Second Product Filter Category on the left sidebar with a click on 1st filter on it
+!-- Then Remove both Filter
+!-- -------------------------------------------------------
+When I click on first element via label and for and _
+Then the page productlist is opened
+When I click the 2 nd/th element via label and for and _
+Then the page productlist is opened
+!-- --- TTP-14853 Testcase Product Filter Marketing(Product) scope finish (Siemens) was successful ---
+
+

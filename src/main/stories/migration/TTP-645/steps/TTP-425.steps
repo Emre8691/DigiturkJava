@@ -1,0 +1,88 @@
+!-- -------------------------------------------------------------------
+Scenario: Open Siemens Home Page via the list provided at data section.
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on a category Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'category-20'
+Then I must wait '1' second 
+Then the link contains 'store/shop/zubehoer'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-201'
+Then I must wait '1' second
+Then the hidden flyoutclosebtn is not visible
+Then the element by xpath //div[@class="content-tabs"] is shown
+Then the url of current page contains 'neff-zubehoer/backen'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-212'
+Then I must wait '1' second
+Then the hidden flyoutclosebtn is not visible
+Then the page shoplist is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Products Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-220'
+Then I must wait '1' second
+Then the url of current page contains 'geniessen-mit-neff/olivenoel-von-mallafre'
+
+
+!-- ------------------------------------------------------------------
+Scenario: Click on Discover NEFF
+!-- -------------------------------------------------------------------
+When I click on first element via a and href and /store/discover_neff
+Then the element by a and href and www.facebook.com is shown
+Then the element by a and href and www.youtube.com is shown
+
+
+
+!-- --------------------------------------------------------------
+Scenario: Click an Spare Parts
+!-- --------------------------------------------------------------
+When I click on first element via a and href and '/store/spare_parts'
+Then I must wait '1' second
+Then the element 'form-wrapper default-form type-3 cv-off' is visible
+
+
+
+!-- --- Testcase TTP-425 Category Flyout (NEFF) was successful ---
+
+

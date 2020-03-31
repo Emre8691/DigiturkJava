@@ -1,0 +1,56 @@
+!-- --------------------------------------------------------------------
+
+Scenario: Open Cosmos login Page
+When I open external webpage http://nkgwtcos01/CNTEST/Cosmos2015/General/startpage.aspx
+Then I must wait '3' seconds
+When I select the Logon1$dropLanguage with the option 2 version
+Then I must wait '2' seconds
+When I enter 'system_ucako' into Logon1$txtUserCode
+When I enter 'AAaa1234+' into Logon1_txtPassword
+When I click on first element via input and name and Logon1$btnLogin
+Then I must wait '2' seconds
+
+Scenario: Click Customer Service Search
+When I click on first element via i and id and icn_1
+When I click on first element via span and class and widget-label
+Then I must wait 4 seconds
+
+Scenario: Customer Identification - Ayrıntılı Tüketici Arama
+When I switch to the pop up window where txtLastName exists
+Then I must wait 1 seconds
+When I enter 'bshg1' into txtLastName 
+When I enter 'bshg2' into txtFirstName
+When I click on first element via input and name and btnSearch
+Then I must wait 1 seconds
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+When I switch to the pop up window where txtLastName exists
+When I click on first element via input and id and obtnNewCustomer
+Then I must wait 2 seconds
+
+Scenario: Enter of Customer Information - Yeni Tüketici Müşteri Oluşturma
+When I switch to the pop up window where Customer$txtAddressDetail exists
+When I enter 'test State' into Customer_txtState
+When I enter 'Test City' into Customer_txtCity
+When I enter 'test 06012017' into Customer$txtDistrict
+!-- When I enter '4' into txtAddressDetail
+When I enter '5 Diomias Str, Syntagma' into Customer_txtAddressInformation
+When I enter '4' into Customer_txtStreet
+When I enter '3' into Customer$txtAddressDetail
+When I enter '2125645345' into Customer$txtBusinessPhone
+When I click on first element via input and name and Customer$btnSave  
+Then I must wait 2 seconds
+Scenario: confirmation new customer - Yeni Tüketici Onaylama
+When I switch to the pop up window where btnYes exists
+When I click on first element via input and id and btnYes
+Then I must wait 3 seconds
+
+Scenario: Customer Contact List - Ayrıntılı Tüketici aramada gözüküyor mu?
+When I switch to the pop up window where ifrmCustomerContactList exists
+When I switch to iframe with id ifrmCustomerContactList
+Then the element by input and id and btnRelatedProject is shown
+Then I must wait 2 seconds
+ 
+ 
+!-- --- TTP-100017 Testcase: new Customer Registration finished successful ---
+

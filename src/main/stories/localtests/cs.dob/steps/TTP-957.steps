@@ -1,0 +1,89 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Customer Service" tab via main navigation with
+!-- --------------------------------------------------------------------
+!-- When I click the element 'nav-4'
+When I click on first element via a and href and nav-4
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on "Book Engineer Online" in the flyout
+!-- --------------------------------------------------------------------
+When I click the navigation element category-43
+Then the url of current page contains /fr/nos-services/reserver-un-technicien-en-ligne
+
+
+!-- -----------------------------------------------
+Scenario: Open "Service Catalogs"
+!-- ---------------------------------------
+When I click on first element via div and aria-controls and bshaccordioncomponentcontainerid-1510121-2329561-a02-be
+Then the element by a and href and /fr/support/dob/category/dishwashing/slimlinedishwashers is shown
+
+
+!-- -------------------------------------------
+Scenario: Click on "dishwasher 45cm"
+!-- --------------------------------------------
+When I click the link contains 'dob/category/dishwashing/slimlinedishwashers'
+Then the url of current page contains 'dob/category/dishwashing/slimlinedishwashers'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click the "result problem"
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and accordion-6
+Then the unit-items  div class filter exists on page
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click the "other result problem"
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and problemgroupid=169
+Then the service-solutions  div class filter exists on page
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click the next button
+!-- -------------------------------------------------------------------
+When I click on second element via button and type and submit
+Then the url of current page contains /dob/appliance
+
+
+!-- -------------------------------------------
+Scenario: Go back
+!-- -------------------------------------------
+When I click the link contains 'support/dob/category/dishwashing/slimlinedishwashers'
+Then the url of current page contains '/support/dob/category/dishwashing/slimlinedishwashers'
+
+!-- -------------------------------------------------------------------
+Scenario: Click the "Dysfonctionnement" section
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and accordion-4
+Then the unit-items  div class filter exists on page
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click the "No water inlet" section
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and problemgroupid=163
+Then the service-solutions  div class filter exists on page
+
+!-- -------------------------------------------------------------------
+Scenario: Click the next button
+!-- --------------------------------------------------------------------
+When I click on second element via button and type and submit
+Then the url of current page contains 'dob/appliance'
+
+
+
+!-- --- Testcase TTP-957 Newsletter for Siemens finished successful ---
+

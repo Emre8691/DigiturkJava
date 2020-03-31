@@ -1,0 +1,31 @@
+!-- -----------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens CH FUT-INT mainpage, DE Lang.)
+!-- -----------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on "Produkte" 
+!-- ---------------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- -----------------------------------------------------------------------------------------------
+Scenario: Click on "Kühlen und Gefrieren" and the Kühlen und Gefrieren page should be seen
+!-- -----------------------------------------------------------------------------------------------
+When I click the navigation element subcategory-230
+Then the element by div and class and teaser type-5 is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Zur Liste aller Geräte"
+!-- --------------------------------------------------------------------
+When I click the 3 nd/th element via a and href and /ch/de/produktliste/kuehlen-und-gefrieren/kuehl-gefrier-kombinationen
+Then the element by div and class and items-area is shown
+
+!-- ---- Unfinished Test Case ------
+!-- ---- Bug was reported ------
+

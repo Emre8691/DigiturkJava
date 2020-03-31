@@ -1,0 +1,48 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ----------------------------------------------------------------------
+Scenario: CLick Passowrd -Forgotten-Button
+!-- ----------------------------------------------------------------------
+When I click the element 'passwordForgottenButton'
+Then the page 'passwordforgotten' is opened
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Enter invalid e-mail address
+Meta: @exclude_notready
+!-- ----------------------------------------------------------------------
+When I enter <invalidmail> into 'form-ref-903-1-1'
+
+!-- TODO: When I click the element 'SUBMITBUTTON'
+!-- TODO: Then the element 'ERROR' is visible
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Enter valid e-mail address
+Meta: @exclude_notready
+!-- ---------------------------------------------------------------------
+When I enter <usermail> into 'form-ref-903-1-1'
+!-- TODO: When I click the element 'SUBMITBUTTON' 
+
+!-- TODO:  Then the page '' is opened
+
+!-- ----------------------------------------------------------------------
+Scenario: Open confirmation mail an got new Password
+Meta: @exclude_notready
+!-- ---------------------------------------------------------------------
+When I open the page for following address <mailinator>
+
+!-- TODO: The Rest of the Test!!!
+
+
+
+!-- --- TTP-112 - Staffsales MyAccount - Password forgotten was successful ---

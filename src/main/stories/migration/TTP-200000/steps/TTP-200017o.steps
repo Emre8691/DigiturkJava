@@ -1,0 +1,91 @@
+Scenario:Open Ecom
+When I open external webpage without validate https://www.test.bsh-service.com/cosmosckytest/ecomTouch_inter/eCom/index.html
+Then I wait for element with css input[id="txtUserName"] to be visible
+Then I must wait '7' seconds
+
+When I enter '7004100616' into txtUserName
+When I enter 'AAaa1234&' into txtPassword
+When I click on first element via input and name and btnAuth
+Then I wait for element with css a[id="m17"] to be visible
+
+Then I must wait '7' seconds
+When I click on first element via a and id and m17
+Then I must wait 5 seconds
+!-- --------------------------------------------------------------
+Scenario:Open Ris
+When I click the xpath element //*[contains(text(),'Onarım')][1]
+Then I must wait 3 seconds
+
+Scenario:Fiş kapatmayı başlat
+When I click the xpath element //*[@id="risInfo"]/div[2]/div/ul/li[1]/i
+Then I must wait 3 seconds
+
+Scenario: Tüketici İletişim Kanalı Belirleme
+When I set up the xpath element //input[@name='rbApprovalTypes' and @value='7']
+
+Scenario: Hizmet tipini seciniz
+When I click on first element via button and id and btnNext
+Then I must wait 5 seconds
+
+Scenario:Hizmet bedelini seciniz
+When I click the xpath element //*[@id="rblChargeType_0"]
+When I click on first element via button and id and btnNext
+Then I must wait 4 seconds
+
+
+Scenario:İşlem Yapılacak cihazı seciniz
+When I click on first element via button and id and btnNext
+Then I must wait 4 seconds
+
+Scenario: İşlem sebebini seciniz
+When I click the xpath element //*[@id="rblProcessReason_1"]
+Then I must wait 1 seconds
+When I click on first element via button and id and btnNext
+Then I must wait 9 seconds
+
+Scenario: Kullanılan malzeme ve işcilikleri seciniz
+When I enter '00423754' into txtMaterialCode
+
+Then I must wait 3 seconds
+
+When I click the xpath element //*[@id="DataTables_Table_1"]/tbody/tr/td[3]/div/div[2]/button
+Then I must wait 3 seconds
+When I click the xpath element //*[contains(text(),'Tamam')]
+!-- Then I must wait 3 seconds
+!-- When Highlightelement in //button[@id='btnNext']
+Then I must wait 2 seconds
+When I click on first element via button and id and btnNext
+Then I must wait 6 seconds
+Then I wait for element with css input[id="rblFCValue"] to be visible
+
+Scenario: Arıza kodunu seciniz
+When I click the xpath element //input[@id="rblFCValue" and @value="42"]  
+Then I must wait 1 seconds
+
+When I click on first element via button and id and btnNext
+
+Then I must wait 5 seconds
+
+Scenario: Ek Garanti öneri
+When I click on first element via button and id and btnNext
+Then I must wait 2 seconds
+
+
+Scenario:Notonuzu Yazınız
+When I enter 'teknisyen notu3' into txtTechnicianNote
+When I enter 'idari not1' into txtAdministrativeNote
+When I click on first element via button and id and btnNext
+Then I must wait 3 seconds
+
+Scenario:Ödeme bilgilerini giriniz
+When I enter '66,00' into txtAmountReceivedFromCustomer
+When I click the xpath element //*[@id="rblPaymentType2"]
+When I click on first element via button and id and btnNext
+Then I must wait 2 seconds
+
+Scenario:Yazdır 
+When I click the xpath element //*[@id="btnNext"]
+
+!-- --- TTP-200017 Testcase Closing Ris was successful --- 
+
+

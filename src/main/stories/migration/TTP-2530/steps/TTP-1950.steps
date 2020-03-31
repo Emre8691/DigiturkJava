@@ -1,0 +1,49 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Target Web-Site
+!-- --------------------------------------------------------------------
+!-- When I open the page for following address <homepage>
+When I open external webpage <starturl>
+When I click on first element via a and title and 'Siemens'
+Then I must wait '10' seconds
+Then the element by div and id and cookie-law-wrapper is shown
+
+!-- --------------------------------------------------------------------
+Scenario: start network monitoring
+!-- --------------------------------------------------------------------
+When I start network monitoring
+Then I must wait '5' seconds
+Then I check for network with url starting with 'http://assets.adobedtm.com/' have not been made
+Then I check for network with url starting with 'http://bshg.122.2o7.net/b/ss/bshgsiemens' have not been made
+Then I stop network monitoring
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Cookie and Script are avilable
+!-- --------------------------------------------------------------------
+Then the element by div and id and cookie-law-wrapper is shown
+Then check //assets.adobedtm.com/ exists on current page
+Then check /satelliteLib- exists on current page
+Then check /scripts/satellite- exists on current page
+
+!-- --------------------------------------------------------------------
+Scenario: Check Page Load after click on Cookie    
+!-- --------------------------------------------------------------------
+When I start network monitoring
+When I enter '123445667' into searchbar-2
+When I click the button cookie_subscription_accept
+Then I must wait '5' seconds
+Then check the searchbar-2 is empty
+Then I check for network with url starting with 'http://assets.adobedtm.com/' is success
+Then I check for network with url starting with 'http://bshg.122.2o7.net/b/ss/bshgsiemens' is success
+
+!-- --------------------------------------------------------------------
+Scenario: Check Page has scripts after reload    
+!-- --------------------------------------------------------------------
+Then check //assets.adobedtm.com/ exists on current page
+Then check /satelliteLib- exists on current page
+Then check /scripts/satellite- exists on current page
+Then I stop network monitoring
+
+
+!-- --- TTP-1950 [Prod]-[Tracking]-[N3-SI] Check whether Adobe Analytics tracking data is sent was successful ---
+

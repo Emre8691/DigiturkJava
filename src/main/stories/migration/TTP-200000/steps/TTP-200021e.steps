@@ -1,0 +1,29 @@
+Scenario:Open Ecom
+When I open external webpage https://www.test.bsh-service.com/cosmosckytest/ecomTouch_inter/eCom/index.html
+Then I wait for element with css input[id="txtUserName"] to be visible
+Then I must wait '8' seconds
+When I enter '7004100616' into txtUserName
+When I enter 'AAaa1234&' into txtPassword
+When I click on first element via input and name and btnAuth
+
+Then I must wait '9' seconds
+When I click the xpath element //*[@id="m17"]/div[1]/h4
+Then I must wait 5 seconds
+
+Scenario:Open Ris
+When I click the xpath element //*[@id="divSorting"]/div[1]/div[2]/a/div[2]/div/div[1]/ul/li[2]/span
+Then I must wait 3 seconds
+
+Scenario: Delay - Erteleme ekranını ac
+When I click on first element via i and class and fa fa-ban
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="concludeTypesRadioList_8"]
+Then I must wait 2 seconds
+When I enter the 'test' in 0 nd/th available div[class='col-xs-12'] textarea[id='txtConcludeNote']
+!-- When I enter 'test' into txtConcludeNote
+When I click on first element via button and id and btnNext
+Then I must wait 2 seconds
+
+!-- --- TTP-200020 Testcase RIS Delay in Ecom was successful --- 
+
+

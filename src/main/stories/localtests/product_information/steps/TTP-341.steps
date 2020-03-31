@@ -1,0 +1,71 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Search for spare product which is available to buy.
+!-- --------------------------------------------------------------------
+!-- When I search MFQ36300GB at searchfield and click searchbutton
+When I enter 'MFQ36300GB' into primarySearch
+When I click the button primarySearchButton
+!-- Then the expected 'addItemToBasket-MFQ36300GB' is shown (items currently out of stock thats why we cant test the addItemToBasket button)
+Then the element overview is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click zoom-in and close it
+!-- --------------------------------------------------------------------
+When I click on first element via a and id and magnifier
+Then I must wait '2' seconds
+When I click on first element via a and class and close
+Then I must wait '2' seconds
+Then the page 'productpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Select overview, reviewstab, technical data Tabs
+!-- --------------------------------------------------------------------
+!-- When I click the element review
+When I click the element a[class="bv-rating-label bv-text-link bv-focusable"] if avaliable
+Then the url of current page contains 'tab7'
+Then I must wait '1' second
+When I click on first element via a and href and top
+When I click the navigation element overview
+
+
+Then the element by div and id and tab4 is shown
+Then the url of current page contains 'tab4'
+
+When I click on first element via a and href and top
+When I click the navigation element technicaldata 
+Then the element by div and id and tab5 is shown
+Then the url of current page contains '#tab5'
+
+!-- --------------------------------------------------------------------
+Scenario: Search for replaceable product which is available to buy.
+!-- --------------------------------------------------------------------
+!-- When I search TAT3A017GB at searchfield and click searchbutton
+When I enter 'TAT3A017GB' into primarySearch
+When I click the button primarySearchButton
+!-- Then the expected 'addItemToBasket-TAT3A017GB' is shown (items currently out of stock thats why we cant test the addItemToBasket button)
+!-- Then the expected 'productreplacement-00653069' is shown
+Then the element overview is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Search for replacement product which is available to buy and check replacement url
+!-- --------------------------------------------------------------------
+!-- When I search 00463675 at searchfield and click searchbutton
+When I enter '00463675' into primarySearch
+When I click the button primarySearchButton
+Then the expected 'addItemToBasket-00463675' is shown
+Then the url of current page contains '00463675'
+Then the page productpage is opened
+Then check 'Replacement of' exists on current page
+Then I wait for element with css em[class="t-gray"] to be visible
+
+!-- --- TTP-341: Automatic:Product Detail Page (Bosch) was successful ---
+
+

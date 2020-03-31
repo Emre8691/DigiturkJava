@@ -1,0 +1,73 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Dealer Locator Page, go for route plan and do Validations
+!-- --------------------------------------------------------------------
+When I click the link contains /haendlersuche
+Then I must wait '2' seconds
+Then the page dealerlocator is opened
+
+
+!-- -----------------------------------------------------
+Scenario: Search For a Munchen
+!-- --------------------------------------------------
+When I enter Munchen into position-query
+When I click the 3 nd/th element via div and class and primary
+Then I must wait '2' seconds
+Then the element by ol and class and locator-results is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open route plan and do Validations
+!-- --------------------------------------------------------------------
+!-- When I click the link contains #route-module
+When I click on first element via a and href and #route-module
+Then the element by input and id and route-origin is shown
+Then the element by input and id and route-destination is shown
+When I click on second element via button and type and submit
+Then the element by div and class and 'ws-po-box' is shown
+Then I must wait '2' seconds
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter destination and check route 
+!-- --------------------------------------------------------------------
+When I enter carl wery into route-destination
+Then the element by input and id and route-destination is shown
+When I press enter at the focused pop up box
+Then the element by div and class and directions-results is shown
+When I click on first element via a and href and #route-
+Then the element by div and class and 'your-route' is shown
+Then the element by div and class and destination is shown
+Then the element by div and class and origin is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Change Route Options
+!-- --------------------------------------------------------------------
+When I click on first element via button and class and switcher-btn
+When I press enter at the focused pop up box
+When I click on first element via input and value and WALKING
+When I click on first element via div and class and primary
+Then the element by li and class and warning is shown
+When I click on first element via input and value and TRANSIT
+When I press enter at the focused pop up box
+Then the element by div and class and 'direction-endpoint' is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Reset Route Options
+!-- --------------------------------------------------------------------
+When I click on first element via div and class and reset-btn
+
+!-- --- Testcase TTP-386 Automatic: Dealer Locator: Plan Route was successful ---
+

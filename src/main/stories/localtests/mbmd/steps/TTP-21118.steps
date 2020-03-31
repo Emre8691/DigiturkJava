@@ -1,0 +1,204 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the navigation element myaccountbutton
+Then the page 'loginpage' is opened
+
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into 'password'
+Then the form field password is filled correct with the parameter <passwordv2>
+
+When I click the button 'logInButton'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Profile Pages
+!-- --------------------------------------------------------------------
+Then the page 'myaccount' is opened
+
+When I click the navigation element 'myprofile'
+Then the page 'accountprofilepage' is opened
+
+When I click the navigation element changePersonalData
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data 
+!-- --------------------------------------------------------------------
+Then the page 'accountbillingaddresspage' is opened
+
+When I clear the 'personalData.defaultPaymentAddress.firstname' field
+When I clear the 'personalData.defaultPaymentAddress.lastName' field
+When I clear the 'personalData.defaultPaymentAddress.postalcode' field
+When I clear the 'personalData.defaultPaymentAddress.town' field
+When I clear the 'personalData.defaultPaymentAddress.streetName' field
+When I clear the 'personalData.defaultPaymentAddress.streetnumber' field
+When I clear the 'personalData.defaultPaymentAddress.phone1' field
+When I clear the 'personalData.defaultPaymentAddress.cellPhone' field
+Then I must wait '1' second
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data validation check
+!-- --------------------------------------------------------------------
+Then the expected 'er-form-personalData-defaultPaymentAddress-firstname' is shown
+Then the expected 'er-form-personalData-defaultPaymentAddress-lastName' is shown
+!-- Then the expected 'er-form-personalData-defaultPaymentAddress-streetnumber' is shown
+Then the expected 'er-form-personalData-defaultPaymentAddress-postalcode' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data fill data
+!-- --------------------------------------------------------------------
+When I enter <firstname> into 'personalData.defaultPaymentAddress.firstname'
+Then the form field 'personalData.defaultPaymentAddress.firstname' is filled correct with the parameter <firstname>
+
+When I enter <lastname> into 'personalData.defaultPaymentAddress.lastName'
+Then the form field 'personalData.defaultPaymentAddress.lastName' is filled correct with the parameter <lastname>
+
+When I enter <street2> into 'personalData.defaultPaymentAddress.streetName'
+Then the form field 'personalData.defaultPaymentAddress.streetName' is filled correct with the parameter <street2>
+
+When I enter <housenumber2> into 'personalData.defaultPaymentAddress.streetnumber'
+Then the form field 'personalData.defaultPaymentAddress.streetnumber' is filled correct with the parameter <housenumber2>
+
+When I enter <zipcode2> into 'personalData.defaultPaymentAddress.postalcode'
+Then the form field 'personalData.defaultPaymentAddress.postalcode' is filled correct with the parameter <zipcode2>
+
+When I enter <city2> into 'personalData.defaultPaymentAddress.town'
+Then the form field 'personalData.defaultPaymentAddress.town' is filled correct with the parameter <city2>
+
+When I enter <telephone> into 'personalData.defaultPaymentAddress.phone1'
+Then the form field 'personalData.defaultPaymentAddress.phone1' is filled correct with the parameter <telephone>
+
+When I enter <cellphone> into 'personalData.defaultPaymentAddress.cellPhone'
+Then the form field 'personalData.defaultPaymentAddress.cellPhone' is filled correct with the parameter <cellphone>
+
+
+When I click the button 'submitButton'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit contact data
+!-- --------------------------------------------------------------------
+Then the page 'accountprofilepage' is opened
+
+When I click the button 'contactEdit'
+Then the page 'accountcontactpermissionpage' is opened
+
+When I decide to 'contactOptIn-0'
+
+When I click the button 'submitButton'
+Then the page 'accountprofilepage' is opened
+
+When I click the button 'addDeliveryAddress'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Add NEW delivery address
+!-- --------------------------------------------------------------------
+Then the page 'accountdeliveryaddresspage' is opened
+
+When I enter <firstname> into 'deliveryAddress.firstname'
+Then the form field 'deliveryAddress.firstname' is filled correct with the parameter <firstname>
+
+When I enter <lastname> into 'deliveryAddress.lastName'
+Then the form field 'deliveryAddress.lastName' is filled correct with the parameter <lastname>
+
+When I enter <street> into 'deliveryAddress.streetName'
+Then the form field 'deliveryAddress.streetName' is filled correct with the parameter <street>
+
+When I enter <housenumber> into form-deliveryAddress-streetnumber
+Then the form field form-deliveryAddress-streetnumber is filled correct with the parameter <housenumber>
+
+When I enter <zipcode> into 'deliveryAddress.postalcode'
+Then the form field 'deliveryAddress.postalcode' is filled correct with the parameter <zipcode>
+
+When I enter <city> into 'deliveryAddress.town'
+Then the form field 'deliveryAddress.town' is filled correct with the parameter <city>
+
+When I select the deliveryAddress.title with the option <title> version
+Then the page 'accountdeliveryaddresspage' is shown
+
+When I click the button 'submitButton'
+Then the page 'accountprofilepage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit NEW delivery address
+!-- --------------------------------------------------------------------
+When I click the button 'changePersonalDeliveryAddress-0'
+Then the page 'accountdeliveryaddresspage' is opened
+
+When I clear the 'deliveryAddress.firstname' field
+When I clear the 'deliveryAddress.lastName' field
+When I clear the 'deliveryAddress.streetName' field
+When I clear the 'form-deliveryAddress-streetnumber' field
+When I clear the 'deliveryAddress.postalcode' field
+When I clear the 'deliveryAddress.town' field
+
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data validation check
+!-- --------------------------------------------------------------------
+Then the expected 'er-form-deliveryAddress-firstname' is shown
+Then the expected 'er-form-deliveryAddress-lastName' is shown
+!-- Then the expected 'er-form-deliveryAddress-streetnumber' is shown
+Then the expected 'er-form-deliveryAddress-postalcode' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit NEW delivery address
+!-- --------------------------------------------------------------------
+When I enter <firstname2> into 'deliveryAddress.firstname'
+Then the form field 'deliveryAddress.firstname' is filled correct with the parameter <firstname2>
+
+When I enter <lastname2> into 'deliveryAddress.lastName'
+Then the form field 'deliveryAddress.lastName' is filled correct with the parameter <lastname2>
+
+When I enter <street2> into 'deliveryAddress.streetName'
+Then the form field 'deliveryAddress.streetName' is filled correct with the parameter <street2>
+
+When I enter <housenumber2> into 'deliveryAddress.streetnumber'
+Then the form field 'deliveryAddress.streetnumber' is filled correct with the parameter <housenumber2>
+
+When I enter <zipcode2> into 'deliveryAddress.postalcode'
+Then the form field 'deliveryAddress.postalcode' is filled correct with the parameter <zipcode2>
+
+When I enter <city2> into 'deliveryAddress.town'
+Then the form field 'deliveryAddress.town' is filled correct with the parameter <city2>
+
+When I click the button 'submitButton'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Delete new delivery address
+!-- --------------------------------------------------------------------
+Then the page 'accountprofilepage' is opened
+
+When I click the navigation element deleteDeliveryAddress-0
+Then I must wait '2' seconds
+
+When I click the link onclick contains removeDeliveryAddressCall
+Then I must wait '3' seconds
+Then the page 'accountprofilepage' is opened
+
+!-- --- TTP-17890 Edit my pesronal data was successful ---
+

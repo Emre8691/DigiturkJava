@@ -1,0 +1,303 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+
+Then I must wait '3' seconds
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+Scenario: lick "My Siemens" 
+!-- --------------------------------------------------------------------
+!-- When I click on first element via span and class and <mybosch>
+When I click on first element via a and href and /fi/mysiemens
+When I click on first element via a and href and /fi/mysiemens/login
+!-- Then the page 'myaccount' is opened
+
+When I enter <orderuserttp22> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp22>
+When I enter <password22> into 'password'
+Then the form field password is filled correct with the parameter <passwordv22>
+When I click the xpath element //*[@id="bshLoginData"]/div[1]/div[1]/button
+Then the login was successful
+
+!-- Then the page 'myaccountpage' is opened
+Then the element by div and class and mybrand is shown
+
+
+Then the element by aside and class and m-popover is shown
+When I click on first visible element via button and name and close-button
+
+When I click on first element via a and href and #mybrand
+!-- Then the element metaNavigation is visible
+Then the element by i and class and icon icon-m icon-mybrand is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Profile Pages
+!-- --------------------------------------------------------------------
+!-- Then the page 'myaccount' is opened
+
+When I click the navigation element 'myprofile'
+Then the page 'accountprofilepage' is opened
+
+When I click the navigation element changePersonalData
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data 
+!-- --------------------------------------------------------------------
+Then the page 'accountbillingaddresspage' is opened
+
+Then the expected 'personalData' is shown
+
+When I clear the 'defaultPaymentAddress.firstname' field
+Then the form field 'defaultPaymentAddress.firstname' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.lastName' field
+Then the form field 'defaultPaymentAddress.lastName' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.streetName' field
+Then the form field 'defaultPaymentAddress.streetName' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.streetnumber' field
+Then the form field 'defaultPaymentAddress.streetnumber' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.town' field
+Then the form field 'defaultPaymentAddress.town' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.postalcode' field
+Then the form field 'defaultPaymentAddress.postalcode' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.phone1' field
+Then the form field 'defaultPaymentAddress.phone1' is filled correct with the parameter ''
+
+When I clear the 'defaultPaymentAddress.cellPhone' field
+Then the form field 'defaultPaymentAddress.cellPhone' is filled correct with the parameter ''
+
+When I click the 2 nd/th element via button and type and submit
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data validation check
+!-- --------------------------------------------------------------------
+!-- validation steps need testing_id
+!-- Then the expected '<error_testing_id>' is shown
+Then the element by div and testing_id and validationMismatchError is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill First name and Last name fields
+!-- --------------------------------------------------------------------
+When I enter Alper into 'defaultPaymentAddress.firstname'
+Then the form field 'defaultPaymentAddress.firstname' is filled correct with the parameter Alper
+When I enter Turk into 'defaultPaymentAddress.lastName'
+Then the form field 'defaultPaymentAddress.lastName' is filled correct with the parameter Turk
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check same validation with send button
+!-- --------------------------------------------------------------------
+When I click the 2 nd/th element via button and type and submit
+!-- validation steps need testing_id for error notification
+!-- Then the expected 'er-form-personalData-defaultPaymentAddress-streetnumber' is shown
+!-- Then the expected '<error_testing_id>' is shown
+!-- Then the element by div and class and a-errormessage.error-required is shown
+Then the element by div and testing_id and validationMismatchError is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill Street,House Number and City fields
+!-- --------------------------------------------------------------------
+When I enter <street2> into 'defaultPaymentAddress.streetName'
+Then the form field 'defaultPaymentAddress.streetName' is filled correct with the parameter <street2>
+
+When I enter <zipcode2> into 'defaultPaymentAddress.postalcode'
+Then the form field 'defaultPaymentAddress.postalcode' is filled correct with the parameter <zipcode2>
+
+When I enter <streetnumber2> into 'defaultPaymentAddress.streetnumber'
+Then the form field 'defaultPaymentAddress.streetnumber' is filled correct with the parameter <streetnumber2>
+
+When I enter <city2> into 'defaultPaymentAddress.town'
+Then the form field 'defaultPaymentAddress.town' is filled correct with the parameter <city2>
+
+
+When I enter <telephone2> into defaultPaymentAddress.phone1
+Then the form field defaultPaymentAddress.phone1 is filled correct with the parameter <telephone2>
+
+When I enter <telephone2> into defaultPaymentAddress.cellPhone
+Then the form field defaultPaymentAddress.cellPhone is filled correct with the parameter <telephone2>
+Then I must wait '2' seconds
+
+When I click the xpath element //*[@id="personalData"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+!-- Then the page 'accountprofilepage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Check same validation with send button
+!-- --------------------------------------------------------------------
+!-- testing_id need for SAVE submit button
+When I click the xpath element //*[@id="contactPermissionForm"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+Then the page 'accountprofilepage' is opened
+!-- validation steps need testing_id for error notification
+!-- Then the expected 'er-form-personalData-defaultPaymentAddress-postalcode' is shown
+!-- Then the expected '<error_testing_id>' is shown
+!-- Then the element by div and class and a-errormessage.error-required is shown
+!-- Then the element by div and testing_id and validationMismatchError is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit contact data
+!-- --------------------------------------------------------------------
+
+When I click the xpath element //*[@id="content"]/div/div/div/div[2]/div/a/i
+Then the page 'accountcontactpermissionpage' is opened
+
+When I click on first element via a and testing_id and contactEdit
+Then the page 'accountcontactpermissionpage' is opened
+!-- When I decide to 'optinData.optinGroupsboschhome.optinKeys0.accepted'
+
+When I decide to optinData.optinGroupsdefaultoptingroup.optinKeys0.accepted
+!-- When I click the xpath element //*[@id="personalData"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+When I click the xpath element //*[@id="contactPermissionForm"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+Then the page 'accountprofilepage' is opened
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Add NEW delivery address
+!-- --------------------------------------------------------------------
+When I click the link contains /fi/mysiemens/addresses
+!-- Then the page 'accountdeliveryaddresspage' is opened
+When I click the element .select2-selection.select2-selection--single if avaliable
+Then I must wait '1' second
+!-- When I click the element li[id*="0006"] if avaliable
+
+!-- Then the page accountdeliveryaddresspage is shown
+
+When I enter Burak into 'firstname'
+Then the form field 'firstname' is filled correct with the parameter Burak
+
+When I enter Türkpencesi into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter Türkpencesi
+
+!-- --------------------------------------------------------------------
+Scenario: Check validation and Fill the remaining form fields 
+!-- --------------------------------------------------------------------
+!-- testing_id need for SAVE submit button
+When I click the 2 nd/th element via button and type and submit
+Then the element by div and testing_id and validationMismatchError is shown
+
+When I enter <streetnumber2> into 'streetnumber'
+Then the form field 'streetnumber' is filled correct with the parameter <streetnumber2>
+
+When I enter <zipcode2> into 'postalcode'
+Then the form field 'postalcode' is filled correct with the parameter <zipcode2>
+Then I must wait '4' seconds
+!-- When I enter <housenumber2> into district
+!-- Then the form field district is filled correct with the parameter <housenumber2>
+
+When I enter <street2> into 'streetName'
+Then the form field 'streetName' is filled correct with the parameter <street2>
+
+When I enter <city2> into 'town'
+Then the form field 'town' is filled correct with the parameter <city2>
+
+!-- testing_id need for SAVE submit button
+!-- When I click the 2 nd/th element via button and type and submit
+!-- Then the page 'accountprofilepage' is opened
+When I click the xpath element //*[@id="deliveryAddress"]/div[2]/div/div/div[1]/button
+Then I must wait '2' seconds
+Then the page 'accountprofilepage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Edit NEW delivery address
+!-- --------------------------------------------------------------------
+
+!-- When I click the xpath element //*[@id="content"]/div/div/div/div[3]/div[1]/a/i
+
+When I click the link contains /fi/mysiemens/addresses
+!-- Then the page 'accountdeliveryaddresspage' is opened
+When I click on first element via span and class and select2-selection__arrow
+Then I must wait 1 seconds
+When I click the element li[id*="0002"] if avaliable
+
+When I clear the 'firstname' field
+Then the form field 'firstname' is filled correct with the parameter ''
+When I clear the 'lastName' field
+Then the form field 'lastName' is filled correct with the parameter ''
+When I clear the 'streetnumber' field
+When I clear the 'streetName' field
+Then the form field 'streetName' is filled correct with the parameter ''
+Then the form field 'streetnumber' is filled correct with the parameter ''
+When I clear the 'town' field
+Then the form field 'town' is filled correct with the parameter ''
+When I clear the 'postalcode' field
+Then the form field 'postalcode' is filled correct with the parameter ''
+!-- When I clear the 'district' field
+!-- Then the form field 'district' is filled correct with the parameter ''
+!-- testing_id need for SAVE submit button
+When I click the 2 nd/th element via button and type and submit
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data validation check
+!-- --------------------------------------------------------------------
+!-- Then the expected 'er-form-deliveryAddress-firstname' is shown
+!-- Then the expected 'er-form-deliveryAddress-lastName' is shown
+!-- Then the expected 'er-form-deliveryAddress-streetnumber' is shown
+!-- Then the expected 'er-form-deliveryAddress-postalcode' is shown
+Then the element by div and testing_id and validationMismatchError is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit NEW delivery address
+!-- --------------------------------------------------------------------
+When I enter Alper into 'firstname'
+Then the form field 'firstname' is filled correct with the parameter Alper
+When I enter Turk into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter Turk
+When I enter <zipcode> into 'postalcode'
+Then the form field 'postalcode' is filled correct with the parameter <zipcode>
+When I enter <street> into 'streetName'
+Then the form field 'streetName' is filled correct with the parameter <street>
+
+!-- When I enter <housenumber2> into 'district'
+!-- Then the form field 'district' is filled correct with the parameter <housenumber2>
+When I enter <streetnumber2> into 'streetnumber'
+Then the form field 'streetnumber' is filled correct with the parameter <streetnumber2>
+When I enter <city> into 'town'
+Then the form field 'town' is filled correct with the parameter <city>
+
+
+!-- testing_id need for SAVE submit button
+When I click the xpath element //*[@id="deliveryAddress"]/div[2]/div/div/div[1]/button
+Then I must wait '3' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Delete new delivery address
+!-- --------------------------------------------------------------------
+Then the page 'accountprofilepage' is opened
+
+When I click on first element via a and href and #
+Then I must wait '2' seconds
+
+When I click the link onclick contains removeDeliveryAddressCall
+Then I must wait '3' seconds
+Then the page 'accountprofilepage' is opened
+
+!-- --- TTP-100049 Edit my pesronal data was successful ---
+

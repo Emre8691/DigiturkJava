@@ -1,0 +1,79 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the start page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Our Services"
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and #nav-4
+Then the nav-box-wrapper div class exists on page
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Book an online technician"
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and category-43
+Then the page 'homepage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "book via category of your appliance"
+!-- --------------------------------------------------------------------
+When I click on first element via div and aria-controls and 1510121-2329561-a02-be
+!-- #these 2 steps are same test the new DSL (Erhans new DSL)
+Then the unit-items alignment-odd div class exists on page
+Then I wait for element with css #bshaccordioncomponentcontainerid-1510121-2329561-a02-be[aria-expanded="true"] to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Select "toasters" category
+!-- --------------------------------------------------------------------
+When I click the link contains /fr/support/dob/category/breakfast/toasters
+Then the page supportcategorydetailpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Select another product"
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and /fr/nos-services/services-en-ligne
+Then the element enumberSearchField is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Select "book via category of your appliance" category
+!-- --------------------------------------------------------------------
+When I click on first element via div and aria-controls and 1510097-1504980-a02-be
+!-- #these 2 steps are same test the new DSL (Erhans new DSL)
+!-- Then the items-group div class exists on page
+Then I wait for element with css #bshaccordioncomponentcontainerid-1510097-1504980-a02-be[aria-expanded="true"] to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Select "toasters" category
+!-- --------------------------------------------------------------------
+When I click the link contains /fr/supportdetail/category/breakfast/toasters
+Then the page supportcategorydetailpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click "temperature-too hot" problem
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and accordion-5
+When I click the link contains /fr/support/advices?code=toasters&isCategory=true&problemId=1164&problemGroupID=185&dob=false
+Then the url of current page contains /supportdetail
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click next button
+!-- --------------------------------------------------------------------
+When I click on first element via div and class and 'primary pos-1'
+Then the url of current page contains supportdetail
+
+
+!-- --- TTP-1296: Automatic: My Account: SocialMedia-Login (Siemens) was successful ---
+
+

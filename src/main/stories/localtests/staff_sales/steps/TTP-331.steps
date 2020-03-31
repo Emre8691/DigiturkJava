@@ -1,0 +1,57 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------------------
+Scenario: Enter nothing and click sumbit button
+!-- ----------------------------------------------------------------
+When I click the element 'logInButton'
+
+Then the expected 'validationUsername-1' is shown
+Then the expected 'validationPassword' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: login no Password
+!-- --------------------------------------------------------------------
+When I enter <invalidmail> into username
+Then the given data <invalidmail> is shown correct at field username
+When I click the element 'logInButton'
+
+Then the expected 'validationPassword' is shown
+
+
+!-- ----------------------------------------------------------------------
+Scenario: login invalid Password
+!-- ---------------------------------------------------------------------
+When I click the element 'password'
+When I enter <invalidpw> into password
+Then the given data <invalidpw> is shown correct at field password
+When I click the element 'logInButton'
+
+Then the expected 'validationUsername-4' is shown
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I click the element 'username'
+When I enter <usermail6> into username
+Then the form field username is filled correct with the parameter <usermail6>
+When I click the element 'password'
+When I enter <userpw> into password
+Then the form field password is filled correct with the parameter <userpw>
+When I click the element 'logInButton'
+
+!-- Then the page 'startpage' is opened
+Then the url of current page contains 'shop'
+
+!-- --- TTP-331 - Staffsales login (Siemens) was successful ---
+
+

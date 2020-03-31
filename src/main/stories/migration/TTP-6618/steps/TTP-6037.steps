@@ -1,0 +1,117 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch Home Page
+!-- --------------------------------------------------------------------
+!-- When I open the page for following address <homepage>
+When I open external webpage <homepage>
+Then the url of current page contains 'www.bosch-home.com.tr'
+
+!-- --------------------------------------------------------------------
+Scenario: Search Product
+!-- --------------------------------------------------------------------
+When I enter 'buz' into site-search-input
+When I click on first element via a and class and searchGo
+!-- Navigate to /store
+Then I wait for element with css [id="tabShop"] to be visible
+When I click on first element via a and href and /store/searchresult
+
+Then the url of current page contains '/store'
+Then I wait for element with css ul[id="fredhopper"] to be visible
+Then I wait for element with css div[id="tab1"] to be visible
+Then check 'buzdolab' exists on current page
+
+!-- --------------------------------------------------------------------
+Scenario: Add to basket
+!-- --------------------------------------------------------------------
+When I click the element cat_id_0_1
+Then the url of current page contains 'buzdolaplarivederindondurucular'
+Then I wait for element with css a[href="#tab1"] to be visible
+Then I wait for element with css div[id="tab1"] to be visible
+
+When I click the 2 nd/th element via a and id and buyStatus-
+Then I must wait '5' seconds
+Then I wait for element with css .shopcart-overview to be invisible
+Then the basket count is '1'
+When I click on first element via a and class and remove
+Then the url of current page contains '/store/category'
+
+!-- --------------------------------------------------------------------
+Scenario: Search another product then add to basket
+!-- --------------------------------------------------------------------
+When I enter bulasik into searchfield
+Then the given data bulasik is shown correct at field searchfield
+When I click the element searchbutton
+Then I wait for element with css div[id="tab1"] to be visible
+Then the url of current page contains '/store'
+
+When I click the element cat_id_0_0
+Then the url of current page contains 'bulasikmakineleri'
+Then I wait for element with css a[href="#tab1"] to be visible
+Then I wait for element with css div[id="tab1"] to be visible
+
+When I click the 2 nd/th element via a and id and buyStatus-
+Then I must wait '5' seconds
+Then I wait for element with css .shopcart-overview to be invisible
+Then the basket count is '2'
+
+When I click on first element via a and class and basket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click on first element via a and href and store/basket without wait
+
+Then the url of current page contains '/store/basket'
+
+!-- --------------------------------------------------------------------
+Scenario: Continue to purchase flow as GUEST
+!-- --------------------------------------------------------------------
+When I click the button a[class="btn btnSubmit floatRe"] if avaliable
+Then the url of current page contains '/store/checkout/welcome'
+
+When I click the element regTypeGuest
+When I click the element continueButton
+Then the url of current page contains 'checkout/handling'
+
+!-- --------------------------------------------------------------------
+Scenario:  checkout/handling page
+!-- --------------------------------------------------------------------
+When I select the form-paymentAddress-title with the option 0002 version
+
+When I enter ProdTestisim into form-paymentAddress-firstname
+Then the given data ProdTestisim is shown correct at field form-paymentAddress-firstname
+
+When I enter prodtestsoyisim into form-paymentAddress-lastName
+Then the given data prodtestsoyisim is shown correct at field form-paymentAddress-lastName
+
+When I enter 12345678911 into form-paymentAddress-taxnr
+Then the given data 12345678911 is shown correct at field form-paymentAddress-taxnr
+
+When I select the form-paymentAddress-region with the option TR/01_TR version
+Then I wait for element with css select[id="form-paymentAddress-town"] to be visible
+When I select the form-paymentAddress-town with the option CEYHAN version
+
+When I enter 'Test cad. No.20' into form-paymentAddress-streetName
+Then the given data 'Test cad. No.20' is shown correct at field form-paymentAddress-streetName
+
+When I enter test@test.com.tr into form-paymentAddress-email
+Then the given data 'test@test.com.tr' is shown correct at field form-paymentAddress-email
+
+When I enter test@test.com.tr into form-paymentAddress-emailReenterred
+Then the given data 'test@test.com.tr' is shown correct at field form-paymentAddress-emailReenterred
+
+When I enter 053222615151 into form-paymentAddress-cellPhone
+Then the given data '053222615151' is shown correct at field form-paymentAddress-cellPhone
+
+When I click the continueButton as an ID
+Then the url of current page contains 'checkout/summary'
+
+!-- --------------------------------------------------------------------
+Scenario:  checkout/summary page
+!-- --------------------------------------------------------------------
+Then check 'buzdolab' exists on current page
+Then the element by div and class and imgContainer is shown
+Then the element by div and class and headline is shown
+Then the element by p and class and floatRe.summaryPage.vatspace is shown
+Then the element by div and class and deliveryOptions is shown
+
+
+!-- --- TTP-6037: Automatic: Basic Functionalities :Purchase summary BOSCH-TR Public - was successful --- 
+
+

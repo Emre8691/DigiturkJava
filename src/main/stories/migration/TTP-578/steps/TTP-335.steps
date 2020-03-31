@@ -1,0 +1,99 @@
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the button 'logInOutHeaderButton'
+Then the page 'loginpage' is opened
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Facebook Social Media icon from the Social Sign In selection.
+!-- --------------------------------------------------------------------
+When I click on element by xpath //a[@tabindex='3']
+Then the email is visible at the pop up box
+Then the pass is visible at the pop up box
+Then the loginbutton is visible at the pop up box
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter email and password information as provided at data section 
+!-- --------------------------------------------------------------------
+When I fill in email with 'abt-account@gmx.de'
+When I fill in pass with 'fk?+[=OM[+KdAKe'
+When I click the element loginbutton
+Then switch back the window to parent window static
+Then I must wait '2' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into primarySearch
+When I click the element [testing_id="primarySearchButton"] if avaliable
+When I confirm the pop up box
+!-- When I click the link contains '0?pageNo=115&searchTerm=0&criterions=&sorting=&sortingDirection='  =>Click on page 115
+!-- Then I wait for element with css [testing_id~=addItemToBasket-] to be visible
+Then I wait for element with css [testing_id*=addItemToBasket] to be visible
+!-- Then the element by a and testing_id and addItemToBasket is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+!-- When I click on first element via a and href and page2
+When I click on first element via a and testing_id and addItemToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- -------------------------------------------------------------------- 
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'deliverypage' is opened
+Then the element 'secondStep' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Worldpay / Maestro Card Page 
+!-- --------------------------------------------------------------------
+When I click the button 'continuebutton'
+When I choose the 'maestro' 'payment'
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Maestro Card
+!-- -------------------------------------------------------------------
+When I enter <cardnumbermaestro> into the 'cardnumber' field of the 'worldpay' form
+When I enter <month> into the 'expirymonth' field of the 'worldpay' form
+When I enter <year> into the 'expiryyear' field of the 'worldpay' form
+When I enter 'AUTHORIZED' into the 'cardholdername' field of the 'worldpay' form
+When I enter <securitycode> into the 'securitycode' field of the 'worldpay' form
+When I click on the 'submitbutton' of 'worldpay'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+
+!-- Then the page 'confirmationpage' is opened
+
+!-- --- TTP-335: Automatic: Checkout: Social Sign On (Bosch) was successful ---
+

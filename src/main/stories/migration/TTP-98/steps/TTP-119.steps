@@ -1,0 +1,53 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the button 'myaccountbutton'
+Then the page loginpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with invalid credentials
+!-- --------------------------------------------------------------------
+When I enter <incorrectuser> into 'username'
+When I enter <incorrectpassword> into 'password'
+When I click the button 'logInButton'
+
+Then the page loginpage is opened
+Then the component named by 'validationUsername-3' exists on page
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with invalid password
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <user> into 'username'
+When I clear the 'password' field
+When I enter <incorrectpassword> into 'password'
+
+When I click the button 'logInButton'
+Then the page loginpage is opened
+Then the component named by 'validationUsername-4' exists on page
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with valid user and valid password
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <orderuserttp> into 'username'
+When I clear the 'password' field
+When I enter <passwordv2> into 'password'
+
+When I click the button 'logInButton'
+!-- Then the page loginpage is opened
+!-- Then the page 'myaccountpage' is opened
+Then the url of current page contains 'mysiemens'
+
+
+!-- --- Testcase TTP-119 MyAccount:Login (Siemens) was successful ---
+

@@ -1,0 +1,126 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the HOME Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'searchpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page and Login with active user.
+!-- --------------------------------------------------------------------
+When I click the element myaccountbutton
+Then the page loginpage is opened
+
+When I enter <staffuserv2> into username
+Then the form field username is filled correct with the parameter <staffuserv2>
+When I enter <passwordv2> into password
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the element 'logInButton'
+Then the page myaccountpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: search BGood Product
+!-- --------------------------------------------------------------------
+When I enter <productcode> into primarySearch
+Then the form field primarySearch is filled correct with the parameter <productcode>
+When I click the button primarySearchButton
+When I confirm the pop up box
+Then the page productpage is opened
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: search another BGood Product
+!-- --------------------------------------------------------------------
+When I enter <productcode2> into primarySearch
+Then the form field primarySearch is filled correct with the parameter <productcode2>
+When I click the button primarySearchButton
+When I confirm the pop up box
+Then the page productpage is opened
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Login with active user and search BGood Product
+!-- --------------------------------------------------------------------
+When I enter 'B' into primarySearch
+Then the form field primarySearch is filled correct with the parameter 'B'
+When I click the button primarySearchButton
+When I confirm the pop up box
+Then the page searchpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: search another BGood Product
+!-- --------------------------------------------------------------------
+When I enter 'WAW' into primarySearch
+Then the form field primarySearch is filled correct with the parameter 'WAW'
+When I click the button primarySearchButton
+When I confirm the pop up box
+Then the page searchpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: AddToBasket + add additional item
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket without wait
+Then I wait for element with css #shopcart-content to be visible
+Then I must wait '1' second
+When I click on first element via img and src and 200x200
+Then the page productpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Open Basket and Navigate to goToBasket
+!-- --------------------------------------------------------------------
+When I click the navigation element openBasket
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Navigate to checkoutHandlingPage
+!-- --------------------------------------------------------------------
+When I click the navigation element checkouttop
+Then the page deliverypage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Navigate to checkoutHandlingPage and purchase the item via MasterCard
+!-- --------------------------------------------------------------------
+When I click the button continuebutton
+Then the page summarypage is opened
+
+When I choose the 'payment-mastercard_nl'
+Then the page summarypage is shown
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the navigation element continuebutton
+
+!-- --------------------------------------------------------------------
+Scenario: MASTER CARD payment GUI
+!-- --------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbermaster1> into cardNumber
+Then the form field cardNumber is filled correct with the parameter <cardnumbermaster1>
+When I select the expiryMonth with the option 07 version
+When I select the expiryYear with the option 2017 version
+When I enter 'AUTHORIZED' into <cardholdernameid>
+When I enter <securitycode> into <securitycodename>
+When I click the element <submitbuttonname>
+Then I must wait '1' second
+
+!-- -------------------------------------------------------------------
+Scenario: Worldpay Test Interface	
+!-- -------------------------------------------------------------------
+!-- Then the url of current page contains 'worldpay'
+!-- When I click on first element via input and name and continue
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+When I click the button input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+
+
+!-- -- BOSCH OUTLET BGood product search was successful ---
+
+

@@ -1,0 +1,167 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '2' second
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Dealer Locator Page and do Validations
+!-- --------------------------------------------------------------------
+When I click the link contains /haendlersuche
+!-- Then the page dealerlocator is opened
+Then the url of current page contains '/haendlersuche'
+Then the 'locator-main type-1' div class exists on page
+Then the element position-query is visible
+Then the 'locator-main-inner' div class exists on page
+
+
+!-- -----------------------------------------------------
+Scenario: Do Teaser Controls
+!-- --------------------------------------------------
+Then the link contains /kundendienst/garantieverlaengerung
+Then the link contains /kundendienst/kontakt
+Then the link contains /shop/ersatzteile 
+!-- Then the link contains /shop/accessory
+Then the link contains #filter-tooltip-SiemensExtraKLASSE
+
+!-- -----------------------------------------------------
+Scenario: Search For a ZipCode
+!-- --------------------------------------------------
+When I enter 28195 into position-query
+Then I must wait 2 seconds
+Then the ws-po-box div class exists on page
+When I press DOWN at the focused pop up box
+When I click on first element via li and id and wsoption-
+Then I must wait '7' seconds
+Then the element by ol and class and locator-results is shown
+Then the element by xpath //li[@data-id="0101009127"] is shown
+Then the link contains #DSL-0101009127
+
+
+!-- -----------------------------------------------------
+Scenario: Search For a City
+!-- --------------------------------------------------
+When I enter Bremen into position-query
+Then the ws-po-box div class exists on page
+When I press DOWN at the focused pop up box
+When I click on first element via li and id and -25
+!-- When I click on first element via div and class and primary
+When I click the 3 nd/th element via div and class and primary
+Then I must wait '7' seconds
+Then the element by ol and class and locator-results is shown
+Then the element by xpath //li[@data-id="0101003504"] is shown
+
+!-- -----------------------------------------------------
+Scenario: Search For a StreetName
+!-- --------------------------------------------------
+When I enter Kornstra into position-query
+Then I must wait '1' second
+Then the ws-po-box div class exists on page
+When I press DOWN at the focused pop up box
+When I click on first element via li and id and wsoption-
+When I click on first element via div and class and primary
+Then I must wait '7' seconds
+Then the element by ol and class and locator-results is shown
+Then the element by xpath //li[@data-id="0101009127"] is shown
+Then the link contains #DSL-0101009127
+
+
+!-- -----------------------------------------------------
+Scenario: Check for Paging
+!-- --------------------------------------------------
+
+!-- When I click on first element via a and data-page and 2
+When I click on first element via a and data-page and 2
+Then I must wait '2' seconds
+Then the element by xpath //li[@data-id="0101002223"] is shown
+
+
+When I click on first element via a and data-page and 3
+Then I must wait '2' seconds
+Then the element by li and class and store is shown
+
+When I click on first element via a and data-page and 4
+Then I wait for element with css a[data-id="0101002508"] to be visible
+!-- Then check #DMK-0101001105 exists on current page
+
+
+
+When I click on first element via a and data-page and 2
+Then I must wait '2' seconds
+When I click on first element via a and data-page and 1
+Then I must wait '2' seconds
+Then the element by li and class and store is shown
+Then the element by a and href and DSL is shown
+
+
+
+!-- -----------------------------------------------------
+Scenario: Check for Dealer Facets - StudioLine
+!-- --------------------------------------------------
+When I click on first element via label and for and filter-StudioLineDealer
+Then I must wait '5' seconds
+Then the link contains #route-module
+
+Then the element by a and href and DSL is shown
+
+When I click on first element via label and for and filter-StudioLineDealer
+Then I must wait '2' seconds
+
+
+!-- -----------------------------------------------------
+Scenario: Check for Dealer Facets - Service Shops
+!-- --------------------------------------------------
+When I click on first element via label and for and filter-serviceshop
+Then I must wait '5' seconds
+
+Then the element by li and class and store is shown
+When I click on first element via label and for and filter-serviceshop
+Then I must wait '2' seconds
+
+
+!-- -----------------------------------------------------
+Scenario: Check for Dealer Facets - Electirc Appliance Specialists
+!-- --------------------------------------------------
+When I click on first element via label and for and filter-ElectricalApplianceSpecialist
+Then I must wait '5' seconds
+
+Then the element by li and class and store is shown
+When I click on first element via button and type and reset
+Then I must wait '5' seconds
+
+Then the element by li and class and store is shown
+Then the element by a and href and DMK is shown
+
+
+!-- -----------------------------------------------------
+Scenario: Check for Dealer Facets - StudioLine + New Kitchen spec.
+!-- --------------------------------------------------
+When I click on first element via label and for and filter-StudioLineDealer 
+Then I must wait '2' seconds
+When I click on first element via label and for and filter-NewKitchenSpecialist
+Then I must wait '5' seconds
+
+Then the element by li and class and store is shown
+Then the element by a and href and DMK is shown
+Then the element by a and href and DSL is shown
+When I click on first element via label and for and filter-StudioLineDealer 
+Then I must wait '1' seconds
+
+
+!-- -----------------------------------------------------
+Scenario: Reset Filters and check for listed dealer
+!-- --------------------------------------------------
+When I click on first element via button and type and reset
+Then I must wait '5' seconds
+
+Then the element by li and class and store is shown
+Then the element by a and href and DMK is shown
+
+
+!-- --- Testcase TTP-357 Automatic: Dealer Locator: Find Dealer (A) was successful ---
+
+

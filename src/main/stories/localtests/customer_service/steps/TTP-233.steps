@@ -1,0 +1,100 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Customer Service" tab via main navigation with
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'navflyout-4' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Open Service Assistant
+!-- -----------------------------------------------------------------
+When I click the element 'category-40'
+Then the url of current page contains 'kundendienst/service-assistent'
+
+
+!-- -----------------------------------------------------------------
+Scenario: Click on info icon
+!-- -----------------------------------------------------------------
+When I click on first element via a and href and tooltip-
+Then the element by img and src and 'store/cms_media/a02-b2c/media' is shown
+
+
+!-- -----------------------------------------------------------------
+Scenario:Click on rating plate finder
+!-- -----------------------------------------------------------------
+When I click the element 'typePlateFinder'
+Then the element 'form-info' is visible
+Then the element 'productgroup' is visible
+Then the element 'producttype' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Select a product category
+!-- -----------------------------------------------------------------
+!-- TODO: Create new DSL so it can be used with IDs 
+When I select the 'productgroup' with option 'Warmwasser'
+When I select the 'producttype' with option 'Standspeicher'
+Then the element by img and src and '/store/medias/sys_master' is shown
+
+!-- -----------------------------------------------------------------
+Scenario: Enter first digitd of an E-Number into search field
+!-- -----------------------------------------------------------------
+When I enter 'HE' into 'enumberSearchField'
+Then I must wait '2' seconds
+Then the element by ul and role and listbox is shown
+Then I must wait '1' second
+When I clear the enumberSearchField field
+Then the expected valueMissingENumberValidation is shown
+
+!-- -----------------------------------------------------------------
+Scenario: Enter a complete E-Number into search field
+!-- -----------------------------------------------------------------
+When I enter 'HE784270/03' into 'enumberSearchField'
+Then the form field enumberSearchField is filled correct with the parameter 'HE784270/03'
+When I click the button 'enumberSearchBtn'
+Then I must wait '3' seconds
+Then the url of current page contains 'HE784270'
+Then the page supportproductdetailpage is opened
+
+
+!-- -----------------------------------------------------------------
+Scenario: Click Go-Back-Button
+!-- -----------------------------------------------------------------
+When I click the 4 nd/th element via a and href and ch/de/kundendienst/service-assistent
+!-- When I click the link contains '/ch/de/kundendienst/service-assistent'
+Then I must wait '3' seconds
+Then I wait for element with css button[testing_id="enumberSearchBtn"] to be clickable
+Then the url of current page contains '/service-assistent'
+
+!-- ----------------------------------------------------------------
+Scenario: Choose a category and go back
+!-- ----------------------------------------------------------------
+!-- When I click the 3 nd/th element via div and aria-controls and bshaccordioncomponentcontainerid-
+When I click on first element via div and data-anchor and 882111
+Then I must wait '2' seconds
+When I click on first element via a and title and Wandspeicher
+Then I must wait '1' second
+Then the url of current page contains 'supportdetail/category/warmwater/wallhotwatertank'
+
+
+When I click the element 'nav-4'
+Then the element 'navflyout-4' is visible
+
+When I click the link contains '/ch/de/produktliste/warmwasser/wandspeicher'
+Then the url of current page contains 'produktliste/warmwasser/wandspeicher'
+
+
+!--  TTP-233 Service Assistant I (rating plate finder, E-number, product category) was successful finished. --
+
+

@@ -1,0 +1,40 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch 
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Dealer Locator Page and do Validations
+!-- --------------------------------------------------------------------
+When I click the link contains /haendlersuche
+Then the page dealerlocator is opened
+Then the element by div and class and locator-map is shown
+Then the element by div and class and sidebar is shown
+Then the element position-query is visible
+
+When I click on first element via tag and attribute and valuePart
+
+!-- -----------------------------------------------------
+Scenario: Search For a Munchen
+!-- --------------------------------------------------
+When I enter Munchen into position-query
+Then I must wait 2 seconds
+Then the element by ol and class and locator-results is shown
+
+!-- TO DO for checking marking and distances. 
+!-- Not completed.
+
+
+!-- --- Testcase TTP-361 Automatic: Dealer Locator: Find Dealer (B) was successful ---

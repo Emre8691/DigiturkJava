@@ -1,0 +1,32 @@
+# All properties from defaults.properties can be overwritten here!
+# This file has to be copied to /webtests/src/main/resources/ as "local.properties".
+
+# Path to the binary, e.g. D:\\MozillaFirefox\\firefox.exe
+# selenium.browser.path=
+
+# Browser version, e.g. 3.6 if you have a firefox 3.6 or 10.0. if you have a firefox > 10.0
+# selenium.browser.version=26.0
+
+# The path prefix can be used for all story path patterns so that only the name of the story must be given
+# jbehave.story.path.prefix=stable/**/
+
+# The path patterns to look for the jbehave stories (default for all stories: **/*.story)
+# (Usable also for selecting a single testcase with relative path. Example: d2c/common/checkout/checkout_bosch_at.story)
+# (can also be a comma separated list like: d2c/common/**/*.story, cms/common/**/*.story)
+# jbehave.story.path.pattern=stable/**/*.story
+
+# The meta filters used for filtering the found stories, e.g. +Context D2C, +SmokeTest yes, -Author Stefan Person
+# (if used to exclude common step scenarios the suffix ".exclude" and the story name must be set to exclude
+#  steps only for a certain story respectively shop, f.e. -missingpayment.exclude checkout_bosch_us
+#  otherwise the filter is active for all stories)
+# jbehave.meta.filter=-missingproducts, -missingvoucher, -missingpayment.exclude *bosch_us *bosch_be*, -nostageproduct.exclude checkout_siemens_uk, -nodeliveryaddressdeviant.exclude *bosch_be*, -template_switch.exclude *siemens_ch_de_2013*
+
+# The system on which the tests should run, e.g. localhost, futureint, futuredev, predev01, predev02, predev03, predev04, predev05, predev06, predev07, predev08, predev09, sinint
+# bsh.testedSystem=localhost
+
+# The default browser window size for all brands (can be set differently by overruling)
+# windowsize=1200x800
+
+# The default browser window position for all brands (can be set differently by overruling)
+# windowposition=10x10
+

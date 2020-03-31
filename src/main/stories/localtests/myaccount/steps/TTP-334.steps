@@ -1,0 +1,39 @@
+Scenario: Click on "Login" link at top Navigation
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the button 'logInOutHeaderButton'
+Then the page 'loginpage' is opened
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Facebook Social Media icon from the Social Sign In selection.
+!-- --------------------------------------------------------------------
+When I click on element by xpath //a[@tabindex='3']
+Then the email is visible at the pop up box
+Then the pass is visible at the pop up box
+Then the loginbutton is visible at the pop up box
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter email and password information as provided at data section 
+!-- --------------------------------------------------------------------
+!-- When I fill in email with 'abt-account@gmx.de'
+When I enter abt-account@gmx.de into email
+!-- When I fill in pass with 'fk?+[=OM[+KdAKe'
+When I enter fk?+[=OM[+KdAKe into password
+When I click the element loginbutton
+Then switch back the window to parent window static
+
+
+!-- --- TTP-334: Automatic: My Account: SocialMedia-Login (Bosch) was successful ---
+

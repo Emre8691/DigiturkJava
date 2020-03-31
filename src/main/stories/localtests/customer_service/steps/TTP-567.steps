@@ -1,0 +1,102 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open Siemens CH/DE Home Page via the list provided at data section.
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Service Assistant Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'category-40'
+Then the element 'enumberSearchField' is visible
+Then the element 'enumberSearchBtn' is visible
+Then the element 'typePlateFinder' is visible
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'category-41'
+Then the hidden flyoutclosebtn is not visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on User Manuals Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-400'
+Then the bshLoginData form is available
+Then the element 'enumberSearchField' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Spare Parts Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-401'
+Then the element 'enumberSearchField' is visible
+Then the element 'enumberSearchBtn' is visible
+Then the element 'typePlateFinder' is visible
+Then the element 'matNumberSearchBtn' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Care and Cleaning Link in the flyout 
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-410'
+Then the hidden flyoutclosebtn is not visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'flyoutclosebtn' is visible
+Then the element 'navflyout-4' is visible
+!-- -------------------------------------------------------------------
+Scenario: Click on Contact Link in the flyout 
+!-- --------------------------------------------------------------------
+When I click the element 'category-43'
+Then the page 'contactformpage' is opened
+
+
+!-- --- Testcase TTP-567 : Basic Functionalities:Customer Service: Flyout was successful ---
+

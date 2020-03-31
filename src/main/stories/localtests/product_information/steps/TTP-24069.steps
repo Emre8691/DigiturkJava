@@ -1,0 +1,54 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page startpage is opened
+When I click the element button[class="close-btn"] if avaliable
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+Scenario: Click on the Shop Link at main navigation
+!-- -------------------------------------------------------
+When I click the navigation element nav-2
+Then I wait for element with css ul[testing_id="navflyout-2"] to be visible
+When I click the element subcategory-2-2-1
+Then the page 'standardpage' is opened
+!-- When I click the element subcategory-2-2-1 
+!-- When I click on first element via img and src and ae/productlist/washers-dryers/washing-machines/frontloader-washing-machines!-- 
+Then I must wait '2' seconds
+!-- Then the page productlist is opened
+When I click the xpath element //*[@id="content"]/div[1]/div/div/div[1]/div/div/div/div[2]/ul/li/a
+Then I wait for element with css div[class="productlist-wrap"] to be visible
+When I click on first element via a and testing_id and productDetailBtn
+
+ 
+!-- -------------------------------------------------------
+Scenario: Click on zoom product image to check Zoom function 
+!-- -------------------------------------------------------
+When I click the element productImage
+Then the element ZoomedImage is visible
+Then the element productZoomimageClose is visible
+When I click the element productZoomimageClose
+Then the element productMediaGallery1 is visible
+
+!-- -------------------------------------------------------
+Scenario: Change the pictures by clicking left and right arrows 
+!-- -------------------------------------------------------
+When I click the element productImageRightArrow
+Then the element productImage is visible
+Then the element productMediaGallery2 is visible
+When I click the element productImageLeftArrow
+Then the element productMediaGallery1 is visible
+
+!-- --- TTP-24069 Product Detail Page:Product Image Testing was successful ---
+
+

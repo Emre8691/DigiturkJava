@@ -1,0 +1,89 @@
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - Get Product Information
+!-- --------------------------------------------------------------------
+When I set /extapp/productinformation/product/v1/HB10AB520/01 as rest request url for request productinformationrequest
+When I set method to GET for request productinformationrequest
+
+!-- Header
+When I set JSON as body content type for request productinformationrequest
+When I set JSON as response content type for request productinformationrequest
+When I set hc_ctx into header appContext for request productinformationrequest
+When I set HCA into header appId for request productinformationrequest
+When I set default into header language for request productinformationrequest
+
+!-- Body
+!-- --
+
+!-- Invoke
+When I execute request productinformationrequest
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - VALIDATION Product information 
+!-- --------------------------------------------------------------------
+Then for request productinformationrequest the status code is 200
+Then for request productinformationrequest property requestSuccessful type is Boolean
+Then for request productinformationrequest response property requestSuccessful equals true
+Then for request productinformationrequest response property reponseMessage equals success
+
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - Get FULL Product information 
+!-- --------------------------------------------------------------------
+When I set /extapp/productinformation/productfull/v1/HB10AB520 as rest request url for request getfullproductinformation
+When I set method to GET for request getfullproductinformation
+
+!-- Header
+When I set JSON as body content type for request getfullproductinformation
+When I set JSON as response content type for request getfullproductinformation
+When I set hc_ctx into header appContext for request getfullproductinformation
+When I set HCA into header appId for request getfullproductinformation
+When I set application/json into header accept for request getfullproductinformation
+When I set default into header language for request getfullproductinformation
+
+!-- Body
+!-- 
+
+!-- Invoke
+When I execute request getfullproductinformation
+
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - VALIDATION Get FULL Product information 
+!-- --------------------------------------------------------------------
+Then for request getfullproductinformation the status code is 200
+Then for request getfullproductinformation property requestSuccessful type is Boolean
+Then for request getfullproductinformation response property requestSuccessful equals true
+Then for request getfullproductinformation response property reponseMessage equals success
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - Get Product Media information 
+!-- --------------------------------------------------------------------
+When I set /extapp/productinformation/productmedias/v1/DH18100/01 as rest request url for request productmediarequest
+When I set method to GET for request productmediarequest
+!-- Header
+When I set JSON as body content type for request productmediarequest
+When I set JSON as response content type for request productmediarequest
+When I set hc_ctx into header appContext for request productmediarequest
+When I set HCA into header appId for request productmediarequest
+When I set application/json into header accept for request productmediarequest
+!-- When I set default into header language for request productmediarequest
+
+!-- Body
+!-- 
+
+!-- Invoke
+When I execute request productmediarequest
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - VALIDATION  Product Media information 
+!-- --------------------------------------------------------------------
+Then for request productmediarequest the status code is 200
+Then for request productmediarequest property requestSuccessful type is Boolean
+Then for request productmediarequest response property requestSuccessful equals true
+Then for request productmediarequest response property reponseMessage equals success
+
+
+!-- #-------------- Homeconnect - Get Product information Successfull ------------- --#
+
+

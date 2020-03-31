@@ -1,0 +1,42 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open the spare part search page and check if its shown
+!-- --------------------------------------------------------------------
+When I open the page for following address <sparepartsurl>
+Then I must wait '2' seconds
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the page 'sparepartsearch' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter valid enumber
+!-- --------------------------------------------------------------------
+When I enter 'KA63DA71NE/01' into 'enumberSearchField'
+When I click the element 'enumberSearchBtn'
+
+!-- -------------------------------------------------------------------
+Scenario: Result page is shown
+!-- ------------------------------------------------------------------
+Then the page 'sparepartdetailpage' is shown
+
+!-- -----------------------------------------------------------------
+Scenario: Check visible elements
+!-- ------------------------------------------------------------------
+Then the element 'goToBasket' is visible
+Then the element 'productVibCode' is visible
+Then the element 'popularSparePartsTab' is visible
+Then the element 'explosionPicturesTab' is visible
+
+
+
+!-- --- Testcase TTP-571 Automatic: Spare parts search result steps finished successful ---
+

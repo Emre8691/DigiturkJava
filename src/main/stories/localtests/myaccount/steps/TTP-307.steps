@@ -1,0 +1,132 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I open the page for following address <loginurl>
+Then the page 'loginpage' is opened
+
+When I enter <pwd_user> into 'username'
+When I enter <pwd_password> into 'password'
+
+When I click the button 'logInButton'
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Profile Pages
+!-- --------------------------------------------------------------------
+Then the page 'myaccountpage' is opened
+
+!-- test dsl
+!-- When I click test the link contains '#tab4'
+When I click myaccount and tab4 is available
+Then the element changePasswdForm is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Change Password Form
+!-- --------------------------------------------------------------------
+When I click the button 'changePWLink'
+Then the expected 'changepwform' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check
+!-- --------------------------------------------------------------------
+When I click the button 'sendButton'
+Then the expected 'changepwForm.errors' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with incorrect old password
+!-- --------------------------------------------------------------------
+When I enter <incorrectoldpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <incorrectoldpassword>
+
+When I enter <newpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <newpassword>
+
+When I enter <newpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <newpassword>
+
+When I click the button 'sendButton'
+Then the expected 'changepwForm.errors' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with different incorrect new passwords
+!-- --------------------------------------------------------------------
+
+When I enter <oldpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <oldpassword>
+
+When I enter <incorrectnewpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <incorrectnewpassword>
+
+When I enter <invalidnewpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <invalidnewpassword>
+
+When I click the button 'sendButton'
+Then the expected 'changepwForm.errors' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with new invalid password
+!-- --------------------------------------------------------------------
+
+When I enter <oldpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <oldpassword>
+
+When I enter <invalidnewpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <invalidnewpassword>
+
+When I enter <invalidnewpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <invalidnewpassword>
+
+When I click the button 'sendButton'
+Then the expected 'changepwForm.errors' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with correct parameters
+!-- --------------------------------------------------------------------
+
+When I enter <oldpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <oldpassword>
+
+When I enter <newpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <newpassword>
+
+When I enter <newpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <newpassword>
+
+When I click the button 'sendButton'
+Then the expected 'changePasswdForm' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change to password change page
+!-- --------------------------------------------------------------------
+When I click the button 'changePWLink'
+Then the expected 'changepwform' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with old correct parameters
+!-- --------------------------------------------------------------------
+When I enter <newpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <newpassword>
+
+When I enter <oldpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <oldpassword>
+
+When I enter <oldpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <oldpassword>
+Then I must wait '2' seconds
+
+When I click the button 'sendButton'
+Then the expected 'changePasswdForm' is shown
+
+
+!-- --- Testcase TTP-307 Automatic: MyAccount: Change Password (Bosch) was successful ---

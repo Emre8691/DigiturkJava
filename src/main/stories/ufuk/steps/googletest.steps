@@ -1,0 +1,258 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Google Page
+!-- -------------------------------------------------------------------
+!-- When I open external webpage https://www.google.ie
+When I open the page for straight forward http://www.google.com
+!-- When I open the page for following address http://www.google.com
+Then the element hplogo is visible
+
+!-- -------------------------------------------------------------------
+Scenario: search snow
+!-- --------------------------------------------------------------------
+When I enter snow into lst-ib
+When I press Enter at the focused pop up box
+Then the element center_col is visible
+
+
+!-- #-------------- Google Test Case Successful - Sync Job with error was successful ------------- --#

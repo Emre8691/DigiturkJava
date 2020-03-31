@@ -1,0 +1,78 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Costumer Service" tab in main navigation
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then the element 'navflyout-4' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Choose the category Service Assistnt
+!-- -----------------------------------------------------------------
+When I click the navigation element category-40
+Then the page 'serviceassistant' is opened
+
+
+!-- ----------------------------------------------------------------
+Scenario: Enter Enumber
+!-- ----------------------------------------------------------------
+When I enter HE784270/02 into 'enumberSearchField'
+Then the form field enumberSearchField is filled correct with the parameter HE784270/02
+When I click the element 'enumberSearchBtn'
+Then the url of current page contains '/supportdetail/product/HE784270/02'
+
+
+!-- ----------------------------------------------------------------
+Scenario: Choose Tab "Accessories"
+!-- ----------------------------------------------------------------
+When I click the navigation element accessories
+Then the element by div and class and buy-btn is shown
+Then the element by div and id and recommendedProducts-image-gallery-1 is shown
+
+!-- -----------------------------------------------------------------
+Scenario: Go Back to Service Assistant
+!-- -----------------------------------------------------------------
+When I click the navigation element nav-4
+Then the element 'navflyout-4' is visible
+
+When I click the element 'category-40'
+Then the page 'serviceassistant' is opened
+
+
+!-- -----------------------------------------------------------------
+Scenario: Choose a product category
+!-- ----------------------------------------------------------------
+Then the element by div and id and tabtree-3 is shown
+When I click on first element via div and aria-controls and bshaccordioncomponentcontainerid-880387-882111-a02-ch
+
+Then the element by a and href and /ch/de/supportdetail/category/cooking/ovens is shown
+When I click the link contains 'ch/de/supportdetail/category/cooking/ovens'
+Then the url of current page contains 'supportdetail/category/cooking/ovens'
+
+
+
+!-- ----------------------------------------------------------------
+Scenario: Choose Tab "Accessories"
+!-- ----------------------------------------------------------------
+!-- When I click the link contains '#section-accessories'
+When I click on first element via a and href and section-accessories
+!-- TODO: Then the element 'XXX' is visible
+
+!-- ----------------------------------------------------------------
+Scenario: Open Shop Flyout
+!-- ---------------------------------------------------------------
+When I click the navigation element nav-3
+Then the element 'navflyout-3' is visible
+
+!-- --- Testcase TTP-276 - Customer Service : Accessories was successful ---
+

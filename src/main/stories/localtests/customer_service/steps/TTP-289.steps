@@ -1,0 +1,85 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ------------------------------------------------------------------
+Scenario: Open Customer Service Page
+!-- -----------------------------------------------------------------
+When I click on first element via img and alt and Kundendienst
+Then the page 'allaboutservice' is opened
+
+
+!-- -----------------------------------------------------------------
+Scenario: Click Find-out-more of service for cookers
+!-- -----------------------------------------------------------------
+
+When I click on first element via a and href and /reparaturen-fuer-hausgeraete
+Then check breadcrumbs-inner exists on current page
+
+
+
+!-- ----------------------------------------------------------------
+Scenario: Choose a category
+!-- ----------------------------------------------------------------
+When I click on first element via a and href and /reparaturen-fuer-hausgeraete/herde
+Then check content-block-inner exists on current page
+
+
+!-- ----------------------------------------------------------------
+Scenario: Click teaser
+!-- ----------------------------------------------------------------
+When I click on first element via a and href and /ch/de/kundendienst/service-assistent
+Then check enumberSearchField exists on current page
+
+!-- ----------------------------------------------------------------
+Scenario: Open contact page
+!-- ----------------------------------------------------------------
+
+
+When I click on first element via a and href and /ch/de/kundendienst/kontakt
+Then check sdaRepairService exists on current page
+
+
+When I click on first element via a and href and /ch/de/home
+Then the page 'startpage' is opened
+
+
+!-- -------------------------------------------------------------------------
+Scenario: Choose another category
+!-- -------------------------------------------------------------------------
+
+When I click on first element via a and href and /ch/de/kundendienst
+Then the page 'allaboutservice' is opened
+
+!-- -----------------------------------------------------------------
+Scenario: Click Find-out-more of service for backoefen
+!-- -----------------------------------------------------------------
+
+When I click on first element via a and href and /ch/de/kundendienst/reparaturen-fuer-hausgeraete
+Then check breadcrumbs-inner exists on current page
+
+When I click on first element via a and href and /ch/de/kundendienst/reparaturen-fuer-hausgeraete/backoefen
+Then check content-block-inner exists on current page
+!-- ----------------------------------------------------------------
+Scenario: Click teaser on the page
+!-- ----------------------------------------------------------------
+When I click on first element via a and href and /ch/de/kundendienst/service-assistent
+Then check enumberSearchField exists on current page
+
+
+When I click on first element via a and href and /ch/de/kundendienst/kontakt
+Then check sdaRepairService exists on current page
+
+
+When I click on first element via a and href and /ch/de/home
+Then the page 'startpage' is opened
+
+!-- --- TTP-289 Customer Service : Competency Pages - Repair was successful ---
+

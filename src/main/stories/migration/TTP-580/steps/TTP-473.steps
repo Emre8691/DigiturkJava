@@ -1,0 +1,130 @@
+!-- --------------------------------------------------------------------
+Scenario: Open NEFF Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 00267820 into searchField
+When I click the navigation element searchBoxBtn
+Then the page shopdetailpage is opened
+Then I wait for element with css [testing_id=addItemToBasket-00267820] to be clickable
+
+When I enter 0 into searchField
+When I click the navigation element searchBoxBtn
+Then I wait for element with css .buy-btn to be clickable
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via button and data-eventtracking and addToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I enter 00267820 into searchField
+When I click the navigation element searchBoxBtn
+Then the page shopdetailpage is opened
+When I click the button addItemToBasket-00267820 without wait
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+Then I must wait '1' second
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page welcomepage is opened
+Then the dialogue step 'WELCOME' is 'active'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+When I enter <orderuserpwd> into 'password'
+When I click the button 'continuebuttonbottom'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Worldpay / Master Card Page 
+!-- --------------------------------------------------------------------
+When I click the button continuebuttonbottom
+Then the page 'summarypage' is shown
+When I click on first element via input and testing_id and payment-mastercard
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+
+
+!-- -------------------------------------------------------------------
+Scenario: Refused Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbermaster2> into the 'cardnumber' field of the 'worldpay' form
+When I enter <month> into the 'expirymonth' field of the 'worldpay' form
+When I enter <year> into the 'expiryyear' field of the 'worldpay' form 
+When I enter 'REFUSED' into the 'cardHolderName' field of the 'worldpay' form
+When I enter <securitycode> into the 'securitycode' field of the 'worldpay' form
+When I click on the 'submitbutton' of 'worldpay'
+Then the page 'summarypage' is shown
+Then the element by xpath //p[@class="custom-error active"] is shown
+
+
+!-- -------------------------------------------------------------------
+Scenario: ERROR Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+When I click on first element via input and testing_id and payment-mastercard
+When I decide to 'agreeContract'
+When I click the button continuebuttonbottom
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbermaster2> into the 'cardnumber' field of the 'worldpay' form
+When I enter <month> into the 'expirymonth' field of the 'worldpay' form
+When I enter <year> into the 'expiryyear' field of the 'worldpay' form
+When I enter 'ERROR' into the 'cardHolderName' field of the 'worldpay' form
+When I enter <securitycode> into the 'securitycode' field of the 'worldpay' form
+When I click on the 'submitbutton' of 'worldpay'
+Then the url of current page contains '/jsp/shopper/MC_SSLController.jsp'
+Then I must wait '2' seconds
+When I click the link contains '/jsp/shopper/SelectPaymentMethod.jsp?OrderKey'
+Then I must wait '2' seconds
+When I click the link contains 'worldpay/cancel'
+Then I must wait '2' seconds
+
+Then the page 'summarypage' is shown
+!-- When I click on the 'submitbutton' of 'worldpay'
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+When I click on first element via input and testing_id and payment-mastercard
+When I decide to 'agreeContract'
+When I click the button continuebuttonbottom
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbermaster2> into the 'cardnumber' field of the 'worldpay' form
+When I enter <month> into the 'expirymonth' field of the 'worldpay' form
+When I enter <year> into the 'expiryyear' field of the 'worldpay' form
+When I enter 'AUTHORIZED' into the 'cardholdername' field of the 'worldpay' form
+When I enter <securitycode> into the 'securitycode' field of the 'worldpay' form
+When I click on the 'submitbutton' of 'worldpay'
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+When I click the element input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+
+
+!-- --- Testcase TTP-473 Automatic:Checkout: Payment: WorldPay: MasterCard (NEFF) was successful ---
+
+

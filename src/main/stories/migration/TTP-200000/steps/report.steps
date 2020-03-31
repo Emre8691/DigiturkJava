@@ -1,0 +1,10 @@
+Scenario: Open Cosmos Report 
+When I enter 'rapor' into searchinput
+When I click on first element via button and id and btnSearch
+When I click the xpath element //*[contains(text(),'Fişli Şikayetler Raporu')]
+When I switch to the pop up window where txtSCCode exists
+When I enter '0000000' into txtSCCode
+When I click on first element via input and id and btnPrint
+
+Then I must wait 5 seconds
+!-- --- TTP-200009 Testcase Repear and Maintenance opened successful ---

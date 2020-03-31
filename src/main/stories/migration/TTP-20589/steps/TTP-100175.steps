@@ -1,0 +1,182 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+
+Then I must wait '2' seconds
+!-- Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <orderuserttp24> into 'signin_email'
+Then the form field signin_email is filled correct with the parameter <orderuserttp24>
+When I clear the 'password' field
+When I enter <password22> into 'signin_password'
+Then the form field signin_password is filled correct with the parameter <password22>
+
+
+When I click the xpath element //*[@id="bshLoginData"]/div[1]/div/button
+Then I must wait 2 seconds
+Then the login was successful
+
+Scenario: Open the Profile Pages (click on myprofile)
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and #mybrand
+When I click on first element via a and testing_id and myprofile
+!-- Then the element changePersonalData is visible
+Then the element by div and class and content-inner is shown
+Then the page 'accountprofilepage' is opened
+!-- Then the element changePersonalData is visible
+Then the element by div and class and content-inner is shown
+!-- Then the page 'accountprofilepage' is opened
+
+!-- Then the page 'accountprofilepage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Change Password Form
+!-- --------------------------------------------------------------------
+When I click the element changePWD
+!-- Then the page 'accountpasswordchangepage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check field and validations
+!-- --------------------------------------------------------------------
+Then the element oldPassword is visible
+Then the element password is visible
+Then the element confirmedPassword is visible
+
+When I clear the oldPassword field
+When I click on first element via button and type and submit
+!-- Then the element by div and class and a-errormessage.error-required is shown
+Then the element by div and class and a-errormessage error-required is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with incorrect old password
+!-- --------------------------------------------------------------------
+When I enter <incorrectoldpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <incorrectoldpassword>
+
+When I enter <newpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <newpassword>
+
+When I enter <newpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <newpassword>
+
+When I click the button 'submitButton'
+Then the page 'accountpasswordchangepage' is opened
+Then the element by div and id and oldPassword-error-custom is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with different incorrect new passwords
+!-- --------------------------------------------------------------------
+When I clear the 'oldPassword' field
+Then the form field 'oldPassword' is filled correct with the parameter ''
+When I clear the 'password' field
+Then the form field 'password' is filled correct with the parameter ''
+When I clear the 'confirmedPassword' field
+Then the form field 'confirmedPassword' is filled correct with the parameter ''
+
+When I enter <oldpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <oldpassword>
+
+When I enter <incorrectnewpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <incorrectnewpassword>
+
+When I enter <invalidnewpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <invalidnewpassword>
+
+When I click the button 'submitButton'
+Then the page 'accountpasswordchangepage' is shown
+!-- Then the element by div and class and a-errormessage.error-confirm is shown
+Then the element by div and testing_id and validationMismatchError is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with new invalid password
+!-- --------------------------------------------------------------------
+When I clear the 'oldPassword' field
+Then the form field 'oldPassword' is filled correct with the parameter ''
+
+When I clear the 'password' field
+Then the form field 'password' is filled correct with the parameter ''
+When I clear the 'confirmedPassword' field
+Then the form field 'confirmedPassword' is filled correct with the parameter ''
+
+
+
+When I enter <oldpassword> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <oldpassword>
+
+When I enter <invalidnewpassword> into 'password'
+Then the form field 'password' is filled correct with the parameter <invalidnewpassword>
+
+When I enter <invalidnewpassword> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <invalidnewpassword>
+
+When I click the button 'submitButton'
+Then the page 'accountpasswordchangepage' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Try to change password with correct parameters
+!-- --------------------------------------------------------------------
+When I clear the 'oldPassword' field
+Then the form field 'oldPassword' is filled correct with the parameter ''
+When I clear the 'password' field
+Then the form field 'password' is filled correct with the parameter ''
+When I clear the 'confirmedPassword' field
+Then the form field 'confirmedPassword' is filled correct with the parameter ''
+
+When I enter <oldpassword2> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <oldpassword2>
+
+When I enter <newpassword2> into 'password'
+Then the form field 'password' is filled correct with the parameter <newpassword2>
+
+When I enter <newpassword2> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <newpassword2>
+
+When I click the button 'submitButton'
+Then I must wait '2' seconds
+Then the page 'accountprofilepage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Re-change the password of the user for re-usability
+!-- --------------------------------------------------------------------
+!-- --------------------------------------------------------------------
+When I click the element changePWD
+
+!-- --------------------------------------------------------------------
+Scenario: Change the user password to the origin
+!-- --------------------------------------------------------------------
+When I enter <newpassword2> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <newpassword2>
+
+When I enter <oldpassword2> into 'password'
+Then the form field 'password' is filled correct with the parameter <oldpassword2>
+
+When I enter <oldpassword2> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <oldpassword2>
+
+When I click the button 'submitButton'
+!-- Then the page 'accountprofilepage' is opened
+
+
+!-- --- Testcase TTP-100101 MyAccount:Change Password was successful ---

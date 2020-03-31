@@ -1,0 +1,52 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the hidden 'navflyout-2' is not visible
+Then the hidden 'navflyout-3' is not visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on "Customer Service" in menu and Click on "Service Assistant"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the element <customerserviceid>
+Then the element enumberSearchField is visible
+Then the element username is visible
+Then the element password is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Return to flyout and click on "User manuals" and "Cleaning and Care"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element <usermanualcategoryid>
+Then the element enumberSearchField is visible
+Then the element username is visible
+Then the element password is visible
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Contact"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element <contactid>
+Then the link contains <contactteaser>
+
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Book a repair visit online"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element <bookandrepaironlineid>
+Then the link contains <bookrepairvisionlineteaser>
+
+!-- --- TTP-14885 Testcase Flyout for Siemens was successful ---
+

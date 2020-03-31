@@ -1,0 +1,39 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Webpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: click on Dealer Locator.
+!-- --------------------------------------------------------------------
+When I click the button findDealer
+Then the page dealerlocator is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: check Dealer Locator elements.
+!-- --------------------------------------------------------------------
+Then the element findDealer is visible
+Then the element dealerLocatorSearchField is visible
+Then the element by div and data-t-name and DealerLocator is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter Location (i.e. Madrid)
+!-- --------------------------------------------------------------------
+When I clear the dealerLocatorSearchField field
+Then the form field dealerLocatorSearchField is filled correct with the parameter '' 
+When I enter <city> into dealerLocatorSearchField
+Then the element dealerLocatorFlyout is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: click on First Location on Flyout (i.e. Madrid)
+!-- --------------------------------------------------------------------
+When I click on first visible element via span and testing_id and suggestLayerResult
+Then the element by div and class and map-wrap.js-map-wrap is shown
+
+!-- -- TTP-15255 - TEST Dealer Locator on MBMD BALAY is successful ----- 

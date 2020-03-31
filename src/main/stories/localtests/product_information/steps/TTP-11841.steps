@@ -1,0 +1,42 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens UK FUT-INT mainpage)
+!-- -------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -----------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation
+!-- -----------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- ------------------------------------------------
+Scenario: Click on "Washing Machines"
+!-- ------------------------------------------------
+When I click the navigation element subcategory-210
+!-- --- Check from URL -----
+Then the url of current page contains '/uk/products/washing-and-drying/washing-machines'
+
+!-- ----------------------------------------------------
+Scenario: Click on "To the list of all appliances"
+!-- ----------------------------------------------------
+When I click the 4 nd/th element via a and href and /uk/productlist/laundry/washing-machines
+Then the element by div and class and items-area-inner is shown
+
+!-- -------------------------------------------------------------------
+Scenario: Select the product from marketing list page, i.e.WM14W750GB
+!-- -------------------------------------------------------------------
+When I click on first element via img and alt and WM4UH640GB
+Then I must wait '2' seconds
+Then the element by div and class and showroom-module-inner is shown
+
+!-- ------------------------------------------------------------------------------------------------------------------------
+Scenario: Check for Product Gallery; should be located on the left-hand-side in 435X515px on Marketing Product Detail Page
+!-- ------------------------------------------------------------------------------------------------------------------------
+Then the element by div and id and gallery-panel-1 is shown
+Then I wait for element with css img[src*="435x515"] to be visible
+

@@ -1,0 +1,72 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the hidden 'navflyout-2' is not visible
+Then the hidden 'navflyout-3' is not visible
+Then the hidden 'navflyout-4' is not visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Services
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the element 'category-30'
+Then the element enumberSearchField is visible
+Then the element username is visible
+Then the element password is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Return to flyout and click on "User manuals"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the element category-31
+Then the element enumberSearchField is visible
+Then the element username is visible
+Then the element password is visible
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on a "sparepart"-link in the flyout. (Not available for every country)
+Meta: @exclude_notready
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'navflyout-4' is visible
+When I click the element subcategory-400
+Then I wait for element with css [testing_id="matNumberField"] to be visible
+
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Customer service" ("All about service")
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'navflyout-4' is visible
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Care and cleaning"
+!-- --------------------------------------------------------------------
+When I click the navigation element subcategory-410
+!-- -- Do Teaser Controls
+Then the link contains <cleanandcareteaser1>
+Then the link contains <cleanandcareteaser2>
+
+
+!-- -------------------------------------------------------------------
+Scenario:  Return to flyout and click on "Contact"
+!-- --------------------------------------------------------------------
+When I click the element 'nav-3'
+Then the element 'navflyout-3' is visible
+When I click the navigation element category-32
+!-- -- Do Teaser Controls
+Then the link contains <contactteaser3>
+
+
+!-- --- TTP-14886 Testcase Flyout for Siemens was successful ---
+

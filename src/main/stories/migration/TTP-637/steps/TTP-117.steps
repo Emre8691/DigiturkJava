@@ -1,0 +1,152 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch UK Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+!-- --------------------------------------------------------------------
+When I click the navigation element logInOutHeaderButton
+Then the page 'loginpage' is opened
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+Then the page 'loginpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Validation messages should be visible in red with info texts for each mandatory field
+!-- -------------------------------------------------------------------
+When I click the link contains registration1
+Then the page loginpage is opened
+Then the registrationcontactform form is available
+When I click the 'continueButton' as an ID
+Then the element bshRegistrationFormData1.errors is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill in the fields of form 1 with test data that provided
+!-- --------------------------------------------------------------------
+When I select the title with the option <title> version
+Then the page loginpage is shown
+When I enter <firstname> into 'firstName'
+Then the form field 'firstName' is filled correct with the parameter <firstname>
+
+When I enter <lastname> into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter <lastname>
+!-- User is not available until Prod-copy
+When I enter <reguserv2> into 'emailAddress'
+Then the form field 'emailAddress' is filled correct with the parameter <reguserv2>
+When I enter <reguserv2> into 'confirmedEmailAddress'
+Then the form field 'confirmedEmailAddress' is filled correct with the parameter <reguserv2>
+!-- When I enter '117gbboschfutureint2@mailinator.com' into 'emailAddress'
+!-- Then the form field 'emailAddress' is filled correct with the parameter '117gbboschfutureint2@mailinator.com'
+!-- When I enter '117gbboschfutureint2@mailinator.com' into 'confirmedEmailAddress'
+!-- Then the form field 'confirmedEmailAddress' is filled correct with the parameter '117gbboschfutureint2@mailinator.com'
+
+When I enter <passwordv2> into 'password'
+Then the form field 'password' is filled correct with the parameter <passwordv2>
+
+When I enter <passwordv2> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <passwordv2>
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click "Continue" button at the bottom of the page
+!-- --------------------------------------------------------------------
+When I click the 'continueButton' as an ID
+Then the page 'loginpage' is opened
+Then the 'contactdetailform' form is available
+
+!-- --------------------------------------------------------------------
+Scenario: Validation messages should be visible in red with info texts for each mandatory field
+!-- --------------------------------------------------------------------
+When I click the 'sendButton' as an ID
+Then the page 'loginpage' is opened
+Then the element bshRegistrationFormData2.errors is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Fill in the fields of form 2 with test data that provided
+!-- --------------------------------------------------------------------
+When I enter <zipcode> into 'postalCode'
+Then the form field 'postalCode' is filled correct with the parameter <zipcode>
+
+When I enter <street> into 'addressLine1'
+Then the form field 'addressLine1' is filled correct with the parameter <street>
+
+When I enter <city> into 'city'
+Then the form field 'city' is filled correct with the parameter <city>
+
+When I select the region with the option GB/LO_GB version
+Then the page 'loginpage' is shown
+
+When I enter <telephone> into 'phone'
+Then the form field 'phone' is filled correct with the parameter <telephone>
+
+
+!-- --------------------------------------------------------------------
+Scenario: Confirm the registration (Registration Page 3)
+!-- --------------------------------------------------------------------
+When I click the 'sendButton' as an ID
+Then I must wait '2' seconds
+Then the page 'loginpage' is opened
+When I open the 'activationUrl' from the current page
+Then I must wait '5' seconds
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open the MyProfile Page
+!-- --------------------------------------------------------------------
+
+When I click the navigation element 'logInOutHeaderButton'
+Then the page 'loginpage' is opened
+
+!-- When I enter '117gbboschfutureint2@mailinator.com' into 'username'
+!-- Then the form field 'username' is filled correct with the parameter '117gbboschfutureint2@mailinator.com'
+When I enter <reguserv2> into 'username'
+Then the form field 'username' is filled correct with the parameter <reguserv2>
+When I enter <passwordv2> into 'password'
+Then the form field 'password' is filled correct with the parameter <passwordv2>
+
+When I click the button 'logInButton'
+Then I must wait '2' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Delete the created user
+!-- --------------------------------------------------------------------
+!-- When I click on child element span with parent a and href and #tab4
+When I click the header4 as an ID
+Then I must wait '2' seconds
+Then the deleteAccountForm form is available
+When I click the 'deleteAccountLink' as an ID
+Then I must wait '1' second
+
+When I confirm the pop up box
+Then I must wait '2' seconds
+
+When I confirm the pop up box
+Then I must wait '2' seconds
+
+When I click the button 'logInOutHeaderButton'
+Then the page 'loginpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Check Deleted User
+!-- --------------------------------------------------------------------
+!-- When I enter '117gbboschfutureint2@mailinator.com' into 'username'
+!-- Then the form field 'username' is filled correct with the parameter '117gbboschfutureint2@mailinator.com'
+When I enter <reguserv2> into 'username'
+Then the form field 'username' is filled correct with the parameter <reguserv2>
+When I enter <passwordv2> into 'password'
+Then the form field 'password' is filled correct with the parameter <passwordv2>
+
+When I click the button 'logInButton'
+Then the expected 'erroruserdoesnotexist' is shown
+
+
+!-- --- Testcase TTP-117 Automatic:User Registration:Registration Bosch was successful ---
+
+

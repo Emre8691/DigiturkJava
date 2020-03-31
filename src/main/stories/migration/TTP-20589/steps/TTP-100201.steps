@@ -1,0 +1,106 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click on first element via span and class and editableMessage
+
+
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and https://outlet.bosch-home.com/nl/store/myaccount/login
+When I clear the 'username' field
+When I enter <orderuserttp24> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp24>
+When I clear the password field
+When I enter <password22> into 'password'
+Then the form field password is filled correct with the parameter <password22>
+
+When I click on first element via button and id and submitButton
+Then I must wait 2 seconds
+Then the login was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Click all Products on Shop, Cleaning & Care
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and http://outlet.bosch-home.com/nl/store
+
+!-- When I click the xpath element //*[@id="anc-5447112"]/div[2]/div[2]/ul/li[4]/a
+!-- Then the page 'shoplistpage' is opened
+
+Scenario: Add item to the basket
+When I enter <fulltextsearchproductcode> into searchfield
+Then the form field searchfield is filled correct with the parameter <fulltextsearchproductcode>
+!-- Then the element by div and class and ws-po-box is shown
+When I click on first element via input and name and searchbutton
+When I click on first element via a and id and buyStatus-MUM50136--B
+When I click on first element via a and href and /nl/store/basket
+
+!-- --------------------------------------------------------------------
+Scenario: Raise the quantity from "Number of Products" with a click on the UP button
+!-- --------------------------------------------------------------------
+!-- When I increase the quantity of the product
+!-- When I click the element plus-button
+When I click on first element via a and class and plus
+Then the quantity is one more as before
+!-- Then the quantity is '2' for product <productcode>
+
+!-- --------------------------------------------------------------------
+Scenario: Reduce the quantity from "Number of Products" with a click on the minus-button
+!-- --------------------------------------------------------------------
+When I click the xpath element //*[@id="basketInnerContent"]/div[2]/div/div[5]/div/div[2]/a[1]
+Then the quantity is one less then before
+!-- Then the quantity is '1' for product <productcode>
+
+Then I must wait 1 seconds
+!-- --------------------------------------------------------------------
+Scenario: Enter the quantity of 3-4 or 5 to Raise the quantity
+!-- --------------------------------------------------------------------
+When I clear the value field
+
+!-- Then the form field value is filled correct with the parameter ''
+!-- When I enter 3 into quantity
+!-- Then the given data 3 is shown correct at field step-controls
+!-- TODO: Basket Count for Siemens
+!-- Add to Basket
+!-- Then the basket count is 1
+
+
+!-- --------------------------------------------------------------------
+Scenario: Navigate to a shop category (e.g. laundry --> accessories)
+!-- --------------------------------------------------------------------
+When I enter <fulltextsearchproductcode2> into searchfield
+Then the form field searchfield is filled correct with the parameter <fulltextsearchproductcode2>
+!-- Then the element by div and class and ws-po-box is shown
+When I click on first element via input and name and searchbutton
+!-- --------------------------------------------------------------------
+Scenario: Add item to the basket
+!-- --------------------------------------------------------------------
+When I click on first element via a and id and buyStatus-PUE651FB2EB
+When I click on first element via a and href and /nl/store/basket
+
+Then I must wait '1' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: MyBasket - Remove all item 
+!-- --------------------------------------------------------------------
+!-- When I click on first visible element via a and testing_id and goToShoppingBasket
+
+When I click the xpath element //*[@id="basketInnerContent"]/div[2]/div/div[3]/div[5]/a
+Then I must wait 2 seconds
+When I click the xpath element //*[@id="basketInnerContent"]/div[2]/div/div[3]/div[5]/a
+!-- Then the page basketpage is shown
+
+!-- -- TTP-100201 - QG MYB2 AddtoBasket test scenario is successful -----
+

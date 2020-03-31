@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	
+	<bean id="propertiesReader" class="itelli.webtests.pages.common.PropertiesReader">
+		<property name="contextInformationProvider" ref="contextInformationProvider" />
+		<property name="webTestsConfiguration" ref="webTestConfiguration" />
+	</bean>
+
+	<bean id="contextBase" class="itelli.webtests.pages.base.ContextBase">
+		<constructor-arg ref="webDriverProvider" />
+		<property name="contextInformationProvider" ref="contextInformationProvider" />
+		<property name="propertiesReader" ref="propertiesReader" />
+		<property name="elementFinder" ref="elementFinder" />
+		<property name="contextBasedActions" ref="contextBasedActions" />
+		<property name="contextBasedValidations" ref="contextBasedValidations" />
+		<property name="contextBasedInformations" ref="contextBasedInformations" />
+	</bean>
+	
+	<bean id="elementFinder" class="itelli.webtests.pages.base.ElementFinder">
+		<property name="contextBase" ref="contextBase" />
+	</bean>
+	<bean id="contextBasedActions" class="itelli.webtests.pages.base.ContextBasedActions">
+		<property name="contextBase" ref="contextBase" />
+	</bean>
+	<bean id="contextBasedValidations" class="itelli.webtests.pages.base.ContextBasedValidations">
+		<property name="contextBase" ref="contextBase" />
+	</bean>
+	<bean id="contextBasedInformations" class="itelli.webtests.pages.base.ContextBasedInformations">
+		<property name="contextBase" ref="contextBase" />
+	</bean>
+
+	<bean id="systemHelper" class="itelli.webtests.pages.base.SystemHelper">
+		<property name="contextInformationProvider" ref="contextInformationProvider" />
+		<property name="contextBase" ref="contextBase" />
+	</bean>
+
+	
+
+</beans>

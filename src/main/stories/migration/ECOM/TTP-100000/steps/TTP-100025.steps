@@ -1,0 +1,29 @@
+Scenario:Open Ecom
+When I open external webpage http://cosmoseutest.euce.corp.bshg.com/ecomglobalrbtest_inter/ecomGR/eComTouch_inter/eCom/index.html
+Then I wait for element with css input[id="txtUserName"] to be visible
+Then I must wait '7' seconds
+When I select the ddLanguages with the option English version
+When I enter 'vardakis' into txtUserName
+When I enter 'f123456***' into txtPassword
+When I click on first element via input and name and btnAuth
+Then I must wait '3' seconds
+
+When I click the xpath element //*[@id="m17"]
+Then I must wait 5 seconds
+!-- When I click the xpath element //*[@risid="82451020"]/div[1]
+Scenario:Open Ris
+When I click the xpath element //*[@id="divSorting"]/div[1]/div[2]/a/div[2]/div/div[1]/ul/li[2]/span
+Then I must wait 3 seconds
+
+Scenario: Cancel - İptal ekranını ac
+When I click on first element via i and class and fa fa-ban
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="concludeTypesRadioList_2" and @value='8']
+Then I must wait 1 seconds
+When I enter 'test' into txtConcludeNote
+When I click on first element via button and id and btnNext
+Then I must wait 2 seconds
+
+!-- --- TTP-100007 Testcase Ecom RIS Cancel was successful --- 
+
+

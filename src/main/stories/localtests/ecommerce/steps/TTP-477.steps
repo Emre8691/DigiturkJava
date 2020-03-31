@@ -1,0 +1,105 @@
+!-- -------------------------------------------------------------------
+Scenario: Open NEFF Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Search and Buy a product
+!-- --------------------------------------------------------------------
+When I enter <productcode> into searchField
+Then the form field searchField is filled correct with the parameter <productcode>
+When I click the button searchBoxBtn
+Then the page 'shopdetailpage' is opened
+Then the availability is shown
+When I add the product <productcode> to basket
+Then I must wait '1' second
+When I click on first element via a and testing_id and goToBasket
+
+!-- -------------------------------------------------------------------
+Scenario: Check the amount of various products at basket (not the count of an entry or the basket value)
+!-- --------------------------------------------------------------------
+Then the page basketpage is opened
+Then the basket count is 1
+When I click the button 'checkouttop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Process
+!-- -------------------------------------------------------------------
+Then the page 'welcomepage' is opened
+
+When I continue with 'checkoutanonymus'
+Then the chosen option 'checkoutanonymus' is selected
+
+When I click the button 'continuebuttontop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Fill the form fields of delivery page
+!-- -------------------------------------------------------------------
+Then the page 'deliverypage' is shown
+When I select the paymentAddress.title with the option <title> version
+Then the page 'deliverypage' is shown
+When I enter <firstname> into paymentAddress.firstname
+Then the form field paymentAddress.firstname is filled correct with the parameter <firstname>
+When I enter <lastname> into paymentAddress.lastName
+Then the form field paymentAddress.lastName is filled correct with the parameter <lastname>
+
+When I enter <street> into paymentAddress.streetName
+Then the form field paymentAddress.streetName is filled correct with the parameter <street>
+When I enter <housenumber> into paymentAddress.streetnumber
+Then the form field paymentAddress.streetnumber is filled correct with the parameter <housenumber>
+
+When I enter <zip> into paymentAddress.postalcode
+Then the form field paymentAddress.postalcode is filled correct with the parameter <zip>
+When I enter <city> into paymentAddress.town
+Then the form field paymentAddress.town is filled correct with the parameter <city>
+
+When I enter <orderuserttp> into paymentAddress.email
+Then the form field paymentAddress.email is filled correct with the parameter <orderuserttp>
+When I enter <orderuserttp> into paymentAddress.emailReenterred
+Then the form field paymentAddress.emailReenterred is filled correct with the parameter <orderuserttp>
+
+When I click the button 'continuebuttontop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Summary Page Payment test
+!-- -------------------------------------------------------------------
+Then the page summarypage is opened
+!-- When I choose the 'visa' 'payment'
+!-- Then the chosen 'payment' is 'visa'
+When I click on first element via label and for and payment-visa
+Then the page summarypage is shown
+When I click the button 'continuebuttontop'
+Then the expected 'agreeValidationError' is shown
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button 'continuebuttonbottom'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Payment Worldpay Visa
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'PaymentMethod=VISA'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option 2020 version
+When I enter 'AUTHORIZED' into cardHolderName
+When I enter <securitycode> into CVC
+When I click the element Send
+When I click the element continue
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+
+Then the page 'confirmationpage' is opened
+
+!-- --- Testcase TTP-477 Checkout Guest (NEFF) was successful ---

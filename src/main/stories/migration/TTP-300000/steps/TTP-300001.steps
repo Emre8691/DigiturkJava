@@ -1,0 +1,18 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Cosmos login Page
+When I open external webpage https://censhare-cons-de.bshg.com/censhare5/client/
+Then I must wait '1000' seconds
+Then I wait for element with css input[type="text"] to be visible
+When I enter 'testautomation' into text
+Then I must wait 2 seconds
+When I enter 'testautomation' into password
+Then I must wait 2 seconds
+When I click the xpath element //*[@id="censhareApp"]/app-root/div/div/div/div[2]/div[3]/form/button
+Then I must wait '2' seconds
+Then the element by div and class and csPageActions csDefaultPages is shown
+When I doubleclick on first element via li and class and csAssetListItem__title
+Then I must wait 23 seconds
+
+ 
+!-- --- TTP-300001 Testcase: new Customer Registration finished successful ---
+

@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>bsh</groupId>
+	<artifactId>webtestsItelli</artifactId>
+	<version>1.1.0</version>
+	<name>Web-based Tests for the Itelli project</name>
+	<description></description>
+
+	<properties>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<jbehave.core.version>3.10</jbehave.core.version>
+		<jbehave.web.version>3.6-beta-1</jbehave.web.version>
+		<jbehave.site.version>3.1.1</jbehave.site.version>
+		<selenium.version>2.41.0</selenium.version>
+		<fluent.selenium.version>1.14.2</fluent.selenium.version>
+		<junit.version>4.11</junit.version>
+		<maven.antrun.plugin>1.7</maven.antrun.plugin>
+		<commons.lang.version>3.1</commons.lang.version>
+		<log4j.version>1.2.17</log4j.version>
+
+		<firefox.portable.version>31.0</firefox.portable.version>
+
+		<webteststories>**/WebTests.java</webteststories>
+
+		<!-- Failing stories should not mark the build as broken (only unstable). 
+			Missing Test-IDs seem to cause build view failures - thus we also ignore 
+			these. -->
+		<ignore.story.failures>true</ignore.story.failures>
+		<ignore.view.failures>true</ignore.view.failures>
+	</properties>
+	<!-- <dependencyManagement> <dependencies> <dependency> <groupId>org.hamcrest</groupId> 
+		<artifactId>hamcrest-library</artifactId> <version>1.2.1</version> </dependency> 
+		</dependencies> </dependencyManagement> -->
+	<repositories>
+		<repository>
+			<id>smartbearsoftware</id>
+			<url>http://smartbearsoftware.com/repository/maven2/</url>
+		</repository>
+	</repositories>
+	
+	<dependencies>
+		<dependency>
+    		<groupId>de.codecentric</groupId>
+    		<artifactId>jbehave-junit-runner</artifactId>
+    		<version>1.2.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.glassfish.jersey.core</groupId>
+		    <artifactId>jersey-client</artifactId>
+		    <version>2.23.2</version>
+		</dependency>
+	<dependency>
+    	<groupId>org.camunda.bpm.extension</groupId>
+    	<artifactId>camunda-bpm-assert</artifactId>
+    	<version>2.0-alpha2</version>
+    	<scope>test</scope>
+	</dependency>
+		<dependency>
+			<groupId>com.smartbear.soapui</groupId>
+			<artifactId>soapui</artifactId>
+			<version>5.1.3</version>
+
+			<exclusions>
+
+				<!-- These are mainly GUI artifacts not needed in the headless test runner -->
+				<!-- TODO We might also want to remove: fife:rsyntaxtextarea. It's included 
+					in prior versions (< 4.5.2) though -->
+
+				<!-- JGoodies -->
+
+				<exclusion>
+					<groupId>com.jgoodies</groupId>
+					<artifactId>forms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.jgoodies</groupId>
+					<artifactId>looks</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.jgoodies</groupId>
+					<artifactId>binding</artifactId>
+				</exclusion>
+			</exclusions>
+
+		</dependency>
+		
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fifesoft</groupId>
+			<artifactId>rsyntaxtextarea</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.sonarsource.scanner.maven/sonar-maven-plugin -->
+		<dependency>
+			<groupId>org.sonarsource.scanner.maven</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.2</version>
+			</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.core.version}</version>
+			<classifier>resources</classifier>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.site</groupId>
+			<artifactId>jbehave-site-resources</artifactId>
+			<version>${jbehave.site.version}</version>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.web</groupId>
+			<artifactId>jbehave-web-selenium</artifactId>
+			<version>${jbehave.web.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.jbehave</groupId>
+					<artifactId>jbehave-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium.fluent</groupId>
+			<artifactId>fluent-selenium</artifactId>
+			<version>${fluent.selenium.version}</version>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.hamcrest</groupId> <artifactId>hamcrest-all</artifactId> 
+			<version>1.1</version> </dependency> -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-spring</artifactId>
+			<version>${jbehave.core.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons.lang.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>net.lightbody.bmp</groupId>
+		    <!-- To use the legacy, Jetty-based implementation, 
+		         change the artifactId to browsermob-core -->
+		    <artifactId>browsermob-core-littleproxy</artifactId>
+		    <version>2.1.0-beta-4</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${basedir}/src/test/stories</directory>
+			</resource>
+		</resources>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+					</configuration>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.jbehave</groupId>
+										<artifactId>
+											jbehave-maven-plugin
+										</artifactId>
+										<versionRange>
+											[3.7.4,)
+										</versionRange>
+										<goals>
+											<goal>
+												unpack-view-resources
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${maven.antrun.plugin}</version>
+				<executions>
+
+					<execution>
+						<id>default-cli</id>
+						<configuration>
+							<target>
+								<ant antfile="${basedir}/build.xml">
+									<property name="selenium.version" value="${selenium.version}" />
+									<property name="firefox.portable.version" value="${firefox.portable.version}" />
+								</ant>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-maven-plugin</artifactId>
+				<version>${jbehave.core.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+						<version>${log4j.version}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<!-- Unpack the view resources (CSS, JavaScript) to make the HTML report 
+						look good -->
+					<execution>
+						<id>unpack-view-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack-view-resources</goal>
+						</goals>
+					</execution>
+					<!-- Executes the tests. -->
+					<execution>
+						<id>run-stories</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>${webteststories}</include>
+							</includes>
+							<ignoreFailureInStories>${ignore.story.failures}</ignoreFailureInStories>
+							<ignoreFailureInView>${ignore.view.failures}</ignoreFailureInView>
+						</configuration>
+						<goals>
+							<goal>run-stories-as-embeddables</goal>
+						</goals>
+					</execution>
+					<!-- Reports the stepdocs of all stories (= mapping of tokens to Java 
+						methods). -->
+					<execution>
+						<id>report-stepdocs</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>${webteststories}</include>
+							</includes>
+						</configuration>
+						<goals>
+							<goal>report-stepdocs-as-embeddables</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+					<additionalBuildcommands>
+						<buildcommand>net.sf.eclipsecs.core.CheckstyleBuilder</buildcommand>
+						<buildcommand>net.sourceforge.pmd.eclipse.plugin.pmdBuilder</buildcommand>
+						<buildcommand>edu.umd.cs.findbugs.plugin.eclipse.findbugsBuilder</buildcommand>
+					</additionalBuildcommands>
+					<additionalProjectnatures>
+						<projectnature>net.sf.eclipsecs.core.CheckstyleNature</projectnature>
+						<projectnature>net.sourceforge.pmd.eclipse.plugin.pmdNature</projectnature>
+						<projectnature>edu.umd.cs.findbugs.plugin.eclipse.findbugsNature</projectnature>
+					</additionalProjectnatures>
+					<additionalConfig>
+						<file>
+							<name>.checkstyle</name>
+							<content>
+								<![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+									<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
+										<local-check-config name="ARITHNEA" location="/config/checkstyle.xml" type="project" description="">
+											<additional-data name="protect-config-file" value="false"/>
+										</local-check-config>
+										<fileset name="all" enabled="true" check-config-name="ARITHNEA" local="true">
+											<file-match-pattern match-pattern="." include-pattern="false"/>
+											<file-match-pattern match-pattern=".*gensrc.*" include-pattern="false"/>
+											<file-match-pattern match-pattern=".*_jsp.java" include-pattern="false"/>
+											<file-match-pattern match-pattern=".*Generated.*java" include-pattern="false"/>
+											<file-match-pattern match-pattern="platformhome.properties" include-pattern="false"/>
+											<file-match-pattern match-pattern="(^testsrc|^.*/testsrc)/.*java" include-pattern="true"/>
+											<file-match-pattern match-pattern="(^src|^.*/src)/.*java" include-pattern="true"/>
+										</fileset>
+									</fileset-config>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>.pmd</name>
+							<content>
+								<![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+									<pmd>
+										<useProjectRuleSet>true</useProjectRuleSet>
+										<ruleSetFile>src\main\resources\pmd.ruleset</ruleSetFile>
+										<includeDerivedFiles>false</includeDerivedFiles>
+										<violationsAsErrors>false</violationsAsErrors>
+									</pmd>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>.springBeans</name>
+							<content>
+								<![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+									<beansProjectDescription>
+										<version>1</version>
+										<pluginVersion>3.2.0.201303060654-RELEASE</pluginVersion>
+										<configSuffixes>
+											<configSuffix>xml</configSuffix>
+										</configSuffixes>
+										<enableImports>true</enableImports>
+										<configs>
+											<config>src/main/resources/spring-configuration.xml</config>
+											<config>src/main/resources/spring-jbehave-lifecycle.xml</config>
+											<config>src/main/resources/spring-jbehave-pageobjects.xml</config>
+											<config>src/main/resources/spring-jbehave-steps.xml</config>
+										</configs>
+										<configSets>
+										</configSets>
+									</beansProjectDescription>
+								]]>
+							</content>
+						</file>
+						<file>
+							<name>.settings/edu.umd.cs.findbugs.core.prefs</name>
+							<content>
+								<![CDATA[
+								#FindBugs User Preferences
+								#Fri May 10 10:26:42 CEST 2013
+								cloud_id=edu.umd.cs.findbugs.cloud.doNothingCloud
+								detectorAppendingToAnObjectOutputStream=AppendingToAnObjectOutputStream|true
+								detectorAtomicityProblem=AtomicityProblem|true
+								detectorBadAppletConstructor=BadAppletConstructor|false
+								detectorBadResultSetAccess=BadResultSetAccess|true
+								detectorBadSyntaxForRegularExpression=BadSyntaxForRegularExpression|true
+								detectorBadUseOfReturnValue=BadUseOfReturnValue|true
+								detectorBadlyOverriddenAdapter=BadlyOverriddenAdapter|true
+								detectorBooleanReturnNull=BooleanReturnNull|true
+								detectorCallToUnsupportedMethod=CallToUnsupportedMethod|false
+								detectorCheckExpectedWarnings=CheckExpectedWarnings|false
+								detectorCheckImmutableAnnotation=CheckImmutableAnnotation|true
+								detectorCheckTypeQualifiers=CheckTypeQualifiers|true
+								detectorCloneIdiom=CloneIdiom|true
+								detectorComparatorIdiom=ComparatorIdiom|true
+								detectorConfusedInheritance=ConfusedInheritance|true
+								detectorConfusionBetweenInheritedAndOuterMethod=ConfusionBetweenInheritedAndOuterMethod|true
+								detectorCrossSiteScripting=CrossSiteScripting|true
+								detectorDefaultEncodingDetector=DefaultEncodingDetector|true
+								detectorDoInsideDoPrivileged=DoInsideDoPrivileged|true
+								detectorDontCatchIllegalMonitorStateException=DontCatchIllegalMonitorStateException|true
+								detectorDontIgnoreResultOfPutIfAbsent=DontIgnoreResultOfPutIfAbsent|true
+								detectorDontUseEnum=DontUseEnum|true
+								detectorDroppedException=DroppedException|true
+								detectorDumbMethodInvocations=DumbMethodInvocations|true
+								detectorDumbMethods=DumbMethods|true
+								detectorDuplicateBranches=DuplicateBranches|true
+								detectorEmptyZipFileEntry=EmptyZipFileEntry|true
+								detectorEqualsOperandShouldHaveClassCompatibleWithThis=EqualsOperandShouldHaveClassCompatibleWithThis|true
+								detectorExplicitSerialization=ExplicitSerialization|true
+								detectorFinalizerNullsFields=FinalizerNullsFields|true
+								detectorFindBadCast2=FindBadCast2|true
+								detectorFindBadForLoop=FindBadForLoop|true
+								detectorFindCircularDependencies=FindCircularDependencies|false
+								detectorFindDeadLocalStores=FindDeadLocalStores|true
+								detectorFindDoubleCheck=FindDoubleCheck|true
+								detectorFindEmptySynchronizedBlock=FindEmptySynchronizedBlock|true
+								detectorFindFieldSelfAssignment=FindFieldSelfAssignment|true
+								detectorFindFinalizeInvocations=FindFinalizeInvocations|true
+								detectorFindFloatEquality=FindFloatEquality|true
+								detectorFindHEmismatch=FindHEmismatch|true
+								detectorFindInconsistentSync2=FindInconsistentSync2|true
+								detectorFindJSR166LockMonitorenter=FindJSR166LockMonitorenter|true
+								detectorFindLocalSelfAssignment2=FindLocalSelfAssignment2|true
+								detectorFindMaskedFields=FindMaskedFields|true
+								detectorFindMismatchedWaitOrNotify=FindMismatchedWaitOrNotify|true
+								detectorFindNakedNotify=FindNakedNotify|true
+								detectorFindNonShortCircuit=FindNonShortCircuit|true
+								detectorFindNullDeref=FindNullDeref|true
+								detectorFindNullDerefsInvolvingNonShortCircuitEvaluation=FindNullDerefsInvolvingNonShortCircuitEvaluation|true
+								detectorFindOpenStream=FindOpenStream|true
+								detectorFindPuzzlers=FindPuzzlers|true
+								detectorFindRefComparison=FindRefComparison|true
+								detectorFindReturnRef=FindReturnRef|true
+								detectorFindRunInvocations=FindRunInvocations|true
+								detectorFindSelfComparison=FindSelfComparison|true
+								detectorFindSelfComparison2=FindSelfComparison2|true
+								detectorFindSleepWithLockHeld=FindSleepWithLockHeld|true
+								detectorFindSpinLoop=FindSpinLoop|true
+								detectorFindSqlInjection=FindSqlInjection|true
+								detectorFindTwoLockWait=FindTwoLockWait|true
+								detectorFindUncalledPrivateMethods=FindUncalledPrivateMethods|true
+								detectorFindUnconditionalWait=FindUnconditionalWait|true
+								detectorFindUninitializedGet=FindUninitializedGet|true
+								detectorFindUnrelatedTypesInGenericContainer=FindUnrelatedTypesInGenericContainer|true
+								detectorFindUnreleasedLock=FindUnreleasedLock|true
+								detectorFindUnsatisfiedObligation=FindUnsatisfiedObligation|true
+								detectorFindUnsyncGet=FindUnsyncGet|true
+								detectorFindUseOfNonSerializableValue=FindUseOfNonSerializableValue|true
+								detectorFindUselessControlFlow=FindUselessControlFlow|true
+								detectorFormatStringChecker=FormatStringChecker|true
+								detectorHugeSharedStringConstants=HugeSharedStringConstants|true
+								detectorIDivResultCastToDouble=IDivResultCastToDouble|true
+								detectorIncompatMask=IncompatMask|true
+								detectorInconsistentAnnotations=InconsistentAnnotations|true
+								detectorInefficientMemberAccess=InefficientMemberAccess|false
+								detectorInefficientToArray=InefficientToArray|true
+								detectorInfiniteLoop=InfiniteLoop|true
+								detectorInfiniteRecursiveLoop=InfiniteRecursiveLoop|true
+								detectorInheritanceUnsafeGetResource=InheritanceUnsafeGetResource|true
+								detectorInitializationChain=InitializationChain|true
+								detectorInitializeNonnullFieldsInConstructor=InitializeNonnullFieldsInConstructor|true
+								detectorInstantiateStaticClass=InstantiateStaticClass|true
+								detectorIntCast2LongAsInstant=IntCast2LongAsInstant|true
+								detectorInvalidJUnitTest=InvalidJUnitTest|true
+								detectorIteratorIdioms=IteratorIdioms|true
+								detectorLazyInit=LazyInit|true
+								detectorLoadOfKnownNullValue=LoadOfKnownNullValue|true
+								detectorLostLoggerDueToWeakReference=LostLoggerDueToWeakReference|true
+								detectorMethodReturnCheck=MethodReturnCheck|true
+								detectorMultithreadedInstanceAccess=MultithreadedInstanceAccess|true
+								detectorMutableLock=MutableLock|true
+								detectorMutableStaticFields=MutableStaticFields|true
+								detectorNaming=Naming|true
+								detectorNoteUnconditionalParamDerefs=NoteUnconditionalParamDerefs|true
+								detectorNumberConstructor=NumberConstructor|true
+								detectorOverridingEqualsNotSymmetrical=OverridingEqualsNotSymmetrical|true
+								detectorPreferZeroLengthArrays=PreferZeroLengthArrays|true
+								detectorPublicSemaphores=PublicSemaphores|false
+								detectorQuestionableBooleanAssignment=QuestionableBooleanAssignment|true
+								detectorReadOfInstanceFieldInMethodInvokedByConstructorInSuperclass=ReadOfInstanceFieldInMethodInvokedByConstructorInSuperclass|true
+								detectorReadReturnShouldBeChecked=ReadReturnShouldBeChecked|true
+								detectorRedundantInterfaces=RedundantInterfaces|true
+								detectorRepeatedConditionals=RepeatedConditionals|true
+								detectorRuntimeExceptionCapture=RuntimeExceptionCapture|true
+								detectorSerializableIdiom=SerializableIdiom|true
+								detectorStartInConstructor=StartInConstructor|true
+								detectorStaticCalendarDetector=StaticCalendarDetector|true
+								detectorStringConcatenation=StringConcatenation|true
+								detectorSuperfluousInstanceOf=SuperfluousInstanceOf|true
+								detectorSuspiciousThreadInterrupted=SuspiciousThreadInterrupted|true
+								detectorSwitchFallthrough=SwitchFallthrough|true
+								detectorSynchronizeAndNullCheckField=SynchronizeAndNullCheckField|true
+								detectorSynchronizeOnClassLiteralNotGetClass=SynchronizeOnClassLiteralNotGetClass|true
+								detectorSynchronizingOnContentsOfFieldToProtectField=SynchronizingOnContentsOfFieldToProtectField|true
+								detectorURLProblems=URLProblems|true
+								detectorUncallableMethodOfAnonymousClass=UncallableMethodOfAnonymousClass|true
+								detectorUnnecessaryMath=UnnecessaryMath|true
+								detectorUnreadFields=UnreadFields|true
+								detectorUselessSubclassMethod=UselessSubclassMethod|false
+								detectorVarArgsProblems=VarArgsProblems|true
+								detectorVolatileUsage=VolatileUsage|true
+								detectorWaitInLoop=WaitInLoop|true
+								detectorWrongMapIterator=WrongMapIterator|true
+								detectorXMLFactoryBypass=XMLFactoryBypass|true
+								detector_threshold=3
+								effort=max
+								filter_settings=Low|BAD_PRACTICE,CORRECTNESS,MT_CORRECTNESS,PERFORMANCE,STYLE|false|15
+								filter_settings_neg=MALICIOUS_CODE,NOISE,I18N,SECURITY,EXPERIMENTAL|
+								run_at_full_build=true
+								]]>
+							</content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

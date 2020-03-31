@@ -1,0 +1,12 @@
+!-- --------------------------------------------------------------------
+Scenario: Start
+When I open external webpage http://localhost:3000/
+
+Scenario: Open the Login Page
+Then I must wait '1' seconds
+When I enter 'milkrunadmin' into userName
+When I enter '1234' into passWord
+When I click on first element via button and id and LoginButton
+Then I must wait '1' seconds
+
+!-- --- Testcase Login of Milkrun successful ---

@@ -1,0 +1,97 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+!-- When I open the page for following address <starturl>
+!-- TODO:rework need.
+When I open external webpage https://admin-is.d2cfarm.com/hmc/hybris
+Then I must wait '3' seconds
+
+
+!-- -------------------------------------------------------------------
+Scenario: Enter userdata in popup
+Meta: @exclude_production @exclude_notready
+!-- -------------------------------------------------------------------
+When I enter <usernamepopup> into 'username'
+When I enter <passwordpopup> into 'password'
+When I click the button 'submit'
+
+Then the url of current page contains <starturl>
+
+
+!-- ------------------------------------------------------------------------
+Scenario: Login into HMC
+Meta: @exclude_production @exclude_notready
+!-- -------------------------------------------------------------------
+When I click the element 'Main_user'
+When I enter <username> into 'Main_user'
+
+When I click the element 'Main_password'
+When I enter <password> into 'Main_password'
+
+!-- When I click the element 'Main_a'
+When I click the link contains '#'
+
+Then the url of current page contains <firstpage>
+
+
+!-- ------------------------------------------------------------------------
+Scenario: Open category "Catalog"
+Meta: @exclude_production @exclude_notready
+!-- ------------------------------------------------------------------------
+When I click the element 'Tree/GenericExplorerMenuTreeNode[catalog]_label'
+
+Then the element 'Tree/GenericExplorerMenuTreeNode[catalogviews]_label' is visible
+
+
+!-- ----------------------------------------------------------------------
+Scenario: Open "Catalog Management Tool"
+Meta: @exclude_production @exclude_notready
+!-- -----------------------------------------------------------------------
+When I click the element 'Tree/GenericExplorerMenuTreeNode[catalogviews]_label'
+
+Then the element 'Tree/GenericLeafNode[SynchronizeCatalogVersionWizard]_label' is visible
+
+
+!-- ----------------------------------------------------------------------
+Scenario: Choose "Synchronization"
+Meta: @exclude_production @exclude_notready
+!-- -----------------------------------------------------------------------
+When I click the element 'Tree/GenericLeafNode[SynchronizeCatalogVersionWizard]_label'
+
+Then the url of current page contains 'https://admin-is.d2cfarm.com/hmc/hybris?wid=MC783x428'
+
+
+!-- ------------------------------------------------------------------------
+Scenario: Choose a shop
+Meta: @exclude_production @exclude_notready
+!-- -----------------------------------------------------------------------
+!-- TODO: Perhaps it could be helpful to make it possible to select a certain store
+!-- When I click the element <storeforcatalog>
+
+
+!-- ----------------------------------------------------------------------------
+Scenario: Click Start-button
+Meta: @exclude_production @exclude_notready
+!-- -----------------------------------------------------------------------
+When I click the element 'GenericItemChip$11[wizard.footer.start]_label'
+Then I must wait '2' seconds
+
+!-- -----------------------------------------------------------------------
+Scenario: Interrupt the sync-process
+Meta: @exclude_production @exclude_notready
+!-- ------------------------------------------------------------------------
+!-- TODO: Some interruption of the sync process must happen
+
+!-- ------------------------------------------------------------------------
+Scenario: Receive success information on screen 1
+Meta: @exclude_production @exclude_notready
+!-- -----------------------------------------------------------------------
+Then the element 'ItemDisplay[ERROR]_div' is visible
+
+
+
+
+
+!-- #-------------- TTP-496 HMC - Sync Job with error was successful ------------- --#
+

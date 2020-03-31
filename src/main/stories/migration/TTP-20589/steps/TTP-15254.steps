@@ -1,0 +1,102 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open WebPage!
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+Then the hidden 'navflyout-1' is not visible
+Then the hidden 'navflyout-2' is not visible
+Then the hidden 'navflyout-3' is not visible
+
+Then the hidden flyoutclosebtn is not visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: click on Electrodomésticos Product, SHOP ,Service ...
+!-- --------------------------------------------------------------------
+When I click the element nav-1
+Then the element navflyout-1 is visible
+
+Then the element flyoutclosebtn is visible
+
+When I click the element nav-2
+Then the element navflyout-2 is visible
+Then the element flyoutclosebtn is visible
+
+When I click the element nav-3
+Then the element navflyout-3 is visible
+Then the element flyoutclosebtn is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: click on Repair service - customerservice / SERVICE
+!-- --------------------------------------------------------------------
+!-- click directly on testing_id is not working, workaround vis span click is implemented.
+!-- When I click the element <customerserviceid>
+When I click the element category-3-2
+!-- When I click on child element span with parent li and testing_id and category-3-2
+!-- Then the element elementID is visible
+Then the link contains <bookrepairserviceonline> 
+
+When I click the link isEqual to <bookrepairserviceonline>
+Then the element enumberSearchField is visible
+Then the element enumberSearchBtn is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: click on Rating plate finder (Testing_id implementing)
+!-- --------------------------------------------------------------------
+!-- When I click the element elementID
+!-- When I click on first visible element via a and data-more-text and <rateplatefinder>
+!-- Then the element elementID is visible
+!-- Then the element by div and class and col-md-twothird is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: click on Products and Shop
+!-- --------------------------------------------------------------------
+When I click the element nav-1
+Then the element navflyout-1 is visible
+
+Then the element flyoutclosebtn is visible
+
+!-- When I click the element elementID
+When I click the element subcategory-1-1-1
+!-- Then the element elementID is visible
+Then the element by div and data-t-name and Breadcrumb is shown
+
+When I click the element nav-2
+Then the element navflyout-2 is visible
+Then the element flyoutclosebtn is visible
+!-- When I click the element elementID
+When I click the element category-2-3
+!-- When I click on child element span with parent li and testing_id and category-2-3
+Then the page shoplist is opened
+
+!-- --------------------------------------------------------------------
+Scenario: click on Service
+!-- --------------------------------------------------------------------
+When I click the element nav-3
+Then the element navflyout-3 is visible
+
+Then the element flyoutclosebtn is visible
+!-- testing_id implementation need here
+!-- When I click the element elementID
+!-- When I click the link isEqual to <careandprotection>
+When I click the element category-3-3
+
+!-- Then the element elementID is visible
+Then the link contains <searchforspareparts>
+
+
+
+!-- -- TTP-15254 - TEST Flyout Navigation on MBMD Bosch is successful -----

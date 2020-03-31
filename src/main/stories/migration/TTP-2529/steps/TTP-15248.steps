@@ -1,0 +1,65 @@
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - Recipe List Information
+!-- --------------------------------------------------------------------
+When I set /extapp/recipes/recipelist/v1 as rest request url for request getrecipelistrequest
+When I set method to GET for request getrecipelistrequest
+
+!-- Header
+When I set JSON as body content type for request getrecipelistrequest
+When I set JSON as response content type for request getrecipelistrequest
+When I set hc_ctx into header appContext for request getrecipelistrequest
+When I set HCA into header appId for request getrecipelistrequest
+When I set tr-TR into header language for request getrecipelistrequest
+
+!-- Body
+!-- --
+
+!-- Invoke
+When I execute request getrecipelistrequest
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - VALIDATION Recipe List Information 
+!-- --------------------------------------------------------------------
+Then for request getrecipelistrequest the status code is 200
+Then for request getrecipelistrequest property requestSuccessful type is Boolean
+Then for request getrecipelistrequest response property requestSuccessful equals true
+Then for request getrecipelistrequest response property reponseMessage equals success
+
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect -  Get Specific Recipe information 
+!-- --------------------------------------------------------------------
+When I set /extapp/recipes/recipe/v1/#getrecipelistrequest.response.body.content[0].code as rest request url for request getspecificrecipeinformation
+When I set method to GET for request getspecificrecipeinformation
+
+!-- Header
+When I set JSON as body content type for request getspecificrecipeinformation
+When I set JSON as response content type for request getspecificrecipeinformation
+When I set hc_ctx into header appContext for request getspecificrecipeinformation
+When I set HCA into header appId for request getspecificrecipeinformation
+When I set application/json into header accept for request getspecificrecipeinformation
+When I set en-EN into header Accept-Language for request getspecificrecipeinformation
+
+
+!-- Body
+!-- --
+
+
+!-- Invoke
+When I execute request getspecificrecipeinformation
+
+!-- -------------------------------------------------------------------
+Scenario: Homeconnect - VALIDATION Specific Recipe Information 
+!-- --------------------------------------------------------------------
+Then for request getspecificrecipeinformation the status code is 200
+Then for request getspecificrecipeinformation property requestSuccessful type is Boolean
+Then for request getspecificrecipeinformation response property requestSuccessful equals true
+Then for request getspecificrecipeinformation response property reponseMessage equals success
+!-- Then for request getspecificrecipeinformation.reponse.body.recipeDataList response property id equals #getrecipelistrequest.response.body.content[0].id
+!-- additional validation 
+
+
+
+!-- #-------------- Homeconnect - Get Recipe&Specific recipe information Successfull ------------- --#
+
+

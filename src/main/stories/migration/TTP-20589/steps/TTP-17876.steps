@@ -1,0 +1,81 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open Home Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------
+Scenario: Click on the Shop Link at main navigation
+!-- -------------------------------------------------------
+When I click the navigation element nav-2
+Then the element by button and testing_id and flyoutclosebtn is shown
+Then the element by li and testing_id and category-2-1 is shown
+Then the element by li and testing_id and category-2-2 is shown
+Then the element by li and testing_id and category-2-3 is shown
+Then the element by li and testing_id and subcategory-2-1-1 is shown
+!-- testing_id click event is not working,workaround solution added.
+!-- When I click the button flyoutclosebtn
+!-- click testing_id is not working, workaround via click span
+!-- When I click on child element button with parent ul and testing_id and navflyout-2
+!-- Then the hidden navflyout-2 is not visible
+
+!-- -------------------------------------------------------
+Scenario: Browse through Product Category/subcategory Pages (SHOP tab)
+!-- -------------------------------------------------------
+!-- When I click the navigation element nav-2
+Then the element by li and testing_id and subcategory-2-3-1 is shown
+!-- When I click on child element span with parent li and testing_id and subcategory-2-3-1
+When I click the element category-2-3
+Then the page shoplist is opened
+
+!-- -------------------------------------------------------
+Scenario: Check Filter option on the ShopList page
+!-- -------------------------------------------------------
+Then the element by div and data-t-name and SelectedFilter is shown
+Then the element by span and class and filterbar-filter-label is shown
+Then the element by div and class and a-selectedfilter.js-selected-filter is shown
+Then the element by button and class and a-button.a-button-secondary.reset-button.js-action-reset is shown
+Then the element by div and data-t-name and FilterBreadcrumb is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Click Filter option / Check features at ShopList page
+!-- -------------------------------------------------------
+When I click the element .filterbar-filter-label if avaliable
+Then I wait for element with css div.filterlayer-col.filterlayer-spacer to be invisible
+
+When I click the element .filterbar-filter-label if avaliable
+Then I wait for element with css div.filterlayer-col.filterlayer-spacer to be visible
+
+!-- When I click the element b[role="presentation"] if avaliable
+When I click the 2 nd/th element via b and role and presentation
+Then I must wait '1' second
+When I click the element <filtercategoryselect> if avaliable
+
+Then the element by div and data-input-value and <filtercategoryselectcheck> is shown
+Then the page shoplist is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Remove Filter Option and Reset button
+!-- -------------------------------------------------------
+!-- When I click on first element via a and class and active
+When I click the button .icon icon-close.js-close-icon if avaliable
+Then the page shoplist is opened
+
+When I click the element .a-button a-button-secondary.reset-button.js-action-reset if avaliable
+Then the page shoplist is opened
+
+
+!-- --- TTP-17876 Testcase Product Filter Marketing(SHOP) scope is finish and was successful ---

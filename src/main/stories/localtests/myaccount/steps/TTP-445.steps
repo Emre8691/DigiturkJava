@@ -1,0 +1,203 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the button myaccountbutton
+Then the page loginpage is opened
+
+
+!-- ----------------------------------------------------
+Scenario: Click register new user
+!-- ----------------------------------------------------
+When I click the button registerButton
+Then the page accountregistration1 is opened
+
+Then the element 'REGISTRATION' is visible
+Then the element 'status-REGISTRATION' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Dialog Steps User Registration
+!-- --------------------------------------------------------------------
+Then the dialogue step 'REGISTRATION' is 'active'
+Then the dialogue step 'PERSONALDATA' is 'inactive'
+Then the dialogue step 'CONFIRMATION' is 'inactive'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on submit button ("Send") without filling any registration data.
+!-- --------------------------------------------------------------------
+When I click the button 'submitButton'
+
+Then I must wait '1' second
+Then the expected 'validationTitle' is shown
+Then the expected 'validationFirstName' is shown
+Then the expected 'validationLastName' is shown
+Then the expected 'validationEmail-1' is shown
+Then the expected 'validationEmailConfirmed-1' is shown
+Then the expected 'validationPassword' is shown
+Then the expected 'validationConfirmedPassword-1' is shown
+
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Fill in the Registration fields with the data provided at test data section
+!-- --------------------------------------------------------------------
+
+Then the page 'accountregistration1' is opened
+
+!-- When I select the 'titleselector' with option <title2> 
+When I click on first element via input and role and combobox
+When I click on first element via li and id and listoption-2
+
+When I enter <firstname2> into 'firstname'
+Then the form field 'firstname' is filled correct with the parameter <firstname2>
+
+When I enter <lastname2> into 'lastname'
+Then the form field 'lastname' is filled correct with the parameter <lastname2>
+
+When I enter <reguserv2> into 'email'
+Then the form field 'email' is filled correct with the parameter <reguserv2>
+
+When I enter <reguserv2> into 'emailConfirmed'
+Then the form field 'emailConfirmed' is filled correct with the parameter <reguserv2>
+
+When I enter <regpwd> into 'password'
+Then the form field 'password' is filled correct with the parameter <regpwd>
+
+When I enter <regpwd> into 'passwordConfirmed'
+Then the form field 'passwordConfirmed' is filled correct with the parameter <regpwd>
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on submit button ("Send") button
+!-- --------------------------------------------------------------------
+When I click the button 'submitButton'
+Then the page 'accountregistration2' is opened
+
+Then the element 'RegistrationPersonalDataForm.registrationAddress.streetName' is visible
+Then the element 'RegistrationPersonalDataForm.registrationAddress.streetnumber' is visible
+Then the element 'RegistrationPersonalDataForm.registrationAddress.postalcode' is visible
+Then the element 'RegistrationPersonalDataForm.registrationAddress.town' is visible
+Then the element 'RegistrationPersonalDataForm.registrationAddress.phone1' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Dialog Steps User Registration
+!-- --------------------------------------------------------------------
+Then the dialogue step 'REGISTRATION' is 'clickable'
+Then the dialogue step 'PERSONALDATA' is 'active'
+Then the dialogue step 'CONFIRMATION' is 'inactive'
+
+!-- --------------------------------------------------------------------
+Scenario: Click on submit button ("Send") without filling any registration data.
+!-- --------------------------------------------------------------------
+When I click the button 'submitButton'
+
+Then I must wait '1' second
+Then the expected 'er-form-RegistrationPersonalDataForm-registrationAddress-streetName' is shown
+Then the expected 'er-form-RegistrationPersonalDataForm-registrationAddress-streetnumber' is shown
+!-- obligation notification is not implemented for Postcode can be added when it does
+!-- Then the expected 'er-form-RegistrationPersonalDataForm-registrationAddress-postalcode' is shown
+Then the expected 'er-form-RegistrationPersonalDataForm-registrationAddress-town' is shown
+
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Fill in the Registration Step 2 with the data provided at test data section
+!-- --------------------------------------------------------------------
+When I enter <street2> into 'RegistrationPersonalDataForm.registrationAddress.streetName'
+Then the form field 'RegistrationPersonalDataForm.registrationAddress.streetName' is filled correct with the parameter <street2>
+
+When I enter <housenumber2> into 'RegistrationPersonalDataForm.registrationAddress.streetnumber'
+Then the form field 'RegistrationPersonalDataForm.registrationAddress.streetnumber' is filled correct with the parameter <housenumber2>
+
+When I enter <zip2> into 'RegistrationPersonalDataForm.registrationAddress.postalcode'
+Then the form field 'RegistrationPersonalDataForm.registrationAddress.postalcode' is filled correct with the parameter <zip2>
+
+When I enter <city2> into 'RegistrationPersonalDataForm.registrationAddress.town'
+Then the form field 'RegistrationPersonalDataForm.registrationAddress.town' is filled correct with the parameter <city2>
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on submit button ("Send") button
+!-- --------------------------------------------------------------------
+When I click the button 'submitButton'
+Then the page 'accountregistration5' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Registration Page 6 Welcome Page
+!-- --------------------------------------------------------------------
+When I open the 'activationUrl' from the current page
+Then I must wait '15' seconds
+Then the page 'accountregistration6' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login with new created User
+!-- --------------------------------------------------------------------
+When I open the page for following address <secureurl>
+Then the page 'loginpage' is opened
+
+When I enter <reguserv2> into 'username'
+Then the form field username is filled correct with the parameter <reguserv2>
+
+When I enter <regpwd> into 'password'
+Then the form field password is filled correct with the parameter <regpwd>
+
+When I click the button 'logInButton'
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Open the MyProfile Page
+!-- --------------------------------------------------------------------
+When I click the navigation element closeNavigation
+Then the element by button and testing_id and searchBoxBtn is shown
+When I click the navigation element metaNavigation
+Then I wait for element with css .tooltip-wrapper-6 to be visible
+When I click the 2 nd/th element via a and testing_id and myprofile
+Then the page myprofile is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Delete the created user
+!-- --------------------------------------------------------------------
+When I click the button 'deleteUserAccount'
+Then I must wait '1' second
+
+When I click on first element via a and testing_id and delete-deleteAccount-1
+!-- When I confirm the pop up box
+!-- Then I must wait '5' seconds
+
+!-- hen I confirm the pop up box
+Then I must wait '15' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Check if user is not registered
+!-- --------------------------------------------------------------------
+When I open the page for following address <secureurl>
+Then the page 'loginpage' is opened
+
+When I enter <reguserv2> into 'username'
+When I enter <regpwd> into 'password'
+Then I must wait '1' second
+
+When I click the button 'logInButton'
+Then the page 'loginpage' is opened
+
+Then the expected 'validationUsername-4' is shown
+
+!--  -- Registration Test successful finished User is deleted --
+
+
+!-- --- TTP-445 - User registration (NEFF) was successful ---
+
+

@@ -1,0 +1,138 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search form whole product available via "0"
+!-- --------------------------------------------------------------------
+When I enter '0' into searchField
+Then the form field searchField is filled correct with the parameter '0'
+When I click the element searchBoxBtn
+Then the page searchresultspage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Add the first available product to "MyBasket" with "add to basket button"
+!-- --------------------------------------------------------------------
+When I click on first visible element via button and data-eventtracking and addToBasket
+!-- Then the element <MyBasketid> is visible  // needs testing_id for verification.
+
+
+!-- -------------------------------------------------------------------
+Scenario: Navigate to Basket then navigate to Checkout page(welcome page)
+!-- --------------------------------------------------------------------
+When I click on first visible element via a and href and /store/shop/shopping-cart
+!-- When I click the element goToBasket
+Then the page 'basketpage' is opened
+!-- Then the basket count is as expected
+
+!-- When I click the element <checkouttopid> // testing_id click event is not working due to is added to span
+When I click on first element via a and testing_id and checkouttop without wait
+Then the page 'welcomepage' is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Process as anonymus
+!-- -------------------------------------------------------------------
+When I continue with 'checkoutanonymus'
+Then the page deliverypage is opened
+
+
+!-- -------------------------------------------------------------------
+Scenario: Fill the form fields of delivery page
+!-- -------------------------------------------------------------------
+!-- When I select the title with the option <title> version
+!-- Then the chosen option <title> is selected
+!-- workaround solution is added- testing_id implemented is not working
+When I click the element .select2-selection.select2-selection--single if avaliable
+Then I must wait '1' second
+When I click the element li[id*="0006"] if avaliable
+!-- workaround solution
+Then the page 'deliverypage' is shown
+
+When I enter <firstname> into paymentAddress.firstname
+Then the form field paymentAddress.firstname is filled correct with the parameter <firstname>
+
+When I enter <lastname> into paymentAddress.lastName
+Then the form field paymentAddress.lastName is filled correct with the parameter <lastname>
+
+When I enter 1234 into streetnumber
+Then the form field streetnumber is filled correct with the parameter parameter
+
+!-- When I enter the street <street> and housenumber <housenumber> of the 'paymentaddress'
+When I enter <street> into paymentAddress.streetName
+Then the form field paymentAddress.streetName is filled correct with the parameter <street>
+
+When I enter <housenumber> into streetName
+Then the form field streetName is filled correct with the parameter <housenumber>
+
+When I enter <zipcode> into paymentAddress.postalcode
+Then the form field paymentAddress.postalcode is filled correct with the parameter <zipcode>
+
+When I enter <city> into paymentAddress.town
+Then the form field paymentAddress.town is filled correct with the parameter <city>
+
+When I enter <orderuserttp> into paymentAddress.email
+Then the form field paymentAddress.email is filled correct with the parameter <orderuserttp>
+
+When I enter <orderuserttp> into paymentAddress.emailReenterred
+Then the form field paymentAddress.emailReenterred is filled correct with the parameter <orderuserttp>
+When I enter <telephone> into paymentAddress.phone1
+Then the form field paymentAddress.phone1 is filled correct with the parameter <telephone>
+
+!-- -------------------------------------------------------------------
+Scenario: continue..
+!-- -------------------------------------------------------------------
+When I click the button 'continuebuttonbottom'
+Then I must wait '2' seconds
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Summary Page Payment test (VISA)
+!-- -------------------------------------------------------------------
+Then the page 'summarypage' is shown
+
+When I click on first element via label and for and payment-visa
+
+When I click the button 'continuebuttontop'
+!-- Validation need here TODO
+Then the page 'summarypage' is shown
+
+When I click on first visible element via label and for and agree1
+Then the page 'summarypage' is shown
+
+When I click the button 'continuebuttonbottom'
+
+!-- -------------------------------------------------------------------
+Scenario: Payment Worldpay Visa
+Meta: @exclude_production
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I enter 'AUTHORIZED' into <cardholdernameid>
+When I enter <securitycode> into <securitycodename>
+When I click the element <submitbuttonname>
+Then I must wait '1' second
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+When I click the button input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+
+!-- --- TTP-17885 - Automatic: Checkout: Checkout Guest was successful ---
+

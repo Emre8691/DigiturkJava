@@ -1,0 +1,58 @@
+!-- --------------------------------------------------------------------
+Scenario: Open NEFF Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I search 00145452 at searchField and click searchBoxBtn
+!-- When I open the page for following address '/produktlistde/00145452?replacementOf=00145086'
+Then the page 'shopdetailpage' is opened
+Then the expected 'addItemToBasket-00145452' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+!-- When I click the button 'addItemToBasket-00145452'
+!-- Then the shopcart-overview div class exists on page
+When I click the button addItemToBasket-00145452 without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page 'basketpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the element 'WELCOME' is visible
+Then the element username is visible
+Then the element by xpath //input[@testing_id="checkoutexistinguser"] is shown
+Then the element by xpath //input[@testing_id="checkoutregistration"] is shown
+Then the element by xpath //input[@testing_id="checkoutanonymus"] is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Dialog Steps Checkout
+!-- --------------------------------------------------------------------
+Then the dialogue step 'WELCOME' is 'active'
+Then the dialogue step 'DELIVERY' is 'inactive'
+Then the dialogue step 'SUMMARY' is 'inactive'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the dialogue step 'CONFIRMATION' is 'inactive'
+
+
+!-- --- Testcase TTP-467 Checkout Welcome (NEFF) was successful ---

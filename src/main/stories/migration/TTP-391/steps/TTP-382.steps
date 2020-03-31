@@ -1,0 +1,106 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I enter <staffuserv2> into username
+Then the form field username is filled correct with the parameter <staffuserv2>
+When I enter <passwordv2> into password
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the element 'logInButton'
+Then the element searchBoxBtn is visible
+!-- in case of popup closed
+!-- When I switch to iframe [src*="live/i"] location
+!-- When I click on first element via input and name and radio-Kunt_u_ons_verte
+!-- When I click on first element via button and id and button
+!-- When I click the element a[id="close"] if avaliable
+!-- When I switch back to switchBackToDefaultContent
+!-- Then I must wait '2' seconds
+!-- 
+
+!-- -------------------------------------------------------------------
+Scenario: Open MyProfile
+!-- -------------------------------------------------------------------
+When I click the button [testing_id="closeNavigation"] if avaliable
+When I click the navigation element metaNavigation
+Then I wait for element with css .tooltip-wrapper-6 to be visible
+When I click on first element via a and href and inviteFamilyAndFriends
+Then the page 'familyandfriends' is opened
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Validation check
+!-- ---------------------------------------------------------------------
+When I click the button 'submit'
+Then I wait for element with css [data-errorbox="er-ref-1-1992"] to be visible
+
+!-- ---------------------------------------------------------------------
+Scenario: Enter personal invite-data
+!-- ---------------------------------------------------------------------
+!-- When I click on first element via input and role and combobox
+!-- When I select the listoption-2 with the option Mevrouw version
+When I select the title.code with the option <title> version
+Then the page familyandfriends is shown
+When I enter 'ABELEL' into firstname
+Then the form field firstname is filled correct with the parameter ABELEL
+When I enter 'SHSHSH' into lastname
+Then the form field lastname is filled correct with the parameter SHSHSH
+When I enter 'friendtestt@mailinator.com' into email
+Then the form field email is filled correct with the parameter 'friendtestt@mailinator.com'
+
+!-- When I enter <staffuserv2> into form-ref-10-1111
+
+When I click on first element via button and type and submit
+Then the url of current page contains 'confirmFamilyAndFriends'
+Then I wait for element with css div[class="primary"] to be clickable
+When I click the button .primary if avaliable
+Then the url of current page contains 'inviteFamilyAndFriends'
+Then I must wait '5' seconds
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Mailinator for activation
+!-- --------------------------------------------------------------------
+When I open external webpage <mailinator>
+!-- When I enter <staffuserv2> into inboxfield
+When I enter 'friendtestt@mailinator.com' into inboxfield
+When I click on first element via button and type and button
+Then the url of current page contains '#public_maildirdiv'
+When I click on first element via div and class and innermail without wait
+Then the url of current page contains '#public_showmaildiv'
+When I switch to iframe iframe[id="publicshowmaildivcontent"] location
+When I click the link contains 'registration/accesscode'
+!-- Then I must wait '2' seconds
+!-- Then the url of current page contains 'nl/myaccount/registration/accesscode'
+
+!-- TODO: 1- complete registration and switch to new browser tab opened.
+!-- ----------------------------------------------------------------------
+Scenario: Enter personal data
+Meta: @exclude_notready
+!-- ----------------------------------------------------------------------
+Then the page myaccountstaffregistrationpage is opened
+When I enter <fufemail> into 'accountCreationData.user.defaultPaymentAddress.email'
+When I enter <fufinvitpw> into 'accountCreationData.unencodedPassword'
+When I enter <fufinvitpw> into 'accountCreationData.confirmedPassword'
+
+When I enter <fufstreet> into 'accountCreationData.user.defaultPaymentAddress.streetName'
+When I enter <fufzip> into 'accountCreationData.user.defaultPaymentAddress.postalcode'
+When I enter <fufcity> into 'accountCreationData.user.defaultPaymentAddress.town'
+When I enter <fufhousenumber> into #accountCreationData.user.defaultPaymentAddress.streetnumber'
+
+When I click the button 'submit'
+
+Then the url of current page contains 'confirmation'
+
+!-- --- TTP-382 - Staffsales User Registration - Friends & Family invitation was successful ---
+
+

@@ -1,0 +1,91 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Customer Service" tab via main navigation
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then the element 'navflyout-4' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Open Service Assistant
+!-- -----------------------------------------------------------------
+When I click the navigation element category-40
+Then the page 'serviceassistant' is opened
+
+
+!-- -----------------------------------------------------------------
+Scenario: Enter Enumber
+!-- -----------------------------------------------------------------
+When I enter HE784270/01 into 'enumberSearchField'
+Then the form field enumberSearchField is filled correct with the parameter 'HE784270/01'
+When I click the button 'enumberSearchBtn'
+
+!-- TODO: Then the page 'supportproductdetailpage' is opened
+
+
+!-- -----------------------------------------------------------------
+Scenario: Select a problem category
+!-- -----------------------------------------------------------------
+When I click the link contains 'accordion-2'
+Then I must wait '4' seconds
+!-- TODO: Then the element 'XXX' is visible
+
+!-- ------------------------------------------------------------------
+Scenario: Select a problem
+!-- -----------------------------------------------------------------
+
+!-- TODO: Choose a specific Problem
+!-- When I click the element 'XXX' 
+!-- incomplete scenario
+!-- When I click the navigation element 'problemSubmit-1'
+!-- Then the url of current page contains 'tab-section-firstaid'
+
+
+!-- ------------------------------------------------------------------- 
+Scenario: Click toggle box button
+!-- -------------------------------------------------------------------
+!-- TODO: When I click the element 'XXX'
+
+
+!-- ------------------------------------------------------------------
+Scenario: Click Intruct Customer Service
+!-- ----------------------------------------------------------------- 
+!-- TODO: When I click the element 'XXX'
+!-- Then the page 'XXX' is opened
+
+!-- -----------------------------------------------------------------
+Scenario: Go back to Customer Service and choose antoher problem
+!-- -----------------------------------------------------------------
+When I click the navigation element nav-4
+Then the element 'navflyout-4' is visible
+
+When I click the navigation element category-40
+Then the page 'serviceassistant' is opened
+
+When I click the link contains '/supportdetail/category/vacuumcleaners/rechargeablevacuumcleaners'
+
+
+!-- ----------------------------------------------------------------
+Scenario: Displayed Text 'No advices' in two tabs
+!-- ----------------------------------------------------------------
+When I click the link contains '#section-serviceassistant'
+!-- TODO: Then the element 'XXX' is visible
+
+When I click the link contains '#section-cleaningandcare'
+!-- TODO: Then the element 'XXX' is visible
+
+
+
+!--  TTP-249 Customer Service: First Aid Advice successful finished. --
+
+

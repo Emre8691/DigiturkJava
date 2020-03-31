@@ -1,0 +1,107 @@
+!-- -------------------------------------------------------------------
+Scenario: Home Connect - Auth2.0 get AccessToken - authorization framework 
+!-- --------------------------------------------------------------------
+When I set /oauth/token as rest request url for request tokenrequest
+When I set method to POST for request tokenrequest
+!-- Header
+When I set FORM as body content type for request tokenrequest
+When I set JSON as response content type for request tokenrequest
+When I set hc_ctx into header appContext for request tokenrequest
+When I set HCA into header appId for request tokenrequest
+
+!-- Body
+When I set password into body parameter grant_type for request tokenrequest
+When I set wstest@mailinator.com into body parameter username for request tokenrequest
+When I set test1234 into body parameter password for request tokenrequest
+
+!-- Invoke
+When I execute request tokenrequest
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect VALIDATION Auth2.0 get AccessToken.
+!-- -------------------------------------------------------------------
+Then for request tokenrequest the status code is 200
+!-- Check if it has User Token.
+Then for request tokenrequest property access_token type is String
+Then for request tokenrequest property refresh_token type is String
+Then for request tokenrequest response property token_type equals bearer
+Then for request tokenrequest response property scope equals homeconnect
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect - Request for a protected resource - Get User Data
+!-- -------------------------------------------------------------------
+When I set /extapp/consumer/userdata/v1 as rest request url for request userdatarequest
+When I set method to GET for request userdatarequest
+When I set JSON as response content type for request userdatarequest
+When I set hc_ctx into header appContext for request userdatarequest
+When I set HCA into header appId for request userdatarequest
+When I set #tokenrequest.response.body.access_token into query parameter access_token for request userdatarequest
+!-- Invoke
+When I execute request userdatarequest
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect - VALIDATION Request for a protected resource - Get User Data
+!-- -------------------------------------------------------------------
+Then for request userdatarequest the status code is 200
+Then for request userdatarequest property requestSuccessful type is Boolean
+Then for request userdatarequest response property requestSuccessful equals true
+Then for request userdatarequest response property responseCode equals OK
+Then for request userdatarequest response property reponseMessage equals success
+Then for request userdatarequest response property user.emailAddress equals #tokenrequest.request.body.username
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect - Request for a protected resource - Get User Data (invalid access_token)
+!-- -------------------------------------------------------------------
+When I set /extapp/consumer/userdata/v1 as rest request url for request userdatarequest
+When I set method to GET for request userdatarequest
+When I set JSON as response content type for request userdatarequest
+When I set hc_ctx into header appContext for request userdatarequest
+When I set HCA into header appId for request userdatarequest
+When I set 0c50b59b-ac4c-964c-a025-f0f26c4ec04b into query parameter access_token for request userdatarequest
+!-- Invoke
+When I execute request userdatarequest
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect - VALIDATION Request for a protected resource - Get User Data (invalid access_token)
+!-- -------------------------------------------------------------------
+Then for request userdatarequest the status code is 401
+Then for request userdatarequest response property error equals invalid_token
+
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect - Request for refreshing an invalid access token  
+due to ICORE-35642 the step will be descope
+!-- --------------------------------------------------------------------
+!-- When I set /oauth/token as rest request url for request refreshtokenrequest
+!-- When I set method to POST for request refreshtokenrequest
+!-- Header
+!-- When I set FORM as body content type for request refreshtokenrequest
+!-- When I set JSON as response content type for request refreshtokenrequest
+!-- When I set hc_ctx into header appContext for request refreshtokenrequest
+!-- When I set HCA into header appId for request refreshtokenrequest
+
+!-- Body
+!-- When I set refresh_token into body parameter grant_type for request refreshtokenrequest
+!-- When I set #tokenrequest.response.body.refresh_token into body parameter refresh_token for request refreshtokenrequest
+
+
+!-- Invoke
+!-- When I execute request refreshtokenrequest
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect VALIDATION Auth2.0 get AccessToken for RefreshToken.
+!-- -------------------------------------------------------------------
+!-- Then for request refreshtokenrequest the status code is 200
+!-- Check if it has User Token.
+!-- Then for request refreshtokenrequest property access_token type is String
+!-- Then for request refreshtokenrequest property refresh_token type is String
+!-- Then for request refreshtokenrequest response property token_type equals bearer
+!-- Then for request refreshtokenrequest response property scope equals homeconnect
+
+
+!-- #-------------- TTP-15246 Homeconnect - Auth2.0 get AccessToken - authorization framework ------------- --#
+

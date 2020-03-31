@@ -1,0 +1,25 @@
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait 3 seconds
+When I confirm the pop up box
+Then the brand of the page is as given
+Then the country of the page is as given
+!-- page should turn as outlet but it is turning b2c
+!-- Then the site type of the page is as given
+When I click the button 'logInOutHeaderButton'
+Then the page 'loginpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Login
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I enter <user> into 'username'
+When I enter <password> into 'password'
+When I click the button 'logInButton'
+Then I must wait '2' seconds
+Then the page 'myaccountpage' is opened
+
+!-- --- Testcase TTP-301 - Automatic: MyAccount : BGoods LogIn with existing User was successful ---

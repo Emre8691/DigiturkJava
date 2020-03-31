@@ -1,0 +1,82 @@
+Scenario:Open Ecom
+When I open external webpage http://cosmoseutest.euce.corp.bshg.com/ecomglobalrbtest_inter/ecomGR/eComTouch_inter/eCom/index.html
+Then I wait for element with css input[id="txtUserName"] to be visible
+Then I must wait '7' seconds
+When I select the ddLanguages with the option English version
+When I enter 'vardakis' into txtUserName
+When I enter 'f123456***' into txtPassword
+When I click on first element via input and name and btnAuth
+!-- When I approve the element //*[@id="btnModalClose"]
+
+Then I must wait '7' seconds
+When I click the xpath element //*[@id="m17"]/div[1]/h4
+Then I must wait 5 seconds
+!-- --------------------------------------------------------------
+Scenario:Open Ris
+When I click the xpath element //*[contains(text(),'Repair')]
+Then I must wait 3 seconds
+
+Scenario:Starting of Close RIS
+When I click the xpath element //*[@id="risInfo"]/div[2]/div/ul/li[1]/i
+Then I must wait 3 seconds
+
+Scenario: Select RIS Order Type
+When I enter '10:30' into txtRepairStartTime
+Then I must wait 1 seconds
+When I enter '11:00' into txtRepairEndTime
+Then I must wait 1 seconds
+When I click on first element via button and id and btnNext
+Then I must wait 5 seconds
+
+Scenario:Select Charge Type
+When I click the xpath element //*[@id="rblChargeType_0"]
+Then I must wait 1 seconds
+When I click on first element via button and id and btnNext
+Then I must wait 4 seconds
+
+Scenario:Select RIS Process Reason
+When I click on first element via button and id and btnNext
+Then I must wait 4 seconds
+
+Scenario:Please select the appliance
+When I click on first element via button and id and btnNext
+Then I must wait 4 seconds
+
+Scenario:Select material
+When I enter the '134242' in 1 nd/th available div[class='form-group'] input[name='txtLReceiptNumber_']
+Then I must wait 1 seconds
+When I click on first element via a and class and chosen-single chosen-default
+Then I must wait 2 seconds
+When I enter the '009' in 2 nd/th available div[class='chosen-search'] input[type='text']
+
+Then I must wait 3 seconds
+When I click the xpath element //li[@data-option-array-index='1']
+Then I must wait 2 seconds
+When I click the xpath element //*[contains(text(),'OK')]
+Then I must wait 1 seconds
+When I click on first element via button and id and btnNext
+
+Scenario:Select the defected spare part
+When I click the xpath element //input[@name='rblFMaterialValue' and @value='43418']
+Then I must wait 1 seconds
+When I select the ddlRC with the option 2 version
+When I select the ddlFC with the option 21 version
+
+When I click on first element via button and id and btnNext
+Then I must wait 5 seconds
+
+Scenario:Notonuzu Yazınız
+When I enter 'teknisyen notu3' into txtTechnicianNote
+Then I must wait 1 seconds
+When I enter 'idari not1' into txtAdministrativeNote
+When I click on first element via button and id and btnNext
+Then I must wait 3 seconds
+
+
+
+Scenario:Yazdır 
+When I click the xpath element //*[@id="btnNext"]
+
+!-- --- TTP-200017 Testcase Closing Ris was successful --- 
+
+

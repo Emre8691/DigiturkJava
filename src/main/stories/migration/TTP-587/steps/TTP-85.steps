@@ -1,0 +1,99 @@
+!-- -------------------------------------------------------------------
+Scenario: Open Siemens CH/DE Home Page via the list provided at data section.
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then I wait for element with css [testing_id="navflyout-4"] to be visible
+Then the element 'flyoutclosebtn' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Service Assistant Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the navigation element category-40
+Then I wait for element with css [testing_id=enumberSearchBtn] to be visible
+
+Then I wait for element with css [testing_id=enumberSearchBtn] to be clickable
+Then the element 'enumberSearchField' is visible
+Then the element 'enumberSearchBtn' is visible
+Then the element 'typePlateFinder' is visible
+
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then I wait for element with css div[testing_id="navflyout-4"] to be visible
+Then the element 'flyoutclosebtn' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the navigation element category-40
+Then the url of current page contains 'kundendienst/service-assistent'
+Then the hidden flyoutclosebtn is not visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then I wait for element with css div[testing_id="navflyout-4"] to be visible
+Then the element 'flyoutclosebtn' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Spare Parts Link in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-400'
+Then the element 'enumberSearchField' is visible
+Then the element 'enumberSearchBtn' is visible
+Then the element 'typePlateFinder' is visible
+Then the element 'matNumberSearchBtn' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then I wait for element with css div[testing_id="navflyout-4"] to be visible
+Then the element 'flyoutclosebtn' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Care and Cleaning Link in the flyout 
+!-- --------------------------------------------------------------------
+When I click the navigation element category-42
+Then the hidden flyoutclosebtn is not visible
+Then the link contains '/ch/de/kundendienst/kontakt/master_cs_contact_webform_product_information'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Customer Service link from main Navigation 
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then I wait for element with css div[testing_id="navflyout-4"] to be visible
+Then the element 'flyoutclosebtn' is visible
+
+!-- -------------------------------------------------------------------
+Scenario: Click on Contact Link in the flyout 
+!-- --------------------------------------------------------------------
+When I click the navigation element category-41
+Then the element enumberSearchField is visible
+Then the element username is visible
+Then the element password is visible
+Then the element logInButton is visible
+
+
+!-- --- Testcase TTP-85 : Basic Functionalities:Customer Service: Flyout was successful ---
+
+

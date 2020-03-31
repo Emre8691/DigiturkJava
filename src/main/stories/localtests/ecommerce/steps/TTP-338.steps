@@ -1,0 +1,104 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then I must wait '1' second
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+!-- --------------------------------------------------------------------
+When I click the button myaccountbutton
+When I click the button [testing_id="myaccountbutton"] if avaliable
+!-- When I click on first element via a and testing and myaccountbutton
+!-- When I click the element testing_id="myaccountbutton" without wait
+Then I wait for element with css [testing_id=logInButton] to be visible
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+Then the url of current page contains '/mysiemens/login'
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Facebook Social Media icon from the Social Sign In selection.
+!-- --------------------------------------------------------------------
+When I click on element by xpath //a[@tabindex='2']
+Then the email is visible at the pop up box
+Then the pass is visible at the pop up box
+Then the loginbutton is visible at the pop up box
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter email and password information as provided at data section 
+!-- --------------------------------------------------------------------
+When I fill in email with 'abtmuller@gmail.com'
+When I fill in pass with 'd![tTZJ?/u5vU)'
+When I click the element loginbutton
+Then switch back the window to parent window static
+Then I must wait '2' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I click the button [testing_id="closeNavigation"] if avaliable
+Then I wait for element with css [class="tooltip-wrapper-6 positionaround-1-2"] to be invisible
+When I enter 0 into searchField
+When I click the button [testing_id="searchBoxBtn"] if avaliable
+Then I wait for element with css [testing_id="searchResultTab-Produkte"] to be visible
+When I click on first element via a and testing_id and searchResultTab-Shop
+Then the page 'searchresultspage' is opened
+Then the element by button and name and buy-product is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page 'basketpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+!-- When I click the button checkouttop
+When I click the button button[testing_id="checkouttop"] if avaliable
+Then the dialogue step DELIVERY is active
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!---------------------------------------
+When I click the button continuebuttonbottom
+Then the dialogue step SUMMARY is active
+When I decide to 'agreeContract'
+When I click on first element via label and for and payment-mastercard
+When I click the button continuebuttonbottom
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbermaster2> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I clear the cardHolderName field
+When I enter 'AUTHORISED' into cardHolderName
+When I enter <securitycode> into CVC
+When I click the element Send
+
+
+!-- --- TTP-338:Automatic: My Account: SocialMedia-Login (Siemens) was successful ---
+
+

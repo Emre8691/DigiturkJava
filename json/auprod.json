@@ -1,0 +1,19 @@
+{
+  "totalTestCount": 13,
+  "modelList": [
+    {
+      "totalTestCount": 13,
+      "testExecutionKey": "TTP-651",
+      "storyPath": "rollout/siemens2013/basics/au/BAS2.story, rollout/siemens2013/basics/au/BAS3.story, rollout/siemens2013/basics/au/BAS5.story, rollout/siemens2013/basics/au/PDP3.story, rollout/siemens2013/basics/au/SER1.story, rollout/siemens2013/customerservice/au/SER2.story, rollout/siemens2013/products/au/LOC2.story, rollout/siemens2013/products/au/PDP1.story, rollout/siemens2013/userdata/au/ACC1.story, rollout/siemens2013/userdata/au/ACC3.story, rollout/siemens2013/userdata/au/ACC6.story, rollout/siemens2013/userdata/au/ACC7.story, rollout/siemens2013/userdata/au/RES1prod.story",
+      "seleniumUrl": "http://52.17.174.14:4444/wd/hub",
+      "additionalParameters": {
+        "jbehave.thread.count": "13",
+        "selenium.webdriver.type": "remote",
+        "spring.profiles.active": "webtest"
+      },
+      "system": "production",
+      "server": "noserver",
+      "testedSystem": "webtest"
+    }
+  ]
+}

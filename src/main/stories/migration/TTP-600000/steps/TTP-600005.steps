@@ -1,0 +1,54 @@
+!-- --------------------------------------------------------------------
+Scenario: Open ZeroTouch login Page
+When I open external webpage without validate http://ckyswicosweb1t/TR/ZT/zeroTouch_intra/login.aspx?ReturnUrl=%2fTR%2fZT%2fzeroTouch_intra%2flandingpages%2fzero.aspx%3fCallType%3dCT_Bosch%26CallerPhone%3d6000042333
+Then I must wait 4 seconds
+Then I wait for element with css input[id='a_0'] to be visible
+Scenario: Brand Bosch is true / Bosch doğru mu?
+When I click the xpath element //input[@id='a_0']
+Then I must wait '2' seconds
+
+
+Scenario: Aksesuar
+When I click on first element via a and id and M_91
+When I click on first element via a and id and M_56067
+When I click on first element via a and id and M_56069
+Then I wait for element with css input[name='txtPhone'] to be visible
+
+
+Scenario: Enter of Phone Number - Telefon Numarasının Girilmesi
+When I enter '5493270402' into txtPhone
+When I click on first element via button and class and btn btn-success
+Then I must wait 5 seconds
+When I click on first element via button and class and btn-small btn btn-link
+Then I must wait 2 seconds
+
+Scenario: Müşteri Güncelleme
+When I click the xpath element //*[contains(text(),'Devam Et')]
+Then I must wait 5 seconds
+
+Scenario: Aksesuar Listesi
+When I click on first element via input and id and cbSelectID_170535
+Then I must wait 1 seconds
+When I click on first element via a and class and chosen-single chosen-default
+Then I must wait 1 seconds
+When I enter the '1' in 0 nd/th available div[class='chosen-search'] input[type='text']
+Then I must wait 2 seconds
+When I click the xpath element //li[@data-option-array-index='1']
+When I click the button 'btn btn-success'
+Then I must wait 3 seconds
+
+Scenario: Kaydı Tamamla
+When I click on first element via input and id and a_1
+Then I must wait 1 seconds
+
+Scenario: İşlemi siz mi yaptınız?
+When I click on first element via input and id and a_0
+When I click on first element via button and class and btn btn-success
+
+
+Scenario: İşlemi sonlandır
+
+When I click on first element via input and id and a_0
+
+!-- --- TTP-600005 Testcase: Aksesuar finished successful ---
+

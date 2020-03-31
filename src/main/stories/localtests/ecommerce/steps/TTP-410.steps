@@ -1,0 +1,46 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch Start-Page
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------
+Scenario: Open Login page
+!-- -------------------------------------------------
+When I click the link contains '/de/store/myaccount/login'
+
+!-- Then the page 'loginurl' is opened
+Then the url of current page contains '/myaccount/login'
+
+!-- -----------------------------------------------
+Scenario: Login with valid data
+Meta: @exclude_production
+!-- -----------------------------------------------
+When I click the element 'username'
+When I enter <username> into 'username'
+When I click the element 'password'
+When I enter <password2> into 'password'
+
+When I click the element 'logInButton'
+
+Then the url of current page contains 'overview'
+
+!-- ----------------------------------------------
+Scenario: Tab myBosch Code
+Meta: @exclude_production @exclude_notready
+!-- ----------------------------------------------
+Then the element '#tab7' is visible
+
+When I click the element '#tab7'
+Then the element 'voucherCode' is visible
+Then the element 'cewSubmitButton' is visible
+
+
+!-- --- TTP-409 CEW: Tab My Code exists was successful ---
+
+

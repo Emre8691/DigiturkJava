@@ -1,0 +1,137 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+When I click the element button[class="close-btn"] if avaliable
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <orderuserttp24> into 'signin_email'
+Then the form field signin_email is filled correct with the parameter <orderuserttp24>
+When I clear the 'password' field
+When I enter <password22> into 'signin_password'
+Then the form field signin_password is filled correct with the parameter <password22>
+
+When I click the xpath element //*[@id="bshLoginData"]/div[1]/div/button
+Then I must wait 2 seconds
+Then the login was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Search for a keyword with the $given value at data column to the Main Search Box
+!-- --------------------------------------------------------------------
+When I enter <fulltextsearchproductcode> into search
+Then the form field search is filled correct with the parameter <fulltextsearchproductcode>
+!-- Then the element by div and class and ws-po-box is shown
+When I click the element searchBoxBtn
+Then the element by img and src and /store/resources/mbmd/a01/img/1x1.png is shown
+When I clear the search field
+Then the form field search is filled correct with the parameter ''
+Then check the search is empty
+When I enter '0' into search
+Then the form field search is filled correct with the parameter 0
+!-- When I click the element searchField
+!-- When I press ENTER at the focused pop up box
+
+
+!-- -------------------------------------------------------
+Scenario: Press Search Icon in Search Field
+!-- -------------------------------------------------------
+When I click the element searchBoxBtn
+
+!-- Then the page searchresultspage is opened
+!-- Then the element searchResultTab-Products is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Click on first listed product name in the list in order to go to product detail page of it.
+!-- -------------------------------------------------------
+When I click on first element via a and href and /de/store/product/TAT6A004/TAT6A004?breadcrumb=null
+
+
+!-- -------------------------------------------------------
+Scenario: Click on zoom product image to check Zoom function 
+!-- -------------------------------------------------------
+When I click the element productImage
+Then the element ZoomedImage is visible
+Then the element productZoomimageClose is visible
+When I click the element productZoomimageClose
+!-- Then the element productMediaGallery1 is visible
+
+!-- -------------------------------------------------------
+Scenario: Change the pictures by clicking left and right arrows 
+!-- -------------------------------------------------------
+When I click the element productImageLeftArrow
+
+Then I must wait 1 seconds
+Then the element productImage is visible
+!-- Then the element productMediaGallery2 is visible
+When I click the element productImageRightArrow
+
+!-- Then the element productMediaGallery1 is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Increase and Decrease the quantity of the product 
+!-- -------------------------------------------------------
+When I click the element plusButton
+Then the element quantity_2 is visible
+When I click the element minusButton
+Then the element quantity_1 is visible
+
+
+
+
+!-- From now on, the product detail page doesn't contain the steps below
+
+!-- When I click on first element via img and src and 435x515
+!-- Then the element by button and class and close_button is shown
+!-- Then the element by button and class and zoom-in is shown
+!-- Then the element by button and class and zoom-out is shown
+
+
+!-- -------------------------------------------------------
+!-- Scenario: Click on "+" button to Zoom in to product image
+!-- -------------------------------------------------------
+!-- When I click on first element via button and class and zoom-in
+!-- Then the element by span and aria-valuenow and 1.25 is shown
+
+
+!-- -------------------------------------------------------
+!-- Scenario: Click on "-" button to Zoom in to product image
+!-- -------------------------------------------------------
+!-- When I click on first element via button and class and zoom-out
+!-- Then the element by span and aria-valuenow and 1 is shown
+
+
+!-- -------------------------------------------------------
+!-- Scenario: Click on "+" button 2 times to Zoom in to product image
+!-- -------------------------------------------------------
+!-- When I click on first element via button and class and zoom-in
+!-- Then the element by span and aria-valuenow and 1.25 is shown
+!-- When I click on first element via button and class and zoom-in
+!-- Then the element by span and aria-valuenow and 1.50 is shown
+
+
+!-- -------------------------------------------------------
+!-- Scenario: Click on the close button of the zoom container
+!-- -------------------------------------------------------
+!-- When I click on first element via button and class and close_button
+
+
+
+!-- --- TTP-17888 Product Detail Page:Product Images was successful ---
+
+

@@ -1,0 +1,59 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Login with new created User
+!-- --------------------------------------------------------------------
+When I click the button 'myaccountbutton'
+Then the page loginpage is opened
+
+When I enter  into 'username'
+Then the form field username is filled correct with the parameter 1
+Then I must wait '3' seconds
+When I enter  into 'password'
+Then the form field password is filled correct with the parameter Burak6315))
+
+When I click the button 'logInButton'
+Then I must wait '5' seconds
+Then the element by div and testing_id and validationMismatchError is shown
+
+When I enter bosch_d2c@mailinator.com into 'username'
+Then the form field username is filled correct with the parameter enrico@mailinator.com
+Then I must wait '3' seconds
+When I enter d245&/) into 'password'
+Then the form field password is filled correct with the parameter Burak6315))
+
+When I click the button 'logInButton'
+Then I must wait '5' seconds
+!-- validationAccountError isn't shown
+Then the element by div and id and signin_email-error-custom is shown
+When I click on first element via i and testing_id and pageSharePopover
+
+Then the element by a and testing_id and facebookPopover is shown
+Then I must wait '4' seconds
+Then the element by a and testing_id and twitterPopover is shown
+
+When I click on first element via i and testing_id and iconArrowUp
+Then I must wait '4' seconds
+When I click on first element via a and testing_id and registerButton
+Then I must wait '3' seconds
+Then the element by li and testing_id and processBar is shown
+
+
+
+

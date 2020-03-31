@@ -1,0 +1,19 @@
+{
+  "totalTestCount": 25,
+  "modelList": [
+    {
+      "totalTestCount": 25,
+      "testExecutionKey": "TTP-651",
+      "storyPath": "rollout/siemens2013/basics/tr/BAS2.story, rollout/siemens2013/basics/tr/BAS3.story, rollout/siemens2013/basics/tr/BAS5.story, rollout/siemens2013/basics/tr/PDP3.story, rollout/siemens2013/basics/tr/SER1.story, rollout/siemens2013/customerservice/tr/SER2.story, rollout/siemens2013/products/tr/LOC2.story, rollout/siemens2013/products/tr/PDP1.story, rollout/siemens2013/userdata/tr/ACC1.story, rollout/siemens2013/userdata/tr/ACC3.story, rollout/siemens2013/userdata/tr/ACC6.story, rollout/siemens2013/userdata/tr/ACC7.story, rollout/siemens2013/userdata/tr/RES1.story, rollout/siemens2013/basics/tr/BAS1.story, rollout/siemens2013/basics/tr/BAS4.story, rollout/siemens2013/basics/tr/MYB1.story, rollout/siemens2013/basics/tr/PDP2.story, rollout/siemens2013/checkout/tr/CHE1.story, rollout/siemens2013/checkout/tr/CHE2.story, rollout/siemens2013/checkout/tr/CHE3.story, rollout/siemens2013/checkout/tr/CHE5.story, rollout/siemens2013/userdata/tr/ACC4.story, rollout/siemens2013/userdata/tr/che4.story, rollout/siemens2013/checkout/tr/CHE1_grnt.story, rollout/siemens2013/checkout/tr/CHE1_isbank.story",
+      "seleniumUrl": "http://52.17.174.14:4444/wd/hub",
+      "additionalParameters": {
+        "jbehave.thread.count": "25",
+        "selenium.webdriver.type": "remote",
+        "spring.profiles.active": "webtest"
+      },
+      "system": "futureint",
+      "server": "noserver",
+      "testedSystem": "webtest"
+    }
+  ]
+}

@@ -1,0 +1,559 @@
+!--Bosch Shops
+
+
+Scenario:United Kingdom
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschuk.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschuk.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Netherlands
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschnl.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschnl.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Sweden
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschse.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschse.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Finland
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschfi.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschfi.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Denmark
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschdk.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschdk.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Norway
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschno.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschno.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Austria
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschat.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschat.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Portugal
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschpt.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschpt.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Ireland
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschie.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschie.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Turkey
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschcom.arithnea.org/tr/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschcom.arithnea.org/tr/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: France
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschfr.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschfr.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Germany
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschcom.arithnea.org/de/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschcom.arithnea.org/de/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Swiss / German
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschcom.arithnea.org/ch/de/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschcom.arithnea.org/ch/de/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Swiss / French
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschcom.arithnea.org/ch/fr/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschcom.arithnea.org/ch/fr/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Swiss / Italien
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschcom.arithnea.org/ch/it/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschcom.arithnea.org/ch/it/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Spain
+When I open the page for following address http://bsh:newSiteD2C@www.if-bosches.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-bosches.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Belgium / Dutch 
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschbe.arithnea.org/nl/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschbe.arithnea.org/nl/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Belgium / French
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschbe.arithnea.org/fr/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschbe.arithnea.org/fr/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Poland
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschpl.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschpl.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Singapur
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschsg.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschsg.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: USA
+When I open the page for following address http://bsh:newSiteD2C@www.if-boschcom.arithnea.org/us/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-boschcom.arithnea.org/us/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+!-- Bosch Outlet
+Scenario: Netherlands
+When I open the page for following address http://bsh:newSiteD2C@www.if-bosch-outlet.arithnea.org/nl/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-bosch-outlet.arithnea.org/nl/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+!-- Bosch Staff Sales---
+Scenario: United Kingdom
+When I open the page for following address http://bsh:newSiteD2C@shop.if-boschcom.arithnea.org/gb/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure-shop.if-boschcom.arithnea.org/gb/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Germany
+When I open the page for following address http://bsh:newSiteD2C@shop.if-boschcom.arithnea.org/de/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure-shop.if-boschcom.arithnea.org/de/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: USA
+When I open the page for following address http://bsh:newSiteD2C@shop.if-boschcom.arithnea.org/us/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure-shop.if-boschcom.arithnea.org/us/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+!-- Siemens Shops---
+Scenario: Allround URL for Siemens .com domains
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Germany
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensde.arithnea.org/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensde.arithnea.org/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Swiss / Germany
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/ch/de/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/ch/de/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Swiss / French
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/ch/fr/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/ch/fr/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Swiss / Italien
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/ch/it/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/ch/it/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Austria
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensat.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensat.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Ireland
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/ie/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/ie/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Czechrepublic
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/cz/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/cz/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: United Kingdom
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensuk.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensuk.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Portugal
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenspt.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenspt.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Finland
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensfi.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensfi.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Netherlands
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensnl.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensnl.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Norway
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensno.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensno.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Sweden
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensse.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensse.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Luxembourg
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenslu.arithnea.org/de/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenslu.arithnea.org/de/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Slovak Republic
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/sk/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/sk/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Belgium NL
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensbe.arithnea.org/nl/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensbe.arithnea.org/nl/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Belgium FR
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensbe.arithnea.org/fr/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensbe.arithnea.org/fr/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: France
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensfr.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensfr.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Slovenia
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenssi.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenssi.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Isreal
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensil.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensil.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Italy
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/it/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/it/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Croatia
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/hr/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/hr/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Austrlia
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensau.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensau.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Bulgaria
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensbg.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensbg.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Serbia
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensrs.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensrs.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Poland
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenspl.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenspl.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Great britain
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensuk.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensuk.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Ireland
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/ie/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/ie/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Portugal
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenspt.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenspt.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Russia
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensru.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensru.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Ukraine
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensua.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensua.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Turkey
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/tr/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/tr/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: South Africa
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/za/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/za/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: United Arab Emirates
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/ae/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/ae/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Romania
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/ro/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/ro/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Greece
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensgr.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensgr.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: China
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscn.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscn.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Hungary
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemenscom.arithnea.org/hu/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemenscom.arithnea.org/hu/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Finland
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensfi.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensfi.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Norway
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensno.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensno.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Denmark
+When I open the page for following address http://bsh:newSiteD2C@www.if-siemensdk.arithnea.org/store/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+When I open the page for following address https://bsh:newSiteD2C@secure.if-siemensdk.arithnea.org/store/myaccount/login
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+!--Gaggenau
+Scenario: Allround URL for GAGGENAU .com domains
+When I open the page for following address http://bsh:newSiteD2C@www.if-gaggenau.arithnea.org/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+
+Scenario: Germany
+When I open the page for following address http://bsh:newSiteD2C@www.if-gaggenau.arithnea.org/de/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown
+Scenario: Austria
+When I open the page for following address http://bsh:newSiteD2C@www.if-gaggenau.arithnea.org/at/
+Then I must wait '1' second
+Then the expected 'websiteTitleArea' is shown

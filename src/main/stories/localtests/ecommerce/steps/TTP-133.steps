@@ -1,0 +1,64 @@
+!-- --------------------------------------------------------------------
+Scenario: Check the quantity of products in the shopping cart at Homepage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+Then the basket count is 'empty'
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+!-- When I search 00028140 at searchField and click searchBoxBtn
+When I enter 00028140 into searchField
+When I click the button [testing_id="searchBoxBtn"] if avaliable
+Then I wait for element with css [testing_id="addItemToBasket-00028140"] to be clickable
+Then the page 'productpage' is opened
+Then the availability is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Buy Button to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click the button span[class="step-up step-control"] if avaliable
+When I increase the quantity of the product
+Then the quantity is one more as before
+Then the quantity is '2' for product 00028140
+
+When I click the button span[class="step-down step-control"] if avaliable
+When I decrease the quantity of the product
+Then the quantity is one less then before
+Then the quantity is '1' for product 00028140
+
+When I click on first element via div and testing_id and addItemToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "+" icon 2 times to increase the quantity and add products to Basket
+!-- --------------------------------------------------------------------
+When I click the button span[class="step-up step-control"] if avaliable
+When I click the button span[class="step-up step-control"] if avaliable
+When I click on first element via div and testing_id and addItemToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Shop link from main Navigation
+!-- --------------------------------------------------------------------
+When I click the element nav-3
+Then the element 'navflyout-3' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Baking trays and other accessories in the flyout
+!-- --------------------------------------------------------------------
+When I click the element 'subcategory-300'
+Then the page 'shoplist' is opened
+When I click the xpath element //button[@value='00705432']
+Then the shopcart-overview div class exists on page
+
+!-- --- Testcase TTP-133 Automatic:MyBasket:AddtoBasket was successful ---
+
+

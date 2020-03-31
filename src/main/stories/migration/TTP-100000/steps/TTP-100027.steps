@@ -1,0 +1,63 @@
+!-- -------------------------------------------------------------------
+Scenario: Open Cosmos login Page
+When I open external webpage without validate http://nkgwtcos01/CNTEST/Cosmos2015/General/startpage.aspx
+Then I must wait '1' seconds
+When I select the Logon1$dropLanguage with the option 2 version
+
+When I enter 'system_ucako' into Logon1$txtUserCode
+When I enter 'AAaa1234+' into Logon1_txtPassword
+When I click on first element via input and name and Logon1$btnLogin
+Then I must wait '1' seconds
+!-- Then the element by div and class and row-fluid is shown
+Then the element by a and class and orange is shown
+!-- ----------------------------------------------------
+
+Scenario: Click RIS Search -- Fiş arama
+When I click the xpath element //*[@id="2"]
+When I click on first element via i and id and icn_512
+
+When I click on first element via span and id and icn_187
+Then I must wait '1' seconds
+
+Scenario: Enter RIS Number - Gir Fiş Numarası
+When I switch to the pop up window where txtRISNumber exists
+When I enter '32693594' into txtRISNumber
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="obtnFindRIS"]
+Then I must wait 1 seconds
+Scenario: Enter of Repair Time - Onarım  Başlangıç ve Bitiş Süresi
+When I switch to the pop up window where ifrmRIS exists
+When I switch to iframe with id ifrmRIS
+When I click on first element via input and id and obtnInstruction
+
+Scenario: create of ESA
+When I switch to the pop up window where dropProcessType exists
+When I click the xpath element //*[@id="dropProcessType"]
+When I click the xpath element //option[@value='4']
+Then I must wait 2 seconds
+When I click the xpath element //*[@id="dropESAReason"]
+When I click the xpath element //option[@value='1']
+Then I must wait 1 seconds
+When I enter '5' into txtTotal
+When I click on first element via input and name and btnAddNoteButton
+Scenario: Enter Talimat Notu
+When I switch to the pop up window where txtNewNote exists
+When I enter 'Test' into txtNewNote
+When I click the xpath element //*[@id="btnOk"]
+Then I must wait 2 seconds
+
+Scenario: Cancel
+When I switch to the pop up window where btnCancel exists
+When I click on first element via input and name and btnCancel
+Then I must wait 1 seconds
+
+Scenario: Confirm
+!-- When I override showModalDialog
+!-- When I switch to iframe input[id="btnOk"] location
+
+
+When I switch to the pop up window where btnOk exists
+When I click the xpath element //*[@id="btnOk"]
+Then I must wait 3 seconds
+
+!-- --- TTP-200027 Testcase Repear and Maintenance opened successful ---

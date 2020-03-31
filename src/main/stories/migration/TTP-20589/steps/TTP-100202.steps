@@ -1,0 +1,83 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Start Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- When I click on first element via a and href and https://outlet.bosch-home.com/nl/store/myaccount/login
+
+
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and https://outlet.bosch-home.com/nl/store/myaccount/login
+When I clear the 'username' field
+When I enter <orderuserttp24> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp24>
+When I clear the password field
+When I enter <password22> into 'password'
+Then the form field password is filled correct with the parameter <password22>
+
+When I click on first element via button and id and submitButton
+Then I must wait 2 seconds
+Then the login was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Shop Page
+When I click on first element via a and href and http://outlet.bosch-home.com/nl/store
+Then the element by div and class and imgContainer is shown
+Then I must wait 1 seconds
+
+!-- -------------------------------------------------------
+Scenario: Click on first listed product name in the list in order to go to product detail page of it.
+!-- -------------------------------------------------------
+When I click on first element via a and href and /nl/store/product/SBV46IX01N/SBV46IX01NB
+
+Then the element by div and class and mod modGallery offset1nx is shown
+
+!-- -------------------------------------------------------
+Scenario: Click on zoom product image to check Zoom function 
+!-- ----------------------------------------------------
+When I click the element magnifier
+Then the element zoom is visible
+Then the element close is visible
+When I click the element close
+!-- Then the element productMediaGallery1 is visible
+
+!-- -------------------------------------------------------
+Scenario: Change the pictures by clicking left and right arrows 
+!-- -------------------------------------------------------
+When I click the element smallNext
+Then the element magnifier is visible
+Then the element carouselwrap is visible
+When I click the element smallPrev
+!-- Then the element productMediaGallery1 is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Increase and Decrease the quantity of the product 
+!-- -------------------------------------------------------
+When I click the element plus
+Then the element quantity is visible
+When I click the element minus
+Then the element quantity is visible
+
+
+
+
+
+
+
+!-- --- TTP-17888 Product Detail Page:Product Images was successful ---
+
+

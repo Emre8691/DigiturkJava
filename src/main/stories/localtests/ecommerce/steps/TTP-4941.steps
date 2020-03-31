@@ -1,0 +1,69 @@
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens UK shop web page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Open the page for one small MAT
+!-- --------------------------------------------------------------------
+!-- TO DO:(Store visual design can be changed.)
+When I click on first element via a and href and /store/category/buzdolaplarivederindondurucular
+!-- When I open the page for following address 'category/kisiselbakimueruenleri'
+Then I wait for element with css input[id="cat_id_0_0"] to be visible
+
+!-- When I click the element #cat_id_1_0 if avaliable
+When I click on first element via input and id and cat_id_0_0
+Then I wait for element with css a[class="remove right closeKl"] to be visible
+Then the url of current page contains '/store/category'
+
+When I click the element img[src*="Product_Shots"] if avaliable
+Then the page productpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Buy Button to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+
+!-- When I click on first element via button and testing_id and addItemToBasket-PHD5987GB
+When I click on first element via button and testing_id and addItemToBasket- without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Shop link from main Navigation
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Increase the quantity of products to 2
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and quantityplus-
+Then the quantity is one more then before
+
+!-- --------------------------------------------------------------------
+Scenario: Increase the quantity of products to 3
+!-- --------------------------------------------------------------------
+
+When I click on first element via a and testing_id and quantityplus-
+Then the quantity is one more then before
+
+
+!-- --------------------------------------------------------------------
+Scenario: Decrease the quantity of products to 2
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and quantityminus-
+Then the quantity is one less as before
+
+
+!-- --- Testcase TTP-4941 Automatic: Basket: Display of static/dynamic delivery cost message according to threshold was successful ---
+

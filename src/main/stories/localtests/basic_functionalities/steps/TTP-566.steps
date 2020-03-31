@@ -1,0 +1,94 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page startpage is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 1st
+!-- -------------------------------------------------------
+When I enter 'VSZ5SEN2' into searchField
+When I click the button searchBoxBtn
+Then the page productdetail is opened
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 2nd
+!-- -------------------------------------------------------
+When I enter 'VSZ5337' into searchField
+When I click the button searchBoxBtn
+Then the page productdetail is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 3rd
+!-- -------------------------------------------------------
+When I enter 'VSQ8SIL66A' into searchField
+When I click the button searchBoxBtn
+Then the page productdetail is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 4th
+!-- -------------------------------------------------------
+When I enter 'VSZ4G230' into searchField
+When I click the button searchBoxBtn
+Then the page productdetail is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 5th
+!-- -------------------------------------------------------
+When I enter 'VSQ4G2132' into searchField
+When I click the button searchBoxBtn
+Then the page productdetail is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 6th
+!-- -------------------------------------------------------
+When I enter 'VSZ3XTRM1' into searchField
+When I click the button searchBoxBtn
+Then the page productdetail is opened
+
+
+!-- --------------------------------------------------------
+Scenario: Check content of carousel
+!-- --------------------------------------------------------
+Then the element viewedItems-image-gallery-1 is visible
+Then the link contains /VSZ5SEN2
+Then the link contains /VSZ5337
+Then the link contains /VSQ8SIL66A
+Then the link contains /VSZ4G230
+Then the link contains /VSQ4G2132
+Then the link contains /VSZ3XTRM1
+
+
+!-- -------------------------------------------------------
+Scenario: Carousel navigation Checks
+!-- -------------------------------------------------------
+When I click the element 'carouselNext_link'
+Then 'jcarousel-next' div is enabled
+Then 'jcarousel-prev' div is disabled
+
+
+!-- -------------------------------------------------------
+Scenario: Delete a product from Carousel and Check Navigation
+!-- -------------------------------------------------------
+!-- When I click the element 'closeRecentlyViewedItem4'
+When I click the link contains 'removeViewedItemFromList('00284849')'
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+Then 'jcarousel-next' div is disabled
+Then 'jcarousel-prev' div is disabled
+
+
+
+!-- ---  TTP-566 - Basic Functionalities: Carousel was successful finished ---
+

@@ -1,0 +1,128 @@
+Given is SAP test
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'loginpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------------------
+Scenario: Login with valid staff mail and password
+!-- ----------------------------------------------------------------
+When I enter siemens.stafftest@mailinator.com into username
+Then the form field username is filled correct with the parameter bosch.stafftest@mailinator.com
+When I enter d![tTZJ?/u5vU) into password
+Then the form field password is filled correct with the parameter d![tTZJ?/u5vU)
+When I click the element logInButton
+Then the page myaccountpage is opened
+When I click the element a[href^='?preview='] if avaliable 
+
+!-- -------------------------------------------------------------------
+Scenario: Write product code into the search field
+!-- ----------------------------------------------------------------
+When I enter <hmcproductcode28> into searchField
+Then the form field searchField is filled correct with the parameter <hmcproductcode28>
+When I click the element searchBoxBtn
+When I confirm the pop up box
+Then the page shopdetailpage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Add item to the basket
+!-- ----------------------------------------------------------------
+!-- When I click the element addItemToBasket-BGS4332S
+When I click on first visible element via button and data-eventtracking and addToBasket
+!-- When I click the element openBasket
+When I click the element goToBasket
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------
+Scenario: Write product code into the search field
+!-- ----------------------------------------------------------------
+When I enter <hmcproductcode29> into searchField
+Then the form field searchField is filled correct with the parameter <hmcproductcode29>
+When I click the element searchBoxBtn
+When I confirm the pop up box
+Then the page shopdetailpage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Add item to the basket
+!-- ----------------------------------------------------------------
+!-- When I click the element addItemToBasket-BGS4332S
+When I click on first visible element via button and data-eventtracking and addToBasket
+!-- When I click the element openBasket
+When I click the element goToBasket
+Then the page basketpage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Write product code into the search field
+!-- ----------------------------------------------------------------
+When I enter <hmcproductcode23> into searchField
+Then the form field searchField is filled correct with the parameter <hmcproductcode22>
+When I click the element searchBoxBtn
+When I confirm the pop up box
+Then the page shopdetailpage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Add item to the basket
+!-- ----------------------------------------------------------------
+!-- When I click the element addItemToBasket-BGS4332S
+When I click on first visible element via button and data-eventtracking and addToBasket
+!-- When I click the element openBasket
+When I click the element goToBasket
+Then the page basketpage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout and Select Payment Mode
+!-- ----------------------------------------------------------------
+When I click the element checkouttop
+Then the page deliverypage is opened
+When I click the element continuebuttonbottom
+!-- When I click the 2 nd/th element via input and name and paymentMode
+!-- When I choose the yapikredi payment
+!-- When I click on first element via input and name and paymentMode
+When I click the hidden element payment-A02_D2E_A_Garanti
+!-- When I click on first element via input and id and agree1
+!-- When I click on first element via input and id and agree2
+When I click the hidden element agreeContract5
+When I click the hidden element agreeContract6
+When I click the hidden element agreeContract7
+When I click the element continuebuttonbottom
+When I click the element dialog-box
+When I scrolldown the bottom of iframe 3
+Then I must wait 1 seconds
+When I switch back to switchBackToDefaultContent
+Then I must wait 3 seconds
+When I click the xpath element (//div[@class="more"]/a)[2] 
+When I press SPACE at the focused pop up box
+Then I must wait 5 seconds
+
+Scenario: Garanti Bonus
+!-- --------------------------------------------------------------------
+
+!-- Then I wait for element with css img[src*="yapikredi"] to be visible
+Then the url of current page contains 'gt3dengine'
+ 
+!-- -------------------------------------------------------------------
+Scenario: Enter Card Credentials
+!-- ----------------------------------------------------------
+!-- Then I must wait 5 seconds
+When I enter '00' into cardholder
+When I enter '4282209004348015' into cardnumber
+When I enter '10' into cardexpiredatemonth
+When I enter '2020' into cardexpiredateyear
+When I enter '123' into cardcvv2
+When I click on first element via input and id and imageField
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+Then I must wait 11 seconds
+Then the page 'confirmationpage' is shown
+Then the element by div and class and thank is shown
+Then the element by a and href and print is shown
+Then get order number $value
+
+

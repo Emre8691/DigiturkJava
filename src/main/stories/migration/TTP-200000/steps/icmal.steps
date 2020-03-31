@@ -1,0 +1,126 @@
+Scenario: Open Order Entry - Servis Kaydı 
+Then I must wait 2 seconds
+When I switch to the pop up window where ifrmShortcuts exists
+When I switch to iframe with id ifrmShortcuts
+When I click the xpath element //*[contains(text(),'Servis Kaydı - Onarım')]
+Then I must wait 3 seconds
+
+
+Scenario: Open Order Entry - Servis Kaydı 
+
+When I switch to the pop up window where ifrmCustomerAppliance exists
+
+Scenario: Enter of Customer Demand & Defective App. Status --Tuketici Talebi ve Cihaz Durumu Giriş
+
+When I switch to iframe with id ifrmCustomerAppliance
+When I click the xpath element //*[@id="CustomerAppliance_dropApplianceGroup"]
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="CustomerAppliance_dropApplianceGroup"]/option[18]
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="CustomerAppliance_dropCustomerAppliance"]
+When I click the xpath element //*[@id="CustomerAppliance_dropCustomerAppliance"]/option[21]
+
+Then I must wait 2 seconds
+
+When I switch to the pop up window where ifrmOrderEntry exists
+When I switch to iframe with id ifrmOrderEntry
+
+When I click on first element via input and name and btnSave
+Then I must wait 1 seconds
+When I switch to the pop up window where btnYes exists
+When I click on first element via input and name and btnYes
+Then I must wait 2 seconds
+
+Scenario: Add Appliance Cause Şikayet Ekle -Başvuru/Şikayet Nedeni Ekleme
+When I switch to the pop up window where ifrmRISDiagnoseCode exists
+When I switch to iframe with id ifrmRISDiagnoseCode
+
+When I click on first element via input and name and obtnAdd
+
+Then I must wait 3 seconds
+
+When I switch to the pop up window where radlQuestion exists
+
+When I click on first element via input and id and radlQuestion_3311732
+Then I must wait 1 seconds
+When I click on first element via input and id and radlQuestion_32248418
+
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 2 seconds
+
+Scenario: Search Service Code & Assign -- Servis Kodu Arama ve Atama Yap 
+When I switch to the pop up window where ifrmRoutePlan exists
+When I switch to iframe with id ifrmRoutePlan
+
+When I clear the 'txtServiceCode' field
+Then the form field 'txtServiceCode' is filled correct with the parameter ''
+When I enter 1111 into 'txtServiceCode'
+Then I must wait 1 seconds
+When I click on first element via input and name and obtnServiceSearch
+Then I must wait 1 seconds
+
+Scenario: Search Service Code & Assign -- Servis Kodu Arama ve Atama Yap
+When I switch to the pop up window where chkCity exists
+When I click on first element via input and id and chkCity
+Then I must wait 1 seconds
+When I click on first element via input and id and chkState
+Then I must wait 2 seconds
+When I enter 1111 into txtServiceCode
+When I click on first element via input and type and submit
+
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="dgrdServices"]/tbody/tr[2]/td[1]/a
+Then I must wait 2 seconds
+
+Scenario: Search Service Engineer - İcmal Planı & Teknisyen Seçimi
+When I switch to the pop up window where ifrmRoutePlan exists
+When I switch to iframe with id ifrmRoutePlan
+When I click the xpath element //*[contains(@id,'dropTechnicians')]  
+When I select the dropTechnicians with the option 10549 version
+Then I must wait 2 seconds
+When I click on first element via input and name and btnAssign
+
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 2 seconds
+
+Then I must wait 2 seconds
+Scenario: Change Date - Tarih değiştirme
+When I switch to the pop up window where ifrmRoutePlan exists
+When I switch to iframe with id ifrmRoutePlan
+When I enter @today-dd/MM/yyyy@ into 'dtxtAppointmentDate2'
+
+When I click on first element via input and name and btnAssign
+
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+
+
+Scenario: Open the icmal result
+When I switch to the pop up window where ifrmOrderEntry exists
+When I switch to iframe with id ifrmOrderEntry
+When I click on first element via input and name and obtnConclude
+When I switch to the pop up window where lblConcludedBy exists
+When I click the xpath element //*[@id="dropConcludedBy"]
+Then I must wait 1 seconds
+When I click the xpath element //option[@value='2'] 
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="dropConclusionType"]
+When I click the xpath element //option[@value='28']
+Then I must wait 1 seconds
+!-- When I enter '19:00' into txtArrivalTimeHome
+Then I must wait 1 seconds
+!-- When I enter '19:30' into txtLeaveTimeHome
+Then I must wait 1 seconds
+When I enter 'Test' into txtConcludeNote
+Then I must wait 1 seconds
+When I click on first element via input and name and btnSave
+Then I must wait 2 seconds
+
+Scenario: Confirm
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 2 seconds
+
+!-- --- TTP-200010 Testcase Delay of RIS Screen was successful erteleme --- 

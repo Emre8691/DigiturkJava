@@ -1,0 +1,33 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens DE FUT-INT mainpage)
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation (Click on "Produkte")
+!-- ---------------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Waschmaschinen"
+!-- --------------------------------------------------------------------
+When I click the navigation element subcategory-210
+!-- 1.Check, check from URL
+Then the page 'appliance' is opened
+
+Scenario: Click on Zum Handlershop
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and /de/haendlersuche?product=WM14K1G1
+Then the url of current page contains 'de/haendlersuche?product=WM14K1G1'
+!-- Then the element by div and class and dialog-box is shown
+
+
+!-- ---- TTP-11843 - PI - Marketing Product Detail Page - Online Dealers tab was successful -------
+
+

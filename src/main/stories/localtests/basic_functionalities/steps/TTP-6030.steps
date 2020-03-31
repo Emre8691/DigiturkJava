@@ -1,0 +1,136 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Online Store Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Search Product
+!-- --------------------------------------------------------------------
+When I enter 1 into searchField
+Then the given data 1 is shown correct at field searchField
+When I click the element searchBoxBtn
+Then the page searchresultspage is opened
+Then the basket count is 0
+
+!-- Germany
+!-- When I click on child element a with parent li and testing_id and searchResultTab-Shop
+!-- Then I must wait '2' seconds
+!-- Then the page searchresultspage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket
+!-- --------------------------------------------------------------------
+When I click on first visible element via button and testing_id and addToBasket
+Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+
+When I click the 2 nd/th element via button and testing_id and addToBasket
+Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+
+Then I must wait '5' seconds
+Then the basket count is '3'
+
+!-- --------------------------------------------------------------------
+Scenario: Navigate to 2nd page
+!-- --------------------------------------------------------------------
+When I click the element button[class="a-button a-button-primary"] if avaliable
+Then I must wait '5' seconds
+When I click the 11 nd/th element via button and testing_id and addToBasket
+
+When I click the 12 nd/th element via button and testing_id and addToBasket
+Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+
+When I click the 13 nd/th element via button and testing_id and addToBasket
+Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+
+Then I must wait '5' seconds
+Then the basket count is '6'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Navigate to 3nd page
+!-- --------------------------------------------------------------------
+When I click the element button[class="a-button a-button-primary"] if avaliable
+Then I must wait '5' seconds
+When I click the 21 nd/th element via button and testing_id and addToBasket
+
+Then I must wait '3' seconds
+Then the basket count is '7'
+
+!-- --------------------------------------------------------------------
+Scenario: Remove all item from Basket
+!-- --------------------------------------------------------------------
+Then I must wait '5' seconds
+When I click the element goToBasket
+Then the page basketpage is opened
+
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+
+Then the basket count is '0'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Add to Basket from product page
+!-- --------------------------------------------------------------------
+When I enter WAB12061TR into searchField
+Then the given data WAB12061TR is shown correct at field searchField
+When I click the element searchBoxBtn
+Then the page shopdetailpage is opened
+Then the url of current page contains 'WAB12061TR'
+Then the basket count is 0
+
+When I click the button 'WAB12061TR'
+Then the page shopdetailpage is opened
+
+When I click on first visible element via button and testing_id and addItemToBasket
+Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+Then I must wait '2' seconds
+Then the basket count is 1
+
+When I enter TWK1201N into searchField
+Then the given data TWK1201N is shown correct at field searchField
+When I click the element searchBoxBtn
+Then the page shopdetailpage is opened
+Then the url of current page contains 'TWK1201N'
+
+When I click the button 'TWK1201N'
+Then the page shopdetailpage is opened
+
+When I click on first visible element via button and testing_id and addItemToBasket
+Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+Then I must wait '2' seconds
+Then the basket count is 2
+
+
+
+!-- --- TTP-6030: Automatic: Basic Functionalities :  Add a Product to Basket - Test Case for BOSCH-TR Public - was successful --- 
+ 

@@ -1,0 +1,22 @@
+!-- --------------------------------------------------------------------
+Scenario: Open ServicePortal Page
+When I open external webpage without validate https://www.test.bsh-service.com/cosmosckytest/SaleServicePortal/General/StartPage.aspx
+Then I must wait '2' seconds
+When I enter '7000103853' into Logon1$txtUserCode
+When I enter 'A123456*' into Logon1_txtPassword
+When I click on first element via input and name and Logon1$btnLogin
+Then I must wait 2 seconds
+When I click on first element via input and name and btnEnergyLabel
+Then I must wait 1 seconds
+When I click the xpath element //div[@id='_ddlDealerApplianceGroups_row1_ob_Cbo_ddlDealerApplianceGroups_row1MainContainer']/div/div[2]
+When I click the xpath element //div[@id='_ddlDealerApplianceGroups_row1_ob_Cbo_ddlDealerApplianceGroups_row1ItemsContainer']/div[2]/ul/li[7]
+When I enter 'FRM' into _ddlModels_row1$ob_Cbo_ddlModels_row1TB
+When I click the xpath element //div[@id='_ddlModels_row1_ob_Cbo_ddlModels_row1MainContainer']/div/div[2]
+When I click the xpath element //*[contains(text(),'FRMA550')]
+When I click on first element via input and id and btnSave 
+
+Then I must wait 5 seconds
+
+
+!-- --- TTP-800002 Testcase: Montaj Kurulum Talebi finished successful ---
+

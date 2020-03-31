@@ -1,0 +1,13 @@
+Scenario: Click RIS Search -- Fiş arama
+When I click on first element via i and id and icn_2
+When I click on first element via span and id and icn_187
+Then I must wait '1' seconds
+
+Scenario: Enter RIS Number - Gir Fiş Numarası
+When I switch to the pop up window where txtRISNumber exists
+When I enter '82454559' into txtRISNumber
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="obtnFindRIS"]
+Then I must wait 4 seconds
+
+!-- --- TTP-200005 Testcase Searching of Ris Screen was successful --- 

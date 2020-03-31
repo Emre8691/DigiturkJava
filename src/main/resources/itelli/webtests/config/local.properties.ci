@@ -1,0 +1,21 @@
+# All properties from defaults.properties can be overwritten here!
+# This file has to be copied to /webtests/src/main/resources/ as "local.properties".
+
+# On unix systems we have to modify the browser path.
+selenium.browser.path=/usr/bin/firefox
+
+# The browser version that is currently installed on above selenium server.
+selenium.browser.version=25.0
+
+# Use the Jenkins Selenium HUB as target. We need to use the internal domain,
+# because port 4444 is not available on the public interface.
+selenium.url=http://10.10.0.142:14444/wd/hub
+
+# According to ICORE-31 the Jenkins builds have to test against Fut. Int.
+bsh.testedSystem=futureint
+
+# Filter for excluding
+jbehave.meta.filter=-missingpayment.skip *bosch_us *bosch_be*, -nodeliveryaddressdeviant.exclude *bosch_be*, -exclude_notready, -template_switch.skip *siemens*_de_2013
+
+# Story configuration for current structure rollout and stable
+jbehave.story.path.pattern=rollout*/**/*siemens_de_2013.story,stable/**/*gag*.story,stable/**/*bosch*.story

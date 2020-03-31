@@ -1,0 +1,42 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the navigation element myaccountbutton
+Then the page 'loginpage' is opened
+
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <orderuserpwd> into 'password'
+Then the form field password is filled correct with the parameter <orderuserpwd>
+
+When I click the button 'logInButton' without wait
+Then the element searchbar-2 is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Profile Pages
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and myprofile without wait
+Then the page accountprofilepage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Open My Orders Page and Order Detail page.
+!-- --------------------------------------------------------------------
+!-- When I click the navigation element metaNavigation
+When I click on first element via a and href and id-meta-nav_120-1 without wait
+Then I wait for element with css .tooltip-wrapper-6 to be visible
+When I click the navigation element myorders
+Then the page accountnoorderspage is opened
+!-- When I click the navigation element metaNavigation
+!-- When I click the navigation element 'myorders'
+!-- Then the page accountnoorderspage is opened
+
+
+!-- --- Testcase TTP-156 Automatic : MyAccount: MyOrders (Siemens) was successful ---
+
+

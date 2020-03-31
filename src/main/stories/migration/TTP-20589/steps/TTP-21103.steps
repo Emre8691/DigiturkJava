@@ -1,0 +1,96 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------
+Scenario: Click on the Shop Link at main navigation
+!-- -------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+Then the element 'flyoutclosebtn' is visible
+Then the element 'category-2-3' is visible
+Then the element 'subcategory-2-1-1' is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Click on the Cooking and Baking category in the flyout
+!-- -------------------------------------------------------
+When I click the element 'category-2-1'
+!-- When I click on child element span with parent a and href and <cookingandbakinglink>
+Then the page shoplist is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Browse through (SHOP) Product Category Pages
+!-- -------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'flyoutclosebtn' is visible
+When I click the element subcategory-2-1-1
+!-- When I click the element subcategory-2-6-1
+Then the page shoplist is opened
+
+When I click on child element span with parent h2 and class and a-heading
+!-- Then the page productdetailpage is opened(cannot catch the page ids)
+
+
+!-- -------------------------------------------------------
+Scenario: Check features at product list page (PRODUCTs)
+!-- -------------------------------------------------------
+When I click the navigation element nav-1
+Then the element 'navflyout-1' is visible
+Then the element 'flyoutclosebtn' is visible
+
+When I click the element subcategory-1-2-2
+Then the link contains <productcategoryteaser2>
+
+!-- When I click the link isEqual to <productcategorylink>
+!-- Then the page productlist is opened (cannot catch the page ids)
+
+!-- -------------------------------------------------------
+Scenario: Check ProductListPage feature
+!-- -------------------------------------------------------
+Then the element by div and data-input-value and <productlistpagecheck1> is shown
+Then the element by div and data-input-value and <productlistpagecheck2> is shown
+Then the element by ul and class and <productlistpagecheck3> is shown
+Then the element by button and class and <productlistpageresetbutton> is shown
+
+Then the element by div and data-input-value and FilterBreadcrumb is shown
+Then the element by div and class and filter-layer-controls is shown
+Then the element by div and data-t-name and FilterList is shown
+
+
+
+
+!-- -------------------------------------------------------
+Scenario: Click on i.e. Segment on the filter option
+!-- -------------------------------------------------------
+When I click on first element via label and for and <productlistpagefilter>
+!-- Then the page productlist is opened (cannot catch the page ids)
+
+
+
+!-- -------------------------------------------------------
+Scenario: Remove First Product previous filter click (reset filter)
+!-- -------------------------------------------------------
+!-- When I click the element <ResetButtonID>
+When I click on first element via button and class and <productlistpageresetbutton> without wait
+Then the element by label and for and <productlistpagefilter> is shown
+Then the element by div and data-t-name and FilterList is shown
+!-- Then the page productlist is opened (cannot catch the page ids)
+
+
+!-- --- TTP-17877 Testcase Product Filter Marketing(Product) scope finish andwas successful ---
+

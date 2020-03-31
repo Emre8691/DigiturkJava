@@ -1,0 +1,96 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 1st
+!-- -------------------------------------------------------
+When I enter <product1> into 'searchField'
+When I click the button 'searchBoxBtn'
+Then the page 'productpage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 2nd
+!-- -------------------------------------------------------
+When I enter <product2> into 'searchField'
+When I click the button 'searchBoxBtn'
+Then the page 'productpage' is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 3rd
+!-- -------------------------------------------------------
+When I enter <product3> into 'searchField'
+When I click the button 'searchBoxBtn'
+Then the page 'productpage' is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 4th
+!-- -------------------------------------------------------
+When I enter <product4> into 'searchField'
+When I click the button 'searchBoxBtn'
+Then the page 'productpage' is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 5th
+!-- -------------------------------------------------------
+When I enter <product5> into 'searchField'
+When I click the button 'searchBoxBtn'
+Then the page 'productpage' is opened
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 6th
+!-- -------------------------------------------------------
+When I enter <product6> into 'searchField'
+When I click the button 'searchBoxBtn'
+Then the page 'productpage' is opened
+
+
+!-- --------------------------------------------------------
+Scenario: Check content of carousel
+!-- --------------------------------------------------------
+Then the element viewedItems-image-gallery-1 is visible
+Then the link contains <product1>
+Then the link contains <product2>
+Then the link contains <product3>
+Then the link contains <product4>
+Then the link contains <product5>
+Then the link contains <product6>
+
+
+!-- -------------------------------------------------------
+Scenario: Carousel navigation Checks
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'carouselNext_link'
+Then 'jcarousel-next' div is enabled
+Then 'jcarousel-prev' div is disabled
+
+
+!-- -------------------------------------------------------
+Scenario: Delete a product from Carousel and Check Navigation
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+!-- When I click the element 'closeRecentlyViewedItem4'
+When I click the link contains 'removeViewedItemFromList('00284849')'
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+Then 'jcarousel-next' div is disabled
+Then 'jcarousel-prev' div is disabled
+
+
+
+!-- ---  TTP-423 - Carousel (NEFF) was successful finished ---
+

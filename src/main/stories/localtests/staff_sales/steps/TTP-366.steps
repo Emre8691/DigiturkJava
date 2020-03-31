@@ -1,0 +1,60 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I enter <staffuserv2> into username
+When I enter <staffmailpwd> into password
+When I click the element 'logInButton'
+
+
+!-- ---------------------------------------------------------------
+Scenario: Go to product and add it to the basket
+!-- ---------------------------------------------------------------
+Then I wait for element with css a[testing_id="goToBasket"] to be visible
+When I click the button a[testing_id="goToBasket"] if avaliable
+
+When I enter W into searchField
+!-- When I click the navigation element searchBoxBtn
+!-- When I click the searchBoxBtn without validation
+When I click the button searchBoxBtn without wait
+
+Then I wait for element with css [testing_id="searchResultTab-Shop"] to be visible
+Then the url of current page contains '/sitesearch/result?search=W'
+
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- ----------------------------------------------------------------
+Scenario: Go to basket
+!-- ----------------------------------------------------------------
+When I click the element goToBasket
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------
+Scenario: Go to checkout page
+!-- --------------------------------------------------------------
+!-- When I click the button 'checkouttop'
+When I click the navigation element checkouttop
+Then the page deliverypage is opened
+When I click on first element via input and id and deliveryAddress
+
+
+!-- -----------------------------------------------------------------
+Scenario: Continue
+!-- ------------------------------------------------------------------
+!-- When I click the element 'continuebuttontop'
+When I click the navigation element continuebuttontop
+Then the page summarypage is opened
+
+!-- --- TTP-366 Staffsales Checkout - Checkout Logged User was successful ---
+

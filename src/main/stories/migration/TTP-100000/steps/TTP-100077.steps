@@ -1,0 +1,181 @@
+!-- -------------------------------------------------------------------
+Scenario: Open Cosmos login Page
+When I open external webpage without validate http://cosmoseutest.euce.corp.bshg.com/cosmosglobalrbtest_intra/CosmosAZE/TUR/Cosmos/General/StartPage.aspx 
+Then I must wait '2' seconds
+When I enter 'system' into Logon1$txtUserCode
+When I enter 'f12345***1*1' into Logon1_txtPassword
+When I click on first element via input and name and Logon1$btnLogin
+Then I must wait '2' seconds
+Then the element by div and class and row-fluid is shown
+Then the element by a and class and orange is shown
+!-- --------------------------------------------------------------------
+
+Scenario: Click Customer Service Search -- Ayrıntılı Tüketici arama
+When I click on first element via i and id and icn_1
+When I click on first element via span and class and widget-label
+Then I must wait 2 seconds
+
+Scenario: Customer Identification - Tüketici Ekranı
+When I switch to the pop up window where ifrmCustomer exists
+When I switch to iframe with id ifrmCustomer
+When I enter 'test3' into txtFirstName
+When I enter 'test2' into txtLastName 
+When I click on first element via input and name and btnSearch
+When I switch to the pop up window where ifrmCustomer exists
+When I switch to iframe with id ifrmCustomer
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="grdlnk"]
+ 
+Scenario: Open Order Entry - Servis Kaydı 
+Then I must wait 2 seconds
+When I switch to the pop up window where ifrmShortcuts exists
+When I switch to iframe with id ifrmShortcuts
+When I click the xpath element //*[contains(text(),'Ввод нового заказа')]
+Then I must wait 3 seconds
+
+Scenario: Open Order Entry - Servis Kaydı 
+
+When I switch to the pop up window where ifrmOrderEntry exists
+When I switch to iframe with id ifrmOrderEntry
+When I select the dropOrderType with the option 4 version
+Scenario: Add Appliance - Tüketici Nedeni Ekleme
+When I switch to the pop up window where ifrmCustomerAppliance exists
+When I switch to iframe with id ifrmCustomerAppliance
+When I click the xpath element //*[@id="CustomerAppliance_dropApplianceGroup"]
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="CustomerAppliance_dropApplianceGroup"]/option[6]
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="CustomerAppliance_dropCustomerAppliance"]
+
+When I click the xpath element //*[@id="CustomerAppliance_dropCustomerAppliance"]/option[2]
+
+
+When I switch to the pop up window where ifrmOrderEntry exists
+When I switch to iframe with id ifrmOrderEntry
+
+When I click on first element via input and name and btnSave
+Then I must wait 1 seconds
+When I switch to the pop up window where btnYes exists
+When I click on first element via input and name and btnYes
+Then I must wait 2 seconds
+
+Scenario: The reason for the complaint -- başvuru nedeni ekleme
+When I switch to the pop up window where ifrmRISDiagnoseCode exists
+When I switch to iframe with id ifrmRISDiagnoseCode
+
+When I click on first element via input and name and obtnAdd
+Then I must wait 1 seconds
+When I switch to the pop up window where radlQuestion exists
+
+When I click on first element via input and id and radlQuestion_70
+When I confirm the pop up box
+Then I must wait 3 seconds
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+
+
+Scenario: Search Service Code & Assign -- Servis Kodu Arama ve Atama Yap
+When I switch to the pop up window where ifrmRoutePlan exists
+When I switch to iframe with id ifrmRoutePlan
+
+Then I must wait 2 seconds
+When I click on first element via input and name and obtnServiceSearch
+Then I must wait 1 seconds
+
+Scenario: Search Service Code & Assign -- Servis Kodu Arama ve Atama Yap
+When I switch to the pop up window where chkCity exists
+Then I must wait 2 seconds
+When I click on first element via input and name and btnFilter
+
+Then I must wait 2 seconds
+
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="dgrdServices"]/tbody/tr[4]/td[1]/a
+Then I must wait 2 seconds
+
+Scenario: Search Service Engineer - İcmal Planı & Teknisyen Seçimi
+When I switch to the pop up window where ifrmRoutePlan exists
+When I switch to iframe with id ifrmRoutePlan
+When I click the xpath element //*[contains(@id,'dropTechnicians')]  
+When I select the dropTechnicians with the option 3 version
+Then I must wait 2 seconds
+
+Scenario:Route Plan & Assign - İcmal Planı & Atama Yap
+When I click on first element via input and name and btnAssign
+
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 2 seconds
+
+Scenario: Open RIS Page - Fiş Ekranı Aç
+When I switch to the pop up window where ifrmOrderEntry exists
+When I switch to iframe with id ifrmOrderEntry
+Then I must wait 2 seconds
+When I click on first element via div and style and TEXT-DECORATION: underline
+Then I must wait 5 seconds
+When I switch to the pop up window where ifrmRIS exists
+When I switch to iframe with id ifrmRIS
+When I enter 9502 into txtProductionDateCode
+When I enter 41321 into txtSerialNumber
+Then I must wait 2 seconds
+
+Scenario: Enter of Repair Time - Başlangıç ve Bitiş Süresi
+When I enter 10:13 into txtRepairStartTime
+When I enter 10:13 into txtRepairEndTime
+Then I must wait 2 seconds
+
+Scenario: Select RIS Process Type -- Fişe İşlem Tipi Tanımlama
+When I click the xpath element //*[@id="dropRISProcessType"]
+When I select the dropRISProcessType with the option 1 version
+Then I must wait 1 seconds
+When I select the dropSecondTechnicians with the option 4 version
+Then I must wait 1 seconds
+
+Scenario:Bayi
+When I click on first element via input and name and tbtnDealerCode
+When I switch to the pop up window where txtDealerCode exists
+Then I must wait 1 seconds
+When I click the xpath element //*[contains(text(),'901001')]
+Then I must wait 2 seconds
+
+Scenario:Save
+When I switch to the pop up window where ifrmRISDetail exists
+When I switch to iframe with id ifrmRIS
+When I click on first element via input and name and btnSave
+Then I must wait 1 seconds
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 1 seconds
+
+Scenario: Add of material/labor -- Malzeme/İşçilik Ekleme
+When I switch to the pop up window where ifrmRISDetail exists
+When I switch to iframe with id ifrmRISDetail
+When I click on first element via input and id and obtnAddSparePart
+Then I must wait 2 seconds
+
+When I switch to the pop up window where obtnSearchMaterial exists
+When I click the xpath element //*[@id="obtnSearchMaterial"]
+
+When I switch to the pop up window where txtMaterialDescription exists
+Then I must wait 1 seconds
+When I enter 00032196 into txtMaterialCode
+When I click on first element via input and id and btnSearch
+When I click the xpath element //*[@id="dgrtMaterials"]/tbody/tr[2]/td[1]/a
+Then switch back the window to parent window static
+
+When I switch to the pop up window where txtMaterialDescription exists
+When I click the xpath element //*[@id="DropOriginOfService"]
+When I select the DropOriginOfService with the option 1 version
+!-- When I enter '12345' into txtReceiptNumber
+Then I must wait 1 seconds
+When I click on first element via input and name and btnInsert
+
+Then I must wait 1 seconds
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 4 seconds
+
+
+!-- --- TTP-100077 Testcase Creating of RIS with post warranty was successful --- 
+
+

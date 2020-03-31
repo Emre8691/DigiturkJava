@@ -1,0 +1,51 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch Start-Page
+!-- --------------------------------------------------------------------
+!-- When I open the page for following address <starturl>
+When I open external webpage https://secure.bosch-home.co.uk.fi.muc.bsh.arithnea.org/store/cew
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the page cewlandingpage is shown
+
+!-- --------------------------------------------------
+Scenario: Enter a valid E-number, fabrication date(fData) and serialNumber 
+!-- -------------------------------------------------
+When I enter 'SMS40C12GB/18' into productCode
+Then the form field productCode is filled correct with the parameter 'SMS40C12GB/18'
+When I enter '9312' into fdDate
+Then the form field fdDate is filled correct with the parameter '9312'
+When I enter '123456' into serialNumber
+Then the form field serialNumber is filled correct with the parameter '123456'
+
+!-- --------------------------------------------------
+Scenario: Enter invalid purchase date (more than 29 Day)
+!-- -------------------------------------------------
+When I enter 30 days before Today's date as a Purchase date for CEW
+Then the page cewlandingpage is shown
+
+When I click the element cewLandingFormSubmit
+Then the expected applianceFormData.errors is shown
+Then the element by input and class and ValidationError is shown
+Then the page cewlandingpage is shown
+
+
+!-- --------------------------------------------------
+Scenario: Enter valid purchase date (less than 29 Day)
+!-- -------------------------------------------------
+When I clear the purchaseDate field
+Then the form field purchaseDate is filled correct with the parameter ''
+
+When I enter 27 days before Today's date as a Purchase date for CEW
+
+Then the page cewlandingpage is shown
+When I click the element cewLandingFormSubmit
+
+Then the element by a and href and WarrantyExtension3years is shown
+Then the link contains WarrantyExtension3years
+Then the element by a and testing_id and addItemToBasket is shown
+
+
+!-- ---TTP-14163 CEW: Limit the period for selling CEW in UK was successful--- 
+
+

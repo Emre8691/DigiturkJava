@@ -1,0 +1,51 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------
+Scenario: Open product detail page
+!-- --------------------------------------------------
+When I open the page for following address '/produktlistde/neff-zubehoer/backen/pizza-und-brotbacksteine/00576767'
+Then the url of current page contains 'neff-zubehoer/backen/pizza-und-brotbacksteine'
+
+
+!-- -------------------------------------------------
+Scenario: Check page items
+!-- ------------------------------------------------
+Then the element 'addItemToBasket-00576767' is visible
+Then the element 'tabtree-2' is visible
+Then the element 'tabtree-3' is visible
+Then the element 'tabtree-5' is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Click on zoom product image to check Zoom function 
+!-- -------------------------------------------------------
+When I click on first element via div and class and zoom-image-wrapper
+
+When I click the link contains '#gallery-panel-2'
+Then the link contains '#gallery-panel-2'
+
+
+When I click the link contains '#gallery-panel-1'
+Then the link contains '#gallery-panel-1'
+
+When I click on first element via button and class and zoom-in
+
+When I click on first element via button and class and zoom-out
+
+When I click on first element via button and class and close-btn
+Then I must wait '1' seconds
+Then the element 'product-id' is visible
+
+
+
+!-- --- TTP-457 - Productdetail Page (NEFF) was successful ---
+

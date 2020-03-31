@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<import resource="spring-jbehave-lifecycle.xml" />
+	<import resource="spring-jbehave-pageobjects.xml" />
+	<import resource="spring-jbehave-steps.xml" />
+
+	<!-- Read the web tests configuration. First, the default.properties are 
+		loaded, after that the local.properties are applied and potentially some 
+		keys are replaced. After that the properties given by -Dxxx=yyy are applied 
+		an overwrite the existing configurations. The values are stored in the webTestConfiguration 
+		bean. -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/itelli/webtests/config/defaults.properties</value>
+				<value>classpath:/local.properties</value>
+				<value>classpath:/global/global.properties</value>
+				<value>classpath:/localhost/*.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="systemPropertiesMode" value="2" /><!-- SYSTEM_PROPERTIES_MODE_OVERRIDE -->
+	</bean>
+
+	<alias name="webTestConfiguration" alias="webTestsConfiguration" />
+	<bean id="webTestConfiguration" class="itelli.webtests.config.WebTestsConfiguration">
+		<property name="seleniumWebDriverType" value="${selenium.webdriver.type}" />
+		<property name="seleniumURL" value="${selenium.url}" />
+		<property name="seleniumBrowser" value="${selenium.browser}" />
+		<property name="seleniumBrowserPath" value="${selenium.browser.path}" />
+		<property name="seleniumPlatform" value="${selenium.platform}" />
+		<property name="seleniumBrowserVersion" value="${selenium.browser.version}" />
+		<property name="jBehaveStoryPathPrefix" value="${jbehave.story.path.prefix}" />
+		<property name="jBehaveStoryPathPattern" value="${jbehave.story.path.pattern}" />
+		<property name="jBehaveMetaFilter" value="${jbehave.meta.filter}" />
+		<property name="testedSystem" value="${itelli.testedSystem}" />
+		<property name="jbehaveThreadCount" value="${jbehave.thread.count}" />
+		<property name="downloadVideo" value="${selenium.video.download}" />
+	</bean>
+	<!-- End of configuration -->
+
+	<bean id="proxyProvider" class="itelli.webtests.network.ProxyProvider"/>
+	<bean id="firefoxProxyWebDriverProvider" class="itelli.webtests.network.ProxyFirefoxWebDriverProvider" >
+		<property name="proxyProvider" ref="proxyProvider" />
+	</bean>
+	<bean id="firefoxProxyRemoteWebDriverProvider" class="itelli.webtests.network.ProxyRemoteWebDriverProvider">
+		<constructor-arg name="desiredCapabilities" ref="desiredCapabilities"/>
+		<property name="proxyProvider" ref="proxyProvider" />
+	</bean>
+	
+	<bean id="firefoxWebDriverProvider" class="org.jbehave.web.selenium.FirefoxWebDriverProvider" />
+	<bean id="remoteWebDriverProvider" class="org.jbehave.web.selenium.RemoteWebDriverProvider">
+		<constructor-arg name="desiredCapabilities" ref="desiredCapabilities"/>
+	</bean>
+	
+	
+	<bean id="desiredCapabilities" class="itelli.webtests.config.DesiredCapabilitiesFactory"
+				factory-method="createDesiredCapabilitiesForRemote" >
+				<constructor-arg ref="webTestConfiguration" />
+	</bean>
+	
+	
+	<bean id="webDriverProvider" class="itelli.webtests.config.WebDriverProviderFactory"
+		factory-method="createWebDriverProvider">
+		<constructor-arg>
+			<map>
+				<entry key="firefox-with-network-monitoring" value-ref="firefoxProxyWebDriverProvider" />
+				<entry key="local" value-ref="firefoxWebDriverProvider" />
+				
+				<entry key="remote-with-network-monitoring" value-ref="firefoxProxyRemoteWebDriverProvider" />
+				<entry key="remote" value-ref="remoteWebDriverProvider" />
+			</map>
+		</constructor-arg>
+		<constructor-arg ref="webTestConfiguration" />
+		<constructor-arg name="desiredCapabilities" ref="desiredCapabilities"/>
+		
+	</bean>
+
+	<bean id="contextInformationProvider" class="itelli.webtests.pages.common.ContextInformationProvider" />
+
+	
+
+	<util:list id="parameterConverters"
+		value-type="org.jbehave.core.steps.ParameterConverters.ParameterConverter">
+		<bean class="itelli.webtests.converters.SiteTypeConverter" />
+		<bean class="itelli.webtests.converters.GlobalPropertyConverter">
+			<property name="propertiesReader" ref="propertiesReader" />
+			<property name="propertyNames">
+				<list value-type="java.lang.String">
+					<value>isocode</value>
+					<value>display</value>
+				</list>
+			</property>
+			<property name="propertyType">
+				<value type="java.lang.Class">itelli.webtests.domain.Country</value>
+			</property>
+		</bean>
+		<bean class="itelli.webtests.converters.GlobalPropertyConverter">
+			<property name="propertiesReader" ref="propertiesReader" />
+			<property name="propertyNames">
+				<list value-type="java.lang.String">
+					<value>isocode</value>
+					<value>display</value>
+				</list>
+			</property>
+			<property name="propertyType">
+				<value type="java.lang.Class">itelli.webtests.domain.Language</value>
+			</property>
+		</bean>
+		<bean class="itelli.webtests.converters.GlobalPropertyConverter">
+			<property name="propertiesReader" ref="propertiesReader" />
+			<property name="propertyNames">
+				<list value-type="java.lang.String">
+					<value>sapcode</value>
+					<value>display</value>
+				</list>
+			</property>
+			<property name="propertyType">
+				<value type="java.lang.Class">itelli.webtests.domain.Brand</value>
+			</property>
+		</bean>
+		<bean class="itelli.webtests.converters.GlobalPropertyConverter">
+			<property name="propertiesReader" ref="propertiesReader" />
+			<property name="propertyNames">
+				<list value-type="java.lang.String">
+					<value>name</value>
+					<value>code</value>
+				</list>
+			</property>
+			<property name="propertyType">
+				<value type="java.lang.Class">itelli.webtests.domain.Component</value>
+			</property>
+		</bean>
+		<bean class="itelli.webtests.converters.GlobalPropertyConverter">
+			<property name="propertiesReader" ref="propertiesReader" />
+			<property name="propertyNames">
+				<list value-type="java.lang.String">
+					<value>identifier</value>
+					<value>googleid</value>
+					<value>type</value>
+				</list>
+			</property>
+			<property name="propertiesMapName">
+				<value>identifiers</value>
+			</property>
+			<property name="propertyType">
+				<value type="java.lang.Class">itelli.webtests.domain.ContentElement</value>
+			</property>
+		</bean>
+		<bean class="itelli.webtests.converters.GlobalPropertyConverter">
+			<property name="propertiesReader" ref="propertiesReader" />
+			<property name="propertyNames">
+				<list value-type="java.lang.String">
+					<value>identifier</value>
+					<value>googleid</value>
+				</list>
+			</property>
+			<property name="propertyType">
+				<value type="java.lang.Class">itelli.webtests.domain.Page</value>
+			</property>
+		</bean>
+		<bean class="itelli.webtests.converters.StringParameterConverter">
+			<property name="contextInformationProvider" ref="contextInformationProvider" />
+		</bean>
+		<bean class="itelli.webtests.converters.NumberParameterConverter" />
+		<bean class="org.jbehave.core.steps.ParameterConverters.BooleanConverter" />
+		<bean class="org.jbehave.core.steps.ParameterConverters.DateConverter" />
+		<bean class="org.jbehave.core.steps.ParameterConverters.EnumConverter" />
+	</util:list>
+	
+	<beans profile="webtest">
+		<bean id="webDriverSteps" class="org.jbehave.web.selenium.PerStoryWebDriverSteps">
+			<constructor-arg ref="webDriverProvider" />
+		</bean>
+	</beans>
+	
+</beans>

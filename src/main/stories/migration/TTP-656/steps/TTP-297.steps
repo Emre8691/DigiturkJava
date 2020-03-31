@@ -1,0 +1,27 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ----------------------------------------------------------------
+Sceanrio: Open Discover Siemens Flyout
+!-- -----------------------------------------------------------------
+When I click the element 'nav-5'
+Then the element 'navflyout-5' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Open Brochures
+!-- -----------------------------------------------------------------
+When I click the element 'category-55'
+Then the page 'brochures' is opened
+
+
+
+
+!--  TTP-186 Customer Service : Brochures was successful finished. --

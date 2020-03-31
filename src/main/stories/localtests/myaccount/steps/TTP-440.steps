@@ -1,0 +1,65 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the button 'myaccountbutton'
+Then the page 'loginpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login customer with orders
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <usermail3> into 'username'
+Then the form field username is filled correct with the parameter <usermail3>
+When I clear the 'password' field
+When I enter <userpw> into 'password'
+Then the form field password is filled correct with the parameter <userpw>
+
+When I click the button 'logInButton'
+!-- Then the page myaccount is opened
+Then the url of current page contains 'myaccount'
+
+!-- -------------------------------------------------------------------
+Scenario: Open MyOrders
+!-- ------------------------------------------------------------------
+!-- When I click the navigation element metaNavigation
+When I click the navigation element 'myorders'
+Then I must wait '1' second
+Then the page accountnoorderspage is opened
+
+!-- -------------------------------------------------------------
+Scenario: logout
+!-- ------------------------------------------------------------
+When I click the navigation element metaNavigation
+Then the element metaNavigationFlyout is visible
+When I click the navigation element metaLogout
+
+Then the page 'loginpage' is opened
+
+!-- --------------------------------------------------------- 
+Scenario: Try to login with valid user and valid password (no orders)
+!-- --------------------------------------------------------
+When I enter <usermail3> into 'username'
+Then the form field username is filled correct with the parameter <usermail3>
+When I enter <userpw> into 'password'
+Then the form field password is filled correct with the parameter <userpw>
+
+When I click the button 'logInButton'
+!-- Then the page 'myaccount' is opened
+Then the url of current page contains 'myaccount'
+
+!-- -------------------------------------------------------------------
+Scenario: Open MyOrders
+!-- ------------------------------------------------------------------
+When I click the navigation element 'myorders'
+Then the page 'accountnoorderspage' is opened
+
+
+!-- --- TTP-440 - My Orders (NEFF) was successful ---

@@ -1,0 +1,84 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into primarySearch
+Then the form field primarySearch is filled correct with the parameter 0
+When I click the element primarySearchButton
+Then the page searchpage is opened
+Then the element by a and testing_id and addItemToBasket- is shown
+When I click on first element via a and href and /product/
+Then the page productpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket- without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page welcomepage is opened
+Then the element 'firstStep' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <productuserpwd> into 'password'
+Then the form field password is filled correct with the parameter <productuserpwd>
+When I click the button 'continuebutton'
+Then the page 'deliverypage' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Test Installments Turkish Agreement Variations
+!-- --------------------------------------------------------------------
+When I click the button 'continuebutton'
+Then the page 'summarypage' is opened
+When I click the paymentMode1 as an ID
+Then the element by input and id and installments1 is shown
+When I click the button continuebutton
+Then the element 'agreeValidationError' is visible
+
+When I decide to 'agreeContract1'
+Then the decided 'agreeContract1' is selected
+When I click the button continuebutton
+Then the element 'agreeValidationError' is visible
+
+
+When I decide to 'agreeContract2'
+Then the decided 'agreeContract2' is selected
+When I click the button continuebutton
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+
+Then the page 'summarypage' is opened
+
+!-- --- TTP-323: Automatic: Payment : Installments : Turkish Terms and Conditions was successful ---
+
+

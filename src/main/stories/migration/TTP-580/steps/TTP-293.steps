@@ -1,0 +1,125 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchfield
+Then the form field searchfield is filled correct with the parameter '0'
+When I click the element primarySearchButton
+Then the page searchpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket- without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the element 'firstStep' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into 'password'
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the button 'continuebutton'
+Then the page 'deliverypage' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Open Worldpay / VISA Card Page 
+!-- --------------------------------------------------------------------
+When I click the button 'continuebutton'
+Then the page summarypage is opened
+!-- When I click on first element via input and id and paymentMode2
+When I click the element payment-mastercard
+Then the decided 'payment-mastercard' is selected
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+
+
+!-- -------------------------------------------------------------------
+Scenario: Refused Payment Worldpay / VISA Card
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I clear the cardholderName field
+When I enter 'REFUSED' into cardholderName
+When I enter <securitycode> into securityCode
+When I click the element submitButton
+Then the page summarypage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: ERROR Payment Worldpay / VISA Card
+!-- -------------------------------------------------------------------
+When I click the element payment-visa
+Then the decided 'payment-visa' is selected
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I clear the cardholderName field
+When I enter 'ERROR' into cardholderName
+When I enter <securitycode> into securityCode
+When I click the element submitButton
+When I click the link contains SelectPaymentMethod
+When I click the link contains /cancel/
+Then the page 'summarypage' is shown
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / VISA Card
+!-- -------------------------------------------------------------------
+When I click the element payment-visa
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I clear the cardholderName field
+When I enter 'AUTHORIZED' into cardholderName
+When I enter <securitycode> into securityCode
+When I click the element submitButton
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+Then the page 'confirmationpage' is opened
+
+!-- --- Testcase TTP-293 Automatic:Checkout: Payment: WorldPay: VISA (Bosch) was successful ---
+
+
+
+

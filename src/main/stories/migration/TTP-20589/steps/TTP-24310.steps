@@ -1,0 +1,154 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+
+Then I must wait '4' seconds
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click all Products on Shop, Cleaning & Care
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-4
+Then the element 'navflyout-4' is visible
+When I click the element category-4-2
+When I click on first element via a and href and /se/eshop/cleaningandcare/cleaningandcarecooking
+Then the page 'shoplistpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Add the first product to "MyBasket" with "add to basket button"
+!-- --------------------------------------------------------------------
+When I click on first element via button and testing_id and addToBasket_00311860
+!-- Then the element <MyBasketid> is visible  // needs testing_id for verification.
+!-- When I click the visible element goToShoppingBasket
+
+!-- -------------------------------------------------------------------
+Scenario: Add item to the basket
+!-- --------------------------------------------------------------------
+!-- When I click the element goToShoppingBasket
+!-- When I click on first element via a and href and /se/eshop/vagn-sida
+When I click the xpath element /html/body/aside/div[2]/a
+
+Then the page 'basketpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Checkout - Welcome Page Log In
+!-- -------------------------------------------------------------------
+When I click the xpath element //*[@id="content"]/div[1]/div/div/div[1]/div/div/div[1]/a
+Then the page 'welcomepage' is opened
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Process as anonymus
+!-- -------------------------------------------------------------------
+When I continue with 'checkoutanonymus'
+Then the page deliverypage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check
+!-- --------------------------------------------------------------------
+!-- When I click the button 'submitButton'
+
+Then the expected 'firstname' is shown
+Then the expected 'lastName' is shown
+Then the expected 'email' is shown
+Then the expected 'emailReenterred' is shown
+!-- Then the expected 'validationPassword' is shown
+!-- Then the expected 'validationConfirmedPassword-1' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Registration Page 1 User Data
+!-- --------------------------------------------------------------------
+!-- Then the page 'accountregistration1' is opened
+
+!--When I select the 'titleselector' with the option <title> version
+
+When I enter <firstname> into 'firstname'
+Then the form field 'firstname' is filled correct with the parameter <firstname>
+
+When I enter <lastname> into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter <lastname>
+
+When I enter "Stockkolm" into 'streetName'
+Then the form field 'streetName' is filled correct with the parameter "Stockkolm"
+
+When I enter 32 into 'streetnumber'
+Then the form field 'streetnumber' is filled correct with the parameter 32
+
+When I enter 112 32 into 'postalcode'
+Then the form field 'postalcode' is filled correct with the parameter 112 32
+
+When I enter "test" into 'town'
+Then the form field 'town' is filled correct with the parameter "test"
+
+When I enter <orderuserttp22> into 'email'
+Then the form field 'email' is filled correct with the parameter <orderuserttp22>
+
+When I enter <orderuserttp22> into 'emailReenterred'
+Then the form field 'emailReenterred' is filled correct with the parameter <orderuserttp22>
+
+When I enter 97464643 into 'phone1'
+Then the form field 'phone1' is filled correct with the parameter "97464643"
+
+When I enter 97464643 into 'cellPhone'
+Then the form field 'cellPhone' is filled correct with the parameter "97464643"
+
+When I click the xpath element //*[@id="handlingform--defaultoptingroup-SESVA020001"]
+
+
+When I click the button 'continuebuttonbottom'
+Then I must wait '1' second
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Summary Page select a Payment
+!-- -------------------------------------------------------------------
+Then the page summarypage is opened
+
+When I click on first element via label and for and payment-mastercard
+
+!-- When I click the button 'continuebuttontop'
+!-- Then the expected 'agreeValidationError' is shown
+
+When I decide to 'agreeContract1'
+Then the decided 'agreeContract1' is selected
+
+When I click the button 'continuebuttonbottom'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Payment Worldpay Mastercard
+Meta: @exclude_production
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter '5555555555554444' into cardNumber
+When I select the expiryMonth with the option '05' version
+When I select the expiryYear with the option '2018' version
+!-- When I enter 'AUTHORIZED' into <cardholdernameid>
+When I enter '555' into securityCode
+When I click the element submitButton
+Then I must wait '1' second
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+Meta: @exclude_production
+!-- -------------------------------------------------------------------
+When I click the button input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+
+
+!-- --- TTP-24310 Testcase Checkout Register a new user was successful ---
+

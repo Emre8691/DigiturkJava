@@ -1,0 +1,49 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Cosmos Page - Siteyi Acma ve Login Olma
+When I open external webpage without validate http://nkgwtcos01/CNTEST/Cosmos2015/General/startpage.aspx
+Then I must wait '2' seconds
+When I select the Logon1$dropLanguage with the option 2 version
+Then I must wait 1 seconds
+When I enter 'system_ucako' into Logon1$txtUserCode
+When I enter 'AAaa1234+' into Logon1_txtPassword
+When I click on first element via input and name and Logon1$btnLogin
+Then I must wait '1' seconds
+Then the element by div and class and row-fluid is shown
+Then the element by a and class and orange is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Open Cosmos Report 
+When I enter 'conclude' into searchinput
+When I click on first element via button and id and btnSearch
+Then I must wait 1 seconds
+When I click on first element via span and id and icn_188
+Then I must wait 2 seconds
+Scenario: Enter RIS Number - Gir Fiş Numarası
+When I switch to the pop up window where txtRISNumber exists
+When I enter '32693581' into txtRISNumber
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="obtnConclude"]
+Then I must wait 3 seconds
+
+Scenario: Open the icmal result
+When I switch to the pop up window where lblConcludedBy exists
+When I click the xpath element //*[@id="dropConcludedBy"]
+When I click the xpath element //option[@value='2'] 
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="dropConclusionType"]
+When I click the xpath element //*[contains(text(),'RIS cancellation request')]
+Then I must wait 1 seconds
+!-- When I enter '19:00' into txtArrivalTimeHome
+
+When I click on first element via input and name and btnSave
+Then I must wait 2 seconds
+When I press ENTER key after 5 seconds
+Scenario: Confirm
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 2 seconds
+
+
+!-- --- TTP-100025 Testcase Delay of RIS Screen was successful erteleme --- 
+
+

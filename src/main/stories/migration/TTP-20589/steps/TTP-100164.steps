@@ -1,0 +1,91 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+!-- Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I clear the 'username' field
+When I enter <orderuserttp24> into 'signin_email'
+Then the form field signin_email is filled correct with the parameter <orderuserttp24>
+When I clear the 'password' field
+When I enter <password22> into 'signin_password'
+Then the form field signin_password is filled correct with the parameter <password22>
+
+When I click the xpath element //*[@id="bshLoginData"]/div[1]/div/button
+Then I must wait 2 seconds
+Then the login was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Choose product from Catalog
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-2
+When I click the element subcategory-2-1-1
+
+!-- Then the availability is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Add the first product to "MyBasket" with "add to basket button"
+!-- --------------------------------------------------------------------
+When I click the element addToBasket_CMG636BW1
+!-- Then the element <MyBasketid> is visible  // needs testing_id for verification.
+
+
+!-- -------------------------------------------------------------------
+Scenario: Navigate to Basket then navigate to Checkout page(welcome page)
+!-- --------------------------------------------------------------------
+When I click the element goToBasket
+Then the page 'basketpage' is opened
+
+
+!-- -------------------------------------------------------------------
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Delivery Page Logged In / Checkout Summary Page Payment
+!-- -------------------------------------------------------------------
+!-- Then the page 'deliverypage' is shown
+!-- TODO: PageName is not defined...
+Then the element by i and class and icon.icon-summary is shown
+When I click on first element via label and for and payment-visa
+Then the element by div and data-t-name and CheckoutOrderSummary is shown
+When I click on first visible element via label and for and agree1
+Then the element productTitle-displayCode is visible
+
+When I click the button 'continuebuttonbottom'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Payment Worldpay Visa
+Meta: @exclude_production
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I enter 'AUTHORIZED' into <cardholdernameid>
+When I enter <securitycode> into <securitycodename>
+When I click the element <submitbuttonname>
+Then I must wait '1' second
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+Meta: @exclude_production
+!-- -------------------------------------------------------------------
+When I click the button input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+
+
+!-- --- TTP-17884 Testcase Checkout logged user with payment visa was successful ---

@@ -1,0 +1,130 @@
+!-- -------------------------------------------------------------------
+Scenario: Open Siemens DE Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+Then the expected searchField is shown
+Then the expected searchBoxBtn is shown
+
+!-- -------------------------------------------------------
+Scenario: # Test searching text & Test auto-suggestion box - 'wasch' searching
+!-- -------------------------------------------------------
+When I enter 'wasch' into 'searchField'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+Then I wait for element with css .ws-po-box .searchlist .result-category to be visible
+Then I wait for element with css a[href="/sitesearch/result?search=waschmaschine"] to be visible
+Then I wait for element with css a[href="/sitesearch/redirect/laundry?source=product"] to be visible
+
+Then check waschmaschine exists on current page
+Then check waschtrockner exists on current page
+Then check waschmaschinen exists on current page
+
+
+!-- -------------------------------------------------------
+Scenario: # Click on "search" or Enter
+!-- -------------------------------------------------------
+When I click the element searchBoxBtn
+Then the page searchresultspage is opened
+Then I wait for element with css [testing_id="searchResultTab-Shop"] to be visible
+Then the url of current page contains 'search=wasch'
+
+
+!-- -------------------------------------------------------
+Scenario: # Test searching text & Test auto-suggestion box - 'Gesch' searching
+!-- -------------------------------------------------------
+When I clear the searchField field
+Then the form field searchField is filled correct with the parameter ''
+When I enter 'Gesch' into 'searchField'
+Then the form field searchField is filled correct with the parameter 'Gesch'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+Then I wait for element with css .ws-po-box .searchlist .result-category to be visible
+Then I wait for element with css a[href="/produktliste/geschirrspuelen/60-cm-breite-geschirrspueler/SN25L230EU"] to be visible
+Then I wait for element with css a[href="/produktliste/geschirrspuelen/60-cm-breite-geschirrspueler/freistehende-geschirrspueler/SN26P230EU"] to be visible
+
+
+!-- -------------------------------------------------------
+Scenario: # Test searching text & Test auto-suggestion box - 'back' searching
+!-- -------------------------------------------------------
+When I clear the searchField field
+Then the form field searchField is filled correct with the parameter ''
+When I enter 'back' into 'searchField'
+Then the form field searchField is filled correct with the parameter 'back'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+Then I wait for element with css .ws-po-box .searchlist .result-category to be visible
+Then I wait for element with css a[href="/sitesearch/redirect/cooking?source=product"] to be visible
+Then I wait for element with css a[href="/sitesearch/redirect/ovens?source=product"] to be visible
+Then I wait for element with css a[href="/sitesearch/redirect/ovenhobcombinations2?source=product"] to be visible
+
+Then check backofen exists on current page
+Then check Kochen und Backen exists on current page
+When I click the element [href="/sitesearch/redirect/cooking?source=product"] if avaliable
+Then the url of current page contains 'produkte/kochen-und-backen'
+
+
+!-- -------------------------------------------------------
+Scenario: # Test searching product number. 
+!-- -------------------------------------------------------
+When I clear the searchField field
+Then the form field searchField is filled correct with the parameter ''
+When I enter '0031156' into 'searchField'
+Then the form field searchField is filled correct with the parameter '0031156'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+Then I wait for element with css a[href*="/shop-produktliste/pflege-und-reinigung/reiniger/geschirrspuelen/0031156"] to be visible
+Then I wait for element with css a[href*="/shop-produktliste/pflege-und-reinigung/reiniger/kaffeemaschinen-und-thermoskannen/0031156"] to be visible
+
+When I clear the searchField field
+Then the form field searchField is filled correct with the parameter ''
+When I enter '0046' into 'searchField'
+Then the form field searchField is filled correct with the parameter '0046'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+Then I wait for element with css a[href*="/shop-produktliste/kaffeemaschinen/wasserfilter-und-weiteres-zubehoer/wasserfilter/surpresso-serie/0046"] to be visible
+Then I wait for element with css a[href*="/shop-produktliste/kochen-und-backen/pflege-und-reinigung/kochfelder/0046"] to be visible
+
+
+!-- -------------------------------------------------------
+Scenario: # Test searching product number - 00311565
+!-- -------------------------------------------------------
+When I clear the searchField field
+Then the form field searchField is filled correct with the parameter ''
+When I enter '00311565' into 'searchField'
+Then the form field searchField is filled correct with the parameter '00311565'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+Then I wait for element with css .ws-po-box .searchlist .result-category to be visible
+Then I wait for element with css a[href="/shop-produktliste/pflege-und-reinigung/reiniger/geschirrspuelen/00311565"] to be visible
+Then check 'Pflegemittel' exists on current page
+When I click on child element span with parent div and class and result-link
+Then the url of current page contains 'reiniger/geschirrspuelen/00311565'
+Then the element by img and alt and 00311565 is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Search for keyowrd which is maintained in FH as a redirect - DOB
+!-- -------------------------------------------------------
+When I clear the searchField field
+Then the form field searchField is filled correct with the parameter ''
+When I enter 'DOB' into 'searchField'
+Then the form field searchField is filled correct with the parameter 'DOB'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+When I click the button searchBoxBtn
+Then the url of current page contains 'techniker-online-buchen'
+
+
+!-- -------------------------------------------------------
+Scenario: Search for keyowrd which is maintained in FH as a redirect - Kundendienst
+!-- -------------------------------------------------------
+When I clear the searchbar-2 field
+Then the form field searchbar-2 is filled correct with the parameter ''
+When I enter 'Kundendienst' into 'searchbar-2'
+Then the form field searchbar-2 is filled correct with the parameter 'Kundendienst'
+Then I wait for element with css .ws-po-box .searchlist to be visible
+When I click the button search
+Then the url of current page contains 'kundendienst'
+
+!-- --- Testcase TTP-570 Basic Functionalities:On-Site Search Basics - Siemens - Fulltext Search was successful ---
+

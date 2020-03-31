@@ -1,0 +1,207 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch Home Page
+!-- --------------------------------------------------------------------
+!-- When I open the page for following address <homepage>
+When I open external webpage <homepage>
+Then the url of current page contains 'www.bosch-home.com.tr'
+
+!-- --------------------------------------------------------------------
+Scenario: Search Product
+!-- --------------------------------------------------------------------
+When I enter 'buharl' into site-search-input
+Then the given data buharl is shown correct at field site-search-input
+
+When I click on first element via a and class and searchGo
+!-- Navigate to /store
+Then I wait for element with css [id="tabShop"] to be visible
+When I click on first element via a and href and /store/searchresult
+
+Then the url of current page contains '/store'
+Then I wait for element with css ul[id="fredhopper"] to be visible
+Then I wait for element with css div[id="tab1"] to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Add to basket
+!-- --------------------------------------------------------------------
+When I click the element cat_id_0_0
+Then the url of current page contains 'uetueler'
+Then I wait for element with css a[href="#tab1"] to be visible
+Then I wait for element with css div[id="tab1"] to be visible
+
+When I click the 2 nd/th element via a and id and buyStatus-
+Then I must wait '5' seconds
+Then I wait for element with css .shopcart-overview to be invisible
+Then the basket count is '1'
+When I click on first element via a and class and remove
+Then the url of current page contains '/store/category'
+
+!-- --------------------------------------------------------------------
+Scenario: Search another product then add to basket
+!-- --------------------------------------------------------------------
+When I enter bulasik into searchfield
+Then the given data bulasik is shown correct at field searchfield
+When I click the element searchbutton
+Then I wait for element with css div[id="tab1"] to be visible
+Then the url of current page contains '/store'
+
+When I click the element cat_id_0_0
+Then the url of current page contains 'bulasikmakineleri'
+Then I wait for element with css a[href="#tab1"] to be visible
+Then I wait for element with css div[id="tab1"] to be visible
+
+When I click the 2 nd/th element via a and id and buyStatus-
+Then I must wait '5' seconds
+Then I wait for element with css .shopcart-overview to be invisible
+Then the basket count is '2'
+
+When I click on first element via a and class and basket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click on first element via a and href and store/basket without wait
+
+Then the url of current page contains '/store/basket'
+
+!-- --------------------------------------------------------------------
+Scenario: Continue to purchase flow as GUEST
+!-- --------------------------------------------------------------------
+When I click the button a[class="btn btnSubmit floatRe"] if avaliable
+Then the url of current page contains '/store/checkout/welcome'
+
+When I click the element regTypeGuest
+When I click the element continueButton
+Then the url of current page contains 'checkout/handling'
+
+!-- --------------------------------------------------------------------
+Scenario:  checkout/handling page
+!-- --------------------------------------------------------------------
+When I select the form-paymentAddress-title with the option 0002 version
+
+When I enter ProdTestisim into form-paymentAddress-firstname
+Then the given data ProdTestisim is shown correct at field form-paymentAddress-firstname
+
+When I enter prodtestsoyisim into form-paymentAddress-lastName
+Then the given data prodtestsoyisim is shown correct at field form-paymentAddress-lastName
+
+When I enter 12345678911 into form-paymentAddress-taxnr
+Then the given data 12345678911 is shown correct at field form-paymentAddress-taxnr
+
+When I select the form-paymentAddress-region with the option TR/01_TR version
+Then I wait for element with css select[id="form-paymentAddress-town"] to be visible
+When I select the form-paymentAddress-town with the option CEYHAN version
+
+When I enter 'Test cad. No.20' into form-paymentAddress-streetName
+Then the given data 'Test cad. No.20' is shown correct at field form-paymentAddress-streetName
+
+When I enter test@test.com.tr into form-paymentAddress-email
+Then the given data 'test@test.com.tr' is shown correct at field form-paymentAddress-email
+
+When I enter test@test.com.tr into form-paymentAddress-emailReenterred
+Then the given data 'test@test.com.tr' is shown correct at field form-paymentAddress-emailReenterred
+
+When I enter 053222615151 into form-paymentAddress-cellPhone
+Then the given data '053222615151' is shown correct at field form-paymentAddress-cellPhone
+
+When I click the continueButton as an ID
+Then the url of current page contains 'checkout/summary'
+
+!-- --------------------------------------------------------------------
+Scenario:  checkout/summary page
+!-- --------------------------------------------------------------------
+Then check Buharl exists on current page
+Then check makinesi exists on current page
+Then the element by div and class and imgContainer is shown
+Then the element by div and class and headline is shown
+Then the element by p and class and floatRe.summaryPage.vatspace is shown
+Then the element by div and class and deliveryOptions is shown
+
+!-- --------------------------------------------------------------------
+Scenario:  Payment Model selection scenarios - GARANTI
+!-- --------------------------------------------------------------------
+When I click the paymentMode1 as an ID
+Then I wait for element with css [id="installments1"] to be visible
+When I click the installments2 as an ID
+Then I wait for element with css input[id="agree1"] to be clickable
+Then I wait for element with css input[id="agree2"] to be clickable
+
+When I click on first element via input and id and agree1
+When I click on first element via input and id and agree2
+
+When I click the continueButton as an ID
+
+
+!-- --------------------------------------------------------------------
+Scenario: Scrolldown - Accept conditions
+!-- --------------------------------------------------------------------
+When I press SPACE at the focused pop up box
+When I scrolldown the bottom of iframe
+Then switch back the window to parent window static
+
+When I click on first element via a and id and agreeContinueButton
+When I confirm the pop up box
+
+!-- --------------------------------------------------------------------
+Scenario: Check GARANTI paymet server
+!-- --------------------------------------------------------------------
+Then the url of current page contains 'sanalposprov.garanti.com.tr/servlet/gt3dengine'
+When I enter TEST TESTER into cardholder
+Then the given data 'TEST TESTER' is shown correct at field cardholder
+
+When I enter 1234567899876543 into cardnumber
+Then the given data 1234567899876543 is shown correct at field cardnumber
+
+When I enter 555 into cardcvv2
+Then the given data 555 is shown correct at field cardcvv2
+
+When I enter 11 into cardexpiredatemonth
+Then the given data 11 is shown correct at field cardexpiredatemonth
+
+When I enter 18 into cardexpiredateyear
+Then the given data 18 is shown correct at field cardexpiredateyear
+
+When I click on first element via input and id and imageField
+Then the url of current page contains 'checkout/summary'
+Then check daha sonra tekrar deneyin. exists on current page
+
+!-- --------------------------------------------------------------------
+Scenario: Payment Model selection scenarios - YAPIKREDI
+!-- --------------------------------------------------------------------
+When I click on first element via input and id and paymentMode2
+Then I wait for element with css [id="installments1"] to be visible
+When I click on first element via input and id and installments2
+Then I wait for element with css input[id="agree1"] to be clickable
+Then I wait for element with css input[id="agree2"] to be clickable
+
+When I click on first element via input and id and agree1
+When I click on first element via input and id and agree2
+
+When I click the continueButton as an ID
+
+
+!-- --------------------------------------------------------------------
+Scenario: Scrolldown - Accept conditions
+!-- --------------------------------------------------------------------
+When I press SPACE at the focused pop up box
+When I scrolldown the bottom of iframe
+Then switch back the window to parent window static
+
+When I click on first element via a and id and agreeContinueButton
+When I confirm the pop up box
+
+!-- --------------------------------------------------------------------
+Scenario: Check YAPIKREDI paymet server
+!-- --------------------------------------------------------------------
+Then the url of current page contains 'www.posnet.ykb.com/3DSWebService/YKBPaymentService'
+When I enter 4506 into PAN1
+When I enter 3470 into PAN2
+When I enter 1144 into PAN3
+When I enter 8053 into PAN4
+When I select the select with the option 02 version
+When I select the selec2 with the option 2020 version
+When I enter 000 into cvv2
+When I click on first element via input and value and Onayla
+Then I must wait '2' seconds
+
+Then the url of current page contains 'checkout/summary'
+Then check daha sonra tekrar deneyin. exists on current page
+
+!-- --- TTP-6039: Automatic: Basic Functionalities :Paymet pages check - BOSCH-TR Public - was successful --- 
+

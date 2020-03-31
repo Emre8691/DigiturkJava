@@ -1,0 +1,166 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I click the element 'username'
+When I enter <orderuserttp> into username
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I click the element 'password'
+When I enter <passwordv2> into password
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the element 'logInButton'
+
+Then the element searchBoxBtn is visible
+Then the url of current page contains '/fr'
+
+!-- -------------------------------------------------------------------
+Scenario: Open MyProfile
+!-- -------------------------------------------------------------------
+When I click the element metaNavigation
+Then the element by div and class and tooltip-wrapper-6 is shown
+When I click the navigation element 'myprofile'
+Then the page accountprofilepage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Click Change Password
+!-- ------------------------------------------------------------------
+When I click the element 'changePWD'
+Then the page 'accountpasswordchangepage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check
+!-- ------------------------------------------------------------------
+When I click the element 'submitButton'
+Then the expected 'validationOldPassword-1' is shown
+
+!-- ------------------------------------------------------------------
+Scenario: Invalid Password
+!-- ------------------------------------------------------------------
+When I clear the 'oldPassword' field
+When I clear the 'newPassword' field
+When I clear the 'confirmedPassword' field
+
+When I enter <invalidpw> into 'oldPassword'
+When I enter <newpw> into 'newPassword'
+When I enter <newpw> into 'confirmedPassword'
+When I click the element 'submitButton'
+
+!-- Then the expected 'validationOldPassword-2' is shown
+!-- Then the element 'validationOldPassword-2' is visible
+
+!-- ------------------------------------------------------------------
+Scenario: Invalid confirmed new password
+!-- ------------------------------------------------------------------
+When I clear the 'oldPassword' field
+When I clear the 'newPassword' field
+When I clear the 'confirmedPassword' field
+
+When I enter <passwordv2> into 'oldPassword'
+When I enter <newpw> into 'newPassword'
+When I enter <invalidpw> into 'confirmedPassword'
+When I click the element 'submitButton' 
+
+!-- Then the expected 'validationOldPassword-2' is shown
+
+
+!-- ------------------------------------------------------------------
+Scenario: New password wih less than 8 characters
+!-- ------------------------------------------------------------------
+When I clear the 'oldPassword' field
+When I clear the 'newPassword' field
+When I clear the 'confirmedPassword' field
+
+When I enter <passwordv2> into 'oldPassword'
+When I enter <shortpw> into 'newPassword'
+When I enter <newpw> into 'confirmedPassword'
+When I click the element 'submitButton' 
+
+!-- Then the expected 'validationOldPassword-2' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Change Password
+!-- ---------------------------------------------------------------------
+When I enter <passwordv2> into 'oldPassword'
+Then the form field 'oldPassword' is filled correct with the parameter <passwordv2>
+Then I must wait '2' seconds
+
+When I enter <newpw> into 'newPassword'
+Then the form field 'newPassword' is filled correct with the parameter <newpw>
+Then I must wait '2' seconds
+
+When I enter <newpw> into 'confirmedPassword'
+Then the form field 'confirmedPassword' is filled correct with the parameter <newpw>
+Then I must wait '2' seconds
+
+When I click the element 'submitButton' 
+
+Then the page 'accountprofilepage' is opened
+
+!-- ----------------------------------------------------------------------
+Scenario: Logout and login again with new password
+!-- ---------------------------------------------------------------------
+When I click the navigation element 'metaNavigation'
+When I click the navigation element 'metaLogout'
+
+Then the page 'myaccountsstaffpage' is opened
+
+When I click the element 'username'
+When I enter <orderuserttp> into username
+
+When I click the element 'password'
+When I enter <newpw> into password
+
+When I click the element 'logInButton'
+
+!-- Then the page 'startpage' is opened
+Then the url of current page contains 'shop'
+
+
+!-- -----------------------------------------------------------------
+Sceanrio: Change password back to the old one
+!-- -----------------------------------------------------------------
+When I click the navigation element 'myprofile'
+Then the page 'accountprofilepage' is opened
+
+When I click the element 'changePWD'
+Then the page 'accountpasswordchangepage' is opened
+
+When I enter <newpw> into 'oldPassword'
+When I enter <passwordv2> into 'newPassword'
+When I enter <passwordv2> into 'confirmedPassword'
+When I click the element 'submitButton' 
+
+Then the page 'accountprofilepage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Logout and check old Password
+!-- -----------------------------------------------------------------------
+When I click the navigation element 'metaNavigation'
+When I click the navigation element 'metaLogout'
+
+Then the page 'myaccountsstaffpage' is opened
+
+When I click the element 'username'
+When I enter <orderuserttp> into username
+
+When I click the element 'password'
+When I enter <passwordv2> into password
+
+When I click the element 'logInButton'
+
+!-- Then the page 'startpage' is opened
+Then the url of current page contains 'shop'
+
+
+!-- --- TTP-342 Staffsales MyAccount - Change password was successful ---
+

@@ -1,0 +1,316 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 1st
+Meta: @exclude_production
+!-- -------------------------------------------------------
+When I enter '00670752' into 'primarySearch'
+When I click the button 'primarySearchButton'
+Then the page 'productpage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 2nd
+Meta: @exclude_production
+!-- -------------------------------------------------------
+When I enter 'MCM68861GB' into 'primarySearch'
+When I click the button 'primarySearchButton'
+Then the page 'productpage' is opened
+Then the element by a and href and 00670752 is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 3rd
+!-- -------------------------------------------------------
+When I enter '00460448' into 'primarySearch'
+When I click the button 'primarySearchButton'
+Then the page 'productpage' is opened
+Then the element by a and href and 00670752 is shown
+Then the element by a and href and MCM68861GB is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 4th
+!-- -------------------------------------------------------
+When I enter '00244024' into 'primarySearch'
+When I click the button 'primarySearchButton'
+Then the page 'productpage' is opened
+Then the element by a and href and 00670752 is shown
+Then the element by a and href and MCM68861GB is shown
+Then the element by a and href and 00460448 is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 5th
+!-- -------------------------------------------------------
+When I enter '00493529' into 'primarySearch'
+When I click the button 'primarySearchButton'
+Then the page 'productpage' is opened
+Then the element by a and href and 00670752 is shown
+Then the element by a and href and MCM68861GB is shown
+Then the element by a and href and 00460448 is shown
+Then the element by a and href and 00244024 is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Search for a Product for 6th
+!-- -------------------------------------------------------
+When I enter '00244023' into 'primarySearch'
+When I click the button 'primarySearchButton'
+Then the page 'productpage' is opened
+Then the element by a and href and 00670752 is shown
+Then the element by a and href and MCM68861GB is shown
+Then the element by a and href and 00460448 is shown
+Then the element by a and href and 00244024 is shown
+Then the element by a and href and 00493529 is shown
+
+
+!-- --------------------------------------------------------
+Scenario: Check content of carousel
+!-- --------------------------------------------------------
+Then the element by a and href and 00670752 is shown
+Then the element by a and href and MCM68861GB is shown
+Then the element by a and href and 00460448 is shown
+Then the element by a and href and 00244024 is shown
+Then the element by a and href and 00493529 is shown
+Then the element by a and href and 00244023 is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Carousel navigation Checks
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click on first element via div and class and valuePart
+
+Then 'jcarousel-next' div is enabled
+Then 'jcarousel-prev' div is disabled
+
+
+!-- -------------------------------------------------------
+Scenario: Delete a product from Carousel and Check Navigation
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+!-- When I click the element 'closeRecentlyViewedItem4'
+When I click the link contains 'removeViewedItemFromList('00284849')'
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+Then 'jcarousel-next' div is disabled
+Then 'jcarousel-prev' div is disabled
+
+
+
+
+!-- OLD Version:
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 1
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+!-- TODO: When I click the element 'listedProduct1'
+When I click the link contains 'MCM68861GB'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 2nd
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 2
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct2'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 1
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 1
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct1'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 3rd
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 3
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct3'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 4th 
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 4
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct4'
+Then the page 'productpage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 5th 
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 5
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct5'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 6th 
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 6
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct6'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+Then the element 'recentlyViewedItem6' is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Carousel navigation Checks
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'carouselNext_link'
+Then 'jcarousel-next' div is disabled
+Then 'jcarousel-prev' div is enabled
+
+!-- -------------------------------------------------------
+Scenario: Delete a product from Carousel and Check Navigation
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'closeRecentlyViewedItem4'
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+Then 'jcarousel-next' div is disabled
+Then 'jcarousel-prev' div is disabled
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 4th 
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 4
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct4'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+Then the element 'recentlyViewedItem6' is visible
+
+!-- -------------------------------------------------------
+Scenario: Go to Category Page for 7th 
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'lastCategoryBreadcrumb'
+Then the page 'productListPage' is opened
+
+!-- -------------------------------------------------------
+Scenario: Go to Product Detail Page - 7
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'listedProduct7'
+Then the page 'productPage' is opened
+Then the element 'viewedItems_component' is visible
+Then the element 'recentlyViewedItem1' is visible
+Then the element 'recentlyViewedItem2' is visible
+Then the element 'recentlyViewedItem3' is visible
+Then the element 'recentlyViewedItem4' is visible
+Then the element 'recentlyViewedItem5' is visible
+Then the element 'recentlyViewedItem6' is visible
+Then the element 'recentlyViewedItem7' is visible
+
+!-- -------------------------------------------------------
+Scenario: Carousel navigation Checks - 2
+Meta: @exclude_notready
+!-- -------------------------------------------------------
+When I click the element 'closeRecentlyViewedItem4'
+When I click the element 'carouselNext_link'
+Then 'jcarousel-next' div is disabled
+Then 'jcarousel-prev' div is enabled
+
+
+!-- ---  TTP-328 - Basic Functionalities: Carousel was successful finished ---
+

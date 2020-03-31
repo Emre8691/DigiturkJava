@@ -1,0 +1,140 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I open the page for following address <loginurl>
+Then the page 'loginpage' is opened
+
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Facebook Social Media icon from the Social Sign In selection.
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I click on element by xpath //a[@tabindex='1']
+Then the email is visible at the pop up box
+Then the pass is visible at the pop up box
+Then the loginbutton is visible at the pop up box
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter email and password information as provided at data section 
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I fill in email with 'abt-account@gmx.de'
+When I fill in pass with 'fk?+[=OM[+KdAKe'
+When I click the element loginbutton
+Then switch back the window to parent window static
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+!-- When I search 00284723 at searchField and click searchBoxBtn
+!-- Then the page 'productpage' is opened
+!-- Then the expected 'addItemToBasket-00284723' is shown
+
+When I click the button 'nav-1'
+Then I must wait '1' second
+
+When I click the link contains '/store/shop'
+Then the expected 'matNumberField' is shown
+
+
+When I search 00087670 at 'matNumberField' and click 'matNumberSearchBtn'
+Then the page 'productpage' is opened
+Then the expected 'addItemToBasket-00087670' is shown
+
+
+
+
+ 
+
+
+!-- When I open the page for following address <product1>
+!-- Then I must wait '1' second
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I click the button 'addItemToBasket-00087670'
+Then the shopcart-overview div class exists on page
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page 'basketpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'deliverypage' is shown
+Then the dialogue step 'DELIVERY' is 'active'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Worldpay / Master Card Page 
+Meta: @exclude_production
+!-- --------------------------------------------------------------------
+When I click the button continuebuttonbottom
+
+Then the page 'summarypage' is shown
+When I choose the 'mastercard' 'payment'
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Master Card
+Meta: @missingpayment @exclude_production
+!-- -------------------------------------------------------------------
+
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbermaster2> into the 'cardnumber' field of the 'worldpay' form
+When I enter <month> into the 'expirymonth' field of the 'worldpay' form
+When I enter <year> into the 'expiryyear' field of the 'worldpay' form
+When I enter 'AUTHORIZED' into the 'cardholdername' field of the 'worldpay' form
+When I enter <securitycode> into the 'securitycode' field of the 'worldpay' form
+When I click on the 'submitbutton' of 'worldpay'
+
+!-- -------------------------------------------------------------------
+Scenario: Worldpay Test Interface	
+Meta: @missingpayment @exclude_production
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I click on first element via input and name and continue
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+Meta: @missingpayment @exclude_production
+!-- -------------------------------------------------------------------
+
+Then the page 'confirmationpage' is opened
+
+!-- --- TTP-450 Socialmedia Checkout Login (NEFF) was successful ---
+

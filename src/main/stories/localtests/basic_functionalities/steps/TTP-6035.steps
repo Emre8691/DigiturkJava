@@ -1,0 +1,257 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+!-- When I switch to new layout
+!-- Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the url of current page contains 'bosch-home.com.tr'
+Then the basket count is 0
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: buzdolaplarivederindondurucular
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and buzdolaplari-derin-dondurucular
+Then the url of current page contains 'buzdolaplari-derin-dondurucular'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+!-- Then the element by aside and class and m-popover.m-addtocartpopover.is-active is shown
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+!-- Then I must wait '5' seconds
+Then I wait for the basket count is '1'
+
+!-- When I click the link contains 'http://www.bosch-home.com.tr/store/'
+!-- Then the url of current page contains 'www.bosch-home.com.tr/online-satis'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: camasirvekurutmamakineleri
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and camasir-ve-kurutma-makineleri
+Then the url of current page contains 'camasir-ve-kurutma-makineleri'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '2'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: bulasikmakineleri
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and bulasik-makineleri
+Then the url of current page contains 'bulasik-makineleri'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '3'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: pisirmegrubu
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and pisirme-grubu
+Then the url of current page contains 'pisirme-grubu'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '4'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: elektriklisuepuergeler
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and elektrikli-supurgeler
+Then the url of current page contains 'elektrikli-supurgeler'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '5'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: uetueler
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and utuler
+Then the url of current page contains 'utuler'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '6'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: klimalar-ve-ev-konforu
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and klimalar-ve-ev-konforu
+Then the url of current page contains 'klimalar-ve-ev-konforu'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '7'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: sac-bakim-urunleri
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and sac-bakim-urunleri
+Then the url of current page contains 'sac-bakim-urunleri'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '8'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: kahvalti-hazirlama-grubu
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and kahvalti-hazirlama-grubu
+Then the url of current page contains 'kahvalti-hazirlama-grubu'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '9'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: kahve-makineleri
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and kahve-makineleri
+Then the url of current page contains 'kahve-makineleri'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '10'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: mutfak-makineleri
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and mutfak-makineleri
+Then the url of current page contains 'mutfak-makineleri'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '11'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: mutfak-aletleri
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and mutfak-aletleri
+Then the url of current page contains 'mutfak-aletleri'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '12'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: cok-fonksiyonlu-pisirici
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and cok-fonksiyonlu-pisirici
+Then the url of current page contains 'cok-fonksiyonlu-pisirici'
+When I click the element button[class="a-button a-button-primary js-add-to-basket"] if avaliable
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '13'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: toz-torbalari-aksesuarlar-temizlik-ve-bakim-urunleri
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and toz-torbalari-aksesuarlar-temizlik-ve-bakim-urunleri
+Then the url of current page contains 'toz-torbalari-aksesuarlar-temizlik-ve-bakim-urunleri'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '14'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: oyuncaklar
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and oyuncaklar
+Then the url of current page contains 'oyuncaklar'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '15'
+
+!-- --------------------------------------------------------------------
+Scenario: Add products To Basket from Category: kampanyalar
+!-- --------------------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'flyoutclosebtn' is visible
+
+When I click on first element via a and href and kampanyalar
+Then the url of current page contains 'kampanyalar'
+When I click the 3 nd/th element via button and testing_id and addToBasket
+Then I wait for element with css aside[class*="m-popover m-addtocartpopover is-active"] to be visible
+Then I wait for the basket count is '16'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Remove all item from Basket
+!-- --------------------------------------------------------------------
+Then I must wait '2' seconds
+When I click the element goToBasket
+Then the page basketpage is opened
+
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+When I click on first element via a and testing_id and removeEntry
+Then the page basketpage is shown
+
+Then I wait for the basket count is '0'
+
+!-- --- TTP-6035: Automatic: Basic Functionalities :Category based Add a Product to Basket form every category listed Test Case for BOSCH-TR Public - was successful --- 
+
+ 

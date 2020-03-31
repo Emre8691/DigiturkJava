@@ -1,0 +1,125 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchfield
+Then the form field searchfield is filled correct with the parameter '0'
+When I click the element primarySearchButton
+Then the element by table and class and overview-product-filter is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket- without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page welcomepage is opened
+Then the element 'firstStep' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into 'password'
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the button 'continuebutton'
+Then the page deliverypage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Checkout Summary Page Sections
+!-- --------------------------------------------------------------------
+When I click the button continuebutton
+Then the page summarypage is shown
+Then the element 'voucherCode' is visible
+!-- When I choose the 'visa' 'worldpay'
+!-- When I choose the 'mastercard' 'payment'
+!-- When I choose the 'maestro' 'payment'  #//No longer available due to ICORE-28363
+When I click on first element via input and testing_id and payment-mastercard
+When I click on first element via input and testing_id and payment-visa
+When I click on first element via input and testing_id and payment-paypal
+
+When I click the button 'continuebutton'
+Then the expected 'agreeValidationError' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Check If Visa Payment Option is opening the worldPay page
+!-- --------------------------------------------------------------------
+When I click the element payment-visa
+Then the decided 'payment-visa' is selected
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+Then the url of current page contains 'worldpay'
+When I click the link contains 'cancel'
+When I click on second element via input and id and exitPaymentYes
+Then the page summarypage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check If MasterCard Payment Option is opening the worldPay page
+!-- --------------------------------------------------------------------
+When I click the element payment-mastercard
+Then the decided 'payment-mastercard' is selected
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+Then the url of current page contains 'worldpay'
+When I click the link contains 'cancel'
+When I click on second element via input and id and exitPaymentYes
+Then the page 'summarypage' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Check VoucherCode Validations
+!-- --------------------------------------------------------------------
+When I enter <invalidvoucher> into voucherCode
+Then the form field voucherCode is filled correct with the parameter par<invalidvoucher>ameter
+When I click the button submitVoucherButton
+Then the expected 'vouchererror-cannnotbeapplied' is shown
+
+When I enter <wrongvoucher> into voucherCode
+Then the form field voucherCode is filled correct with the parameter <wrongvoucher> 
+When I click the button submitVoucherButton
+Then the expected 'vouchererror-cannnotbeapplied' is shown
+
+When I enter <validvoucher> into voucherCode
+Then the form field voucherCode is filled correct with the parameter <validvoucher>
+When I click the button submitVoucherButton
+!-- Then the element 'removeVoucher' is visible
+When I enter '' into voucherCode
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+Then the url of current page contains 'worldpay'
+When I click the link contains 'cancel'
+When I click on second element via input and id and exitPaymentYes
+Then the page 'summarypage' is shown
+
+
+!-- --- Testcase TTP-351: Automatic: Checkout: Summary: Logged User (Bosch) was successful ---
+

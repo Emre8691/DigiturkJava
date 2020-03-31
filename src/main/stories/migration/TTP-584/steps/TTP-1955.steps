@@ -1,0 +1,46 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <secureurl>
+Then the page 'loginpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I enter <user> into username
+When I enter <password> into password
+When I click on first element via a and testing_id and logInButton
+Then the page myaccountpage is opened
+
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click invite your friends option
+!-- --------------------------------------------------------------------
+When I click on child element span with parent a and href and #tab6 
+
+!-- Then the element firstname is visible
+Then the familyandfriendsdataform form is available
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter information
+!-- --------------------------------------------------------------------
+
+
+When I select the title.code with the option 0002 version
+
+When I enter User into firstname
+When I enter Test into lastname
+When I enter othn724@mailinator.com into email
+When I click on first element via a and id and sendButtonFamilyAndFriends
+Then the page myaccountpage is opened
+
+
+!-- --- TTP-1955 -Staff Sales: Invite Friends and Family(Bosch) ---
+
+
+
+
+

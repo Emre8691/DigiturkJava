@@ -1,0 +1,61 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Customer Service" tab via main navigation
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'navflyout-4' is visible
+
+
+!-- -----------------------------------------------------------------
+Scenario: Open Service Assistant
+!-- -----------------------------------------------------------------
+When I click the element 'category-40'
+Then the url of current page contains '/ch/de/kundendienst/service-assistent'
+
+!-- -----------------------------------------------------------------
+Scenario: Select a product category
+!-- -----------------------------------------------------------------
+When I click the link contains '/ch/de/produkte/kochen-und-backen/backoefen'
+Then the url of current page contains 'produkte/kochen-und-backen/backoefen'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Go back to Service Assistant
+!-- --------------------------------------------------------------------
+When I click the element 'nav-4'
+Then the element 'navflyout-4' is visible
+
+When I click the element 'category-40'
+Then the url of current page contains '/ch/de/kundendienst/service-assistent'
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Enter Enumber and start search
+!-- ---------------------------------------------------------------------
+When I enter 'HE784270/02' into 'enumberSearchField'
+Then the form field enumberSearchField is filled correct with the parameter 'HE784270/02'
+When I click the element 'enumberSearchBtn'
+Then I must wait '1' second
+Then the url of current page contains 'HE784270/02'
+Then the page supportproductdetailpage is opened
+
+
+!-- -----------------------------------------------------------------------
+Scenario: Go to Tab spare part and click button
+!-- -----------------------------------------------------------------------
+When I click on first element via a and href and section-spareparts
+Then the element spareparts is visible
+Then the element by button and data-bazaarvoicetracking and AddToShoppingBasket is shown
+
+!-- --- TTP-288 Customer Service : Spare Parts was successful ---
+

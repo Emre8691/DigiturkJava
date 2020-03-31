@@ -1,0 +1,44 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the button 'myaccountbutton'
+Then the page loginpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Try to login with valid user and valid password
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+Then the form field 'username' is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into 'password'
+Then the form field 'password' is filled correct with the parameter <passwordv2>
+When I click the button 'logInButton'
+Then the url of current page contains 'myaccount'
+
+!-- --------------------------------------------------------------------
+Scenario: Try to logout user
+!-- --------------------------------------------------------------------
+When I click the element [testing_id="closeNavigation"] if avaliable
+When I click on first element via a and href and id-meta-nav_120-1
+
+!-- When I click on first element via a and testing_id and metaLogout without wait
+!-- When I click the navigation element metaNavigation
+!--   Then I wait for element with css .tooltip-wrapper-6 to be visible
+Then the element by div and class and "tooltip-wrapper-6 positionaround-1-2" is shown
+
+When I click on first visible element via a and testing_id and metaLogout
+!-- When I click the navigation element metaLogout
+!--   When I click the navigation element metaLogout
+ !--    Then the page 'loginpage' is opened
+ !-- Then I check for network with url starting with https://secure.siemens-home.de.fi.muc.bsh.arithnea.org/myaccount/login is success
+Then the page loginpage is opened
+
+!-- --- Testcase TTP-122 MyAccount:Logout (Siemens) was successful ---
+
+

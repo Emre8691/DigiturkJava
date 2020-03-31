@@ -1,0 +1,79 @@
+Given is SAP test
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'loginpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------------------
+Scenario: Login with valid staff mail and password
+!-- ----------------------------------------------------------------
+When I enter bosch.stafftest@mailinator.com into usename
+Then the form field usename is filled correct with the parameter bosch.stafftest@mailinator.com
+When I enter d![tTZJ?/u5vU) into password
+Then the form field password is filled correct with the parameter d![tTZJ?/u5vU)
+When I click the element logInButton
+Then the page myaccountpage is opened
+When I click the element a[href^='?preview='] if avaliable 
+
+!-- -------------------------------------------------------------------
+Scenario: Write product code into the search field
+!-- ----------------------------------------------------------------
+When I enter <hmcproductcode25> into primarySearch
+Then the form field primarySearch is filled correct with the parameter <hmcproductcode1>
+When I click the element primarySearchButton
+When I confirm the pop up box
+Then the page productpage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Add item to the basket
+!-- ----------------------------------------------------------------
+When I click on first visible element via button and testing_id and addItemToBasket
+When I click the element openBasket
+Then I must wait '1' seconds
+When I click the element goToBasket
+Then the page basketpage is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout and Select Payment Mode
+!-- ----------------------------------------------------------------
+When I click the element checkouttop
+Then the page deliverypage is opened
+When I click the element continuebutton
+When I click the element payment-A01_D2E_B_YapiKredi
+When I click the element agreeContract5
+When I click the element agreeContract6
+When I click the element agreeContract7
+When I click the element continuebutton
+When I click the element messageIframe
+When I press space at the focused pop up box
+Then I must wait 5 seconds
+When I click on first element via a and id and agreeContinueButton
+Then I must wait 5 seconds
+When I confirm the pop up box
+Then I must wait 5 seconds
+!-- -------------------------------------------------------------------
+Scenario: Enter Card Credentials
+!-- ----------------------------------------------------------------
+Then the url of current page contains 'YKBPaymentService'
+When I enter '4506' into PAN1
+When I enter '3470' into PAN2
+When I enter '1144' into PAN3
+When I enter '8053' into PAN4
+When I select the expDateMonth with the option 02 version
+When I select the expDateYear with the option 2020 version
+When I enter 'XXX' into cvv2
+When I click on first element via input and name and Submit
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+Then I must wait 11 seconds
+Then the page 'confirmationpage' is shown
+Then the element by div and class and thank is shown
+Then the element by a and href and print is shown
+Then get order number $value
+

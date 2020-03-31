@@ -1,0 +1,57 @@
+Scenario: Open the start page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Our Services"
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and #nav-4
+Then the nav-box-wrapper div class exists on page
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Book an online technician"
+!-- --------------------------------------------------------------------
+When I click the navigation element category-40
+Then the element toggle-box is visible
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter e-number
+!-- --------------------------------------------------------------------
+!-- When I click the 7 nd/th element via div and aria-controls and bshaccordioncomponentcontainerid
+Then I wait for element with css [testing_id="enumberSearchField"] to be visible
+When I enter 0HB43S240E/01 into enumberSearchField
+When I click the button enumberSearchBtn
+Then the page supportproductdetailpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Select dysfunction problem
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and accordion-4
+Then the unit-items div class exists on page
+
+
+!-- --------------------------------------------------------------------
+Scenario: Select "no milk foam" problem
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and problemid=982
+Then the page 'productproblempage' is opened
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click repair button
+!-- --------------------------------------------------------------------
+When I click the 2 nd/th element via button and type and submit
+Then the url of current page contains /01#section-firstaid
+
+
+
+!-- --- TTP-1567: e-numbers which are not DOB available (2/2: Beginning on service assistent start page)  was successful ---
+

@@ -1,0 +1,124 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchfield
+Then the form field searchfield is filled correct with the parameter '0'
+When I click the element primarySearchButton
+Then the element by table and class and overview-product-filter is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket- without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Welcome page is opened
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the element 'firstStep' is visible
+Then the element username is visible
+Then the element by xpath //input[@testing_id="checkoutexistinguser"] is shown
+Then the element by xpath //input[@testing_id="checkoutregistration"] is shown
+Then the element by xpath //input[@testing_id="checkoutanonymus"] is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Login with Guest User
+!-- --------------------------------------------------------------------
+When I continue with 'checkoutanonymus'
+Then the chosen option 'checkoutanonymus' is selected
+When I click the button 'continuebutton'
+Then I must wait '1' second
+
+!-- -------------------------------------------------------------------
+Scenario: Fill the form fields of delivery page
+!-- -------------------------------------------------------------------
+Then the page deliverypage is opened
+Then the element 'form-paymentAddress-title' is visible
+Then the element 'form-paymentAddress-firstname' is visible
+Then the element 'form-paymentAddress-lastName' is visible
+Then the element 'form-paymentAddress-postalcode' is visible
+Then the element 'form-paymentAddress-streetName' is visible
+Then the element 'form-paymentAddress-town' is visible
+Then the element 'form-paymentAddress-region' is visible
+Then the element 'form-paymentAddress-email' is visible
+Then the element 'form-paymentAddress-phone1' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Fill out Address Information Fields
+!-- --------------------------------------------------------------------
+When I select the form-paymentAddress-title with the option <title> version
+When I enter 'Webtest' into 'form-paymentAddress-firstname'
+When I enter 'User' into 'form-paymentAddress-lastName'               
+When I enter 'WC2B 6XF' into 'form-paymentAddress-postalcode' 
+When I enter Kingsway 9 into 'form-paymentAddress-streetName'
+When I enter 'London' into 'form-paymentAddress-town' 
+When I select the form-paymentAddress-region with the option Reading version
+When I enter <orderuserttp> into  'paymentAddress.email' 
+When I enter <orderuserttp> into  'paymentAddress.emailReenterred'
+When I enter <telephone> into  'paymentAddress.phone1' 
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Checkout Summary Page Sections
+!-- --------------------------------------------------------------------
+When I click the button continuebutton
+Then the page 'summarypage' is shown
+Then the element 'vouchererror-cannnotbeapplied' is visible
+Then the element 'submitVoucherButton' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check If MasterCard Payment Option is opening the worldPay page
+!-- --------------------------------------------------------------------
+When I click on first element via input and testing_id and payment-mastercard
+Then the decided 'payment-mastercard' is selected
+When I click on first element via input and testing_id and agreeContract
+Then the decided 'agreeContract' is selected
+When I click the button continuebutton
+Then the url of current page contains 'worldpay'
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+When I enter <cardnumbermaster1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I clear the cardHolderName field
+When I enter 'AUTHORIZED' into cardholderName
+When I enter <securitycode> into securityCode
+When I click the element submitButton
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+
+Then the page 'confirmationpage' is opened
+
+
+!-- --- TTP-343: Automatic: Checkout: Checkout Guest (Bosch) was successful ---
+
+
+
+

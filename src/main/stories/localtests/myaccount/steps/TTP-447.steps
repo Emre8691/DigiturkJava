@@ -1,0 +1,46 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the element myaccountbutton
+Then the page 'loginpage' is opened
+Then I must wait '1' second
+
+!-- -----------------------------------------------------
+Scenario: Open page to enter a new password
+!-- --------------------------------------------------
+When I click the button 'passwordForgottenButton'
+Then the page 'accountpasswordforgottenpage' is opened
+Then the expected 'bshForgotPasswordData' is shown
+Then the expected 'login' is shown
+
+
+!-- --------------------------------------------------
+Scenario: Enter a invalid/ wrong e-mail-address
+!-- -------------------------------------------------
+When I enter <invalidmail> into login
+When I click the button 'submit'
+Then the element 'login' is visible
+
+!-- --------------------------------------------
+Scenario: Enter a valid/ right e-mail-address  
+!-- The step works but change the password can not managed now
+!-- --------------------------------------------
+When I clear the 'login' field
+When I enter 465deneffsandbox22@mailinator.com into login
+Then the form field login is filled correct with the parameter 465deneffsandbox22@mailinator.com
+When I click the button 'submit'
+Then The login was successful
+!-- TODO: Create a page ıd page.accountpasswordforgottenpage.identifier=accountPasswordForgottenPage 
+
+
+
+!-- --- Testcase TTP-446 Password Forgotten (NEFF) was successful ---
+
+

@@ -1,0 +1,134 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch a Bosch Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into primarySearch
+Then the form field primarySearch is filled correct with the parameter 0
+When I click the button primarySearchButton
+Then the element by a and testing_id and addItemToBasket is shown
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and addItemToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button openBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+When I click the button goToBasket without wait
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the element 'firstStep' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Choose anonymous checkout
+!-- --------------------------------------------------------------------
+When I decide to 'checkoutanonymus'
+Then the decided 'checkoutanonymus' is selected
+When I click the button 'continuebutton'
+Then the page 'deliverypage' is shown
+
+When I select the form-paymentAddress-title with the option 0002 version
+
+When I enter 'Tahsin' into paymentAddress.firstname
+Then the form field paymentAddress.firstname is filled correct with the parameter 'Tahsin'
+When I enter 'Tahir' into paymentAddress.lastName
+Then the form field paymentAddress.lastName is filled correct with the parameter 'Tahir'
+
+When I enter '26611243592' into paymentAddress.taxnr
+Then the form field paymentAddress.taxnr is filled correct with the parameter '26611243592'
+
+When I select the paymentAddress.region with the option ADANA version
+When I select the paymentAddress.town with the option CEYHAN version
+
+When I enter 'asmalibehcet' into paymentAddress.streetName
+Then the form field paymentAddress.streetName is filled correct with the parameter 'asmalibehcet'
+When I enter <orderuserttp> into paymentAddress.email
+Then the form field paymentAddress.email is filled correct with the parameter <orderuserttp>
+When I enter <orderuserttp> into paymentAddress.emailReenterred
+Then the form field paymentAddress.emailReenterred is filled correct with the parameter <orderuserttp>
+When I enter '12345678' into paymentAddress.phone1
+Then the form field paymentAddress.phone1 is filled correct with the parameter '12345678'
+!-- New mandatory form field.
+When I enter '5991234567' into paymentAddress.cellPhone
+Then the form field paymentAddress.cellPhone is filled correct with the parameter '5991234567'
+When I click the button continuebutton
+Then the page summarypage is shown
+!-- --------------------------------------------------------------------
+Scenario: Open Garanti Card Page 
+!-- --------------------------------------------------------------------
+When I click the element payment-Garanti
+Then the page summarypage is shown
+!-- When I click the element installments1
+!-- Then the page summarypage is shown
+When I click the element agree1
+Then the page summarypage is shown
+When I click the element agree2
+Then the page summarypage is shown
+When I click the button continuebutton
+Then the page summarypage is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Test scrolldown
+!-- --------------------------------------------------------------------
+When I press SPACE at the focused pop up box
+When I scrolldown the bottom of iframe
+Then switch back the window to parent window static
+Then I must wait '2' seconds
+When I click on first element via a and id and agreeContinueButton
+
+
+
+!-- -------------------------------------------------------------------
+Scenario: GARANTI Vritual Pos Page
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'garanti.com.tr'
+When I enter '00' into cardholder
+When I enter '4282209004348015' into cardnumber
+When I enter '10' into cardexpiredatemonth
+When I enter '2020' into cardexpiredateyear
+When I enter '123' into cardcvv2
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirm
+!-- -------------------------------------------------------------------
+Meta: @exclude_production
+When I click on first element via input and name and imageField
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+Then I must wait 11 seconds
+Then the page 'confirmationpage' is shown
+Then the element by div and class and thank is shown
+Then the element by a and href and print is shown
+
+
+!-- --- TTP-428: Automatic:Checkout with Garanti Bank - Bosch TR public - anonymous was successful ---
+
+
+

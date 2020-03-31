@@ -1,0 +1,79 @@
+!-- --------------------------------------------------------------------
+Scenario: Open ZeroTouch login Page
+When I open external webpage without validate http://ckyswicosweb1t/TR/ZT/zeroTouch_intra/login.aspx?ReturnUrl=%2fTR%2fZT%2fzeroTouch_intra%2flandingpages%2fzero.aspx%3fCallType%3dCT_Bosch%26CallerPhone%3d6000042333
+Then I must wait 4 seconds
+
+Scenario: Brand Bosch is true / Bosch doğru mu?
+When I click the xpath element //input[@id='a_0']
+Then I must wait '2' seconds
+
+Scenario: Montaj Kurulum Talebi
+When I click on first element via a and id and M_5
+Then I must wait 1 seconds
+When I click on first element via a and id and M_6
+Then I must wait 1 seconds
+When I click on first element via a and id and M_11
+Then I must wait 1 seconds
+When I click on first element via a and id and M_81
+Then I must wait 2 seconds
+
+Scenario: Enter of Phone Number - Telefon Numarasının Girilmesi
+When I enter '5493270402' into txtPhone
+When I click on first element via button and class and btn btn-success
+Then I must wait 5 seconds
+When I click on first element via button and class and btn-small btn btn-link
+!-- When I click the xpath element //button[@class='btn-small btn btn-link']
+Then I must wait 2 seconds
+
+Scenario: Müşteri Güncelleme
+When I click the xpath element //*[contains(text(),'Devam Et')]
+
+Then I must wait 1 seconds
+Scenario:  - Cihazınız Tek kapılı mı / çift kapılı mı?
+When I click on first element via input and id and a_0
+When I click on first element via button and class and btn btn-success
+Then I must wait 1 seconds
+
+Scenario: Ankastre mi?
+When I click on first element via input and id and a_1
+When I click on first element via button and class and btn btn-success
+
+Then I must wait 1 seconds
+
+Scenario: Cihazınız ilk montaj mı?
+When I click on first element via input and id and a_0
+When I click on first element via button and class and btn btn-success
+Then I must wait 1 seconds
+
+Scenario: Montaj kapağı takıldı mı?
+When I click on first element via input and id and a_0
+When I click on first element via button and class and btn btn-success
+Then I must wait 2 seconds
+
+Scenario: Garantiyi 7 yıla ya da 5 yıla uzatmak??
+When I click on first element via input and id and a_1
+When I click on first element via button and class and btn btn-success
+Then I must wait 1 seconds
+Scenario: Teknisyen gelmeden önce arasın?
+When I click on first element via input and id and a_0
+When I click on first element via input and id and chkCallCustomerForAppointment1
+When I click on first element via button and class and btn btn-success
+Then I must wait 3 seconds
+
+Scenario: Kaydı Tamamla
+When I click on first element via input and id and a_1
+!-- When I click on first element via button and class and btn btn-success
+Then I must wait 2 seconds
+
+
+
+Scenario: İşlemi sonlandır
+
+When I click on first element via input and id and a_0
+
+!-- When I click the xpath element //*[contains(text(),'Devam Et')]
+Then I must wait 5 seconds
+
+ 
+!-- --- TTP-600001 Testcase: Montaj Kurulum Talebi finished successful ---
+

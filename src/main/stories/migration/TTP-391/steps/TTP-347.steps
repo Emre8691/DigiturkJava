@@ -1,0 +1,58 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into username
+When I enter <passwordv2> into password
+
+When I click the element 'logInButton'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+When I click on first element via a and testing_id and removeEntry
+When I click on first element via a and testing_id and removeEntry
+Then the expected continueShopping is shown
+Then the basket count is 'empty'
+
+!-- ---------------------------------------------------------------
+Scenario: Go to product and add it to the basket
+!-- ---------------------------------------------------------------
+When I enter W into searchField
+When I click the button searchBoxBtn without wait
+Then the element by button and name and buy-product is shown
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- -------------------------------------------------------------
+Scenario: Open flyout and choose a category
+!-- ------------------------------------------------------------
+When I click the button 'nav-2'
+Then the expected 'flyoutclosebtn' is shown
+
+When I click the element 'category-20'
+Then the url of current page contains '/cooking'
+
+
+!-- -----------------------------------------------------------
+Scenario: Add another product to basket
+!-- ----------------------------------------------------------
+When I click on first element via button and name and buy-product
+
+
+
+!-- --- TTP-347 Staffsales MyBasket - Add to basket was successful ---
+

@@ -1,0 +1,37 @@
+!-- --------------------------------------------------------------------
+Scenario: Open ZeroTouch login Page
+When I open external webpage without validate https://www.cosmos.bsh-service.com/RU/CosmosRUSCRMTest/zeroTouch_inter/landingpages/start.aspx?CallType=CT_Bosch&CallerPhone=5412148689
+Then I must wait 4 seconds
+Then I wait for element with css input[id="a_0"] to be visible
+Scenario: Brand Bosch is true / Bosch doğru mu?
+When I click the xpath element //input[@id='a_0']
+Then I must wait '2' seconds
+
+Scenario: Request
+When I click on first element via a and id and M_2000100189
+
+Then I must wait 3 seconds
+
+When I click the xpath element //*[contains(text(),'Create new customer')]
+Then I must wait 3 seconds
+
+Scenario:Check address
+When Highlightelement in //*[contains(text(),'Select')]
+Then I must wait 1 seconds
+When I click the xpath element //input[@name='selectgroup' and @id='Select_10000174']
+Then I must wait 1 seconds
+When I click2 the xpath element //input[@id='a_1' and @value='7100'] with highlight
+Then I must wait 1 seconds
+When I click on first element via button and id and btnMainNextWithValidation 
+Then I must wait 2 seconds
+Scenario: Commentary
+When I enter 'Test' into txtOtherNotes
+When I click on first element via button and id and btnMainNextWithValidation 
+When I confirm the pop up box
+Then I must wait 5 seconds
+When I click the xpath element //input[@id='a_1' and @value='7108']
+When I confirm the pop up box
+
+
+!-- --- TTP-600012 Testcase: Create File finished successful ---
+

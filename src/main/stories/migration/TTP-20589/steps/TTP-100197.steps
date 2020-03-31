@@ -1,0 +1,135 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- -------------------------------------------------------------------
+Scenario: Open the Start Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+
+
+Scenario: Login
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and https://outlet.bosch-home.com/nl/store/myaccount/login
+When I clear the 'username' field
+When I enter <orderuserttp24> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp24>
+When I clear the password field
+When I enter <password22> into password
+Then the form field password is filled correct with the parameter <password22>
+
+When I click on first element via button and id and submitButton
+Then I must wait 2 seconds
+Then the login was successful
+
+
+Scenario: Open the Profile Pages (click on myprofile)
+!-- --------------------------------------------------------------------
+!-- When I click the element ul[class*="tabmodul"] if avaliable
+
+When I click the xpath element //div[@class='tab12']/ul[@class='tabmodul']/li[3]/a[@id='header4']/span  
+!-- When I click on first element via div and class and tab12
+
+!-- When I click on first element via a and href and #tab4
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data 
+!-- --------------------------------------------------------------------
+When I click on first element via a and id and sendButtonPersonal
+
+Then I must wait '1' second
+
+When I clear the 'firstName' field
+Then the form field 'firstName' is filled correct with the parameter ''
+
+When I clear the 'lastName' field
+Then the form field 'lastName' is filled correct with the parameter ''
+
+!-- --------------------------------------------------------------------
+When I click the xpath element //*[@id="sendButtonPersonal"]
+Then the element by p and class and ValidationError is shown
+
+When I click the xpath element //*[@id="birthDay"]/option[1]
+When I click the xpath element //*[@id="birthMonth"]/option[1]
+When I click the xpath element //*[@id="birthYear"]/option[1]
+
+!-- --------------------------------------------------------------------
+Scenario: Fill First name and Last name fields
+!-- --------------------------------------------------------------------
+When I enter Martin into 'firstName'
+Then the form field 'firstName' is filled correct with the parameter Martin
+When I enter Costa into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter Costa
+
+When I enter 14 into birthDay
+Then the form field birthDay is filled correct with the parameter 14
+
+When I enter 5 into 'birthMonth'
+Then the form field 'birthMonth' is filled correct with the parameter 5
+
+When I enter 1981 into 'birthYear'
+Then the form field 'birthYear' is filled correct with the parameter 1981
+
+When I click the element sendButtonPersonal
+!-- ---------------------------------------------
+Scenario: Change Contact Information
+!-- ---------------------------------------------
+
+When I click on first element via a and id and sendButtonContact
+
+When I clear the 'postcode' field
+Then the form field 'postcode' is filled correct with the parameter ''
+
+When I clear the 'houseNumber' field
+Then the form field 'houseNumber' is filled correct with the parameter ''
+
+When I clear the 'phone' field
+Then the form field 'phone' is filled correct with the parameter ''
+
+When I clear the 'cellPhone' field
+Then the form field 'cellPhone' is filled correct with the parameter ''
+
+
+Scenario: Check same validation with send button
+!-- --------------------------------------------------------------------
+When I click the xpath element //*[@id="sendButtonContact"]
+Then the element by p and class and ValidationError is shown
+
+
+
+
+!-- --------------------------------------------------------------------
+
+!-- --------------------------------------------------------------------
+Scenario: Fill Street,House Number and City fields
+!-- --------------------------------------------------------------------
+When I enter 2132 LS into 'postcode'
+Then the form field 'postcode' is filled correct with the parameter 2132 LS
+
+When I enter 1 into 'houseNumber'
+Then the form field 'houseNumber' is filled correct with the parameter 1
+
+
+When I enter +14711081523 into phone
+Then the form field phone is filled correct with the parameter +14711081523
+When I enter +14711081523 into cellPhone
+Then the form field cellPhone is filled correct with the parameter +14711081523
+Then I must wait '2' seconds
+!-- When I click the 2 nd/th element via button and type and submit
+When I click on first element via a and id and sendButtonContact
+!-- Then the page 'accountprofilepage' is opened
+
+
+
+
+!-- --- Testcase TTP-100088 MyAccount:Edit "My Profile" ACC4-Change Delivery Address Setings was successful ---
+

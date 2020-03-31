@@ -1,0 +1,255 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Login with new created User
+!-- --------------------------------------------------------------------
+When I click the button 'myaccountbutton'
+Then the page loginpage is opened
+When I enter turkpencesii@gmail.com into 'username'
+Then the form field username is filled correct with the parameter turkpencesii@gmail.com
+!-- Then the form field username is filled correct with the parameter bosch.stafftest@mailinator.com 
+Then I must wait '3' seconds
+When I enter Burak6315)) into 'password'
+Then the form field password is filled correct with the parameter Burak6315))
+When I click the button 'logInButton'
+Then I must wait '5' seconds
+!-- --------------------------------------------------------------------
+Scenario: MyProfile Page is open, Navigate to profile
+!-- --------------------------------------------------------------------
+Then the element by aside and testing_id and metaNavigationFlyout is shown
+When I click on first element via a and href and /ae/mybosch/profile
+Then I must wait '2' seconds
+Then the element by a and testing_id and deleteUserAccount is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Delete the created user
+!-- --------------------------------------------------------------------
+When I click the button 'deleteUserAccount'
+When I click the button 'deleteAccountBackBtn'
+Then the element by a and testing_id and deleteUserAccount is shown
+
+!-- When I switch to iframe div[class="dialog-box"] location
+!-- When I click the navigation element delete-deleteAccount-1
+!-- When I switch back to switchBackToDefaultContent
+!-- Then the url of current page contains 'siemens'
+
+!-- User is deleted !!!
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchField
+Then the form field searchField is filled correct with the parameter 0
+When I click the button searchBoxBtn
+Then the element <searchresulttab> is visible
+When I click the navigation element <searchresulttab>
+Then the page 'searchresultspage' is opened
+Then the element by button and name and buy-product is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click the button buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page welcomepage is opened
+
+
+!-- -------------------------------------------------------------------
+Scenario: Choose checkbox for new customers
+!-- -------------------------------------------------------------------
+When I choose the 'checkoutregistration'
+Then the chosen option checkoutregistration is selected
+
+
+!-- -------------------------------------------------------------------
+Scenario: Continue
+!-- -------------------------------------------------------------------
+When I click the button continuebuttonbottom
+Then the page 'accountregistration1' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check
+!-- --------------------------------------------------------------------
+When I click the button 'submitButton'
+
+Then the expected 'validationFirstName' is shown
+Then the expected 'validationLastName' is shown
+Then the expected 'validationEmail-1' is shown
+Then the expected 'validationEmailConfirmed-1' is shown
+Then the expected 'validationPassword' is shown
+Then the expected 'validationConfirmedPassword-1' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Registration Page 1 User Data
+!-- --------------------------------------------------------------------
+Then the page 'accountregistration1' is opened
+
+When I select the 'titleselector' with the option <title> version
+
+When I enter <firstname> into 'firstname'
+Then the form field 'firstname' is filled correct with the parameter <firstname>
+
+When I enter <lastname> into 'lastname'
+Then the form field 'lastname' is filled correct with the parameter <lastname>
+
+When I enter <orderuserttp> into 'email'
+Then the form field 'email' is filled correct with the parameter <orderuserttp>
+
+When I enter <orderuserttp> into 'emailConfirmed'
+Then the form field 'emailConfirmed' is filled correct with the parameter <orderuserttp>
+
+When I enter <passwordv2> into 'password'
+Then the form field 'password' is filled correct with the parameter <passwordv2>
+
+When I enter <passwordv2> into 'passwordConfirmed'
+Then the form field 'passwordConfirmed' is filled correct with the parameter <passwordv2>
+
+When I click the button 'submitButton'
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check
+!-- --------------------------------------------------------------------
+Then the page 'accountregistration2' is opened
+
+When I click the button 'submitButton'
+
+Then the expected 'er-form-RegistrationPersonalDataForm-registrationAddress-streetName' is shown
+Then the expected 'er-form-RegistrationPersonalDataForm-registrationAddress-town' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Registration Page 2 Personal Data
+!-- --------------------------------------------------------------------
+Then the page 'accountregistration2' is opened
+
+When I enter <street> into 'RegistrationPersonalDataForm.registrationAddress.streetName'
+Then the form field 'RegistrationPersonalDataForm.registrationAddress.streetName' is filled correct with the parameter <street>
+
+When I enter <zipcode> into 'RegistrationPersonalDataForm.registrationAddress.postalcode'
+Then the form field 'RegistrationPersonalDataForm.registrationAddress.postalcode' is filled correct with the parameter <zipcode>
+
+When I enter <city> into 'RegistrationPersonalDataForm.registrationAddress.town'
+Then the form field 'RegistrationPersonalDataForm.registrationAddress.town' is filled correct with the parameter <city>
+When I select the RegistrationPersonalDataForm.registrationAddress.region with the option <region> version
+When I enter <telephone> into RegistrationPersonalDataForm.registrationAddress.phone1
+Then the form field RegistrationPersonalDataForm.registrationAddress.phone1 is filled correct with the parameter <telephone>
+
+When I click the button 'submitButton'
+
+!-- --------------------------------------------------------------------
+Scenario: Registration Page Welcome Page
+!-- --------------------------------------------------------------------
+Then the page accountregistration5 is opened
+When I open the 'activationUrl' from the current page
+Then I must wait '10' seconds
+Then the page 'accountregistration6' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Login with new created User
+!-- --------------------------------------------------------------------
+When I click the navigation element myaccountbutton
+Then the page 'loginpage' is opened
+
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into 'password'
+Then the form field password is filled correct with the parameter <passwordv2>
+
+When I click the button 'logInButton'
+Then I must wait '2' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Go to basket and buy the choosen product
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+When I click on first element via div and class and cart-btn without wait
+When I click the button .shopping-cart .cart-btn if avaliable
+!-- ------- TO DO
+Then the page basketpage is opened
+When I click the button checkouttop
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Delivery Page Logged In
+!-- -------------------------------------------------------------------
+Then the page deliverypage is opened
+Then the given data <orderuserttp> is shown correct at field 'paymentAddress.email'
+Then the chosen option 'sameAsBilling' is selected
+When I click the button 'continuebuttontop'
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Summary Page select a Payment
+!-- -------------------------------------------------------------------
+Then the page summarypage is opened
+
+When I click on first element via label and for and payment-visa
+
+When I click the button 'continuebuttontop'
+Then the expected 'agreeValidationError' is shown
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+
+When I click the button 'continuebuttonbottom'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Payment Worldpay Visa
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I enter 'AUTHORIZED' into <cardholdernameid>
+When I enter <securitycode> into <securitycodename>
+When I click the element <submitbuttonname>
+Then I must wait '1' second
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+When I click the button input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+Then I must wait '2' second
+
+!-- --------------------------------------------------------------------
+Scenario: Open the MyProfile Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the navigation element metaNavigation
+When I click the navigation element myprofile
+Then the page accountprofilepage is opened
+
+!-- --- TTP-17894 Testcase Checkout Register a new user was successful ---
+

@@ -1,0 +1,44 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Bosch Start-Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------
+Scenario: Open Login page
+!-- -------------------------------------------------
+When I click the navigation element myaccountbutton
+Then the url of current page contains '/myaccount/login'
+
+!-- -----------------------------------------------
+Scenario: Login with valid data
+!-- -----------------------------------------------
+When I enter <orderuserttp> into username
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into password
+Then the form field password is filled correct with the parameter <passwordv2>
+
+When I click the element logInButton
+
+!-- Then the page 'overview' is opened
+Then the url of current page contains 'overview'
+
+
+!-- ------------------------------------------------
+Scenario: Enter valid voucher code
+Meta: @exclude_production @exclude_notready
+!-- ------------------------------------------------
+When I enter <validvoucher> into 'voucherCode'
+When I click the element 'cewSubitButton'
+
+!-- TODO: Then the page 'XXX' is opened
+
+!-- -------------------------------
+!-- TO BE CONTINUED!!!!
+!-- -------------------------------
+
+
+!-- --- TTP-417 CEW: Appliance serial number validations was succesful ---

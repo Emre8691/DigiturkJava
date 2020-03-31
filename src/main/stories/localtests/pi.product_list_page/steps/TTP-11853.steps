@@ -1,0 +1,44 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens DE FUT-INT mainpage)
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- -------------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation (Click on "Producte")
+!-- --------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Waschmaschinen"
+!-- --------------------------------------------------------------------
+When I click the navigation element subcategory-210
+!-- 1.Check, check from URL
+Then the url of current page contains 'waschmaschinen'
+!-- 2.Check, check from image
+!-- Then the element by img and title and Freistehende is shown
+!-- Then the element by img and alt and WM14K1G1 is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Zur Liste aller Gerate"
+!-- --------------------------------------------------------------------
+When I click the 4 nd/th element via a and href and /produktliste/waschen-und-trocknen/waschmaschinen
+Then the element by div and class and shopcart-overview is shown
+!-- --------------------------------------------------------------------
+Scenario: Check the product price; taking WM14U640 as sample
+!-- --------------------------------------------------------------------
+Then the element by dd and class and price is shown
+Then I wait for element with css dd[class="price"] to be visible
+
+
+
+!-- --- TTP-11853 - PI - Marketing List Page - Product Price tab was successful ---
+
+
+
+

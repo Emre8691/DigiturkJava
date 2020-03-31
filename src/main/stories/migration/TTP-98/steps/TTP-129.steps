@@ -1,0 +1,48 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the navigation element myaccountbutton
+
+Then the page 'loginpage' is opened
+Then the expected 'username' is shown
+Then the expected 'password' is shown
+Then the expected 'logInButton' is shown
+Then the expected 'registerButton' is shown
+
+!-- -----------------------------------------------------
+Scenario: Open page to enter a new password
+!-- --------------------------------------------------
+When I click the button 'passwordForgottenButton'
+Then the page 'accountpasswordforgottenpage' is opened
+Then the expected 'bshForgotPasswordData' is shown
+Then the expected 'login' is shown
+
+
+!-- --------------------------------------------------
+Scenario: Enter a invalif�d/ wrong e-mail-address
+!-- -------------------------------------------------
+When I enter <invalidemail> into login
+
+When I click the button 'submit'
+
+Then the element 'login' is visible
+
+!-- --------------------------------------------
+Scenario: Enter a valid/ right e-mail-address
+!-- --------------------------------------------
+When I clear the 'login' field
+When I enter <user> into login
+
+
+!-- When I click the button 'submit'
+!-- Then the page 'pwResetSuccessPage' is opened
+
+
+!-- --- Testcase TTP-129 MyAccount:Password Forgotten (Siemens) was successful ---
+

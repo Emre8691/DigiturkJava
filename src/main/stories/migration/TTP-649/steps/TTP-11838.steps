@@ -1,0 +1,56 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens UK FUT-INT mainpage)
+!-- -------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation (Click on "Products")
+!-- ---------------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on "Full-size dishwashers"
+!-- ---------------------------------------------------------------------------
+When I click the navigation element subcategory-220
+Then the element by div and class and intro is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "To the list of all appliances"
+!-- --------------------------------------------------------------------
+When I click the 4 nd/th element via a and href and /uk/productlist/dishwashing/full-size-dishwashers
+Then the element by div and class and items-area-inner is shown
+
+!-- --------------------------------------------------------------
+Scenario: Click on "show more" button to expand the product list 
+!-- --------------------------------------------------------------
+When I click on the more show-more button the product page extends
+Then the element by div and class and overview is shown
+
+!-- ----------------------------------------------------------------------------
+Scenario: Check for "iQxxx" Brand Value Class to be just before the PVM header
+!-- ----------------------------------------------------------------------------
+Then the element by value-class has Brand Value Class before PVM header
+
+!-- ----------------------------------------------------------------------------
+Scenario: Select the product, e.g. SN258I06TG 
+!-- ----------------------------------------------------------------------------
+When I click on first element via img and alt and SN258I06TG
+Then the element by div and class and wrapper is shown
+
+!-- -----------------------------------------------------------------------------------------------------
+Scenario: iQxxx serie number should be seen for releated VIB number on the marketing product detail page
+!-- -----------------------------------------------------------------------------------------------------
+Then the element by product-header has Brand Value Class before PVM header in ProdDetailsPage
+
+
+
+
+!-- --- TTP-11838 - PI - Marketing Product Detail Page - Brand Value Class tab was successful ---
+
+

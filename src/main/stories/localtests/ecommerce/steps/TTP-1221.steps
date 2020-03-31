@@ -1,0 +1,58 @@
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens UK shop web page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: Open the page for one small MAT
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and /store/category/haircare
+Then the url of current page contains 'haircare'
+When I click on first element via img and src and 100x100
+Then the page productpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Buy Button to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via button and data-bazaarvoicetracking and AddToShoppingBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+Then I must wait '5' seconds
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Shop link from main Navigation
+!-- --------------------------------------------------------------------
+When I click the element openBasket
+When I click on first element via a and testing_id and goToBasket
+Then the page basketpage is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Increase the quantity of products to 2
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and quantityplus
+Then the quantity is one more then before
+
+
+!-- --------------------------------------------------------------------
+Scenario: Increase the quantity of products to 3
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and quantityplus
+Then the quantity is one more then before
+
+
+!-- --------------------------------------------------------------------
+Scenario: Decrease the quantity of products to 2
+!-- --------------------------------------------------------------------
+When I click on first element via a and testing_id and quantityminus
+Then the quantity is one less as before
+
+
+!-- --- Testcase TTP-1221 Automatic: Basket: Display of static/dynamic delivery cost message according to threshold was successful ---
+

@@ -1,0 +1,44 @@
+!-- -----------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens FR FUT-INT mainpage)
+!-- -----------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on "Produits" 
+!-- ---------------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- -------------------------------------------------------------------------
+Scenario: Click on "Lave-linge" under "Soin du linge"
+!-- -------------------------------------------------------------------------
+When I click the navigation element subcategory-210
+Then the url of current page contains 'produits/laver-et-secher/lave-linge'
+
+!-- ---------------------------------------------------------------------------------------
+Scenario: Click on "Vers la liste de tous les appareils" (to the list of all appliances)
+!-- ---------------------------------------------------------------------------------------
+When I click the 5 nd/th element via a and href and /fr/liste-des-produits/soin-du-linge/lave-linge
+Then I wait for element with css div[class="overview"] to be visible
+
+!-- -------------------------------------------------------------------------
+Scenario: Check if the "Nouveau" text (NEW!) is placed on product list page
+!-- -------------------------------------------------------------------------
+When I scrolldown the bottom of page and ts-header div class count
+Then I wait for element with css em[class="promo-notice"] to be visible
+
+!-- ------------------------------------------------------------------------------------
+Scenario: Click on Product which has "Nouveau" text, i.e. iQ800 to check the "Nouveau" 
+!-- ------------------------------------------------------------------------------------
+When I click on first visible element via a and href and /fr/liste-des-produits/soin-du-linge/lave-linge/lave-linge-iq800-iq700/WMH6Y892FF?breadcrumb=washingmachines
+Then the element by div and class and showroom-module-inner is shown
+Then the element by em and class and promo-notice is shown
+
+
+
+!-- --- TTP-11842 - PI - Marketing Product Detail Page - Sales and Presales information tab was successful ---

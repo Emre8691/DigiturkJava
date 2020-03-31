@@ -1,0 +1,149 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+Then the page 'myaccountsstaffpage' is opened
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into username
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <passwordv2> into password
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the element 'logInButton'
+Then I must wait '1' second
+Then I wait for element with css a[testing_id="nav-2"] to be visible
+Then the url of current page contains 'nl'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+When I click on first element via a and testing_id and removeEntry
+When I click on first element via a and testing_id and removeEntry
+When I click on first element via a and testing_id and removeEntry
+When I click on first element via a and testing_id and removeEntry
+When I click on first element via a and testing_id and removeEntry
+Then the expected continueShopping is shown
+Then the basket count is 'empty'
+
+
+!-- ---------------------------------------------------------------
+Scenario: Go to product and add it to the basket
+!-- ---------------------------------------------------------------
+When I enter W into searchField
+Then the form field searchField is filled correct with the parameter W
+When I click the element searchBoxBtn
+Then I wait for element with css strong[testing_id="searchResultTab-Shop"] to be visible
+Then the element by button and name and buy-product is shown
+
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+!-- ------------------------------------------------------------------
+Scenario: Open cart page
+!-- -----------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+Then the basket count is 1
+
+
+!-- --------------------------------------------------------------------
+Scenario: Increase amount of product
+!-- -------------------------------------------------------------------
+When I click on first element via span and class and step-up step-control
+Then I must wait '2' seconds
+Then the element by input and value and 2 is shown
+
+When I click on first element via span and class and step-up step-control
+Then I must wait '2' seconds
+Then the element by input and value and 3 is shown
+
+When I click on first element via span and class and step-down step-control
+Then I must wait '2' seconds
+Then the element by input and value and 2 is shown
+
+
+!-- ------------------------------------------------------------------
+Scenario: Remove product from basket
+!-- ----------------------------------------------------------------
+When I click on first element via a and testing_id and removeEntry
+Then I must wait '2' seconds
+Then the basket count is 'empty'
+
+!-- ---------------------------------------------------------------
+Scenario: Go to product and add it to the basket
+!-- ---------------------------------------------------------------
+When I enter W into searchField
+Then the form field searchField is filled correct with the parameter W
+When I click the element searchBoxBtn
+Then I wait for element with css strong[testing_id="searchResultTab-Shop"] to be visible
+Then the element by button and name and buy-product is shown
+
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+
+
+!-- ---------------------------------------------------------------
+Scenario: Go to product and add it to the basket
+!-- ---------------------------------------------------------------
+When I enter T into searchField
+Then the form field searchField is filled correct with the parameter T
+When I click the element searchBoxBtn
+Then I wait for element with css strong[testing_id="searchResultTab-Shop"] to be visible
+Then the element by button and name and buy-product is shown
+
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- ---------------------------------------------------------------
+Scenario: Go to product and add it to the basket
+!-- ---------------------------------------------------------------
+When I enter G into searchField
+Then the form field searchField is filled correct with the parameter G
+When I click the element searchBoxBtn
+Then I wait for element with css strong[testing_id="searchResultTab-Shop"] to be visible
+Then the element by button and name and buy-product is shown
+
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- ---------------------------------------------------------------
+Scenario: Go to product detail page and increase item amount and add it to the basket
+!-- ---------------------------------------------------------------
+When I enter N into searchField
+Then the form field searchField is filled correct with the parameter N
+When I click the element searchBoxBtn
+Then the element by div and class and pre-filter is shown
+When I click the 3 nd/th element via img and src and 155x206
+
+Then the element by body and data-csspageid and product-detail is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Increase amount of product
+!-- -------------------------------------------------------------------
+When I click on first element via span and class and step-up step-control
+Then I must wait '3' seconds
+Then the element by input and value and 2 is shown
+
+When I click on first element via button and data-eventtracking and addToBasket without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- ------------------------------------------------------------------
+Scenario: Open cart page
+!-- -----------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+
+
+!-- --- TTP-348 Staffsales MyBasket - Basket was successful ---
+

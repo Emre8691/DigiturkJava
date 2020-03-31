@@ -1,0 +1,81 @@
+#Overwrites default.properties file...
+
+selenium.browser.version=
+
+#Local execution
+#selenium.webdriver.type=local
+#selenium.browser.path=C:/DevCommonFiles/FirefoxPortable/App/Firefox/firefox.exe
+#selenium.browser.version=29.0
+#selenium.url=http://localhost:4444/wd/hub
+
+#Remote execution
+selenium.webdriver.type=remote
+selenium.browser.path=
+selenium.browser=firefox
+#selenium.browser.version=
+#selenium.url=http://34.248.82.41:4444/wd/hub
+
+#Remote execution with Local Proxy
+#selenium.webdriver.type=firefox-with-network-monitoring
+
+#-----------------------------------------------------------------------------------------------------------------
+windowsize=1440x900
+windowposition=0x0
+#-----------------------------------------------------------------------------------------------------------------
+
+#---------------------------------#
+#jbehave.story.path.pattern=localtests/basic_functionalities/TTP-2279.story
+#jbehave.story.path.pattern=localtests/myaccount/TTP-388.story
+#jbehave.story.path.pattern=localtests/customer_service/TTP-337.story
+#jbehave.story.path.pattern=localtests/dealer_locator/TTP-387.story
+#jbehave.story.path.pattern=localtests/staff_sales/TTP-371.story
+#jbehave.story.path.pattern=localtests/social_media/TTP-335.story
+#jbehave.story.path.pattern=localtests/ecommerce/TTP-137.story
+#jbehave.story.path.pattern=localtests/marketing/TTP-324.story
+#jbehave.story.path.pattern=localtests/product_information/TTP-101.story
+#jbehave.story.path.pattern=localtests/no_component/TTP-2327.story
+#jbehave.story.path.pattern=localtests/no_component/TTP-2331.story
+#jbehave.story.path.pattern=localtests/no_component/TTP-2332.story
+#jbehave.story.path.pattern=localtests/cs.dob/TTP-905.story
+#jbehave.story.path.pattern=localtests/m.homepage/TTP-919.story
+#jbehave.story.path.pattern=localtests/hybris/TTP-485.story
+#jbehave.story.path.pattern=localtests/**/TTP-408.story
+#-----------------------------------------------------------------------------------------------------------------
+
+jbehave.story.path.pattern=rollout/**/fr/che4.story
+#jbehave.story.path.pattern=rollout/siemens2013/userdata/dk/che4_prod2.story
+#jbehave.story.path.pattern=stable/**/cew_bosch_ch_de.story
+#jbehave.story.path.pattern=stable/**/checkout_bosch_de.story,stable/**/checkout_siemens_at.story,stable/**/checkout_siemens_ch_de_2013.story,stable/**/login_bosch_de.story,login_siemens_at.story, stable/**/change_password_siemens_uk.story, stable/**/gaggenau_subscribenewsletter_de.story
+#jbehave.story.path.pattern=stable/**/flyout_shop_siemens_2013.story, stable/**/full_text_search_siemens_de_2013.story, stable/**/basket_siemens_ch_de_2013.story, stable/**/sparepart_search_enumber_siemens_de_2013.story, stable/**/change_password_siemens_ch_de_2013.story, stable/**/checkout_siemens_ch_de_2013.story, stable/**/registration_*_siemens_ch_de_2013.story, stabel/**/login_siemens_ch_de_2013, stable/**/product_registration_siemens_ch_de_2013.story
+
+#-----------------------------------------------------------------------------------------------------------------
+#Meta Filters
+#-----------------------------------------------------------------------------------------------------------------
+#jbehave.meta.filter=-missingproducts, -missingpayment.exclude *bosch_us *bosch_be*, -nostageproduct.exclude checkout_siemens_uk, -nodeliveryaddressdeviant.exclude *bosch_be*, -exclude_notready, -exclude_production
+jbehave.meta.filter=-missingpayment.exclude *bosch_us *bosch_be*, -nodeliveryaddressdeviant.exclude *bosch_be*, -exclude_notready, -template_switch.exclude *siemens_ch_de_2013 *siemens_de_2013 *siemens_lu_2013 *siemens_sk_2013 *siemens_il_2013 *siemens_it_2013 *siemens_au_2013, -exclude_luxembourg.exclude *siemens_lu_2013, -exclude_czechrepublic.exclude *siemens_cz_2013, -exclude_netherlands.exclude *siemens_nl_2013, -exclude_dutch_belgium.exclude *siemens_be_nl_2013, -exclude_french_belgium.exclude *siemens_be_fr_2013, -exclude_france.exclude *siemens_fr_2013, -exclude_unitedkingdom.exclude *\gb\*, -exclude_finland.exclude *\fi\*, -exclude_norway.exclude *\no\*, -exclude_denmark.exclude *\dk\*,
+# Filters for Production = -exclude_production, &onlyforproduction, -nostageproduct.exclude checkout_siemens_uk
+# Filters for login out exxcluding = -checkoutloggeduser, -login, -changepassword, -editpersonaldata, -registration
+# Filter standardconfiguration = -missingproducts, -missingvoucher, -missingpayment.exclude *bosch_us *bosch_be*, -nostageproduct.exclude checkout_siemens_uk, -nodeliveryaddressdeviant.exclude *bosch_be*
+
+
+#-----------------------------------------------------------------------------------------------------------------
+#Environment
+#-----------------------------------------------------------------------------------------------------------------
+bsh.testedSystem=futureint
+#bsh.testedSystem=production
+#bsh.testedSystem=sandbox11
+# predev11
+# localhost
+# futureint
+# futuredev
+# predev01
+# predev02
+# predev03
+# predev04
+# predev05
+# predev06
+# predev07
+# predev08
+# predev09
+# predev11
+# sinint

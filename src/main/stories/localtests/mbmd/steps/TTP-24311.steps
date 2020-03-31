@@ -1,0 +1,123 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: lick "My Siemens" 
+!-- --------------------------------------------------------------------
+!-- When I click on first element via span and class and <mybosch>
+When I click the navigation element nav-6
+!-- Then the element 'navflyout-6' is visible
+!-- Then the page 'loginpage' is opened
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click sign up ("Sign up now")
+!-- --------------------------------------------------------------------
+When I click the element category-6-1
+When I click the navigation element registerButton
+Then the page 'accountcustomerregistrationpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check
+!-- --------------------------------------------------------------------
+When I click on first element via button and class and a-button a-button-primary form-button
+!-- Then the element by div and class and a-errormessage.error-required is shown
+Then the element by div and testing_id and validationMismatchError is shown
+
+!-- When I click the button 'submitButton'
+!-- Then the element by div and class and a-errormessage error-required is shown
+!-- Then the expected 'validationFirstName' is shown
+!-- Then the expected 'validationLastName' is shown
+!-- Then the expected 'validationEmail-1' is shown
+!-- Then the expected 'validationEmailConfirmed-1' is shown
+!-- Then the expected 'validationPassword' is shown
+!-- Then the expected 'validationConfirmedPassword-1' is shown
+!-- Then the page 'accountregistration1' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Registration Page 1 User Data
+!-- --------------------------------------------------------------------
+When I click on first element via span and class and select2-selection select2-selection--single
+When I click the element li[id*="0006"] if avaliable
+
+When I enter Mert into accountCreationData.user.defaultPaymentAddress.firstname
+Then the form field accountCreationData.user.defaultPaymentAddress.firstname is filled correct with the parameter Mert
+
+When I enter Baskaya into accountCreationData.user.defaultPaymentAddress.lastName
+Then the form field accountCreationData.user.defaultPaymentAddress.lastName is filled correct with the parameter Baskaya
+
+When I enter <city> into accountCreationData.user.defaultPaymentAddress.town
+Then the form field accountCreationData.user.defaultPaymentAddress.town is filled correct with the parameter <city>
+
+When I enter <orderuserttp> into loginName
+Then the form field loginName is filled correct with the parameter <orderuserttp>
+
+When I enter <orderuserttp> into loginNameReenterred
+Then the form field loginNameReenterred is filled correct with the parameter <orderuserttp>
+
+When I enter <passwordv2> into accountCreationData.unencodedPassword
+Then the form field accountCreationData.unencodedPassword is filled correct with the parameter <passwordv2>
+
+When I enter <passwordv2> into accountCreationData.confirmedPassword
+Then the form field accountCreationData.confirmedPassword is filled correct with the parameter <passwordv2>
+
+!-- When I enter <building> into accountCreationData.user.defaultPaymentAddress.building
+!-- Then the form field accountCreationData.user.defaultPaymentAddress.building is filled correct with the parameter <building>
+
+When I enter <street> into accountCreationData.user.defaultPaymentAddress.streetName
+Then the form field accountCreationData.user.defaultPaymentAddress.streetName is filled correct with the parameter <street>
+
+When I enter <streetnumber> into accountCreationData.user.defaultPaymentAddress.streetnumber
+Then the form field accountCreationData.user.defaultPaymentAddress.streetnumber is filled correct with the parameter <streetnumber>
+
+When I enter '123 45' into accountCreationData.user.defaultPaymentAddress.postalcode
+Then the form field accountCreationData.user.defaultPaymentAddress.postalcode is filled correct with the parameter '123 45'
+
+When I enter '4686579660' into accountCreationData.user.defaultPaymentAddress.phone1
+Then the form field accountCreationData.user.defaultPaymentAddress.phone1 is filled correct with the parameter '4686579660'
+
+When I enter '4686579660' into accountCreationData.user.defaultPaymentAddress.cellPhone
+Then the form field accountCreationData.user.defaultPaymentAddress.cellPhone is filled correct with the parameter '4686579660'
+
+!-- When I click the element accountCreationData.user.optinData.optinGroupsboschhome.optinKeys2.accepted
+!-- When I click the element accountCreationData.user.optinData.optinGroupsdefaultoptingroup.optinKeys0.accepted
+When I decide to accountCreationData.user.optinData.optinGroupsdefaultoptingroup.optinKeys0.accepted
+
+When I click on first element via button and class and a-button a-button-primary form-button
+
+
+
+
+!-- CANNOT CONTINUE FROM NOW ON, THE SITE DOESN'T WORK AFTER THESE STEPS...
+
+
+
+
+
+!-- --------------------------------------------------------------------
+Scenario: Delete the created user for re-use in regrassion
+!-- --------------------------------------------------------------------
+When I click the button 'deleteUserAccount'
+When I switch to iframe div[class="dialog-box"] location
+When I click the navigation element delete-deleteAccount-1
+When I switch back to switchBackToDefaultContent
+Then the url of current page contains 'siemens'
+
+
+!-- -- User is deleted !!!
+
+!-- --- TTP-17895 Testcase Checkout Register a new user was successful --- 

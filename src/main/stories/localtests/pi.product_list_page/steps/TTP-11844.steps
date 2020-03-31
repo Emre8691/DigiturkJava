@@ -1,0 +1,39 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens ES FUT-INT mainpage)
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on the "Electrodom�sticos" tab in main navigation
+!-- ---------------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Lavadoras"
+!-- --------------------------------------------------------------------
+When I click the navigation element subcategory-210
+!-- 1.Check, check from URL
+Then the url of current page contains 'catalogo-electrodomesticos/cuidado-de-la-ropa/lavadoras'
+
+!-- --------------------------------------------------------------------
+Scenario: Check "speedPerfect prefiltered list" functionality
+!-- --------------------------------------------------------------------
+Then I wait for element with css div[id*="main-content"] to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Descubre la tecnologia speedPerfect"
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and /es/descubre-siemens/innovaciones/sensofresh
+Then the element by div and id and wrapper is shown
+
+
+
+!-- ---- TTP-11844 - PI - Marketing List Page - Prefiltered List tab was successful -------
+
+

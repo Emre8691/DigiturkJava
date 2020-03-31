@@ -1,0 +1,74 @@
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------
+Scenario: Navigate to SHOP
+!-- -------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+
+!-- -------------------------------------------------------
+Scenario: Navigate in a category (SHOP)
+!-- -------------------------------------------------------
+!-- testing_id click is not working, workaround added.
+When I click the element category-2-3
+!-- When I click on child element span with parent li and testing_id and category-2-3
+Then the page shoplist is opened
+Then the element by nav and class and m-breadcrumb is shown
+When I click the element 'nav-2'
+Then the element 'navflyout-2' is visible
+!-- testing_id click is not working, workaround added.
+When I click the element category-2-1
+!-- When I click on child element span with parent li and testing_id and category-2-1
+Then the page shoplist is opened
+Then the element by nav and class and m-breadcrumb is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Navigate in a subcategory (SHOP)
+!-- -------------------------------------------------------
+When I click the element 'nav-2'
+Then the element 'navflyout-2' is visible
+!-- testing_id click is not working, workaround added.
+When I click the element subcategory-2-1-1
+Then the page shoplist is opened
+Then the element by nav and class and m-breadcrumb is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Navigate to a product
+!-- -------------------------------------------------------
+When I enter <productcode> into searchField
+Then the form field searchField is filled correct with the parameter <productcode>
+When I click the element searchBoxBtn
+Then the element plusButton is visible
+Then the page shopdetailpage is opened
+!-- Then the element by nav and class and m-breadcrumb is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Navigate back to home site by using the breadcrumb
+!-- -------------------------------------------------------
+!-- It clicks to link which relevant for breadcrumb previous step.
+When I click the link isEqual to <breadcrumblink>
+Then the page shoplist is opened
+
+
+!-- --- TTP-17879: Automatic:Product Detailed Page: Breadcrumbs Products and Shop was successful ---

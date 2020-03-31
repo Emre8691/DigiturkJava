@@ -1,0 +1,46 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Webpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+!-- When I open external webpage http://www.balay.es.fi.muc.bsh.arithnea.org/
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- --------------------------------------------------------------------
+Scenario: click on Dealer Locator.
+!-- --------------------------------------------------------------------
+When I click the button elementID
+!-- Need testing_id for dealer locator.
+Then the page page is opened
+!-- Need testing_id for dealer locator page.
+
+
+!-- --------------------------------------------------------------------
+Scenario: check Dealer Locator elements.
+!-- --------------------------------------------------------------------
+Then the element elementID is visible
+!-- Location search
+Then the element elementID is visible
+!-- Location button
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter Location (i.e. Madrid)
+!-- --------------------------------------------------------------------
+When I enter value into fieldID
+Then the given data parameter is shown correct at field field
+!-- Need testing_id
+
+Then the element elementID is visible
+!-- searchfield-suggestlayer Flyout testing_id
+
+
+!-- --------------------------------------------------------------------
+Scenario: click on First Location on Flyout (i.e. Madrid)
+!-- --------------------------------------------------------------------
+When I click on first element via tag and attribute and valuePart
+Then the element elementID is visible
+!-- LocalBusiness
+
+!-- -- TTP-15255 - TEST Dealer Locator on MBMD BALAY is successful -----

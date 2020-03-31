@@ -1,0 +1,107 @@
+!-- -------------------------------------------------------------------
+Scenario: scenario Login - Get User Data then Update User Data
+!-- -------------------------------------------------------------------
+!-- Login User
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect Login Test - (allready registerd and active user login)
+!-- -------------------------------------------------------------------
+When I set /oauth/token as rest request url for request tokenrequest
+When I set method to POST for request tokenrequest
+When I set FORM as body content type for request tokenrequest
+When I set JSON as response content type for request tokenrequest
+
+!-- Set Header Parameters
+When I set hc_ctx into header appContext for request tokenrequest
+When I set HCA into header appId for request tokenrequest
+
+!-- Set username And Password
+When I set password into body parameter grant_type for request tokenrequest
+When I set wstest@mailinator.com into body parameter username for request tokenrequest
+When I set test1234 into body parameter password for request tokenrequest
+
+
+!-- Invoke
+When I execute request tokenrequest
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect Login Test Check - HTTP, USer Token, Token Type, Scope Check. 
+!-- -------------------------------------------------------------------
+Then for request tokenrequest the status code is 200
+!-- Check if it has User Token.
+Then for request tokenrequest property access_token type is String
+Then for request tokenrequest response property token_type equals bearer
+Then for request tokenrequest response property scope equals homeconnect
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect Logged-in User Data Check 
+!-- -------------------------------------------------------------------
+When I set /extapp/consumer/userdata/v1 as rest request url for request userdatarequest
+When I set method to GET for request userdatarequest
+When I set JSON as response content type for request userdatarequest
+When I set hc_ctx into header appContext for request userdatarequest
+When I set HCA into header appId for request userdatarequest
+When I set #tokenrequest.response.body.access_token into query parameter access_token for request userdatarequest
+!-- Invoke
+When I execute request userdatarequest
+
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect Update User Data Validation 
+!-- -------------------------------------------------------------------
+Then for request userdatarequest the status code is 200
+Then for request userdatarequest property requestSuccessful type is Boolean
+Then for request userdatarequest response property requestSuccessful equals true
+Then for request userdatarequest response property responseCode equals OK
+!-- reponseMessage:"success" test
+Then for request userdatarequest response property reponseMessage equals success
+Then for request userdatarequest response property user.emailAddress equals #tokenrequest.request.body.username
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect Update Logged-in User Data 
+!-- -------------------------------------------------------------------  
+When I set /extapp/consumer/userdata/v1 as rest request url for request updateuserdatarequest
+When I set method to POST for request updateuserdatarequest
+When I set JSON as body content type for request updateuserdatarequest
+When I set JSON as response content type for request updateuserdatarequest
+
+When I set hc_ctx into header appContext for request updateuserdatarequest
+When I set HCA into header appId for request updateuserdatarequest
+
+When I set #tokenrequest.response.body.access_token into query parameter access_token for request updateuserdatarequest
+When I set wstest@mailinator.com into body parameter user.emailAddress for request updateuserdatarequest
+When I set test1234 into body parameter user.password for request updateuserdatarequest
+
+When I set Mr. into body parameter user.title for request updateuserdatarequest
+When I set hcatestname into body parameter user.firstName for request updateuserdatarequest
+When I set testingTester into body parameter user.lastName for request updateuserdatarequest
+When I set 2 into body parameter user.birthDay for request updateuserdatarequest
+When I set 3 into body parameter user.birthMonth for request updateuserdatarequest
+When I set 1984 into body parameter user.birthYear for request updateuserdatarequest
+
+When I set enrico1212@mailinator.com into body parameter user.address.emailAddress for request updateuserdatarequest
+When I set -1 into body parameter user.address.addressNumber for request updateuserdatarequest
+When I set US into body parameter user.address.country for request updateuserdatarequest
+When I set 25 Halsey St into body parameter user.address.streetname for request updateuserdatarequest
+When I set 25 into body parameter user.address.streetnumber for request updateuserdatarequest
+When I set 11216 into body parameter user.address.postcode for request updateuserdatarequest
+When I set New York into body parameter user.address.town for request updateuserdatarequest
+When I set 17182308918 into body parameter user.address.phone for request updateuserdatarequest
+
+!-- Invoke
+When I execute request updateuserdatarequest
+
+!-- -------------------------------------------------------------------
+Scenario: Home Connect - Update User Data - Validation
+!-- -------------------------------------------------------------------
+Then for request updateuserdatarequest the status code is 200
+Then for request updateuserdatarequest property requestSuccessful type is Boolean
+Then for request updateuserdatarequest response property requestSuccessful equals true
+Then for request updateuserdatarequest response property responseCode equals OK
+!-- reponseMessage:"success" test
+Then for request updateuserdatarequest response property reponseMessage equals success
+
+!-- #---------TTP-15251 ---- Homeconnect PROD - Get User Data - Update User Data Successfull ------------- --#
+
+
+

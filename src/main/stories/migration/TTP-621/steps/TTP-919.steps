@@ -1,0 +1,46 @@
+
+!-- -------------------------------------------------------------------
+Scenario: Open Bosch UK Home Page via the list provided at data section.
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+
+!-- -------------------------------------------------------------------
+Scenario: Open Store Page
+!-- --------------------------------------------------------------------
+Then the url of current page contains '/store'
+Then the element by div and class and jcarousel-container is shown
+Then the element by div and class and jcarousel-prev is shown
+Then the element by div and class and jcarousel-next is shown
+
+!-- -------------------------------------------------------------------
+Scenario: Click on next button carousel and check if spare parts are visible
+!-- --------------------------------------------------------------------
+When I click on first element via div and class and jcarousel-next
+When I click on first element via div and class and jcarousel-next
+Then the element by a and title and Spare is shown
+When I click on first element via a and title and Spare
+Then the element by input and id and vibki is shown
+
+
+!-- -------------------------------------------------------------------
+Scenario: Check if stage slider is visible and browse on stage items
+!-- --------------------------------------------------------------------
+Then the element by div and class and anythingSlider is shown
+When I click the xpath element //a[text()='2']
+
+!-- -------------------------------------------------------------------
+Scenario: Click on next button carousel and check if spare parts are visible
+!-- --------------------------------------------------------------------
+When I click on first element via div and class and jcarousel-next
+When I click on first element via div and class and jcarousel-next
+When I click on first element via div and class and jcarousel-next
+When I click on first element via div and class and jcarousel-next
+When I click on first element via div and class and jcarousel-next
+Then the element by a and title and Vacuum is shown
+When I click on first element via a and title and Vacuum
+Then the element by div and class and enumberresult is shown
+
+
+!-- --- Testcase TTP-919 - Automatic:Basic Functionalities:Category Flyout (Bosch) was successful ---
+

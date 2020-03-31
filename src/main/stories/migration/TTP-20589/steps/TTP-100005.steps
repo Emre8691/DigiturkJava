@@ -1,0 +1,124 @@
+
+!-- -------------------------------------------------------------------
+Scenario: Template Switch
+Meta: @template_switch
+!-- --------------------------------------------------------------------
+When I switch to new layout
+Then the switch to new layout was successful
+
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '2' second
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+Then the page 'startpage' is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Open Dealer Locator Page and do Page Validations
+!-- --------------------------------------------------------------------
+When I click the element findDealer
+Then the element findDealer is visible
+Then the element dealerLocatorSearchField is visible
+Then the element by button and class and location is shown
+Then the element by div and data-t-name and DealerLocator is shown
+
+!-- -----------------------------------------------------
+Scenario: Search For a ZipCode
+!-- --------------------------------------------------
+When I clear the dealerLocatorSearchField field
+Then the form field dealerLocatorSearchField is filled correct with the parameter ''
+When I enter <zipcode> into dealerLocatorSearchField
+!-- Then the element dealerLocatorFlyout is visible
+!-- When I click on first visible element via span and testing_id and suggestLayerResult
+When I click the xpath element /html/body/div[4]/div[1]/div[2]/div/div/div[1]/div/div/form/fieldset/div/div[1]/div/section/ul/li[1]/span/div/label/span
+!-- When I click the element suggestLayerResult_43-0
+Then I must wait '2' seconds
+!-- Then the element by i and data-testing-id and <dealerlocatorpin> is shown
+!-- Then the element by li and testing_id and dataDealer_0288000305 is shown
+Then the element dataDealerFilter is visible
+
+!-- -----------------------------------------------------
+Scenario: Search For a City (clear the field first)
+!-- --------------------------------------------------
+When I clear the dealerLocatorSearchField field
+Then the form field dealerLocatorSearchField is filled correct with the parameter ''
+When I enter <city> into dealerLocatorSearchField
+Then I must wait '2' seconds
+Then the element dealerLocatorFlyout is visible
+When I click the element findDealer
+!-- When I click on first visible element via span and testing_id and suggestLayerResult
+Then I must wait '3' seconds
+!-- Then the element by div and class and map-wrap.js-map-wrap is shown
+Then the element by div and testing_id and googleMap is shown
+
+!-- Then the element dataDealerFilter is visible
+
+
+!-- -----------------------------------------------------
+Scenario: Search For a StreetName (clear the field first)
+!-- --------------------------------------------------
+When I clear the dealerLocatorSearchField field
+Then the form field dealerLocatorSearchField is filled correct with the parameter ''
+When I enter <street2> into dealerLocatorSearchField
+Then the element dealerLocatorFlyout is visible
+When I click the element findDealer
+!-- When I click on first visible element via span and testing_id and suggestLayerResult
+Then the element by div and testing_id and googleMap is shown
+
+!-- Then the element by div and class and map-wrap.js-map-wrap is shown
+!-- Then the element by ul and class and dealer-list.js-dealer-list is shown
+!-- Then the element dataDealerFilter is visible
+Then the element by div and class and dealer-list-wrap is shown
+
+!-- -----------------------------------------------------
+Scenario: Search For a ZipCode for testing Plan Route
+!-- --------------------------------------------------
+When I clear the dealerLocatorSearchField field
+Then the form field dealerLocatorSearchField is filled correct with the parameter ''
+When I enter <zipcode> into dealerLocatorSearchField
+!-- Then the element dealerLocatorFlyout is visible
+When I click the element findDealer
+!-- When I click on first visible element via span and testing_id and suggestLayerResult
+!-- Then the element by i and data-testing-id and <dealerlocatorpin> is shown
+!-- Then the element by ul and class and dealer-list.js-dealer-list is shown
+Then the element by div and class and dealer-list-wrap is shown
+!-- -----------------------------------------------------
+Scenario: Click on "plan route"
+!-- --------------------------------------------------
+!-- When I click the xpath element //*[@id="anc-5280720"]/div[3]/div[3]/div[1]/ul/li[1]/div/div[1]/address
+When I clear the dealerLocatorSearchField field
+Then the form field dealerLocatorSearchField is filled correct with the parameter ''
+!-- When I enter <zipcode> into dealerLocatorSearchField
+!-- Then the element dealerLocatorFlyout is visible
+!-- When I click on first visible element via span and testing_id and suggestLayerResult
+When I enter <zipcode2> into dealerLocatorSearchField
+Then I must wait '2' seconds
+!-- Then the element dealerLocatorFlyout is visible
+
+
+When I click on first element via span and class and label-text
+
+!-- Then the element dealerLocatorFlyout is visible
+!-- When I click on first element via li and testing_id and dataDealer_0288000305
+!-- When I click on first element via i and class and icon.icon-mappin
+When I click on first element via i and data-testing-id and dealerLocationPin_0288000305
+
+Then I must wait '5' seconds
+
+!-- When I click on first visible element via i and data-testing-id and dealerLocationPin
+!-- When I click on first visible element via i and data-testing-id and <dealerlocatorpin>
+!-- TODO: needs testing_ids /workaround solution
+Then the element by div and testing_id and googleMap is shown
+!-- Then the element by div and class and 0-dealer-layout is shown
+!-- TODO: testing_id needed here
+!-- When I click the element <planrouteid>
+!-- 
+!-- When I switch back to switchBackToDefaultContent
+Then the element by div and testing_id and googleMap is shown
+!-- Then the element by ul and class and dealer-data.links is shown
+
+
+!-- --- Testcase TTP-100005 Automatic: Dealer Locator: dealer_locator_plan_route  was successful ---

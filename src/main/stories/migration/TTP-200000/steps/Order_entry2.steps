@@ -1,0 +1,96 @@
+Scenario: Open Order Entry - Servis Kaydı 
+Scenario: Open Order Entry - Servis Kaydını ac 
+Then I must wait 2 seconds
+When I switch to the pop up window where ifrmShortcuts exists
+When I switch to iframe with id ifrmShortcuts
+When I click the xpath element //*[contains(text(),'Servis Kaydı - Onarım')]
+Then I must wait 3 seconds
+
+Scenario: Order Entry - Servis Kaydı 
+
+When I switch to the pop up window where ifrmCustomerAppliance exists
+
+Scenario: Add Appliance - Tüketici Nedeni Ekleme
+
+When I switch to iframe with id ifrmCustomerAppliance
+When I click the xpath element //*[@id="CustomerAppliance_dropApplianceGroup"]
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="CustomerAppliance_dropApplianceGroup"]/option[18]
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="CustomerAppliance_dropCustomerAppliance"]
+
+When I click the xpath element //*[@id="CustomerAppliance_dropCustomerAppliance"]/option[20]
+
+
+Then I must wait 2 seconds
+
+When I switch to the pop up window where ifrmOrderEntry exists
+When I switch to iframe with id ifrmOrderEntry
+
+When I click on first element via input and name and btnSave
+Then I must wait 1 seconds
+When I switch to the pop up window where btnYes exists
+When I click on first element via input and name and btnYes
+Then I must wait 2 seconds
+
+Scenario: Add Apply Reason -Başvuru Nedeni Ekleme
+When I switch to the pop up window where ifrmRISDiagnoseCode exists
+When I switch to iframe with id ifrmRISDiagnoseCode
+
+When I click on first element via input and name and obtnAdd
+
+Then I must wait 3 seconds
+
+When I switch to the pop up window where radlQuestion exists
+
+When I click on first element via input and id and radlQuestion_3311732
+Then I must wait 1 seconds
+When I click on first element via input and id and radlQuestion_32248418
+
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 2 seconds
+
+Scenario: Search Service Code & Assign -- Servis Kodu Arama ve Atama Yap
+When I switch to the pop up window where ifrmRoutePlan exists
+When I switch to iframe with id ifrmRoutePlan
+
+Then I must wait 2 seconds
+When I click on first element via input and name and obtnServiceSearch
+Then I must wait 1 seconds
+
+Scenario: Search Service Code & Assign -- Servis Kodu Arama ve Atama Yap
+When I switch to the pop up window where chkCity exists
+When I click on first element via input and id and chkCity
+Then I must wait 1 seconds
+When I click on first element via input and id and chkState
+Then I must wait 2 seconds
+
+When I click on first element via input and name and btnFilter
+
+Then I must wait 2 seconds
+
+Then I must wait 1 seconds
+When I click the xpath element //*[@id="dgrdServices"]/tbody/tr[5]/td[1]/a
+Then I must wait 2 seconds
+
+Scenario: Search Service Engineer - İcmal Planı & Teknisyen Seçimi
+When I switch to the pop up window where ifrmRoutePlan exists
+When I switch to iframe with id ifrmRoutePlan
+When I click the xpath element //*[contains(@id,'dropTechnicians')]  
+When I select the dropTechnicians with the option 11504 version
+Then I must wait 2 seconds
+
+Scenario:Route Plan & Assign - İcmal Planı & Atama Yap
+When I click on first element via input and name and btnAssign
+n
+When I switch to the pop up window where btnOk exists
+When I click on first element via input and id and btnOk
+Then I must wait 2 seconds
+When I switch to the pop up window where ifrmOrderEntry exists
+When I switch to iframe with id ifrmOrderEntry
+Then I must wait 2 seconds
+When I click on first element via div and style and TEXT-DECORATION: underline
+Then I must wait 2 seconds
+
+!-- --- TTP-200004 Testcase: Order_entry2.steps finished successful ---

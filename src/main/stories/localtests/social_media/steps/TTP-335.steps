@@ -1,0 +1,102 @@
+!-- --------------------------------------------------------------------
+Scenario: Click on "Login" link at top Navigation
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- (old) When I click the button 'logInOutHeaderButton'
+When I click on child element span with parent a and testing_id and nav-5
+Then the page 'loginpage' is opened
+Then the element 'username' is visible
+Then the element 'password' is visible
+Then the element 'logInButton' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Facebook Social Media icon from the Social Sign In selection.
+!-- --------------------------------------------------------------------
+When I click on element by xpath //a[@tabindex='3']
+Then the email is visible at the pop up box
+Then the element pass is visible
+Then the element loginbutton is visible
+!-- Then the pass is visible at the pop up box
+!-- Then the loginbutton is visible at the pop up box
+
+
+!-- --------------------------------------------------------------------
+Scenario: Enter email and password information as provided at data section 
+!-- --------------------------------------------------------------------
+When I fill in email with 'abt-account@gmx.de'
+When I fill in pass with 'fk?+[=OM[+KdAKe'
+When I click the element loginbutton
+Then switch back the window to parent window static
+Then I must wait '2' seconds
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchField
+Then the form field searchField is filled correct with the parameter '0'
+When I click the element submit
+Then the page searchresultspage is opened
+!-- When I click on first element via a and testing_id and searchResultTab-Shop
+When I click on child element a with parent li and testing_id and searchResultTab-Shop
+Then I must wait '2' seconds
+Then the page searchresultspage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+Given save current basket count
+When I click on first element via button and testing_id and addToBasket
+!-- When I click on first element via button and testing_id and addToBasket without wait
+Then I must wait '2' seconds
+Then the basket count is changed
+!-- Then the expected shopcartContentOverview is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Shop link from main Navigation
+!-- --------------------------------------------------------------------
+When I click the navigation element goToBasket
+Then the page basketpage is opened 
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the navigation element checkouttop
+Then the page 'deliverypage' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Continue button at the bottom.
+!-- --------------------------------------------------------------------
+When I click the navigation element continuebuttonbottom
+Then the page 'summarypage' is shown
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+When I click on first element via label and for and payment-mastercard
+When I decide to 'agreeContract1'
+Then the decided 'agreeContract1' is selected
+When I click the navigation element continuebuttonbottom
+Then the url of current page contains 'worldpay'
+
+
+When I enter <cardnumbermaster2> into 'cardNumber'
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I enter 'AUTHORISED' into 'cardholderName'
+When I enter <securitycode> into 'securityCode'
+When I click on first element via input and type and submit
+ 
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+Then the page 'confirmationpage' is opened 
+
+!-- --- TTP-335: Automatic: Checkout: Social Sign On (Bosch) was successful ---
+ 

@@ -1,0 +1,66 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------
+Scenario: Click on the Shop Link at main navigation
+!-- -------------------------------------------------------
+When I click the button 'nav-2'
+Then the expected 'flyoutclosebtn' is shown
+!-- Then the expected 'flyoutshopbtn' is shown
+Then the expected 'category-20' is shown
+Then the expected 'subcategory-200' is shown
+
+!-- -------------------------------------------------------
+Scenario: Click on "Baking trays and other accessories" link in the flyout 
+!-- -------------------------------------------------------
+When I click the button 'subcategory-200'
+!-- Then the page 'shopListPage' is opened
+Then the expected 'nav-2' is shown
+Then the expected 'nav-3' is shown
+
+When I click the link contains /ch/de/produktliste/kochen-und-backen/backoefen
+Then the page productList is opened
+Then I must wait '2' seconds
+!-- -------------------------------------------------------
+Scenario: Click on first product from the list
+!-- -------------------------------------------------------
+When I click on first element via a and href and HN
+!-- Then the page productDetailPage is opened
+!-- Then the breadcrumbs show div class exists on page
+Then the expected 'breadcrumbs' is shown
+
+
+!-- -------------------------------------------------------
+Scenario: Click on "Baking trays and other accessories" link in the Breadcrumb
+!-- -------------------------------------------------------
+When I click the button 'nav-2'
+Then I must wait '1' seconds
+Then the expected 'flyoutclosebtn' is shown
+When I click the button 'subcategory-201'
+Then the expected 'nav-2' is shown
+Then the expected 'nav-3' is shown
+
+!-- -------------------------------------------------------
+Scenario: Click on "Cooking and baking" link in the Breadcrumb
+!-- -------------------------------------------------------
+When I click the button 'nav-2'
+Then I must wait '1' seconds
+Then the expected 'flyoutclosebtn' is shown
+When I click the button 'subcategory-202'
+Then the element by div and class and product-actions is shown
+
+Then the expected 'nav-2' is shown
+Then the expected 'nav-3' is shown
+
+
+!-- --- TTP-324: Automatic:Product Detailed Page: Breadcrumbs Products (Siemens) was successful ---
+
+

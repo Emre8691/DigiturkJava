@@ -1,0 +1,136 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I click the navigation element myaccountbutton
+Then the page loginpage is opened
+!-- When I enter <orderuserttp> into 'username'
+When I enter 1788_siemensuk@mailinator.com into 'username'
+Then the form field username is filled correct with the parameter 1788_siemensuk@mailinator.com
+!-- When I enter <loginuserpwd> into 'password'
+When I enter d![tTZJ?/u5vU) into 'password'
+Then the form field password is filled correct with the parameter d![tTZJ?/u5vU)
+When I click the button 'logInButton'
+Then the page myaccountpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I click the button [testing_id="closeNavigation"] if avaliable
+!-- Then I wait for element with css div[class="tooltip-wrapper-6 positionaround-1-2"] to be invisible
+When I enter 0 into searchField
+Then the form field searchField is filled correct with the parameter '0'
+When I click the element searchBoxBtn
+!-- Then I wait for element with css strong[testing_id="searchResultTab-Produkte"] to be visible
+When I click on first element via a and testing_id and searchResultTab-Shop
+Then the page 'searchresultspage' is opened
+Then the element by button and name and buy-product is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click on first element via button and name and buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the navigation element checkouttop
+
+Then the page 'deliverypage' is shown
+Then the dialogue step 'DELIVERY' is 'active'
+
+!-- --------------------------------------------------------------------
+Scenario: Check Payment Address information via payment address section
+!-- --------------------------------------------------------------------
+When I click the button editPaymentAddress
+Then the expected 'paymentAddress' is shown
+When I clear the 'paymentAddress.firstname' field
+When I clear the 'paymentAddress.lastName' field
+When I clear the 'paymentAddress.streetName' field
+When I clear the 'paymentAddress.postalcode' field
+When I clear the 'paymentAddress.town' field
+
+
+!-- --------------------------------------------------------------------
+Scenario: Data validation check for Payment Address
+!-- --------------------------------------------------------------------
+When I click the navigation element continuebuttonbottom
+Then the expected 'er-form-paymentAddress-firstname' is shown
+Then the expected 'er-form-paymentAddress-lastName' is shown
+Then the expected 'er-form-paymentAddress-streetName' is shown
+!-- Then the expected 'er-form-paymentAddress-postalcode' is shown
+Then the expected 'er-form-paymentAddress-town' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Fill the Payment Address Form fields with the data provided at test data section
+!-- --------------------------------------------------------------------
+When I enter <firstname> into 'paymentAddress.firstname'
+Then the form field 'paymentAddress.firstname' is filled correct with the parameter <firstname>
+When I enter <lastname> into 'paymentAddress.lastName'
+Then the form field 'paymentAddress.lastName' is filled correct with the parameter <lastname>
+When I enter <street> into 'paymentAddress.streetName'
+Then the form field 'paymentAddress.streetName' is filled correct with the parameter <street>
+When I enter <zipcode2> into 'paymentAddress.postalcode'
+Then the form field 'paymentAddress.postalcode' is filled correct with the parameter <zipcode2>
+When I enter <city> into 'paymentAddress.town'
+Then the form field 'paymentAddress.town' is filled correct with the parameter <city>
+Then I must wait '1' second
+
+!-- --------------------------------------------------------------------
+Scenario: Check if Same As Billing Address Radio button is selected, Check if additional address can be selected
+!-- --------------------------------------------------------------------
+Then the current 'sameAsBilling' is preselected
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Continue button at the bottom.
+!-- --------------------------------------------------------------------
+When I click the navigation element continuebuttonbottom
+Then the page 'summarypage' is shown
+Then the dialogue step 'SUMMARY' is 'active'
+Then the dialogue step 'DELIVERY' is 'clickable'
+
+!-- -------------------------------------------------------------------
+Scenario: Authorised Payment Worldpay / Master Card
+!-- -------------------------------------------------------------------
+When I click on first element via label and for and payment-mastercard
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the navigation element continuebuttonbottom
+Then the url of current page contains 'worldpay'
+
+
+When I enter <cardnumbermaster2> into 'cardNumber'
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I enter 'AUTHORISED' into 'cardholderName'
+When I enter <securitycode> into 'securityCode'
+When I click on first element via input and type and submit
+ 
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+Then the page 'confirmationpage' is opened
+
+!-- --- Testcase TTP-318 Automatic: Checkout: Delivery: Logged User - WorldPay- Merchand ID (Siemens) was successful ---
+
+
+
+
+

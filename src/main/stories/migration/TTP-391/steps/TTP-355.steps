@@ -1,0 +1,136 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then the page 'myaccountsstaffpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- ---------------------------------------------------------------------
+Scenario: Login with valid data
+!-- --------------------------------------------------------------------
+When I click the element 'username'
+When I enter <orderuserttp> into username
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I click the element 'password'
+When I enter <passwordv2> into password
+Then the form field password is filled correct with the parameter <passwordv2>
+When I click the element 'logInButton'
+
+Then the url of current page contains 'fr'
+
+!-- -------------------------------------------------------------------
+Scenario: Open MyProfile
+!-- -------------------------------------------------------------------
+When I click the element metaNavigation
+Then I wait for element with css .tooltip-wrapper-6 to be visible
+When I click the navigation element 'myprofile'
+Then the page 'accountprofilepage' is opened
+
+!-- ---------------------------------------------------------------
+Scenario: Click Change personal data
+!-- ----------------------------------------------------------------
+When I click the element 'changePersonalData'
+Then the page 'accountbillingaddresspage' is opened
+
+!-- ----------------------------------------------------------------
+Scenario: Clear fields and click submit, validation check (1)
+!-- -----------------------------------------------------------------
+When I clear the 'personalData.defaultPaymentAddress.firstname' field
+When I clear the 'personalData.defaultPaymentAddress.lastName' field
+When I clear the 'personalData.defaultPaymentAddress.streetName' field
+When I clear the 'personalData.defaultPaymentAddress.streetnumber' field
+When I clear the 'personalData.defaultPaymentAddress.postalcode' field
+When I clear the 'personalData.defaultPaymentAddress.town' field
+
+
+When I click the button 'submitButton'
+
+Then the element 'er-form-personalData-defaultPaymentAddress-firstname' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-lastName' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-streetnumber' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-streetName' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-postalcode' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-town' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check (2)
+!-- ---------------------------------------------------------------------
+When I enter <changedfirstname> into 'personalData.defaultPaymentAddress.firstname'
+Then the form field personalData.defaultPaymentAddress.firstname is filled correct with the parameter <changedfirstname>
+When I enter <changedlastname> into 'personalData.defaultPaymentAddress.lastName'
+Then the form field personalData.defaultPaymentAddress.lastName is filled correct with the parameter <changedlastname>
+
+When I click the button 'submitButton'
+Then the element 'er-form-personalData-defaultPaymentAddress-streetnumber' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-streetName' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-postalcode' is visible
+Then the element 'er-form-personalData-defaultPaymentAddress-town' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Validation check (3)
+!-- ---------------------------------------------------------------------
+When I enter <changedstreet> into 'personalData.defaultPaymentAddress.streetName'
+Then the form field personalData.defaultPaymentAddress.streetName is filled correct with the parameter <changedstreet>
+When I enter <changedhousenumber> into 'personalData.defaultPaymentAddress.streetnumber'
+Then the form field personalData.defaultPaymentAddress.streetnumber is filled correct with the parameter <changedhousenumber>
+When I enter <changedcity> into 'personalData.defaultPaymentAddress.town'
+Then the form field personalData.defaultPaymentAddress.town is filled correct with the parameter <changedcity>
+When I enter <telephone> into personalData.defaultPaymentAddress.phone1
+Then the form field personalData.defaultPaymentAddress.phone1 is filled correct with the parameter <telephone>
+When I click the button 'submitButton'
+Then the element 'er-form-personalData-defaultPaymentAddress-postalcode' is visible
+
+!-- -----------------------------------------------------------------------
+Scenario: Enter changed postal code
+!-- -----------------------------------------------------------------------
+When I enter <changedzip> into 'personalData.defaultPaymentAddress.postalcode'
+Then the form field 'personalData.defaultPaymentAddress.postalcode' is filled correct with the parameter <changedzip>
+When I click the button 'submitButton'
+
+Then the page 'accountprofilepage' is opened
+
+!-- ---------------------------------------------------------------------------
+Scenario: Tidy up
+!-- -------------------------------------------------------------------------
+When I click the element 'changePersonalData'
+Then the page 'accountbillingaddresspage' is opened
+
+When I clear the 'personalData.defaultPaymentAddress.firstname' field
+When I clear the 'personalData.defaultPaymentAddress.lastName' field
+When I clear the 'personalData.defaultPaymentAddress.streetName' field
+When I clear the 'personalData.defaultPaymentAddress.streetnumber' field
+When I clear the 'personalData.defaultPaymentAddress.postalcode' field
+When I clear the 'personalData.defaultPaymentAddress.town' field
+Then the form field personalData.defaultPaymentAddress.town is filled correct with the parameter ''
+
+
+
+When I enter <firstname> into 'personalData.defaultPaymentAddress.firstname'
+Then the form field 'personalData.defaultPaymentAddress.firstname' is filled correct with the parameter <firstname>
+
+When I enter <lastname> into 'personalData.defaultPaymentAddress.lastName'
+!-- Then the form field 'personalData.defaultPaymentAddress.lastName is filled correct with the parameter <lastname>
+
+When I enter <street> into 'personalData.defaultPaymentAddress.streetName'
+Then the form field 'personalData.defaultPaymentAddress.streetName' is filled correct with the parameter <street>
+
+When I enter <housenumber> into 'personalData.defaultPaymentAddress.streetnumber'
+Then the form field 'personalData.defaultPaymentAddress.streetnumber' is filled correct with the parameter <housenumber>
+
+When I enter <zip> into 'personalData.defaultPaymentAddress.postalcode'
+Then the form field 'personalData.defaultPaymentAddress.postalcode' is filled correct with the parameter <zip>
+
+When I enter <city> into 'personalData.defaultPaymentAddress.town'
+Then the form field 'personalData.defaultPaymentAddress.town' is filled correct with the parameter <city>
+
+When I click the button 'submitButton'
+Then the page 'accountprofilepage' is opened
+
+!-- --- TTP-355 - Staffsales MyAccount - Change "MyProfile" personal data was successful ---
+
+

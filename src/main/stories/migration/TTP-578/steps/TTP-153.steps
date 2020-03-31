@@ -1,0 +1,146 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Siemens a Siemens Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- --------------------------------------------------------------------
+Scenario: Search for a product which is available to buy.
+!-- --------------------------------------------------------------------
+When I enter 0 into searchField
+When I click the button [testing_id="searchBoxBtn"] if avaliable
+Then I wait for element with css [testing_id="searchResultTab-Shop"] to be visible
+When I click on first element via a and testing_id and searchResultTab-Shop
+Then the page 'searchresultspage' is opened
+Then the element by button and name and buy-product is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Add to Shopping Cart to Add this product to "Shopping cart" 
+!-- --------------------------------------------------------------------
+When I click the button buy-product without wait
+Then I wait for element with css .shopcart-overview to be visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Basket icon under site search field.
+!-- --------------------------------------------------------------------
+When I click the button goToBasket
+Then the page basketpage is opened
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "to Buy" button which is in orange color
+!-- --------------------------------------------------------------------
+When I click the button checkouttop
+Then the page 'welcomepage' is opened
+Then the dialogue step 'WELCOME' is 'active'
+
+!-- --------------------------------------------------------------------
+Scenario: Login for logged in test
+!-- --------------------------------------------------------------------
+When I enter <orderuserttp> into 'username'
+When I enter <password> into 'password'
+When I click the navigation element continuebuttontop
+Then the page 'deliverypage' is shown
+Then the dialogue step 'DELIVERY' is 'active'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check Checkout Summary Page Sections
+!-- --------------------------------------------------------------------
+When I click the navigation element continuebuttontop
+Then the page 'summarypage' is shown
+
+
+Then the dialogue step 'SUMMARY' is 'active'
+Then the dialogue step 'DELIVERY' is 'clickable'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the 'order-list' div class exists on page
+Then the element 'voucherinput' is visible
+
+!-- Not ready
+!-- Then the <address> for 'billing' is the expected address
+!-- Then the <deliveryaddress> for 'delivery' is the expected address
+
+Then the expected 'backbuttonbottom' is shown
+When I click on first element via label and for and payment-visa
+When I click on first element via label and for and payment-mastercard
+When I click on first element via label and for and payment-invoice_siemens_ch
+
+When I click the navigation element continuebuttontop
+Then the expected 'agreeValidationError' is shown
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check If Visa Payment Option is opening the worldPay page
+!-- --------------------------------------------------------------------
+When I click on first element via label and for and payment-visa
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the navigation element continuebuttontop
+
+Then the url of current page contains 'PaymentMethod=VISA'
+When I click the link contains 'worldpay/cancel'
+Then the page 'summarypage' is shown
+
+
+Then the dialogue step 'SUMMARY' is 'active'
+Then the dialogue step 'DELIVERY' is 'clickable'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the 'order-list' div class exists on page
+Then the element 'voucherinput' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Check If MasterCard Payment Option is opening the worldPay page
+!-- --------------------------------------------------------------------
+When I click on first element via label and for and payment-mastercard
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+
+Then the url of current page contains 'worldpay'
+When I click the link contains '/worldpay/cancel/'
+Then the page 'summarypage' is shown
+
+
+Then the dialogue step 'SUMMARY' is 'active'
+Then the dialogue step 'DELIVERY' is 'clickable'
+Then the dialogue step 'PAYMENT' is 'inactive'
+Then the 'order-list' div class exists on page
+Then the element 'voucherinput' is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Check VoucherCode Validations
+!-- --------------------------------------------------------------------
+When I enter <incorrectvoucher> into voucherinput
+When I click the button applyvoucher
+Then the expected 'vouchererror-cannnotbeapplied' is shown
+
+When I enter <wrongvoucher> into voucherinput
+When I click the button applyvoucher
+Then the expected 'vouchererror-cannnotbeapplied' is shown
+
+
+!-- TODO: find valid voucher and use it here, change code accordingly
+When I enter <voucher> into voucherinput
+When I click the button applyvoucher
+!-- Then the element 'removeVoucher' is visible
+When I enter '' into voucherinput
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+When I click the button continuebuttonbottom
+Then the url of current page contains 'worldpay'
+When I click the link contains '/worldpay/cancel/'
+Then the page 'summarypage' is shown
+
+!-- --- Testcase TTP-153 Automatic: Checkout: Summary: Logged User (Siemens) was successful ---
+
+
+
+
+

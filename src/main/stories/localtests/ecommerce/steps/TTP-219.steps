@@ -1,0 +1,121 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+
+!-- -------------------------------------------------------------------
+Scenario: Buy a product
+!-- --------------------------------------------------------------------
+When I open the page for following address <productdetailurl>
+Then the page 'productpage' is opened
+Then the availability is shown
+
+When I add the product <productcode3> to basket
+Then the element 'div.shopcart-overview > div.order-overview > div.order-list > ul > li' exists on page
+
+When I click the button 'goToBasket'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Check the amount of various products at basket (not the count of an entry or the basket value)
+!-- --------------------------------------------------------------------
+Then the page 'basketpage' is opened
+Then I must wait '8' seconds
+Then the basket count is as expected
+
+When I click the button 'checkouttop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Process
+!-- -------------------------------------------------------------------
+Then the page 'welcomepage' is opened
+
+When I continue with 'checkoutanonymus'
+Then the chosen option 'checkoutanonymus' is selected
+
+When I click the button 'continuebuttontop'
+Then I must wait '2' seconds
+
+!-- -------------------------------------------------------------------
+Scenario: Fill the form fields of delivery page
+!-- -------------------------------------------------------------------
+When I enter <firstname> into paymentAddress.firstname
+Then the form field paymentAddress.firstname is filled correct with the parameter <firstname>
+
+When I enter <lastname> into paymentAddress.lastName
+Then the form field paymentAddress.lastName is filled correct with the parameter <lastname>
+
+When I enter <street> into paymentAddress.streetName
+Then the form field paymentAddress.streetName is filled correct with the parameter <street>
+When I enter <housenumber> into paymentAddress.streetnumber
+Then the form field paymentAddress.streetnumber is filled correct with the parameter <housenumber>
+
+
+When I enter <zipcode> into paymentAddress.postalcode
+Then the form field paymentAddress.postalcode is filled correct with the parameter <zipcode>
+
+When I enter <city> into paymentAddress.town
+Then the form field paymentAddress.town is filled correct with the parameter <city>
+
+When I enter <email> into paymentAddress.email
+Then the form field paymentAddress.email is filled correct with the parameter <email>
+
+When I enter <email> into paymentAddress.emailReenterred
+Then the form field paymentAddress.emailReenterred is filled correct with the parameter <email>
+
+When I enter <telephone> into paymentAddress.phone1
+Then the form field paymentAddress.phone1 is filled correct with the parameter <telephone>
+
+When I enter <cellphone> into paymentAddress.cellPhone
+Then the form field paymentAddress.cellPhone is filled correct with the parameter <cellphone>
+
+Then the form fields of the 'paymentaddress' are filled correctly with <firstname>, <lastname>, <street>, <housenumber>, <zipcode>, <city>, <telephone> and <cellphone>
+
+When I click the button 'continuebuttontop'
+Then I must wait '1' second
+When I select the paymentAddress.title with the option <title> version
+Then the page 'deliverypage' is shown
+When I click the button 'continuebuttontop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Summary Page Payment test
+!-- -------------------------------------------------------------------
+Then the page 'summarypage' is shown
+
+When I click on first element via label and for and payment-visa
+
+When I click the button 'continuebuttontop'
+Then the expected 'agreeValidationError' is shown
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+
+When I click the button 'continuebuttonbottom'
+
+!-- -------------------------------------------------------------------
+Scenario: Payment Worldpay Visa
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+When I enter <cardnumbervisa1> into cardNumber
+When I select the expiryMonth with the option <month> version
+When I select the expiryYear with the option <year> version
+When I enter 'AUTHORIZED' into cardHolderName
+When I enter <securitycode> into CVC
+When I click the element Send
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Confirmation Page
+!-- -------------------------------------------------------------------
+When I click the element input[name="continue"] if avaliable
+Then the page 'confirmationpage' is opened
+
+!-- --- TTP-219 - Automatic: Checkout: Checkout Guest for Siemens  was successful ---
+

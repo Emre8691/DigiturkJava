@@ -1,0 +1,158 @@
+!-- --------------------------------------------------------------------
+Scenario: Open the Login Page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+Then I must wait '1' second
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+When I open the page for following address <secureurl>
+Then the page 'loginpage' is opened
+When I enter <orderuserttp> into 'username'
+When I enter <passwordv2> into 'password'
+When I click the button 'logInButton'
+
+
+!-- --------------------------------------------------------------------
+Scenario: Open the My Profile Page
+!-- --------------------------------------------------------------------
+Then the page 'myaccountpage' is opened
+When I click on child element span with parent a and id and header4
+Then the element personaldataform is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Edit personal data 
+!-- --------------------------------------------------------------------
+When I click the button 'sendButtonPersonal'
+Then the element firstName is visible
+When I clear the firstName field
+When I clear the lastName field
+When I enter <firstname> into 'firstName'
+Then the form field 'firstName' is filled correct with the parameter <firstname>
+When I click the button sendButtonPersonal
+Then I must wait '2' seconds
+Then the element  personalDataForm.errors is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill First name and Last Name fields and Click on "Send" button
+!-- --------------------------------------------------------------------
+When I clear the firstName field
+Then the form field firstName is filled correct with the parameter ''
+When I enter <firstname> into 'firstName'
+Then the form field 'firstName' is filled correct with the parameter <firstname>
+When I enter <lastname> into 'lastName'
+Then the form field 'lastName' is filled correct with the parameter <lastname>
+When I click the button sendButtonPersonal
+Then I must wait '3' seconds
+
+
+!-- --------------------------------------------------------------------
+Scenario: Validation Errors should be visible
+!-- --------------------------------------------------------------------
+When I click the sendButtonContact as an ID
+Then I wait for element with css form[id="contactdetailform"] to be visible
+When I clear the postcode field
+Then the form field postcode is filled correct with the parameter ''
+When I clear the address field
+Then the form field address is filled correct with the parameter ''
+When I clear the location field
+Then the form field location is filled correct with the parameter ''
+When I clear the phone field
+Then the form field phone is filled correct with the parameter ''
+When I click the button sendButtonContact
+Then I must wait '2' seconds
+Then the element contactDetailForm.errors is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill Street,House Number and City fields
+!-- --------------------------------------------------------------------
+When I enter 'Kingsway 9' into address
+Then the form field address is filled correct with the parameter 'Kingsway 9'
+When I enter <city> into location
+Then the form field location is filled correct with the parameter <city>
+When I enter 4482982827 into phone
+Then the form field phone is filled correct with the parameter 4482982827
+When I click the button sendButtonContact
+Then I must wait '2' seconds
+Then the element contactDetailForm.errors is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill Wrong Zip code and Send form
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and #top
+When I enter '80335' into postcode
+Then the form field postcode is filled correct with the parameter '80335'
+When I click the button sendButtonContact
+Then I must wait '2' seconds
+Then the element contactDetailForm.errors is visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill Right Zip code and Send form
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and #top
+When I enter 'WC2B 6XF' into postcode
+Then the form field postcode is filled correct with the parameter 'WC2B 6XF'
+When I click the button sendButtonContact
+Then I must wait '3' seconds
+Then the url of current page contains myaccount/overview/contact
+
+
+!-- --------------------------------------------------------------------
+Scenario: Add new Delivery address
+!-- --------------------------------------------------------------------
+!-- When I click on first element via a and id and addAddressLink
+When I click the addAddressLink as an ID
+Then I wait for element with css [name="contactdeliveryaddressform"] to be visible
+
+
+!-- --------------------------------------------------------------------
+Scenario: Fill and save the form for new Delivery address
+!-- --------------------------------------------------------------------
+When I select the titleKey with the option Mrs. version
+Then the form field titleKey is filled correct with the parameter Mrs.
+When I enter the TestingTest in 2 nd/th available [name="firstName"]
+Then the form field firstName is filled correct with the parameter 'TestingTest'
+When I enter the Tester in 2 nd/th available [name="lastName"]
+Then the form field lastName is filled correct with the parameter 'Tester'
+When I enter 'Kingsway 9' into addressLine1
+Then the form field addressLine1 is filled correct with the parameter 'Kingsway 9'
+When I enter 'WC2B 6XF' into postalCode
+Then the form field postalCode is filled correct with the parameter 'WC2B 6XF'
+When I click the link contains #top
+When I enter <city> into city
+Then the form field city is filled correct with the parameter <city>
+When I enter '4483383838' into telephoneNumber
+Then the form field telephoneNumber is filled correct with the parameter '4483383838'
+
+When I select London option of the 2 nd/th available [name="region"] version
+Then I wait for element with css [id="sendAddress"] to be clickable
+When I click the sendAddress as an ID
+Then I must wait '2' seconds
+
+
+!-- --------------------------------------------------------------------
+Scenario: check for new Delivery address
+!-- --------------------------------------------------------------------
+When I click the link contains #top
+Then the element addrSelection-0 is visible
+Then the element deleteAddressLink0 is visible
+Then the url of current page contains '/overview'
+
+!-- --------------------------------------------------------------------
+Scenario: Delete new delivery address
+!-- --------------------------------------------------------------------
+When I click the deleteAddressLink0 as an ID
+Then I must wait '1' second
+When I confirm the pop up box
+Then I must wait '1' second
+When I confirm the pop up box
+Then the page myaccountpage is opened
+
+
+!-- --- Testcase TTP-306 Automatic:Edit "My Profile" Personal Data (Bosch) was successful ---
+

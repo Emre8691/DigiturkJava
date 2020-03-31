@@ -1,0 +1,104 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the given page
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+When I click the navigation element 'myaccountbutton'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Log in the User to MyAccount
+!-- --------------------------------------------------------------------
+Then the page 'loginpage' is opened
+When I enter <orderuserttp> into 'username'
+Then the form field username is filled correct with the parameter <orderuserttp>
+When I enter <loginuserpwd> into 'password'
+Then the form field password is filled correct with the parameter <loginuserpwd>
+When I click the button 'logInButton'
+!-- TODO: Not unique identifier for page id could also be the error page verify only here we are on the Siemens context.
+!-- Needed is a solution where random ids from First Spirit are eliminated and replaced with unique id?s like hybris do it.
+When I click the button [testing_id="closeNavigation"] if avaliable
+Then I wait for element with css [testing_id="closeNavigation"] to be invisible
+Then the url of current page contains 'myaccount'
+
+!-- -------------------------------------------------------------------
+Scenario: Add a product to basket
+!-- --------------------------------------------------------------------
+When I enter <productcode> into searchField
+Then the form field searchField is filled correct with the parameter <productcode>
+When I click the navigation element searchBoxBtn
+
+Then the page productpage is opened
+Then the availability is shown
+
+When I add the product <productcode> to basket
+Then the element 'div.shopcart-overview > div.order-overview > div.order-list > ul > li' exists on page
+
+When I click the element goToBasket
+
+
+!-- -------------------------------------------------------------------
+Scenario: Check the amount of various products at basket (not the count of an entry or the basket value)
+!-- --------------------------------------------------------------------
+Then the page basketpage is opened
+Then the basket count is as expected
+
+When I click the button 'checkouttop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Delivery Page Logged In
+!-- -------------------------------------------------------------------
+Then the page deliverypage is shown
+Then the given data <orderuserttp> is shown correct at field 'paymentAddress.email'
+Then the chosen option 'sameAsBilling' is selected
+
+When I click the button 'continuebuttontop'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Checkout Summary Page select a Payment
+!-- -------------------------------------------------------------------
+Then the page 'summarypage' is shown
+When I click on first element via label and for and payment-visa
+
+When I click the button 'continuebuttontop'
+Then the expected 'agreeValidationError' is shown
+
+When I decide to 'agreeContract'
+Then the decided 'agreeContract' is selected
+
+When I click the button 'continuebuttonbottom'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Payment Worldpay Visa
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+
+When I enter <incorrectcardnumber> into the 'cardnumber' field of the 'worldpay' form
+
+When I enter <month> into the 'expirymonth' field of the 'worldpay' form
+
+When I enter <year> into the 'expiryyear' field of the 'worldpay' form 
+
+When I enter <refused> into the 'cardholdername' field of the 'worldpay' form
+
+When I enter <securitycode> into the 'securitycode' field of the 'worldpay' form
+
+When I click on the 'submitbutton' of 'worldpay'
+
+
+!-- -------------------------------------------------------------------
+Scenario: Worldpay error page
+!-- -------------------------------------------------------------------
+Then the url of current page contains 'worldpay'
+
+!-- --- TTP-244 Automatic: Payment: Visa/Master Invalid finished successful ---
+

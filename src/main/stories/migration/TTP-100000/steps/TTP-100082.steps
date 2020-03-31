@@ -1,0 +1,25 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Cosmos Page
+When I open external webpage without validate http://cosmoseutest.euce.corp.bshg.com/cosmosglobalrbtest_intra/CosmosAZE/TUR/Cosmos/General/StartPage.aspx 
+Then I must wait '2' seconds
+When I enter 'system' into Logon1$txtUserCode
+When I enter 'f12345***1*1' into Logon1_txtPassword
+When I click on first element via input and name and Logon1$btnLogin
+Then I must wait '2' seconds
+Then the element by div and class and row-fluid is shown
+Then the element by a and class and orange is shown
+
+Scenario: Open Cosmos Report 
+When I enter 'rapor' into searchinput
+When I click on first element via button and id and btnSearch
+!-- When Highlightelement in //*[contains(text(),'Files with RISs Report')]
+When I click on first element via span and id and icn_581
+When I switch to the pop up window where txtSCCode exists
+When I enter '7000122696' into txtSCCode
+When I click on first element via input and id and btnPrint
+!-- Then the element by div and class and A220e02a7dec74b3e98ef271910b1e69e54 is shown
+Then I must wait 5 seconds
+!-- --- TTP-100082 Testcase Report opened successful ---
+
+
+

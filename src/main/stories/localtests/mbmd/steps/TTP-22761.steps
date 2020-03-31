@@ -1,0 +1,30 @@
+!-- --------------------------------------------------------------------
+Scenario: Open Home Page
+!-- --------------------------------------------------------------------
+When I open external webpage https://www.unieuro.it/online/
+Then the url of current page contains unieuro.it
+
+!-- --------------------------------------------------------------------
+Scenario: Login view
+!-- --------------------------------------------------------------------
+When I click on element by xpath //span[@class='icon-account account--handler']/span[@class='icon-arrow-down']
+Then the element by xpath  class='account-login' is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Login view
+!-- --------------------------------------------------------------------
+
+When I enter eariatta@gmail.com into j_username
+Then the form field j_username is filled correct with the parameter eariatta@gmail.com
+When I enter asd4asd5 into j_password
+Then the form field j_password is filled correct with the parameter asd4asd5
+
+!-- --------------------------------------------------------------------
+Scenario: Login submit
+!-- --------------------------------------------------------------------
+When I click on first element via input and name and Accedi without wait
+
+
+
+!-- --- was successful ---
+

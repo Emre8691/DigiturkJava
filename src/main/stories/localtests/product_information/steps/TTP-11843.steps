@@ -1,0 +1,47 @@
+!-- -------------------------------------------------------------------
+Scenario: Open the startpage (Open Siemens DE FUT-INT mainpage)
+!-- --------------------------------------------------------------------
+When I open the page for following address <starturl>
+When I click the element button[class="close-btn"] if avaliable
+Then the page 'startpage' is opened
+Then the brand of the page is as given
+Then the country of the page is as given
+Then the site type of the page is as given
+
+!-- ---------------------------------------------------------------------------
+Scenario: Click on the "Products" tab in main navigation (Click on "Produkte")
+!-- ---------------------------------------------------------------------------
+When I click the navigation element nav-2
+Then the element 'navflyout-2' is visible
+
+!-- --------------------------------------------------------------------
+Scenario: Click on "Waschmaschinen"
+!-- --------------------------------------------------------------------
+When I click the navigation element subcategory-210
+!-- 1.Check, check from URL
+Then the url of current page contains 'waschmaschinen'
+!-- 2.Check, check from image
+Then the element by img and alt and WM14K1G1 is shown
+
+!-- --------------------------------------------------------------------
+!-- Scenario: Click on "Zur Liste aller Gerate"
+!-- --------------------------------------------------------------------
+!-- When I click the 3 nd/th element via a and href and /produktliste/waschen-und-trocknen/waschmaschinen
+!-- Then the element by div and class and overview is shown
+
+!-- --------------------------------------------------------------------
+!-- Scenario: Select the product i.e.WM14K1G1
+!-- --------------------------------------------------------------------
+!-- When I click on first element via img and alt and WM14K1G1
+!-- Then the element by div and class and showroom-module-inner is shown
+
+!-- --------------------------------------------------------------------
+Scenario: Click on Zum Handlershop
+!-- --------------------------------------------------------------------
+When I click on first element via a and href and /de/haendlersuche?product=WM14K1G1
+Then the url of current page contains 'de/haendlersuche?product=WM14K1G1'
+!-- Then the element by div and class and dialog-box is shown
+
+
+!-- ---- TTP-11843 - PI - Marketing Product Detail Page - Online Dealers tab was successful -------
+
