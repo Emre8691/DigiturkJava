@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Itelligence Test Suite" >
+    <listeners>
+        <listener class-name="util.Listeners.TestListener"/>
+        <listener class-name="util.Listeners.AnnotationTransformer"/>
+    </listeners>
+ 
+    <test name="LoginTest">
+        <classes>
+            <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme"/>            
+        </classes>
+    </test>
+</suite>

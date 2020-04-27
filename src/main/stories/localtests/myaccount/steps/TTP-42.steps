@@ -1,4 +1,0 @@
-When I enter EC875QB21E/01 into 'enumberSearchField'
-When I click the element 'enumberSearchBtn'
-Then the page 'sparepartdetailpage' is shown
-Then the element 'productVibCode' is visible

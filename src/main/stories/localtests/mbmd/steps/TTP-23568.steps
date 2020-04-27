@@ -1,6 +1,0 @@
-!-- --------------------------------------------------------------------
-Scenario: Template Switch
-Meta: @template_switch
-!-- --------------------------------------------------------------------
-When I switch to new layout
-Then the switch to new layout was successful

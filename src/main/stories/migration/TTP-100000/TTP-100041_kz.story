@@ -1,4 +1,0 @@
-!-- TTP-100041.story - Close RIS ESA
-Scenario: TTP-100041.story Close RIS ESA
-GivenStories: migration/TTP-100000/steps/TTP-100041.steps
-!-- ----------------
