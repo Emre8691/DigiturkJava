@@ -80,14 +80,14 @@ public class TestBase extends CommonFunctions{
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equals("CH")){
-			System.setProperty("webdriver.chrome.driver", "C:\\GridSetup\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/tools/driver/chromedriver.exe");
 			System.setProperty("webdriver.chrome.logfile", "./Chromelog.txt");
 			//System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 			System.out.println(browserName);
 			driver = new ChromeDriver(); 
 		}
 		else if(browserName.equals("FF")){
-			System.setProperty("webdriver.gecko.driver", "C:\\GridSetup\\geckodriver.exe");	
+			System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir") + "/src/main/resources/tools/driver/geckodriver.exe");	
 			driver = new FirefoxDriver(); 
 		}
 		

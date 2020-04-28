@@ -2,16 +2,16 @@
 <testng-results retried="1" ignored="0" total="3" passed="0" failed="1" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-04-27T13:21:12 EET" name="Itelligence Test Suite" finished-at="2020-04-27T13:22:44 EET" duration-ms="92493">
+  <suite started-at="2020-04-28T17:12:35 EET" name="Itelligence Test Suite" finished-at="2020-04-28T17:13:04 EET" duration-ms="29298">
     <groups>
     </groups>
-    <test started-at="2020-04-27T13:21:12 EET" name="LoginTest" finished-at="2020-04-27T13:22:44 EET" duration-ms="92493">
+    <test started-at="2020-04-28T17:12:35 EET" name="LoginTest" finished-at="2020-04-28T17:13:04 EET" duration-ms="29298">
       <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme">
-        <test-method is-config="true" signature="Browserchoose()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:21:12 EET" name="Browserchoose" finished-at="2020-04-27T13:22:43 EET" duration-ms="91489" status="PASS">
+        <test-method is-config="true" signature="Browserchoose()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:12:35 EET" name="Browserchoose" finished-at="2020-04-28T17:13:03 EET" duration-ms="28330" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Browserchoose -->
-        <test-method retried="true" signature="TitleTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:22:43 EET" name="TitleTest" description="Title Test" finished-at="2020-04-27T13:22:44 EET" duration-ms="231" status="SKIP">
+        <test-method retried="true" signature="TitleTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:13:03 EET" name="TitleTest" description="Title Test" finished-at="2020-04-28T17:13:03 EET" duration-ms="226" status="SKIP">
           <params>
             <param index="0">
               <value>
@@ -65,18 +65,18 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TitleTest -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:22:44 EET" name="tearDown" finished-at="2020-04-27T13:22:44 EET" duration-ms="0" status="FAIL">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:13:04 EET" name="tearDown" finished-at="2020-04-28T17:13:04 EET" duration-ms="0" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TitleTest status=SKIP method=MilkrunDeneme.TitleTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521] output={null}]]]>
+                <![CDATA[[TestResult name=TitleTest status=SKIP method=MilkrunDeneme.TitleTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa] output={null}]]]>
               </value>
             </param>
           </params>
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at Base.TestBase.tearDown(TestBase.java:141)
+at Base.TestBase.tearDown(TestBase.java:139)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -116,7 +116,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="TitleTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:22:44 EET" name="TitleTest" description="Title Test" finished-at="2020-04-27T13:22:44 EET" duration-ms="6" status="FAIL">
+        <test-method signature="TitleTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:13:04 EET" name="TitleTest" description="Title Test" finished-at="2020-04-28T17:13:04 EET" duration-ms="8" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -170,15 +170,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TitleTest -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:22:44 EET" name="tearDown" finished-at="1970-01-01T02:00:00 EET" duration-ms="-1587982964925" status="SKIP">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:13:04 EET" name="tearDown" finished-at="1970-01-01T02:00:00 EET" duration-ms="-1588083184558" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method signature="LoginTest(java.lang.reflect.Method)[pri:1, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:22:44 EET" name="LoginTest" description="Login Scenario with username and password." finished-at="2020-04-27T13:22:44 EET" duration-ms="0" status="SKIP">
+        <test-method signature="LoginTest(java.lang.reflect.Method)[pri:1, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:13:04 EET" name="LoginTest" description="Login Scenario with username and password." finished-at="2020-04-28T17:13:04 EET" duration-ms="0" status="SKIP">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at Base.TestBase.tearDown(TestBase.java:141)
+at Base.TestBase.tearDown(TestBase.java:139)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -218,15 +218,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LoginTest -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:22:44 EET" name="tearDown" finished-at="1970-01-01T02:00:00 EET" duration-ms="-1587982964930" status="SKIP">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:13:04 EET" name="tearDown" finished-at="1970-01-01T02:00:00 EET" duration-ms="-1588083184564" status="SKIP">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@37654521]" started-at="2020-04-27T13:22:44 EET" name="endReport" finished-at="2020-04-27T13:22:44 EET" duration-ms="0" status="FAIL">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@429bffaa]" started-at="2020-04-28T17:13:04 EET" name="endReport" finished-at="2020-04-28T17:13:04 EET" duration-ms="1" status="FAIL">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException
-at Base.TestBase.endReport(TestBase.java:113)
+at Base.TestBase.endReport(TestBase.java:111)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

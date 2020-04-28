@@ -34,36 +34,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core/2.1.5/browsermob-core-2.1.5.jar" sourcepath="C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core/2.1.5/browsermob-core-2.1.5-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core/2.1.5/browsermob-core-2.1.5-javadoc.jar!/"/>
-			<attribute name="maven.groupId" value="net.lightbody.bmp"/>
-			<attribute name="maven.artifactId" value="browsermob-core"/>
-			<attribute name="maven.version" value="2.1.5"/>
-			<attribute name="maven.scope" value="test"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core-littleproxy/2.1.0-beta-4/browsermob-core-littleproxy-2.1.0-beta-4.jar" sourcepath="C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core-littleproxy/2.1.0-beta-4/browsermob-core-littleproxy-2.1.0-beta-4-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core-littleproxy/2.1.0-beta-4/browsermob-core-littleproxy-2.1.0-beta-4-javadoc.jar!/"/>
-			<attribute name="maven.groupId" value="net.lightbody.bmp"/>
-			<attribute name="maven.artifactId" value="browsermob-core-littleproxy"/>
-			<attribute name="maven.version" value="2.1.0-beta-4"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core/2.1.0-beta-4/browsermob-core-2.1.0-beta-4.jar" sourcepath="C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core/2.1.0-beta-4/browsermob-core-2.1.0-beta-4-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="javadoc_location" value="jar:file:/C:/Users/TR24220/.m2/repository/net/lightbody/bmp/browsermob-core/2.1.0-beta-4/browsermob-core-2.1.0-beta-4-javadoc.jar!/"/>
-			<attribute name="maven.groupId" value="net.lightbody.bmp"/>
-			<attribute name="maven.artifactId" value="browsermob-core"/>
-			<attribute name="maven.version" value="2.1.0-beta-4"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
