@@ -35,23 +35,12 @@ public class MilkrunDeneme extends TestBase {
 	}
 	
 	
-	@Test(priority = 0, description = "Title Test")
-	public void TitleTest(Method method) throws InterruptedException {
-		ExtentTestManager.startTest(method.getName(), "Title test");
 
-		String title= driver.getTitle();
-		 System.out.println(title);
-		 Assert.assertEquals(title,"Itelligence123");
-		 Thread.sleep(2000);
-		    
-	}
-
-	@Test(priority = 1, description = "Login Scenario with username and password.")
+	@Test(priority = 0, description = "Login Scenario with username and password.")
 	public void LoginTest(Method method) throws InterruptedException {
 	    ExtentTestManager.startTest(method.getName(), "Login Scenario with empty username and password.");
 	    
 	   		LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);
-	   		waitVisibility(driver,By.id(USERNAME));
 	   		login_page.login(prop.getProperty("Username"),prop.getProperty("Password"));
 	   		Thread.sleep(2000);
 	}

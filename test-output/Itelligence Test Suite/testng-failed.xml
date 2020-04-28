@@ -10,8 +10,7 @@
       <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme">
         <methods>
           <include name="endReport"/>
-          <include name="TitleTest" invocation-numbers="0 0"/>
-          <include name="LoginTest"/>
+          <include name="LoginTest" invocation-numbers="0 0"/>
           <include name="Browserchoose"/>
           <include name="tearDown"/>
         </methods>

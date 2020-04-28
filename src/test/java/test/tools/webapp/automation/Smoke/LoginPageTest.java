@@ -47,7 +47,6 @@ public class LoginPageTest extends TestBase {
         ExtentTestManager.startTest(method.getName(), "Login Scenario with empty username and password.");
  
 		LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);
-		waitVisibility(driver,By.id(USERNAME));
 		login_page.login(prop.getProperty("Username"),prop.getProperty("Password"));
 		Thread.sleep(3000);
 			    
@@ -68,7 +67,7 @@ public class LoginPageTest extends TestBase {
 	public void logoutTest(Method method) throws InterruptedException
 	{	
 		//LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);			
-		waitVisibility(driver,By.xpath(AVATARHEADER));
+		waitVisibility(By.xpath(AVATARHEADER));
 		click_element(By.xpath(AVATARHEADER));
 		click_element(By.id(LOGOUT));		
 	
