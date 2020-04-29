@@ -1,6 +1,6 @@
 package pages;
 
-
+import org.openqa.selenium.By;
 
 public class ProductPageElementConstants {
 
@@ -10,7 +10,7 @@ public class ProductPageElementConstants {
 	public static final String PASSWORD = "passWord";
 	public static final String LOGINBUTTON ="LoginButton";
 	public static final long TIMEOUT = 30;
-	public static final String DEFINITIONS ="/html/body/div/div/div/div/div/div/div/div/ul/li[3]/a";
+	public static final String DEFINITIONS ="Definitions-147";
 	public static final String MILKRUN ="MilkRun-151";
 	public static final String FORGOTPASSWORD ="ForgotPassword";
 	public static final String AVATARHEADER = "/html/body/div/div/div/div/div/header/ul/li[2]/a/img";

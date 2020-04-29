@@ -40,6 +40,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.CommonFunctions;
 import util.Listeners.*;
 import util.ExtentReports.*;
@@ -83,12 +84,15 @@ public class TestBase extends CommonFunctions{
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/tools/driver/chromedriver.exe");
 			System.setProperty("webdriver.chrome.logfile", "./Chromelog.txt");
 			//System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
-			System.out.println(browserName);
+			// Testi Chrome tarayıcıda çalıştırmak için
+	        WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(); 
 		}
 		else if(browserName.equals("FF")){
 			System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir") + "/src/main/resources/tools/driver/geckodriver.exe");	
-			driver = new FirefoxDriver(); 
+	
+			  WebDriverManager.firefoxdriver().setup();
+			  driver = new FirefoxDriver(); 
 		}
 		
 		
