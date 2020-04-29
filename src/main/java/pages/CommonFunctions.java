@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -42,14 +43,29 @@ public class CommonFunctions extends PageConsructor {
                 break;
         }
         Thread.sleep(5000);
-        return null;
+		return param1;
     }
-    public static void click_element(By elementLocation) throws InterruptedException {
-        Thread.sleep(2000);
-    	driver.findElement(elementLocation).click();
+  
+    static public String clickButton(WebDriver driver, String strLocType, String strLocValue) throws InterruptedException
+    {
+    	switch(strLocType)
+    	{
+        case "id":
+            driver.findElement(By.id(strLocValue)).click();
+            break;
+        case "xpath":
+            driver.findElement(By.xpath(strLocValue)).click();
+            break;
+        case "name":
+            driver.findElement(By.name(strLocValue)).click();
+            break;
     }
-
-    public static void quit_driver(WebDriver driver)
+    Thread.sleep(5000);
+	return strLocValue;
+}
+   
+    	
+    	public static void quit_driver(WebDriver driver)
     {
         driver.quit();
     }
