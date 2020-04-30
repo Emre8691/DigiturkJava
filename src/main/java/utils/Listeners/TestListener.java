@@ -1,4 +1,4 @@
-package util.Listeners;
+package utils.Listeners;
  
 import com.relevantcodes.extentreports.LogStatus;
 
@@ -10,8 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import util.ExtentReports.ExtentManager;
-import util.ExtentReports.ExtentTestManager;
+import utils.ExtentReports.ExtentManager;
+import utils.ExtentReports.ExtentTestManager;
  
 public class TestListener extends TestBase implements ITestListener {
  

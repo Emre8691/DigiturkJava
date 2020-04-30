@@ -16,8 +16,8 @@ import org.testng.annotations.Test;
 import Base.TestBase;
 import pages.LoginPage;
 import pages.TakeScreenshot;
-import util.ExtentReports.ExtentTestManager;
 import utils.Log;
+import utils.ExtentReports.ExtentTestManager;
 
 @Test
 public class LoginPageTest extends TestBase {
@@ -34,7 +34,7 @@ public class LoginPageTest extends TestBase {
 	{  	 //ExtentReports Description
         ExtentTestManager.startTest(method.getName(), "Application Launched Successfully");
         	
-		WebDriver driver= initialization();
+		initialization();
 		Log.info("Application Launched Successfully");
 		
 	}
@@ -68,8 +68,8 @@ public class LoginPageTest extends TestBase {
 	{	
 		//LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);			
 		waitVisibility(By.xpath(AVATARHEADER));
-		click_element(By.xpath(AVATARHEADER));
-		click_element(By.id(LOGOUT));		
+		clickButton(driver,"xpath",AVATARHEADER);
+		clickButton(driver,"xpath",LOGOUT);		
 	
 	}
 	public void tearDown() {

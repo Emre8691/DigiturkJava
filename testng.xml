@@ -2,8 +2,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Itelligence Test Suite" >
     <listeners>
-        <listener class-name="util.Listeners.TestListener"/>
-        <listener class-name="util.Listeners.AnnotationTransformer"/>
+        <listener class-name="utils.Listeners.TestListener"/>
+        <listener class-name="utils.Listeners.AnnotationTransformer"/>
     </listeners>
  
     <test name="LoginTest">
