@@ -74,14 +74,6 @@
     </distributionManagement>
 
     <dependencies>
-       <dependency>
-       		 <groupId>net.lightbody.bmp</groupId>
-        	 <!-- To use the legacy, Jetty-based implementation, 
-             change the artifactId to browsermob-core -->
-        	 <artifactId>browsermob-core</artifactId>
-        	 <version>2.1.5</version>
-        	 <scope>test</scope>
-   		 </dependency>
     	<dependency>
     		<groupId>com.relevantcodes</groupId>
     		<artifactId>extentreports</artifactId>

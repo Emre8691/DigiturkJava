@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-04-29T16:00:20 EET" name="Itelligence Test Suite" finished-at="2020-04-29T16:01:10 EET" duration-ms="50004">
+  <suite started-at="2020-04-30T09:57:32 EET" name="Itelligence Test Suite" finished-at="2020-04-30T09:58:17 EET" duration-ms="45913">
     <groups>
     </groups>
-    <test started-at="2020-04-29T16:00:20 EET" name="LoginTest" finished-at="2020-04-29T16:01:10 EET" duration-ms="50004">
+    <test started-at="2020-04-30T09:57:32 EET" name="LoginTest" finished-at="2020-04-30T09:58:17 EET" duration-ms="45913">
       <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme">
-        <test-method is-config="true" signature="Browserchoose()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@4d5b6aac]" started-at="2020-04-29T16:00:20 EET" name="Browserchoose" finished-at="2020-04-29T16:00:53 EET" duration-ms="32767" status="PASS">
+        <test-method is-config="true" signature="Browserchoose()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@15aab8c6]" started-at="2020-04-30T09:57:32 EET" name="Browserchoose" finished-at="2020-04-30T09:58:01 EET" duration-ms="29240" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Browserchoose -->
-        <test-method signature="LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@4d5b6aac]" started-at="2020-04-29T16:00:53 EET" name="LoginTest" description="Login Scenario with username and password." finished-at="2020-04-29T16:01:10 EET" duration-ms="17155" status="PASS">
+        <test-method signature="LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@15aab8c6]" started-at="2020-04-30T09:58:01 EET" name="LoginTest" description="Login Scenario with username and password." finished-at="2020-04-30T09:58:17 EET" duration-ms="16656" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,11 +22,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LoginTest -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@4d5b6aac]" started-at="2020-04-29T16:01:10 EET" name="tearDown" finished-at="2020-04-29T16:01:10 EET" duration-ms="0" status="FAIL">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@15aab8c6]" started-at="2020-04-30T09:58:17 EET" name="tearDown" finished-at="2020-04-30T09:58:17 EET" duration-ms="2" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=MilkrunDeneme.LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@4d5b6aac] output={null}]]]>
+                <![CDATA[[TestResult name=LoginTest status=SUCCESS method=MilkrunDeneme.LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@15aab8c6] output={null}]]]>
               </value>
             </param>
           </params>
@@ -73,7 +73,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="endReport()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@4d5b6aac]" started-at="2020-04-29T16:01:10 EET" name="endReport" finished-at="2020-04-29T16:01:10 EET" duration-ms="1" status="FAIL">
+        <test-method is-config="true" signature="endReport()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@15aab8c6]" started-at="2020-04-30T09:58:17 EET" name="endReport" finished-at="2020-04-30T09:58:17 EET" duration-ms="0" status="FAIL">
           <exception class="java.lang.NullPointerException">
             <full-stacktrace>
               <![CDATA[java.lang.NullPointerException

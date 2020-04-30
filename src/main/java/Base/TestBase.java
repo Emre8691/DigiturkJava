@@ -5,8 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import javax.activation.DataHandler;
@@ -82,7 +86,7 @@ public class TestBase extends CommonFunctions{
 		
 		if(browserName.equals("CH")){
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/resources/tools/driver/chromedriver.exe");
-			System.setProperty("webdriver.chrome.logfile", "./Chromelog.txt");
+			//System.setProperty("webdriver.chrome.logfile", "./Chromelog.txt");
 			//System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
 			// Testi Chrome tarayıcıda çalıştırmak için
 	        WebDriverManager.chromedriver().setup();
@@ -109,48 +113,19 @@ public class TestBase extends CommonFunctions{
 		}
 	
 	 
-	@AfterTest
-	public void endReport()
-	{
-		extent.flush();
-		extent.close();
-	}
+
 	
-	public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
-		//Convert web driver object to TakeScreenshot
-		TakesScreenshot scrShot =((TakesScreenshot)webdriver);
-		//Call getScreenshotAs method to create image file
-		File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-		//Move image file to new destination
-		File DestFile=new File(fileWithPath);
-		//Copy file at destination
-		FileUtils.copyFile(SrcFile, DestFile);
-		}
-
-	@AfterMethod
-	public void tearDown(ITestResult result) throws Exception
-	{
-		if(result.getStatus()==ITestResult.FAILURE)
-		{
-			extentTest.log(LogStatus.FAIL, "Test Case Failed is "+result.getName()); //To Add Name in Extent Report.
-			extentTest.log(LogStatus.FAIL, "Test Case Failed is "+result.getThrowable()); //To Add Errors and Exceptions in Extent Report.
-			TestBase.takeSnapShot(driver, "C:\\Users\\TR24220\\eclipse-workspace2\\selenium.project\\Screenshot\\test.png") ;     
-
-	//		extentTest.log(LogStatus.FAIL, extentTest.addScreenCapture(screenshotPath)); //To Add Screenshot in Extent Report.
-		}
-		else if(result.getStatus()==ITestResult.SKIP)
-		{
-			extentTest.log(LogStatus.SKIP, "Test Case Skipped is " + result.getName());
-			
-		}
-		else if(result.getStatus()==ITestResult.SUCCESS)
-		{
-			extentTest.log(LogStatus.PASS, "Test Case Passed is " + result.getName());
-		}
-		extent.endTest(extentTest); //Ending Test and Ends the Current Test and Prepare to Create HTML Report.
-		driver.quit();
-		Log.info("Browser Terminated");
-		Log.info("-----------------------------------------------");
+	public static String getScreenshot(WebDriver driver, String screenshotName) throws IOException{
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		// after execution, you could see a folder "FailedTestsScreenshots"
+		// under src folder
+		String destination = System.getProperty("user.dir") + "/FailedTestsScreenshots/" + screenshotName + dateName
+				+ ".png";
+		File finalDestination = new File(destination);
+		FileUtils.copyFile(source, finalDestination);
+		return destination;
 	}
 	
 	
