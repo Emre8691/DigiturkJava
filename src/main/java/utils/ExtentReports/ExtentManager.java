@@ -1,4 +1,4 @@
-package util.ExtentReports;
+package utils.ExtentReports;
  
 import com.relevantcodes.extentreports.ExtentReports;
  

@@ -23,16 +23,16 @@ import Base.TestBase;
 import pages.CommonFunctions;
 import pages.LoginPage;
 import pages.Logout;
-import util.ExtentReports.ExtentTestManager;
 import utils.Log;
-
+import utils.ExtentReports.ExtentTestManager;
+import utils.Listeners.*;
 
 public class MilkrunDeneme extends TestBase {
 		
 	@BeforeClass
 	public void Browserchoose() throws Exception {
 		//This will launch browser and specific url	
-		WebDriver driver= initialization();
+		initialization();
 		//Created Page Object using Page Factory
 		
 		Thread.sleep(3000);
@@ -51,13 +51,6 @@ public class MilkrunDeneme extends TestBase {
 		   	Thread.sleep(2000);	
 	}
 	
-	@AfterTest
-	public void Aftertest() {
-		Set<String> handlesSet = driver.getWindowHandles();
-        List<String> handlesList = new ArrayList<String>(handlesSet);
-        driver.switchTo().window(handlesList.get(1));
-        driver.close();
-        driver.switchTo().window(handlesList.get(0));
-	}
+	
 	
 }

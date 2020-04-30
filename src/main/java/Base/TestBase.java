@@ -37,6 +37,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 
@@ -46,8 +47,8 @@ import com.relevantcodes.extentreports.LogStatus;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.CommonFunctions;
-import util.Listeners.*;
-import util.ExtentReports.*;
+import utils.ExtentReports.*;
+import utils.Listeners.*;
 
 
 public class TestBase extends CommonFunctions{
@@ -81,7 +82,7 @@ public class TestBase extends CommonFunctions{
         return driver;
     }
  
-	public static WebDriver initialization(){
+	public static void initialization(){
 		String browserName = prop.getProperty("browser");
 		
 		if(browserName.equals("CH")){
@@ -108,8 +109,7 @@ public class TestBase extends CommonFunctions{
 		//driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
 		driver.get(prop.getProperty("url"));
-		
-		return driver;
+
 		}
 	
 	 
@@ -128,6 +128,9 @@ public class TestBase extends CommonFunctions{
 		return destination;
 	}
 	
-	
+	 @AfterClass
+	    public void teardown () {
+	        driver.quit();
+	    }
 }
 	

@@ -146,8 +146,8 @@
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Itelligence Test Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;listeners&gt;
-    &lt;listener class-name=&quot;util.Listeners.TestListener&quot;/&gt;
-    &lt;listener class-name=&quot;util.Listeners.AnnotationTransformer&quot;/&gt;
+    &lt;listener class-name=&quot;utils.Listeners.TestListener&quot;/&gt;
+    &lt;listener class-name=&quot;utils.Listeners.AnnotationTransformer&quot;/&gt;
   &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;LoginTest&quot;&gt;
     &lt;classes&gt;
@@ -195,12 +195,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'LoginTest')
 data.setCell(0, 2, 'test.tools.webapp.automation.Smoke.MilkrunDeneme')
-data.setCell(0, 3, 16656);
+data.setCell(0, 3, 18788);
 window.suiteTableData['Itelligence_Test_Suite']= { tableData: data, tableDiv: 'times-div-Itelligence_Test_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 16 seconds</span>
+              <span class="suite-total-time">Total running time: 18 seconds</span>
               <div id="times-div-Itelligence_Test_Suite">
               </div> <!-- times-div-Itelligence_Test_Suite -->
             </div> <!-- times-div -->
@@ -233,20 +233,12 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">LoginTest(public void test.tools.webapp.automation.Smoke.MilkrunDeneme.LoginTest(java.lang.reflect.Method) thr...)</span>
-                <span class="method-start">29240 ms</span>
+                <span class="method-start">30049 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">tearDown([TestResult name=LoginTest status=SUCCESS method=MilkrunDeneme.LoginTest(java.lang.reflect.Method)[p...)</span>
-                <span class="method-start">45900 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="configuration-test after">
-                <img src="failed.png">
-                </img>
-                <span class="method-name">endReport</span>
-                <span class="method-start">45902 ms</span>
-              </div> <!-- configuration-test after -->
+              <div class="configuration-class after">
+                <span class="method-name">teardown</span>
+                <span class="method-start">48845 ms</span>
+              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
