@@ -15,9 +15,7 @@ public class CommonFunctions extends PageConsructor {
 
 
     public static String navigate_to(WebDriver driver,String url) throws Exception {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/burak.turkpencesi/Desktop/PythonOtomasyon/Data/chromedriver.exe");
-        driver = new ChromeDriver();
-
+     
 
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(50,TimeUnit.SECONDS);

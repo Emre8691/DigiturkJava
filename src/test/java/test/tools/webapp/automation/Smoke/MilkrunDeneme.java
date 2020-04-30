@@ -2,6 +2,10 @@ package test.tools.webapp.automation.Smoke;
 
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -17,13 +22,12 @@ import org.testng.annotations.Test;
 import Base.TestBase;
 import pages.CommonFunctions;
 import pages.LoginPage;
+import pages.Logout;
 import util.ExtentReports.ExtentTestManager;
 import utils.Log;
 
 
 public class MilkrunDeneme extends TestBase {
-	String password="1234";
-	String username = "milkrunadmin";
 		
 	@BeforeClass
 	public void Browserchoose() throws Exception {
@@ -44,15 +48,16 @@ public class MilkrunDeneme extends TestBase {
 	   		clickButton(driver,"id",DEFINITIONS);
 	   		Thread.sleep(3000);
 	   		clickButton(driver,"id",MILKRUN);
-		   		
+		   	Thread.sleep(2000);	
 	}
 	
+	@AfterTest
+	public void Aftertest() {
+		Set<String> handlesSet = driver.getWindowHandles();
+        List<String> handlesList = new ArrayList<String>(handlesSet);
+        driver.switchTo().window(handlesList.get(1));
+        driver.close();
+        driver.switchTo().window(handlesList.get(0));
+	}
 	
-	
-		
-public void tearDown() {
-	
-	driver.quit();
-	driver.close();
-}	
 }
