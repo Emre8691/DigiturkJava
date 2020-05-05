@@ -44,11 +44,18 @@ public class MilkrunDeneme extends TestBase {
 	    
 	   		LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);
 	   		login_page.login(prop.getProperty("Username"),prop.getProperty("Password"));
-	   		Thread.sleep(3000);
+	   		Thread.sleep(2000);
+	   		waitVisibility(driver,"id",DEFINITIONS);
 	   		clickButton(driver,"id",DEFINITIONS);
-	   		Thread.sleep(3000);
+	   		waitVisibility(driver,"id",MILKRUN);	   		
 	   		clickButton(driver,"id",MILKRUN);
-		   	Thread.sleep(2000);	
+	   		waitVisibility(driver,"id",DIMENSION);
+	   		clickButton(driver,"id",DIMENSION);
+	   		waitVisibility(driver,"xpath",ADD_DIMENSION);
+	   		clickButton(driver,"xpath",ADD_DIMENSION);
+	   		Sendkeys(driver,"xpath",DimensionName,"package");
+	   		
+	   		Thread.sleep(2000);
 	}
 	
 	

@@ -2,16 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-04-30T20:43:04 EET" name="Itelligence Test Suite" finished-at="2020-04-30T20:43:54 EET" duration-ms="49819">
+  <suite started-at="2020-05-05T10:18:22 EET" name="Itelligence Test Suite" finished-at="2020-05-05T10:19:47 EET" duration-ms="84338">
     <groups>
     </groups>
-    <test started-at="2020-04-30T20:43:04 EET" name="LoginTest" finished-at="2020-04-30T20:43:54 EET" duration-ms="49819">
+    <test started-at="2020-05-05T10:18:22 EET" name="LoginTest" finished-at="2020-05-05T10:19:47 EET" duration-ms="84338">
       <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme">
-        <test-method is-config="true" signature="Browserchoose()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@446293d]" started-at="2020-04-30T20:43:04 EET" name="Browserchoose" finished-at="2020-04-30T20:43:34 EET" duration-ms="30032" status="PASS">
+        <test-method is-config="true" signature="Browserchoose()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@29d89d5d]" started-at="2020-05-05T10:18:22 EET" name="Browserchoose" finished-at="2020-05-05T10:18:54 EET" duration-ms="32070" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Browserchoose -->
-        <test-method signature="LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@446293d]" started-at="2020-04-30T20:43:35 EET" name="LoginTest" description="Login Scenario with username and password." finished-at="2020-04-30T20:43:53 EET" duration-ms="18788" status="PASS">
+        <test-method signature="LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@29d89d5d]" started-at="2020-05-05T10:18:54 EET" name="LoginTest" description="Login Scenario with username and password." finished-at="2020-05-05T10:19:45 EET" duration-ms="51190" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LoginTest -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@446293d]" started-at="2020-04-30T20:43:53 EET" name="teardown" finished-at="2020-04-30T20:43:54 EET" duration-ms="962" status="PASS">
+        <test-method is-config="true" signature="teardown()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@29d89d5d]" started-at="2020-05-05T10:19:45 EET" name="teardown" finished-at="2020-05-05T10:19:47 EET" duration-ms="1038" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->

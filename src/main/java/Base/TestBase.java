@@ -36,6 +36,7 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -54,6 +55,7 @@ import utils.Listeners.*;
 public class TestBase extends CommonFunctions{
 	
 	public static WebDriver driver; 
+	public static WebDriverWait wait;
 	public static Properties property;
 	public static ChromeOptions chromeOptions;
 	public static Logger Log;

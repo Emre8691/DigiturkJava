@@ -16,7 +16,7 @@ public class ProductPageElementConstants {
 	public static final String AVATARHEADER = "/html/body/div/div/div/div/div/header/ul/li[2]/a/img";
 	public static final String LOGOUT ="//*[@id=\"root\"]/div/div/div/div/header/ul/li[2]/div/button[4]";
 	public static final String DIMENSION ="Dimensions-69";
-	
-	
+	public static final String ADD_DIMENSION ="/html/body/div/div/div/div/div/div/main/div/div/div/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i";
+	public static final String DimensionName = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div/div/div/div/div[1]/input";
 	
 }

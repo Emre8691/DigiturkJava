@@ -21,6 +21,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Calendar;
@@ -29,8 +30,6 @@ import java.util.Calendar;
 
 public class PageConsructor extends ProductPageElementConstants{
 	protected static WebDriver driver;
-	public static WebDriverWait wait;
-    
 	//Do mouse-hovers
 	public static void MouseOver(WebElement we){
 		Actions actObj=new Actions(driver);
@@ -70,9 +69,28 @@ public class PageConsructor extends ProductPageElementConstants{
 		}
 	
 	//wait until Element
-	public static void waitVisibility(By by){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-    }
-    
+	public static String waitVisibility(WebDriver driver, String strLocType, String strLocValue) throws InterruptedException{
+		WebDriverWait wait = new WebDriverWait(driver,20);
+    	
+		switch(strLocType)
+        {	
+            case "id":
+            	wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(strLocValue)));      
+            	break;
+            case "xpath":
+            	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(strLocValue)));            	
+            	break;
+            case "name":
+            	wait.until(ExpectedConditions.visibilityOfElementLocated(By.name(strLocValue)));            	 	
+                break;
+        }
+        Thread.sleep(5000);
+	
+		return strLocValue;
+		
+		
+		  }
+	
+	    
 }
 
