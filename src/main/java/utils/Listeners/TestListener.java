@@ -24,6 +24,8 @@ public class TestListener extends TestBase implements ITestListener {
         System.out.println("I am in onStart method " + iTestContext.getName());
         iTestContext.setAttribute("WebDriver", this.driver);
     }
+    
+    
  
     @Override
     public void onFinish(ITestContext iTestContext) {
