@@ -67,7 +67,7 @@ public class LoginPageTest extends TestBase {
 	public void logoutTest(Method method) throws InterruptedException
 	{	
 		//LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);			
-		waitVisibility(By.xpath(AVATARHEADER));
+		waitVisibility(driver,"xpath",AVATARHEADER);
 		clickButton(driver,"xpath",AVATARHEADER);
 		clickButton(driver,"xpath",LOGOUT);		
 	
