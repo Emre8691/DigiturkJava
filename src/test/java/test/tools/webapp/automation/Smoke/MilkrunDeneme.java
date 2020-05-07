@@ -23,6 +23,7 @@ import Base.TestBase;
 import pages.CommonFunctions;
 import pages.LoginPage;
 import pages.Logout;
+import pages.VueLoginPage;
 import utils.Log;
 import utils.ExtentReports.ExtentTestManager;
 import utils.Listeners.*;
@@ -42,10 +43,10 @@ public class MilkrunDeneme extends TestBase {
 	public void LoginTest(Method method) throws InterruptedException {
 	    ExtentTestManager.startTest(method.getName(), "Login Scenario with empty username and password.");
 	    
-	   		LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);
-	   		login_page.login(prop.getProperty("Username"),prop.getProperty("Password"));
+	   		VueLoginPage login_page=PageFactory.initElements(driver, VueLoginPage.class);
+	   		login_page.login(prop.getProperty("Username2"),prop.getProperty("Password"));
 	   		Thread.sleep(2000);
-	   		waitVisibility(driver,"id",DEFINITIONS);
+	   		/*waitVisibility(driver,"id",DEFINITIONS);
 	   		clickButton(driver,"id",DEFINITIONS);
 	   		waitVisibility(driver,"id",MILKRUN);	   		
 	   		clickButton(driver,"id",MILKRUN);
@@ -56,6 +57,7 @@ public class MilkrunDeneme extends TestBase {
 	   		SendkeysDynamicElement(driver,"id",DynamicDimensionName,"test");
 	   		System.out.println(SendkeysDynamicElement(driver,"xpath",DynamicDimensionName,"test"));
 	   		// Sendkeys(driver,"xpath",DimensionName,"package");
+	   		Sendkeys(driver,"xpath",DimensionName,"package");*/
 	   		
 	   		Thread.sleep(2000);
 	}

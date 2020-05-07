@@ -8,7 +8,7 @@
  
     <test name="LoginTest">
         <classes>
-            <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme"/>            
+            <class name="test.tools.webapp.automation.Smoke.ContactTest"/>            
         </classes>
     </test>
 </suite>

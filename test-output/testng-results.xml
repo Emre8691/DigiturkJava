@@ -12,10 +12,20 @@
           </reporter-output>
         </test-method> <!-- Browserchoose -->
         <test-method retried="true" signature="LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@212b5695]" started-at="2020-05-07T17:49:56 EET" name="LoginTest" description="Login Scenario with username and password." finished-at="2020-05-07T17:50:39 EET" duration-ms="43492" status="SKIP">
+  <suite started-at="2020-05-07T14:18:00 EET" name="Itelligence Test Suite" finished-at="2020-05-07T14:19:13 EET" duration-ms="72544">
+    <groups>
+    </groups>
+    <test started-at="2020-05-07T14:18:00 EET" name="LoginTest" finished-at="2020-05-07T14:19:13 EET" duration-ms="72544">
+      <class name="test.tools.webapp.automation.Smoke.ContactTest">
+        <test-method is-config="true" signature="Browserchoose()[pri:0, instance:test.tools.webapp.automation.Smoke.ContactTest@57af006c]" started-at="2020-05-07T14:18:00 EET" name="Browserchoose" finished-at="2020-05-07T14:18:39 EET" duration-ms="38659" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Browserchoose -->
+        <test-method retried="true" signature="LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.ContactTest@57af006c]" started-at="2020-05-07T14:18:39 EET" name="LoginTest" description="Contact Scenario." finished-at="2020-05-07T14:19:12 EET" duration-ms="32915" status="SKIP">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void test.tools.webapp.automation.Smoke.MilkrunDeneme.LoginTest(java.lang.reflect.Method) throws java.lang.InterruptedException]]>
+                <![CDATA[public void test.tools.webapp.automation.Smoke.ContactTest.LoginTest(java.lang.reflect.Method) throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
@@ -41,6 +51,26 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.122, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TR24220\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:59076}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
 Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 *** Element info: {Using=xpath, value=//input[contains(@xpath,'name')]}
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="kt_content"]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i"}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ISTN27451', ip: '192.168.1.35', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=xpath, value=//*[@id="kt_content"]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="kt_content"]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i"}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ISTN27451', ip: '192.168.1.35', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=xpath, value=//*[@id="kt_content"]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i}
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -57,6 +87,8 @@ at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
 at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
 at pages.CommonFunctions.SendkeysDynamicElement(CommonFunctions.java:79)
 at test.tools.webapp.automation.Smoke.MilkrunDeneme.LoginTest(MilkrunDeneme.java:57)
+at pages.CommonFunctions.clickButton(CommonFunctions.java:55)
+at test.tools.webapp.automation.Smoke.ContactTest.LoginTest(ContactTest.java:42)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -96,6 +128,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             <param index="0">
               <value>
                 <![CDATA[public void test.tools.webapp.automation.Smoke.MilkrunDeneme.LoginTest(java.lang.reflect.Method) throws java.lang.InterruptedException]]>
+        <test-method signature="LoginTest(java.lang.reflect.Method)[pri:0, instance:test.tools.webapp.automation.Smoke.ContactTest@57af006c]" started-at="2020-05-07T14:19:12 EET" name="LoginTest" description="Contact Scenario." finished-at="2020-05-07T14:19:12 EET" duration-ms="30" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void test.tools.webapp.automation.Smoke.ContactTest.LoginTest(java.lang.reflect.Method) throws java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
@@ -121,6 +158,26 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.122, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TR24220\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:59076}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
 Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 *** Element info: {Using=id, value=userName}
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":"#example\-input\-1"}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ISTN27451', ip: '192.168.1.35', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=id, value=example-input-1}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#example\-input\-1"}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'ISTN27451', ip: '192.168.1.35', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=id, value=example-input-1}
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -140,6 +197,9 @@ at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invok
 at com.sun.proxy.$Proxy13.sendKeys(Unknown Source)
 at pages.LoginPage.login(LoginPage.java:42)
 at test.tools.webapp.automation.Smoke.MilkrunDeneme.LoginTest(MilkrunDeneme.java:46)
+at com.sun.proxy.$Proxy12.sendKeys(Unknown Source)
+at pages.VueLoginPage.login(VueLoginPage.java:38)
+at test.tools.webapp.automation.Smoke.ContactTest.LoginTest(ContactTest.java:31)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -175,10 +235,10 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           </reporter-output>
         </test-method> <!-- LoginTest -->
         <test-method is-config="true" signature="teardown()[pri:0, instance:test.tools.webapp.automation.Smoke.MilkrunDeneme@212b5695]" started-at="2020-05-07T17:50:40 EET" name="teardown" finished-at="2020-05-07T17:50:41 EET" duration-ms="1199" status="PASS">
-          <reporter-output>
+       <reporter-output>
           </reporter-output>
-        </test-method> <!-- teardown -->
-      </class> <!-- test.tools.webapp.automation.Smoke.MilkrunDeneme -->
+        </test-method> <!-- LoginTest -->
+      </class> <!-- test.tools.webapp.automation.Smoke.ContactTest -->
     </test> <!-- LoginTest -->
   </suite> <!-- Itelligence Test Suite -->
 </testng-results>

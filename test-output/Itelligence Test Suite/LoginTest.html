@@ -60,6 +60,9 @@ function toggleAllBoxes() {
 <td>Started on:</td><td>Thu May 07 17:49:26 EET 2020</td>
 </tr>
 <tr><td>Total time:</td><td>75 seconds (75891 ms)</td>
+<td>Started on:</td><td>Thu May 07 14:18:00 EET 2020</td>
+</tr>
+<tr><td>Total time:</td><td>72 seconds (72544 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -85,6 +88,16 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.122, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TR24220\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:59076}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
 Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 *** Element info: {Using=id, value=userName}
+<td title='test.tools.webapp.automation.Smoke.ContactTest.LoginTest()'><b>LoginTest</b><br>Test class: test.tools.webapp.automation.Smoke.ContactTest<br>Test method: Contact Scenario.<br>Parameters: public void test.tools.webapp.automation.Smoke.ContactTest.LoginTest(java.lang.reflect.Method) throws java.lang.InterruptedException</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#example\-input\-1&quot;}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;ISTN27451&apos;, ip: &apos;192.168.1.35&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=id, value=example-input-1}
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
@@ -111,6 +124,20 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.122, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TR24220\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:59076}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
 Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 *** Element info: {Using=id, value=userName}
+	at com.sun.proxy.$Proxy12.sendKeys(Unknown Source)
+	at pages.VueLoginPage.login(VueLoginPage.java:38)
+	at test.tools.webapp.automation.Smoke.ContactTest.LoginTest(ContactTest.java:31)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2058174333", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2058174333'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#example\-input\-1&quot;}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;ISTN27451&apos;, ip: &apos;192.168.1.35&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=id, value=example-input-1}
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -130,6 +157,9 @@ Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 	at com.sun.proxy.$Proxy13.sendKeys(Unknown Source)
 	at pages.LoginPage.login(LoginPage.java:42)
 	at test.tools.webapp.automation.Smoke.MilkrunDeneme.LoginTest(MilkrunDeneme.java:46)
+	at com.sun.proxy.$Proxy12.sendKeys(Unknown Source)
+	at pages.VueLoginPage.login(VueLoginPage.java:38)
+	at test.tools.webapp.automation.Smoke.ContactTest.LoginTest(ContactTest.java:31)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -161,6 +191,7 @@ Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 </pre></div></td>
 <td>0</td>
 <td>test.tools.webapp.automation.Smoke.MilkrunDeneme@212b5695</td></tr>
+<td>test.tools.webapp.automation.Smoke.ContactTest@57af006c</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
@@ -180,6 +211,16 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.122, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TR24220\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:59076}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
 Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 *** Element info: {Using=xpath, value=//input[contains(@xpath,&apos;name&apos;)]}
+<td title='test.tools.webapp.automation.Smoke.ContactTest.LoginTest()'><b>LoginTest</b><br>Test class: test.tools.webapp.automation.Smoke.ContactTest<br>Test method: Contact Scenario.<br>Parameters: public void test.tools.webapp.automation.Smoke.ContactTest.LoginTest(java.lang.reflect.Method) throws java.lang.InterruptedException</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;kt_content&quot;]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i&quot;}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;ISTN27451&apos;, ip: &apos;192.168.1.35&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=xpath, value=//*[@id=&quot;kt_content&quot;]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i}
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
 	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
@@ -203,6 +244,19 @@ Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.122, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\TR24220\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:59076}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
 Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 *** Element info: {Using=xpath, value=//input[contains(@xpath,&apos;name&apos;)]}
+	at pages.CommonFunctions.clickButton(CommonFunctions.java:55)
+	at test.tools.webapp.automation.Smoke.ContactTest.LoginTest(ContactTest.java:42)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+... Removed 31 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2090894907", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2090894907'><pre>org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&quot;kt_content&quot;]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i&quot;}
+  (Session info: chrome=81.0.4044.129)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;ISTN27451&apos;, ip: &apos;192.168.1.35&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 81.0.4044.129, chrome: {chromedriverVersion: 81.0.4044.138 (8c6c7ba89cc9..., userDataDir: C:\Users\tr27451\AppData\Lo...}, goog:chromeOptions: {debuggerAddress: localhost:57762}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: c6897befce1aaaea11120b6fdf9d207d
+*** Element info: {Using=xpath, value=//*[@id=&quot;kt_content&quot;]/div[2]/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i}
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -219,6 +273,8 @@ Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
 	at pages.CommonFunctions.SendkeysDynamicElement(CommonFunctions.java:79)
 	at test.tools.webapp.automation.Smoke.MilkrunDeneme.LoginTest(MilkrunDeneme.java:57)
+	at pages.CommonFunctions.clickButton(CommonFunctions.java:55)
+	at test.tools.webapp.automation.Smoke.ContactTest.LoginTest(ContactTest.java:42)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -250,6 +306,8 @@ Session ID: 4aac8661372d31bb4b63e80cef8f0bcf
 </pre></div></td>
 <td>43</td>
 <td>test.tools.webapp.automation.Smoke.MilkrunDeneme@212b5695</td></tr>
+<td>32</td>
+<td>test.tools.webapp.automation.Smoke.ContactTest@57af006c</td></tr>
 </table><p>
 </body>
 </html>
