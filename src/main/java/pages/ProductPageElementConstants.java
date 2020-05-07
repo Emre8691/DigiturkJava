@@ -18,6 +18,7 @@ public class ProductPageElementConstants {
 	public static final String DIMENSION ="Dimensions-69";
 	public static final String ADD_DIMENSION ="/html/body/div/div/div/div/div/div/main/div/div/div/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i";
 	public static final String DimensionName = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div/div/div/div/div[1]/input";
+	public static final String DynamicDimensionName ="dx_dx-f3d77b3d-2b50-a56a-5474-63d665ccca7f_name";
 	
 	
 	public static final String VUEUSERNAME ="example-input-1";

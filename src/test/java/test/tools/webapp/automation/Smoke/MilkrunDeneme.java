@@ -54,6 +54,9 @@ public class MilkrunDeneme extends TestBase {
 	   		clickButton(driver,"id",DIMENSION);
 	   		waitVisibility(driver,"xpath",ADD_DIMENSION);
 	   		clickButton(driver,"xpath",ADD_DIMENSION);
+	   		SendkeysDynamicElement(driver,"id",DynamicDimensionName,"test");
+	   		System.out.println(SendkeysDynamicElement(driver,"xpath",DynamicDimensionName,"test"));
+	   		// Sendkeys(driver,"xpath",DimensionName,"package");
 	   		Sendkeys(driver,"xpath",DimensionName,"package");*/
 	   		
 	   		Thread.sleep(2000);
