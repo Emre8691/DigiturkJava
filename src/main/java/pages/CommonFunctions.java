@@ -62,7 +62,24 @@ public class CommonFunctions extends PageConsructor {
 	return strLocValue;
 }
    
-    	
+    static public String clickDynamicElement(WebDriver driver, String strLocType, String strLocValue) throws InterruptedException	
+    {
+    		int Locator = strLocValue.indexOf("_",strLocValue.indexOf("_") + 1);
+    		String dynamic = strLocValue.substring(Locator+1,strLocValue.length());
+    		driver.findElement(By.xpath("//input[contains(@" + strLocType + "," + "\'" + dynamic + "\'" + ")]")).click();
+ 	       	
+        	return strLocValue;
+    }
+    
+    static public String SendkeysDynamicElement(WebDriver driver, String strLocType, String strLocValue, String param) throws InterruptedException	
+    {
+    
+    	int Locator = strLocValue.indexOf("_",strLocValue.indexOf("_") + 1);
+		String dynamic = strLocValue.substring(Locator+1,strLocValue.length());
+	    driver.findElement(By.xpath("//input[contains(@" + strLocType + "," + "\'" + dynamic + "\'" + ")]")).sendKeys(param);
+		
+	    return param;
+    }
     	public static void quit_driver(WebDriver driver)
     {
         driver.quit();

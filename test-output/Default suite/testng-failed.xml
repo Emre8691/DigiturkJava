@@ -5,13 +5,9 @@
     <classes>
       <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme">
         <methods>
-          <include name="Dimension"/>
-          <include name="endReport"/>
-          <include name="TitleTest"/>
-          <include name="tearDown"/>
+          <include name="LoginTest" invocation-numbers="0"/>
           <include name="Browserchoose"/>
-          <include name="Milkrun"/>
-          <include name="tearDown"/>
+          <include name="teardown"/>
         </methods>
       </class> <!-- test.tools.webapp.automation.Smoke.MilkrunDeneme -->
     </classes>
