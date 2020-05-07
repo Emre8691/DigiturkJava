@@ -110,7 +110,7 @@ public class TestBase extends CommonFunctions{
 		//driver.manage().timeouts().pageLoadTimeout(TestListener.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		//driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
-		driver.get(prop.getProperty("url"));
+		driver.get(prop.getProperty("url2"));
 
 		}
 	
@@ -130,9 +130,9 @@ public class TestBase extends CommonFunctions{
 		return destination;
 	}
 	
-	 @AfterClass
+	/* @AfterClass
 	    public void teardown () {
 	        driver.quit();
-	    }
+	    }*/
 }
 	

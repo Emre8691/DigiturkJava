@@ -7,13 +7,12 @@
   </listeners>
   <test thread-count="5" name="LoginTest(failed)">
     <classes>
-      <class name="test.tools.webapp.automation.Smoke.MilkrunDeneme">
+      <class name="test.tools.webapp.automation.Smoke.ContactTest">
         <methods>
           <include name="LoginTest" invocation-numbers="0 0"/>
           <include name="Browserchoose"/>
-          <include name="teardown"/>
         </methods>
-      </class> <!-- test.tools.webapp.automation.Smoke.MilkrunDeneme -->
+      </class> <!-- test.tools.webapp.automation.Smoke.ContactTest -->
     </classes>
   </test> <!-- LoginTest(failed) -->
 </suite> <!-- Failed suite [Itelligence Test Suite] -->

@@ -57,13 +57,32 @@ public class CommonFunctions extends PageConsructor {
         case "name":
             driver.findElement(By.name(strLocValue)).click();
             break;
+    	}
+    	
+    	Thread.sleep(5000);
+    	return strLocValue;
+    }
+    
+    static public String clear(WebDriver driver, String strLocType, String strLocValue) throws InterruptedException
+    {
+    	switch(strLocType)
+    	{
+        case "id":
+            driver.findElement(By.id(strLocValue)).clear();
+            break;
+        case "xpath":
+            driver.findElement(By.xpath(strLocValue)).clear();
+            break;
+        case "name":
+            driver.findElement(By.name(strLocValue)).clear();
+            break;
     }
     Thread.sleep(5000);
 	return strLocValue;
 }
    
     	
-    	public static void quit_driver(WebDriver driver)
+    public static void quit_driver(WebDriver driver)
     {
         driver.quit();
     }
