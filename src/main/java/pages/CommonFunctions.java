@@ -99,7 +99,6 @@ public class CommonFunctions extends PageConsructor {
 		
 	    return param;
     }
-    	public static void quit_driver(WebDriver driver)
     	
     public static void quit_driver(WebDriver driver)
     {
