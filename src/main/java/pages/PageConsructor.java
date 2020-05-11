@@ -87,10 +87,34 @@ public class PageConsructor extends ProductPageElementConstants{
         Thread.sleep(5000);
 	
 		return strLocValue;
-		
-		
+				
+		  }
+	public static String scrollDown_element(String strLocType,String strLocValue) throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+    	WebElement Element;
+		switch(strLocType)
+        {	
+            case "id":
+        
+            	Element = driver.findElement(By.id(strLocValue));
+            	js.executeScript("arguments[0].scrollIntoView();", Element);
+	
+             	break;
+            case "xpath":
+            	Element = driver.findElement(By.xpath(strLocValue));
+            	js.executeScript("arguments[0].scrollIntoView();", Element);
+	
+            	break;
+            case "name":
+            	Element = driver.findElement(By.name(strLocValue));
+            	js.executeScript("arguments[0].scrollIntoView();", Element);
+            	break;
+        }
+        Thread.sleep(5000);
+	
+		return strLocValue;
+				
 		  }
 	
-	    
 }
 
