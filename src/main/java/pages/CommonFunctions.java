@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -95,11 +96,44 @@ public class CommonFunctions extends PageConsructor {
     
     	int Locator = strLocValue.indexOf("_",strLocValue.indexOf("_") + 1);
 		String dynamic = strLocValue.substring(Locator+1,strLocValue.length());
+	
 	    driver.findElement(By.xpath("//input[contains(@" + strLocType + "," + "\'" + dynamic + "\'" + ")]")).sendKeys(param);
-		
+	 
 	    return param;
     }
-    	public static void quit_driver(WebDriver driver)
+    
+    static public String getValue(String strLocType, String strLocValue) {
+    	int Locator = strLocValue.indexOf("_",strLocValue.indexOf("_") + 1);
+		String dynamic = strLocValue.substring(Locator+1,strLocValue.length());
+		String str = "//input[contains(@" + strLocType + "," + "\'" + dynamic + "\'" + ")]";
+    	return str;
+    }
+    
+
+    static public String scroll(WebDriver driver, String strLocType,String strLocValue) throws InterruptedException
+     {
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+         WebElement Element ;
+     	
+     	switch(strLocType)
+     	{
+         case "id":
+         	Element = driver.findElement(By.id(strLocValue));
+             js.executeScript("arguments[0].scrollIntoView();", Element);
+             break;
+         case "xpath":
+         	Element = driver.findElement(By.xpath(strLocValue));
+             js.executeScript("arguments[0].scrollIntoView();", Element);
+             break;
+         case "name":
+         	Element = driver.findElement(By.name(strLocValue));
+             js.executeScript("arguments[0].scrollIntoView();", Element);
+             break;
+     }
+ 	    Thread.sleep(5000);
+ 		return strLocValue;
+     }
+ 
     	
     public static void quit_driver(WebDriver driver)
     {
