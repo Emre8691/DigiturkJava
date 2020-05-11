@@ -101,6 +101,7 @@ public class CommonFunctions extends PageConsructor {
 	 
 	    return param;
     }
+
     
     static public String getValue(String strLocType, String strLocValue) {
     	int Locator = strLocValue.indexOf("_",strLocValue.indexOf("_") + 1);
@@ -134,6 +135,7 @@ public class CommonFunctions extends PageConsructor {
  		return strLocValue;
      }
  
+
     	
     public static void quit_driver(WebDriver driver)
     {

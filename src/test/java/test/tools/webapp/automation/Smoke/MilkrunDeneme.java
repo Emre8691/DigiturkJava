@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -43,23 +44,25 @@ public class MilkrunDeneme extends TestBase {
 	public void LoginTest(Method method) throws InterruptedException {
 	    ExtentTestManager.startTest(method.getName(), "Login Scenario with empty username and password.");
 	    
-	   		VueLoginPage login_page=PageFactory.initElements(driver, VueLoginPage.class);
-	   		login_page.login(prop.getProperty("Username2"),prop.getProperty("Password"));
+	   		LoginPage login_page=PageFactory.initElements(driver, LoginPage.class);
+	   		login_page.login(prop.getProperty("Username"),prop.getProperty("Password"));
 	   		Thread.sleep(2000);
-	   		/*waitVisibility(driver,"id",DEFINITIONS);
+	   		waitVisibility(driver,"id",DEFINITIONS);
 	   		clickButton(driver,"id",DEFINITIONS);
-	   		waitVisibility(driver,"id",MILKRUN);	   		
-	   		clickButton(driver,"id",MILKRUN);
-	   		waitVisibility(driver,"id",DIMENSION);
-	   		clickButton(driver,"id",DIMENSION);
-	   		waitVisibility(driver,"xpath",ADD_DIMENSION);
-	   		clickButton(driver,"xpath",ADD_DIMENSION);
-	   		SendkeysDynamicElement(driver,"id",DynamicDimensionName,"test");
-	   		System.out.println(SendkeysDynamicElement(driver,"xpath",DynamicDimensionName,"test"));
-	   		// Sendkeys(driver,"xpath",DimensionName,"package");
-	   		Sendkeys(driver,"xpath",DimensionName,"package");*/
+	   		waitVisibility(driver,"id",PORTAL);
+	   		clickButton(driver,"id",PORTAL);
+	   		waitVisibility(driver,"id",USER);
+	   		clickButton(driver,"id",USER);
+	   		waitVisibility(driver,"xpath",ADDUSER);
+	   		clickButton(driver,"xpath",ADDUSER);
 	   		
+	   		waitVisibility(driver,"xpath",CELLPHONE);	   		
+	   		clickButton(driver,"xpath",CELLPHONE);
+	   		Sendkeys(driver,"xpath",CELLPHONE,"90547535-3535");
 	   		Thread.sleep(2000);
+
+	
+	
 	}
 	
 	
