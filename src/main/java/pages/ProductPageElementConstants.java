@@ -16,15 +16,32 @@ public class ProductPageElementConstants {
 	public static final String AVATARHEADER = "/html/body/div/div/div/div/div/header/ul/li[2]/a/img";
 	public static final String LOGOUT ="//*[@id=\"root\"]/div/div/div/div/header/ul/li[2]/div/button[4]";
 	public static final String DIMENSION ="Dimensions-69";
-	public static final String ADD_DIMENSION ="/html/body/div/div/div/div/div/div/main/div/div/div/div/div/div/div[4]/div/div/div[3]/div[1]/div/div/div/i";
+	public static final String ADD_DIMENSION ="//*[@id=\"grid-container\"]/div/div[4]/div/div/div[3]/div[1]/div/div/div/i";
 	public static final String DimensionName = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[1]/div/div[2]/div/div/div/div/div/div[1]/input";
 	public static final String DynamicDimensionName ="dx_dx-f3d77b3d-2b50-a56a-5474-63d665ccca7f_name";
 	public static final String PORTAL = "Portal-149";
 	public static final String USER = "Users-86";
 	public static final String ADDUSER = "//*[@id=\"grid-container\"]/div/div[4]/div/div/div[3]/div[1]/div/div/div/i";
 	public static final String CELLPHONE = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[5]/div/div[2]/div/div/div/div/div/div[1]/input";
+	public static final String PACKAGE = "Packages-72";
+	public static final String PackageCodeSearch = "/html/body/div/div/div/div/div/div/main/div/div/div/div/div/div[1]/div[5]/div[2]/table/tbody/tr[2]/td[2]/div/div[2]/div/div/div[1]/input";
+	public static final String foundElement ="/html/body/div/div/div/div/div/div/main/div/div/div/div/div/div/div[6]/div[1]/div/div[1]/div/table/tbody/tr[1]/td[2]";
+	public static final String DimensionWidth = "dx_dx-c618aac5-5383-c928-0354-25e43b9a9dd1_width";
+	public static final String DimensionHeight ="dx_dx-c618aac5-5383-c928-0354-25e43b9a9dd1_height";
+	public static final String DimensionLength ="dx_dx-91960a5b-3b6b-d9c9-17e0-d172343f91a5_length";
+	public static final String DimensionDescription ="dx_dx-91960a5b-3b6b-d9c9-17e0-d172343f91a5_description";
+	public static final String DimensionType ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[1]/div/div[1]/div/div/div/div/div/div/div[2]/div[2]/div/div";
+	public static final String DimensionTypeValue ="//div[contains(text(), 'Package')]";
+	public static final String save= "/html/body/div[2]/div/div[3]/div/div[3]/div[1]/div/div/div/span";
+	public static final String PackageEdit ="//*[@id=\"grid-container\"]/div/div[6]/div[2]/table/tbody/tr[1]/td[2]/a[1]";
+	public static final String PackageDimension ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[2]/div/div[2]/div/div/div/div/div/div/div[2]/div[2]/div/div";
+	public static final String PackageDimensionValue ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[2]/div/div[2]/div/div/div/div/div[1]/div/div[1]/input";
+	public static final String ChooseElement ="/html/body/div[3]/div/div/div/div[1]/div/div[1]/div[2]/div[1]/div";
+	public static final String returnable ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[3]/div/div[2]/div/div/div/div/div/span";
+	public static final String is_returnable ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[3]/div/div[2]/div/div/div/div/input";
 	
 	
+	//********************************* Vue Elements **************************************** //
 	public static final String VUEUSERNAME ="example-input-1";
 	public static final String VUEPASSWORD = "example-input-2";
 	public static final String VUELOGINBUTTON ="kt_submit";
