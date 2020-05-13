@@ -51,16 +51,7 @@ public class MilkrunDeneme extends TestBase {
 	   		clickButton(driver,"id",DEFINITIONS);
 	   		waitVisibility(driver,"id",PORTAL);
 	   		clickButton(driver,"id",PORTAL);
-	   		waitVisibility(driver,"id",USER);
-	   		clickButton(driver,"id",USER);
-	   		waitVisibility(driver,"xpath",ADDUSER);
-	   		clickButton(driver,"xpath",ADDUSER);
 	   		
-	   		waitVisibility(driver,"xpath",CELLPHONE);	   		
-	   		clickButton(driver,"xpath",CELLPHONE);
-	   		Sendkeys(driver,"xpath",CELLPHONE,"90547535-3535");
-	   		Thread.sleep(2000);
-
 	
 	
 	}
