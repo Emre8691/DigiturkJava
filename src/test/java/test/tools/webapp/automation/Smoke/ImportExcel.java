@@ -95,13 +95,21 @@ public class ImportExcel extends TestBase{
 		   					Sendkeys(driver,"xpath",PackageDimensionValue,Keys.chord(Keys.CONTROL,"a"));
 		   					Sendkeys(driver,"xpath",PackageDimensionValue,name);
 		   					clickButton(driver,"xpath",ChooseElement);
-		   					
+		   					WebElement checkElement=driver.findElement(By.xpath(is_returnable));
 		   					if (Returnable.equals("Y") || Returnable.equals("y"))
 		   					{
-		   					  clickButton(driver,"xpath",returnable);
+		   						if (checkElement.getAttribute("value").contains("false"))
+		   							{clickButton(driver,"xpath",returnable);}
 		   								   						
 		   					}
 		   					
+		   					WebElement dynamicElement = driver.findElement(By.xpath(dynamic));
+		   					if (dynamicElement.getAttribute("aria-checked").contains("false"))
+		   					{
+		   						clickButton(driver,"xpath",dynamicEle);
+		   					}
+		   					
+		   				
 		   					clickButton(driver,"xpath",save);
 		   				}  	
         		}
