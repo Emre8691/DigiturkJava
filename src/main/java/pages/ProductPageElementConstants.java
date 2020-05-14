@@ -39,8 +39,9 @@ public class ProductPageElementConstants {
 	public static final String ChooseElement ="/html/body/div[3]/div/div/div/div[1]/div/div[1]/div[2]/div[1]/div";
 	public static final String returnable ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[3]/div/div[2]/div/div/div/div/div/span";
 	public static final String is_returnable ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[3]/div/div[2]/div/div/div/div/input";
-	
-	
+	public static final String dynamic = "/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[4]/div/div[1]/div/div/div/div";
+	public static final String dynamicEle ="/html/body/div[2]/div/div[2]/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/div/div/div/div/div/div[4]/div/div[1]/div/div/div/div/div/span";
+
 	//********************************* Vue Elements **************************************** //
 	public static final String VUEUSERNAME ="example-input-1";
 	public static final String VUEPASSWORD = "example-input-2";
